@@ -1,23 +1,66 @@
 const enviar = document.getElementById("enviar");
+const cifraEntrada = document.getElementById("cifra");
+const cifraButon = document.getElementById("cifraB");
 const respuesta = document.getElementById("respuesta");
 const historia = document.getElementById("historia");
+const form = document.getElementById("form");
+
+let numeroPrincipal = 0;
+let numero = [];
+let historial = []
 
 function init() {
-	const p1 = parseInt(Math.random() * (10 - 1) + 1);
-	const p2 = parseInt(Math.random() * (10 - 1) + 1);
-	const p3 = parseInt(Math.random() * (10 - 1) + 1);
-	const p4 = parseInt(Math.random() * (10 - 1) + 1);
-	let numer = [p1, p2, p3, p4];
-	if (p1 == p2 || p2 == p3 || p1 == p3 || p1 == p4 || p2 == p4 || p3 == p4) {
-		return init();
-	} else {
-		return numer;
+	let numer = [];
+	for (let i = 0; i < numeroPrincipal; i++) {
+		const r = parseInt(Math.random() * (10 - 1) + 1);
+		if (!numer.includes(r)) {
+			numer.push(r);
+		} else {
+			i--;
+		}
 	}
+	return numer;
 }
 
-let numero = init();
 
-const historial = []
+cifraButon.addEventListener("click", () => {
+	const entradasN = document.getElementById("entradasN")
+	entradasN.innerHTML = ""
+	numeroPrincipal = parseInt(cifraEntrada.value);
+	numero = init();
+	historial = [];
+
+	if (cifraEntrada.value !== "") {
+		form.style.display = "block";
+		for (let i = 0; i < numeroPrincipal; i++) {
+			entradasN.innerHTML += `<input
+              type="number"
+              id="numero${i}"
+              placeholder="Ingrese un número"
+              class="
+                flex-1
+                appearance-none
+                mr-6
+                border border-transparent
+                w-full
+                py-2
+                px-4
+                bg-white
+                text-gray-700
+                placeholder-gray-400
+                shadow-md
+                rounded-lg
+                text-base
+                focus:outline-none
+                focus:ring-2
+                focus:ring-purple-600
+                focus:border-transparen
+              "
+            />`;
+		}
+
+	}
+});
 
 let x = false;
 
@@ -47,24 +90,12 @@ document.addEventListener("keydown", function (e) {
 	}
 });
 
-let numeroPrincipal = 4;
-
 const miniAI = (e) => {
 	e.preventDefault();
-	let numero1 = [parseInt(document.getElementById("numero1").value), false];
-	let numero2 = [parseInt(document.getElementById("numero2").value), false];
-	let numero3 = [parseInt(document.getElementById("numero3").value), false];
-	let numero4 = [parseInt(document.getElementById("numero4").value), false];
-	const arrayCompleto = [numero1, numero2, numero3, numero4];
-
-	const avance = (i, v) => {
-		let valorFuturo = i;
-		if ((valorFuturo + v) > numeroPrincipal - 1) {
-			valorFuturo = (valorFuturo + v) - (numeroPrincipal - 1);
-		} else {
-			valorFuturo += v;
-		}
-		return valorFuturo;
+	const arrayCompleto = [];
+	for (let i = 0; i < numeroPrincipal; i++) {
+		let arr = [parseInt(document.getElementById(`numero${i}`).value), false];
+		arrayCompleto.push(arr);
 	}
 	const arrayValores = [];
 	const comprobar = () => {
@@ -88,7 +119,6 @@ const miniAI = (e) => {
 	let fijas = 0;
 	let picas = 0;
 	arrayCompleto.forEach((val, i) => {
-		let valorFuturo = avance(i, 1);
 		if (isNaN(val[0])) {
 			return respuesta.innerHTML = "Ingresa valores"
 		} else if (!numeroR) {

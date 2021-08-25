@@ -40,127 +40,58 @@
       >
         <span id="respuesta"></span>
       </div>
-      <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md">
+      <div class="p-6 max-w-lg mx-auto bg-white rounded-xl shadow-md">
         <h1 class="font-bold text-4xl text-center my-4">Fijas y Picas</h1>
-        <form id="enviar" onsubmit="Piensa()">
-          <div class="flex flex-row">
-            <input
-              type="number"
-              id="numero1"
-              placeholder="Ingrese un número"
+        <p>Hola humano, con cuantos digitos deseas jugar</p>
+        <input
+          type="number"
+          id="cifra"
+          placeholder="3"
+          class="
+            flex-1
+            appearance-none
+            mr-6
+            border border-transparent
+            w-full
+            py-2
+            px-4
+            bg-white
+            text-gray-700
+            placeholder-gray-400
+            shadow-md
+            rounded-lg
+            text-base
+            focus:outline-none
+            focus:ring-2
+            focus:ring-purple-600
+            focus:border-transparen
+          "
+        />
+        <button id="cifraB">Ok</button>
+        <div class="hidden" id="form">
+          <form id="enviar" onsubmit="Piensa()">
+            <div class="flex flex-row" id="entradasN"></div>
+            <span id="numeroMagico"></span>
+            <button
+              type="submit"
               class="
-                flex-1
-                mr-6
-                appearance-none
-                border border-transparent
-                w-full
+                mt-5
+                shadow-0
+                bg-blue-500
+                hover:bg-blue-700 hover:shadow-lg
+                text-white
+                font-bold
                 py-2
                 px-4
-                bg-white
-                text-gray-700
-                placeholder-gray-400
-                shadow-md
-                rounded-lg
-                text-base
-                focus:outline-none
-                focus:ring-2
-                focus:ring-purple-600
-                focus:border-transparen
-              "
-            />
-            <input
-              type="number"
-              id="numero2"
-              placeholder="Ingrese un número"
-              class="
-                flex-1
-                appearance-none
-                mr-6
-                border border-transparent
+                rounded
                 w-full
-                py-2
-                px-4
-                bg-white
-                text-gray-700
-                placeholder-gray-400
-                shadow-md
-                rounded-lg
-                text-base
-                focus:outline-none
-                focus:ring-2
-                focus:ring-purple-600
-                focus:border-transparen
+                focus:outline-none focus:shadow-lg focus:bg-blue-700
               "
-            />
-            <input
-              type="number"
-              id="numero3"
-              placeholder="Ingrese un número"
-              class="
-                flex-1
-                appearance-none
-                mr-6
-                border border-transparent
-                w-full
-                py-2
-                px-4
-                bg-white
-                text-gray-700
-                placeholder-gray-400
-                shadow-md
-                rounded-lg
-                text-base
-                focus:outline-none
-                focus:ring-2
-                focus:ring-purple-600
-                focus:border-transparen
-              "
-            />
-            <input
-              type="number"
-              id="numero4"
-              placeholder="Ingrese un número"
-              class="
-                flex-1
-                appearance-none
-                mr-6
-                border border-transparent
-                w-full
-                py-2
-                px-4
-                bg-white
-                text-gray-700
-                placeholder-gray-400
-                shadow-md
-                rounded-lg
-                text-base
-                focus:outline-none
-                focus:ring-2
-                focus:ring-purple-600
-                focus:border-transparen
-              "
-            />
-          </div>
-          <span id="numeroMagico"></span>
-          <button
-            type="submit"
-            class="
-              mt-5
-              shadow-0
-              bg-blue-500
-              hover:bg-blue-700 hover:shadow-lg
-              text-white
-              font-bold
-              py-2
-              px-4
-              rounded
-              w-full
-              focus:outline-none focus:shadow-lg focus:bg-blue-700
-            "
-          >
-            Comenzar
-          </button>
-        </form>
+            >
+              Comenzar
+            </button>
+          </form>
+        </div>
       </div>
     </div>
     help E
