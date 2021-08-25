@@ -6,8 +6,9 @@ function init() {
 	const p1 = parseInt(Math.random() * (10 - 1) + 1);
 	const p2 = parseInt(Math.random() * (10 - 1) + 1);
 	const p3 = parseInt(Math.random() * (10 - 1) + 1);
-	let numer = [p1, p2, p3];
-	if (p1 == p2 || p2 == p3 || p1 == p3) {
+	const p4 = parseInt(Math.random() * (10 - 1) + 1);
+	let numer = [p1, p2, p3, p4];
+	if (p1 == p2 || p2 == p3 || p1 == p3 || p1 == p4 || p2 == p4 || p3 == p4) {
 		return init();
 	} else {
 		return numer;
@@ -46,14 +47,15 @@ document.addEventListener("keydown", function (e) {
 	}
 });
 
-let numeroPrincipal = 3;
+let numeroPrincipal = 4;
 
 const miniAI = (e) => {
 	e.preventDefault();
 	let numero1 = [parseInt(document.getElementById("numero1").value), false];
 	let numero2 = [parseInt(document.getElementById("numero2").value), false];
 	let numero3 = [parseInt(document.getElementById("numero3").value), false];
-	const arrayCompleto = [numero1, numero2, numero3];
+	let numero4 = [parseInt(document.getElementById("numero4").value), false];
+	const arrayCompleto = [numero1, numero2, numero3, numero4];
 
 	const avance = (i, v) => {
 		let valorFuturo = i;
@@ -104,7 +106,7 @@ const miniAI = (e) => {
 			}
 			if (i === numeroPrincipal - 1) {
 				historial.push([arrayValores.join(""), { picas, fijas }]);
-				if (fijas === 3) {
+				if (fijas === numeroPrincipal) {
 					return respuesta.innerHTML = "¡¡¡GANASTE!!!";
 				}
 				respuesta.innerHTML = `hay ${fijas} fijas y ${picas} picas`;
