@@ -100,18 +100,14 @@ const miniAI = (e) => {
 	const arrayValores = [];
 	const comprobar = () => {
 		let prueba = true;
-		for (let i = 0; i < arrayCompleto.length; i++) {
-			let valorFuturo = i;
-			if (arrayCompleto.hasOwnProperty(valorFuturo + 1)) {
-				valorFuturo++;
-			} else {
-				valorFuturo = 0;
+		arrayCompleto.forEach(arr => arrayValores.push(arr[0]));
+		//comprobar si hay un elemento repetido en arrayValores
+		for (let i = 0; i < arrayValores.length; i++) {
+			for (let j = 0; j < arrayValores.length; j++) {
+				if (i !== j && arrayValores[i] === arrayValores[j]) {
+					prueba = false;
+				}
 			}
-			const arrx = arrayCompleto[i];
-			if (arrx[0] === arrayCompleto[valorFuturo][0]) {
-				prueba = false;
-			}
-			arrayValores.push(arrx[0]);
 		}
 		return prueba;
 	}
@@ -123,9 +119,9 @@ const miniAI = (e) => {
 			return respuesta.innerHTML = "Ingresa valores"
 		} else if (!numeroR) {
 			if (i === numeroPrincipal - 1) {
-				historial.push([arrayValores.join(""), "Todos son iguales"]);
+				historial.push([arrayValores.join(""), "Hay un valor repetido"]);
 			}
-			return respuesta.innerHTML = "Recuerda ningun numero se repite";
+			return respuesta.innerHTML = "Recuerda ninguna cifra se repite";
 		} else {
 			if (val[0] === numero[i]) {
 				fijas++;
