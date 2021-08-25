@@ -1,5 +1,3 @@
-import './style.css'
-
 let picas = document.querySelector('#picas')
 const history = document.querySelector('#history')
 const fijas = document.querySelector('#fijas')

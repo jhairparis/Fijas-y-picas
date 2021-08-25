@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/src/resource/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -10,91 +10,10 @@
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Fijas y Picas</title>
   </head>
-  <body class="flex w-screen h-screen font-init bg-red-300">
-    <div class="flex-none" id="historia"></div>
-    <div class="flex-1 flex justify-center items-center h-full">
-      <div
-        class="
-          absolute
-          top-0
-          right-0
-          mt-5
-          mr-5
-          shadow-md
-          cursor-pointer
-          transition
-          duration-500
-          ease-in-out
-          bg-green-300
-          hover:bg-green-500
-          border border-green-700
-          px-5
-          py-2
-          rounded-sm
-          text-green-800
-          capitalize
-        "
-      >
-        <span id="respuesta"></span>
-      </div>
-      <div class="p-6 max-w-lg mx-auto bg-white rounded-xl shadow-md">
-        <h1 class="font-bold text-4xl text-center my-4">Fijas y Picas</h1>
-        <p>Hola humano, con cuantos digitos deseas jugar</p>
-        <input
-          type="number"
-          id="cifra"
-          placeholder="3"
-          class="
-            flex-1
-            appearance-none
-            mr-6
-            border border-transparent
-            w-full
-            py-2
-            px-4
-            bg-white
-            text-gray-700
-            placeholder-gray-400
-            shadow-md
-            rounded-lg
-            text-base
-            focus:outline-none
-            focus:ring-2
-            focus:ring-purple-600
-            focus:border-transparen
-          "
-        />
-        <button id="cifraB">Ok</button>
-        <div class="hidden" id="form">
-          <form id="enviar" onsubmit="Piensa()">
-            <div class="flex flex-row" id="entradasN"></div>
-            <span id="numeroMagico"></span>
-            <button
-              type="submit"
-              class="
-                mt-5
-                shadow-0
-                bg-blue-500
-                hover:bg-blue-700 hover:shadow-lg
-                text-white
-                font-bold
-                py-2
-                px-4
-                rounded
-                w-full
-                focus:outline-none focus:shadow-lg focus:bg-blue-700
-              "
-            >
-              Comenzar
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-    help E
-    <script type="module" src="/give.js"></script>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
