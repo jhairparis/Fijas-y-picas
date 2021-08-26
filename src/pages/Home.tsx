@@ -1,5 +1,6 @@
 import React, { ReactElement, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { toast } from "react-toastify";
 
 type historialTP = [number, {} | string];
 type arrayC = [number, boolean];
@@ -17,7 +18,6 @@ const Home = () => {
   const [inputs, setInputs] = useState<ReactElement<HTMLInputElement>[]>([]);
   const [numero, setNumero] = useState<number[]>([]);
   const [historial, setHistorial] = useState<historialTP[]>([]);
-  const [respuesta, setRespuesta] = useState("");
 
   function init(val: number): number[] {
     let numer: number[] = [];
@@ -47,9 +47,9 @@ const Home = () => {
           <input
             key={i}
             type="number"
-            {...register(`number${i}`)}
-            placeholder="Ingrese un número"
-            className="flex-1 appearance-none mr-6 border border-transparent w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparen"
+            {...register(`number${i}`, { required: true, min: 0, max: 9 })}
+            placeholder={`Digito ${i + 1}`}
+            className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
           />
         );
       }
@@ -80,15 +80,15 @@ const Home = () => {
     let picas = 0;
     arrayCompleto.forEach((val, i) => {
       if (isNaN(val[0])) {
-        setRespuesta("Ingresa valores");
+        toast.error("Ingresa un digito en la casilla numero: " + (i + 1));
       } else if (!numeroR) {
         if (i === numeroPrincipal - 1) {
           setHistorial([
             ...historial,
             [parseInt(arrayValores.join("")), "Hay un valor repetido"],
           ]);
+          toast.info("Recuerda ninguna cifra se repite");
         }
-        setRespuesta("Recuerda ninguna cifra se repite");
       } else {
         if (val[0] === numero[i]) {
           fijas++;
@@ -103,64 +103,65 @@ const Home = () => {
             [parseInt(arrayValores.join("")), { picas, fijas }],
           ]);
           if (fijas === numeroPrincipal) {
-            setRespuesta("¡¡¡GANASTE!!!");
+            toast.success("¡¡¡GANASTE!!! 🚀");
           } else {
-            setRespuesta(`hay ${fijas} fijas y ${picas} picas`);
+            toast(`hay ${fijas} fijas y ${picas} picas`);
           }
         }
       }
     });
   };
   return (
-    <div>
-      <button>Humano Vs Maquina</button>
-      <button>Humano Vs Humano</button>
-      <button>Maquina Vs Maquina</button>
-      <div className="flex w-screen h-screen font-init bg-red-300">
-        <div className="flex-none">
-          {historial?.map((item, i) => {
-            const c = ["red", "green", "blue", "yellow", "gray", "purple"];
-            return (
-              <div
-                key={i}
-                className={`w-full mx-auto my-2 p-2 rounded-full bg-${
-                  i < c.length ? c[i] : c[0]
-                }-500`}
-              >
-                {item[0]}
-              </div>
-            );
-          })}
-        </div>
-        <div className="flex-1 flex justify-center items-center h-full">
-          <div className="absolute top-0 right-0 mt-5 mr-5 shadow-md cursor-pointer transition duration-500 ease-in-out bg-green-300 hover:bg-green-500 border border-green-700 px-5 py-2 rounded-sm text-green-800 capitalize">
-            <span>{respuesta}</span>
-          </div>
-          <div className="p-6 max-w-lg mx-auto bg-white rounded-xl shadow-md">
-            <h1 className="font-bold text-4xl text-center my-4">
-              Fijas y Picas
-            </h1>
-            <p>Hola humano, con cuantos digitos deseas jugar</p>
-            <input
-              type="number"
-              onChange={onChange}
-              value={numeroPrincipal}
-              placeholder="3"
-              className="flex-1 appearance-none mr-6 border border-transparent w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparen"
-            />
-            <form onSubmit={handleSubmit(miniAI)}>
-              <div className="flex flex-row">{inputs.map((item) => item)}</div>
-              <span>{numero.join("")}</span>
-              <button
-                type="submit"
-                className="mt-5 shadow-0 bg-blue-500 hover:bg-blue-700 hover:shadow-lg text-white font-bold py-2 px-4 rounded  w-full focus:outline-none focus:shadow-lg focus:bg-blue-700"
-              >
-                Comenzar
+    <div className="flex font-init bg-red-300 h-screen">
+      <div className="flex-none">
+        {historial?.map((item, i) => {
+          const c = ["red", "green", "blue", "yellow", "gray", "purple"];
+          return (
+            <div
+              key={i}
+              className={`w-full mx-auto my-2 p-2 rounded-full bg-${
+                i < c.length ? c[i] : c[0]
+              }-500`}
+            >
+              {item[0]}
+            </div>
+          );
+        })}
+      </div>
+      <div className="flex-1 flex justify-center items-center h-full">
+        <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md">
+          <h1 className="font-bold text-4xl text-center my-4">Fijas y Picas</h1>
+          <div className="flex justify-center items-baseline flex-wrap font-init">
+            <div className="flex m-2">
+              <button className="btn-group border rounded rounded-r-none hover:scale-110 hover:bg-blue-200  bg-green-100 text-black border-blue-600">
+                Humano Vs Humano
               </button>
-            </form>
+              <button className="btn-group border border-l-0 rounded rounded-l-none hover:scale-110 hover:bg-green-200  bg-blue-100 text-black border-green-600">
+                Humano Vs Maquina
+              </button>
+            </div>
           </div>
+          <p>Hola humano, con cuantos digitos deseas jugar</p>
+          <input
+            type="number"
+            onChange={onChange}
+            value={numeroPrincipal}
+            placeholder="3"
+            className="flex-1 appearance-none mr-6 border border-transparent w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparen"
+          />
+          <form className="my-4" onSubmit={handleSubmit(miniAI)}>
+            <div className="grid grid-cols-3 gap-1">
+              {inputs.map((item) => item)}
+            </div>
+            <button
+              type="submit"
+              className="mt-5 shadow-0 bg-blue-500 hover:bg-blue-700 hover:shadow-lg text-white font-bold py-2 px-4 rounded  w-full focus:outline-none focus:shadow-lg focus:bg-blue-700"
+            >
+              Comenzar
+            </button>
+          </form>
+          <span>{numero.join("")}</span>
         </div>
-        help E
       </div>
     </div>
   );

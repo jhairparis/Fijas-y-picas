@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Conocenos from "./pages/Conocenos";
 import Comojugar from "./pages/Comojugar";
 import Navegacion from "./components/Navegacion";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Comojugar />
         </Route>
       </Switch>
+      <ToastContainer />
     </Router>
   );
 };
