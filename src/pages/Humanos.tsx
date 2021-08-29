@@ -51,9 +51,9 @@ const Humanos = () => {
         toast.error("Ingresa un digito en la casilla numero: " + (i + 1));
       } else if (!numeroR) {
         if (i === numeroPrincipal - 1) {
-          if (jugadorUno) {
+          if (jugadorUno === "dar") {
             setHistorial([...historial, [parseInt(arrayValores.join("")), 0]]);
-          } else if (jugadorDos) {
+          } else if (jugadorDos === "dar") {
             setHistorial([...historial, [parseInt(arrayValores.join("")), 1]]);
           }
           toast.info("Recuerda ninguna cifra se repite");
@@ -64,11 +64,13 @@ const Humanos = () => {
           setJugadorDos("pista");
           toast.info("Jugador 2 dale las  picas y fijas a juagador 1");
           setNumeroJugado(arrayValores.join(""));
+          setHistorial([...historial, [parseInt(arrayValores.join("")), 0]]);
         } else if (jugadorDos === "dar") {
           setJugadorUno("pista");
           setJugadorDos("espera");
           toast.info("Jugador 1 dale las  picas y fijas a juagador 2");
           setNumeroJugado(arrayValores.join(""));
+          setHistorial([...historial, [parseInt(arrayValores.join("")), 1]]);
         }
         setMostrarDigitos(false);
         setmostrarFijasEntrada(true);
@@ -110,6 +112,13 @@ const Humanos = () => {
       toast.error(
         "la suma de las pistas no puede ser superior al numero de digitos que se escogieron"
       );
+    } else if (fijas === numeroPrincipal) {
+      if (jugadorUno === "espera") {
+        toast.success("Jugador 1 has ganado");
+      }
+      if (jugadorDos === "espera") {
+        toast.success("Jugador 2 has ganado");
+      }
     } else {
       if (jugadorUno === "espera") {
         setJugadorUno("");
@@ -132,38 +141,11 @@ const Humanos = () => {
     <div className="flex font-init bg-red-300 h-screen">
       <div className="flex-none">
         {historial?.map((item, i) => {
-          const c = ["red", "green", "blue", "yellow", "gray", "purple"];
-          return (
-            <>
-              {item[0] === 0 ? (
-                jugadorUno ? (
-                  <div
-                    key={i}
-                    className={`w-full mx-auto my-2 p-2 rounded-full bg-${
-                      i < c.length ? c[i] : c[0]
-                    }-500`}
-                  >
-                    {item[0]}
-                  </div>
-                ) : (
-                  <></>
-                )
-              ) : item[0] === 1 ? (
-                jugadorDos ? (
-                  <div
-                    key={i}
-                    className={`w-full mx-auto my-2 p-2 rounded-full bg-purple-500`}
-                  >
-                    {item[0]}
-                  </div>
-                ) : (
-                  <></>
-                )
-              ) : (
-                <></>
-              )}
-            </>
-          );
+          return item[1] === 0 ? (
+            <div key={i} className="bg-green-600">
+              {item[0]}
+            </div>
+          ) : null;
         })}
       </div>
       <div className="flex-1 flex justify-center items-center h-full">
@@ -232,6 +214,15 @@ const Humanos = () => {
             </button>
           </form>
         </div>
+      </div>
+      <div className="flex-none">
+        {historial?.map((item, i) => {
+          return item[1] === 1 ? (
+            <div key={i} className="bg-blue-600">
+              {item[0]}
+            </div>
+          ) : null;
+        })}
       </div>
     </div>
   );
