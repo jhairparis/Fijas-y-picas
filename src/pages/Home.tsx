@@ -2,22 +2,13 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import MaquinaPistas from "../components/MaquinaPistas";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import HumanoHumano from "../components/HumanoHumano";
 import { toast } from "react-toastify";
 import { fnHistorial, pistas } from "../helpers/type";
+import { schemaMain } from "../helpers/validador";
 
 type historialTP = [number, pistas, number | undefined];
 
-const schema = yup.object().shape({
-  number: yup
-    .number()
-    .typeError("Debe ser un numero")
-    .positive("El numero debe ser positivo")
-    .min(2, "El minimo numero es 2")
-    .max(8, "El maximo numero es 8")
-    .required("Ingresa un numero"),
-});
 const Home = () => {
   const [numeroPrincipal, setNumeroPrincipal] = useState<number>(0);
   const [historial, setHistorial] = useState<historialTP[]>([]);
@@ -27,8 +18,20 @@ const Home = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schemaMain),
   });
+  const colores = ["red", "green", "blue", "yellow", "gray", "purple"];
+
+  let v = 0;
+  const noRepeticion = (i: number) => {
+    v++;
+    if (i < colores.length) return colores[i];
+    else {
+      if (v > colores.length - 1) v = 0;
+      return colores[v];
+    }
+  };
+
   const actualizarHistoial: fnHistorial = (val, pista, user) => {
     setHistorial([...historial, [val, pista, user]]);
   };
@@ -38,7 +41,7 @@ const Home = () => {
   const ilustrarPicasYFijas = (item: historialTP): string => {
     let valor: string = "";
     if (item[1].text !== undefined) {
-      valor = item[1].text;
+      valor = item[0] + " " + item[1].text;
     } else {
       valor = item[0] + " ";
       const { fijas, picas } = item[1];
@@ -54,38 +57,32 @@ const Home = () => {
     return valor;
   };
   return (
-    <div className="flex font-init bg-red-300 h-screen">
-      <div className="flex-none">
-        {modoDeJuego === "HvH"
-          ? historial?.map((item, i) => {
-              let valor: string = ilustrarPicasYFijas(item);
-              return item[2] === 0 ? (
-                <div
-                  key={i}
-                  className="w-full mx-auto my-2 p-2 rounded-full bg-green-600"
-                >
-                  {valor}
-                </div>
-              ) : (
-                <></>
-              );
-            })
-          : historial?.map((item, i) => {
-              const c = ["red", "green", "blue", "yellow", "gray", "purple"];
-              return (
-                <div
-                  key={i}
-                  className={`w-full mx-auto my-2 p-2 rounded-full bg-${
-                    c[i > c.length ? i - c.length : i]
-                  }-500`}
-                >
-                  {item[0]}
-                </div>
-              );
-            })}
+    <div className="grid grid-cols-6 gap-2 font-init">
+      <div className="col-span-1 flex flex-col justify-center">
+        {historial?.map((item, i) => {
+          let color = noRepeticion(i);
+          let valor: string = ilustrarPicasYFijas(item);
+          return modoDeJuego === "HvH" ? (
+            item[2] === 0 ? (
+              <div
+                key={i}
+                className={`mx-auto my-2 p-2 rounded-full bg-${color}-600`}
+              >
+                {valor}
+              </div>
+            ) : null
+          ) : (
+            <div
+              key={i}
+              className={`mx-auto my-2 p-2 rounded-full bg-${color}-500`}
+            >
+              {valor}
+            </div>
+          );
+        })}
       </div>
-      <div className="flex-1 flex justify-center items-center h-full">
-        <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md">
+      <div className="col-span-4 flex justify-center items-center">
+        <div className="p-6 max-w-lg mx-auto">
           {modoDeJuego !== "" ? (
             <button
               onClick={(e) => {
@@ -112,29 +109,39 @@ const Home = () => {
           <h1 className="font-bold text-4xl text-center my-4">Fijas y Picas</h1>
           {modoDeJuego !== "" ? (
             <>
-              <p>Hola humano, con cuantos digitos deseas jugar</p>
-              <form
-                onSubmit={handleSubmit(onSubmit)}
-                className="my-3 mx-2 flex"
-              >
-                <input
-                  type="number"
-                  {...register("number")}
-                  placeholder="3"
-                  className={`rounded-l-lg p-2 border-t mr-0 border-b border-l text-gray-800  bg-white focus:border-${
-                    errors.number ? "red" : "blue"
-                  }-400 border-gray-200 placeholder-gray-400 focus:outline-none`}
-                />
+              <p className="my-4">
+                Hola humano, con cuantos digitos deseas jugar
+              </p>
+              <form onSubmit={handleSubmit(onSubmit)} className="my-3 flex">
+                <div className="relative">
+                  <input
+                    type="number"
+                    id="number"
+                    {...register("number")}
+                    placeholder="3"
+                    className={`rounded-l-lg p-2 border-t mr-0 border-b border-l text-gray-800  bg-white focus:border-${
+                      errors.number ? "red" : "blue"
+                    }-400 border-gray-200 placeholder-gray-400 focus:outline-none`}
+                  />
+                  <label
+                    htmlFor="number"
+                    className="absolute left-0 -top-5 text-gray-600 text-sm ml-1 select-none"
+                  >
+                    {errors.number?.message}
+                  </label>
+                </div>
                 <button
                   type="submit"
-                  className={`px-4 rounded-r-lg bg-blue-400 text-gray-800 font-bold p-2 uppercase border-${
+                  disabled={errors.number ? true : false}
+                  className={`px-4 rounded-r-lg bg-${
+                    errors.number ? "red" : "blue"
+                  }-400 text-gray-800 font-bold p-2 uppercase border-${
                     errors.number ? "red" : "blue"
                   }-400 border-t border-b border-r focus:outline-none`}
                 >
                   Ok
                 </button>
               </form>
-              {errors.number?.message}
             </>
           ) : (
             <div className="flex justify-center items-baseline flex-wrap font-init">
@@ -169,13 +176,14 @@ const Home = () => {
         </div>
       </div>
       {modoDeJuego === "HvH" ? (
-        <div className="flex-none">
+        <div className="col-span-1 flex flex-col justify-center">
           {historial?.map((item, i) => {
+            let color = noRepeticion(i);
             let valor: string = ilustrarPicasYFijas(item);
             return item[2] === 1 ? (
               <div
                 key={i + Math.floor(Math.random())}
-                className="w-full mx-auto my-2 p-2 rounded-full bg-blue-600"
+                className={`mx-auto my-2 p-2 rounded-full bg-${color}-600`}
               >
                 {valor}
               </div>

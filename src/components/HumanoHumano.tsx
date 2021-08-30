@@ -1,7 +1,9 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import React, { Fragment, ReactElement, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { Props, inputs, arrayC } from "../helpers/type";
+import { schemaEntradas, schemaFijasPicas } from "../helpers/validador";
 
 const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
   const {
@@ -10,7 +12,8 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
     unregister,
     formState: { errors },
   } = useForm();
-  const twoForm = useForm();
+  const twoForm = useForm({ resolver: yupResolver(schemaFijasPicas) });
+
   const [inputs, setInputs] = useState<ReactElement<HTMLInputElement>[]>([]);
   const [jugadorUno, setJugadorUno] = useState<string>("dar");
   const [jugadorDos, setJugadorDos] = useState<string>("");
@@ -73,13 +76,11 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
             setJugadorDos("pista");
             toast.info("Jugador 2 dale las  picas y fijas a juagador 1");
             setNumeroJugado(parseInt(arrayValores.join("")));
-            // actualizarHistoial(parseInt(arrayValores.join("")), {}, 0);
           } else if (jugadorDos === "dar") {
             setJugadorUno("pista");
             setJugadorDos("espera");
             toast.info("Jugador 1 dale las  picas y fijas a juagador 2");
             setNumeroJugado(parseInt(arrayValores.join("")));
-            // actualizarHistoial(parseInt(arrayValores.join("")), {}, 1);
           }
           setMostrarDigitos(false);
           setmostrarFijasEntrada(true);
@@ -95,8 +96,9 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
       elementos.push(
         <input
           key={i}
+          id={`number${i}`}
           type="number"
-          {...register(`number${i}`, { required: true, min: 0, max: 9 })}
+          {...register(`number${i}`, schemaEntradas)}
           placeholder={`Digito ${i + 1}`}
           className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
         />
@@ -150,8 +152,22 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
         className={mostrarDigitos ? "my-4 " : "hidden"}
         onSubmit={handleSubmit(recepcionEntradas)}
       >
-        <div className="grid grid-cols-3 gap-1">
-          {inputs.map((item) => item)}
+        <div className="grid grid-cols-3 gap-x-1 gap-y-4">
+          {inputs.map((item, i) => {
+            return (
+              <Fragment>
+                <div className="relative">
+                  {item}
+                  <label
+                    htmlFor={`number${i}`}
+                    className="absolute left-0 -top-3.5 text-gray-600 text-sm ml-1 select-none"
+                  >
+                    {errors[`number${i}`] ? errors[`number${i}`].message : null}
+                  </label>
+                </div>
+              </Fragment>
+            );
+          })}
         </div>
         {inputs.length > 0 ? (
           <button
@@ -167,19 +183,37 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
         onSubmit={twoForm.handleSubmit(onSubmit)}
       >
         <span>{numeroJugado}</span>
-        <div className="grid grid-cols-3 gap-1">
-          <input
-            type="number"
-            {...twoForm.register("fijas")}
-            placeholder="fijas"
-            className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
-          />
-          <input
-            {...twoForm.register("picas")}
-            type="number"
-            placeholder="picas"
-            className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
-          />
+        <div className="grid grid-cols-3 gap-1 mt-4">
+          <div className="relative">
+            <input
+              type="number"
+              id="fijas"
+              {...twoForm.register("fijas")}
+              placeholder="fijas"
+              className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
+            />
+            <label
+              htmlFor="fijas"
+              className="absolute left-0 -top-3.5 text-gray-600 text-sm ml-1 select-none"
+            >
+              {twoForm.formState.errors.fijas?.message}
+            </label>
+          </div>
+          <div className="relative">
+            <input
+              type="number"
+              id="picas"
+              {...twoForm.register("picas")}
+              placeholder="picas"
+              className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
+            />
+            <label
+              htmlFor="picas"
+              className="absolute left-0 -top-3.5 text-gray-600 text-sm ml-1 select-none"
+            >
+              {twoForm.formState.errors.picas?.message}
+            </label>
+          </div>
         </div>
         <button
           type="submit"

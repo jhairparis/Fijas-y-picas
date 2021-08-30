@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navegacion = () => {
   return (
-    <header className="w-screen bg-gray-600">
+    <header className="w-full bg-gray-600">
       <div className="py-2 px-1 lg:mx-4 xl:mx-12">
         <nav className="flex items-center justify-between flex-wrap  ">
           <div className="flex items-center flex-no-shrink text-white mr-6 ">
