@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect, useState } from "react";
 import { Fragment } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { arrayC, Props, inputs } from "../helpers/type";
 import { schemaEntradas } from "../helpers/validador";
 
@@ -104,10 +105,10 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
   return (
     <>
       <form className="my-4" onSubmit={handleSubmit(miniAI)}>
-        <div className="grid grid-cols-3 gap-x-1 gap-y-4">
+        <TransitionGroup className="grid grid-cols-3 gap-x-1 gap-y-4">
           {inputs.map((item, i) => {
             return (
-              <Fragment>
+              <CSSTransition key={i} timeout={500} classNames="item">
                 <div className="relative">
                   {item}
                   <label
@@ -117,16 +118,13 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
                     {errors[`number${i}`] ? errors[`number${i}`].message : null}
                   </label>
                 </div>
-              </Fragment>
+              </CSSTransition>
             );
           })}
-        </div>
+        </TransitionGroup>
         {inputs.length > 0 ? (
-          <button
-            type="submit"
-            className="mt-5 shadow-0 bg-blue-500 hover:bg-blue-700 hover:shadow-lg text-white font-bold py-2 px-4 rounded  w-full focus:outline-none focus:shadow-lg focus:bg-blue-700"
-          >
-            Comenzar
+          <button type="submit" className="btn btn-yellow">
+            Intentar
           </button>
         ) : (
           ""

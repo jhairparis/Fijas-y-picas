@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'init': ['"Roboto"', 'sans-serif']
+        'init': ['"Roboto"', 'sans-serif'],
+        'logo': ['"Rampart One"', 'cursive']
       }
     },
   },

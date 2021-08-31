@@ -2,8 +2,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import React, { Fragment, ReactElement, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Props, inputs, arrayC } from "../helpers/type";
 import { schemaEntradas, schemaFijasPicas } from "../helpers/validador";
+import Simple from "./Base/Simple";
 
 const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
   const {
@@ -152,10 +154,10 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
         className={mostrarDigitos ? "my-4 " : "hidden"}
         onSubmit={handleSubmit(recepcionEntradas)}
       >
-        <div className="grid grid-cols-3 gap-x-1 gap-y-4">
+        <TransitionGroup className="grid grid-cols-3 gap-x-1 gap-y-4">
           {inputs.map((item, i) => {
             return (
-              <Fragment>
+              <CSSTransition key={i} timeout={500} classNames="item">
                 <div className="relative">
                   {item}
                   <label
@@ -165,18 +167,17 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
                     {errors[`number${i}`] ? errors[`number${i}`].message : null}
                   </label>
                 </div>
-              </Fragment>
+              </CSSTransition>
             );
           })}
-        </div>
-        {inputs.length > 0 ? (
-          <button
-            type="submit"
-            className="mt-5 shadow-0 bg-blue-500 hover:bg-blue-700 hover:shadow-lg text-white font-bold py-2 px-4 rounded  w-full focus:outline-none focus:shadow-lg focus:bg-blue-700"
-          >
-            Intentar
-          </button>
-        ) : null}
+        </TransitionGroup>
+        <Simple in={inputs.length > 0} time={500}>
+          {inputs.length > 0 ? (
+            <button type="submit" className="btn btn-blue">
+              Intentar
+            </button>
+          ) : null}
+        </Simple>
       </form>
       <form
         className={mostrarFijasEntrada ? "my-4 " : "hidden"}
@@ -215,10 +216,7 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
             </label>
           </div>
         </div>
-        <button
-          type="submit"
-          className="mt-5 shadow-0 bg-blue-500 hover:bg-blue-700 hover:shadow-lg text-white font-bold py-2 px-4 rounded  w-full focus:outline-none focus:shadow-lg focus:bg-blue-700"
-        >
+        <button type="submit" className="btn btn-green">
           Dar
         </button>
       </form>

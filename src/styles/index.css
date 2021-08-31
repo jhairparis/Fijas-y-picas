@@ -1,6 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "./animaciones";
 
 body {
   @apply bg-blue-300;
@@ -12,6 +13,26 @@ body {
   @apply block mx-2 p-1 text-base font-init text-gray-900 focus:outline-none lg:inline-block hover:text-indigo-400 focus:text-blue-500;
 }
 
+.link.active {
+  @apply text-indigo-500;
+}
+
 .btn-group {
   @apply flex justify-center px-4 py-2 text-base focus:outline-none cursor-pointer duration-200 ease-in-out transition;
+}
+
+.btn {
+  @apply transition duration-500 ease-in-out mt-5 hover:shadow-lg text-white font-bold py-2 px-4 rounded  w-full focus:outline-none focus:shadow-lg;
+}
+.btn.btn-blue {
+  @apply bg-blue-500 hover:bg-blue-700 focus:bg-blue-700;
+}
+.btn.btn-red {
+  @apply bg-red-500 hover:bg-red-700 focus:bg-red-700;
+}
+.btn.btn-green {
+  @apply bg-green-500 hover:bg-green-700 focus:bg-green-700;
+}
+.btn.btn-yellow {
+  @apply bg-yellow-500 hover:bg-yellow-700 focus:bg-yellow-700;
 }

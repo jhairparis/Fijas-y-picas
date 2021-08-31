@@ -6,6 +6,9 @@ import HumanoHumano from "../components/HumanoHumano";
 import { toast } from "react-toastify";
 import { fnHistorial, pistas } from "../helpers/type";
 import { schemaMain } from "../helpers/validador";
+import Fade from "../components/Base/Fade";
+import Simple from "../components/Base/Simple";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 type historialTP = [number, pistas, number | undefined];
 
@@ -58,32 +61,36 @@ const Home = () => {
   };
   return (
     <div className="grid grid-cols-6 gap-2 font-init">
-      <div className="col-span-1 flex flex-col justify-center">
+      <TransitionGroup className="col-span-1 flex flex-col justify-center">
         {historial?.map((item, i) => {
           let color = noRepeticion(i);
           let valor: string = ilustrarPicasYFijas(item);
           return modoDeJuego === "HvH" ? (
             item[2] === 0 ? (
+              <CSSTransition key={i} timeout={500} classNames="item">
+                <div
+                  key={i}
+                  className={`mx-auto my-2 p-2 rounded-full bg-${color}-600`}
+                >
+                  {valor}
+                </div>
+              </CSSTransition>
+            ) : null
+          ) : (
+            <CSSTransition key={i} timeout={500} classNames="item">
               <div
                 key={i}
-                className={`mx-auto my-2 p-2 rounded-full bg-${color}-600`}
+                className={`mx-auto my-2 p-2 rounded-full bg-${color}-500`}
               >
                 {valor}
               </div>
-            ) : null
-          ) : (
-            <div
-              key={i}
-              className={`mx-auto my-2 p-2 rounded-full bg-${color}-500`}
-            >
-              {valor}
-            </div>
+            </CSSTransition>
           );
         })}
-      </div>
+      </TransitionGroup>
       <div className="col-span-4 flex justify-center items-center">
         <div className="p-6 max-w-lg mx-auto">
-          {modoDeJuego !== "" ? (
+          <Simple in={modoDeJuego !== ""} time={500}>
             <button
               onClick={(e) => {
                 setModoDeJuego("");
@@ -105,62 +112,66 @@ const Home = () => {
                 />
               </svg>
             </button>
-          ) : null}
-          <h1 className="font-bold text-4xl text-center my-4">Fijas y Picas</h1>
-          {modoDeJuego !== "" ? (
-            <>
-              <p className="my-4">
-                Hola humano, con cuantos digitos deseas jugar
-              </p>
-              <form onSubmit={handleSubmit(onSubmit)} className="my-3 flex">
-                <div className="relative">
-                  <input
-                    type="number"
-                    id="number"
-                    {...register("number")}
-                    placeholder="3"
-                    className={`rounded-l-lg p-2 border-t mr-0 border-b border-l text-gray-800  bg-white focus:border-${
+          </Simple>
+          <h1 className="font-logo text-4xl text-center my-4 select-none hover:text-gray-700">
+            Fijas y Picas
+          </h1>
+          <Fade in={modoDeJuego !== ""}>
+            {modoDeJuego !== "" ? (
+              <>
+                <p className="my-4">
+                  Hola humano, con cuantos digitos deseas jugar
+                </p>
+                <form onSubmit={handleSubmit(onSubmit)} className="my-3 flex">
+                  <div className="relative">
+                    <input
+                      type="number"
+                      id="number"
+                      {...register("number")}
+                      placeholder="3"
+                      className={`rounded-l-lg p-2 border-t mr-0 border-b border-l text-gray-800  bg-white focus:border-${
+                        errors.number ? "red" : "blue"
+                      }-400 border-gray-200 placeholder-gray-400 focus:outline-none`}
+                    />
+                    <label
+                      htmlFor="number"
+                      className="absolute left-0 -top-5 text-gray-600 text-sm ml-1 select-none"
+                    >
+                      {errors.number?.message}
+                    </label>
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={errors.number ? true : false}
+                    className={`px-4 rounded-r-lg bg-${
                       errors.number ? "red" : "blue"
-                    }-400 border-gray-200 placeholder-gray-400 focus:outline-none`}
-                  />
-                  <label
-                    htmlFor="number"
-                    className="absolute left-0 -top-5 text-gray-600 text-sm ml-1 select-none"
+                    }-400 text-gray-800 font-bold p-2 uppercase border-${
+                      errors.number ? "red" : "blue"
+                    }-400 border-t border-b border-r focus:outline-none`}
                   >
-                    {errors.number?.message}
-                  </label>
+                    Ok
+                  </button>
+                </form>
+              </>
+            ) : (
+              <div className="flex justify-center items-baseline flex-wrap font-init">
+                <div className="flex m-2">
+                  <button
+                    onClick={(e) => setModoDeJuego("HvH")}
+                    className="btn-group border rounded rounded-r-none hover:scale-110 hover:bg-blue-200  bg-green-100 text-black border-blue-600"
+                  >
+                    Humano Vs Humano
+                  </button>
+                  <button
+                    onClick={(e) => setModoDeJuego("HvM")}
+                    className="btn-group border border-l-0 rounded rounded-l-none hover:scale-110 hover:bg-green-200  bg-blue-100 text-black border-green-600"
+                  >
+                    Humano Vs Maquina
+                  </button>
                 </div>
-                <button
-                  type="submit"
-                  disabled={errors.number ? true : false}
-                  className={`px-4 rounded-r-lg bg-${
-                    errors.number ? "red" : "blue"
-                  }-400 text-gray-800 font-bold p-2 uppercase border-${
-                    errors.number ? "red" : "blue"
-                  }-400 border-t border-b border-r focus:outline-none`}
-                >
-                  Ok
-                </button>
-              </form>
-            </>
-          ) : (
-            <div className="flex justify-center items-baseline flex-wrap font-init">
-              <div className="flex m-2">
-                <button
-                  onClick={(e) => setModoDeJuego("HvH")}
-                  className="btn-group border rounded rounded-r-none hover:scale-110 hover:bg-blue-200  bg-green-100 text-black border-blue-600"
-                >
-                  Humano Vs Humano
-                </button>
-                <button
-                  onClick={(e) => setModoDeJuego("HvM")}
-                  className="btn-group border border-l-0 rounded rounded-l-none hover:scale-110 hover:bg-green-200  bg-blue-100 text-black border-green-600"
-                >
-                  Humano Vs Maquina
-                </button>
               </div>
-            </div>
-          )}
+            )}
+          </Fade>
           {modoDeJuego === "HvH" && (
             <HumanoHumano
               numeroPrincipal={numeroPrincipal}
@@ -176,20 +187,22 @@ const Home = () => {
         </div>
       </div>
       {modoDeJuego === "HvH" ? (
-        <div className="col-span-1 flex flex-col justify-center">
+        <TransitionGroup className="col-span-1 flex flex-col justify-center">
           {historial?.map((item, i) => {
             let color = noRepeticion(i);
             let valor: string = ilustrarPicasYFijas(item);
             return item[2] === 1 ? (
-              <div
-                key={i + Math.floor(Math.random())}
-                className={`mx-auto my-2 p-2 rounded-full bg-${color}-600`}
-              >
-                {valor}
-              </div>
+              <CSSTransition key={i} timeout={500} classNames="item">
+                <div
+                  key={i + Math.floor(Math.random())}
+                  className={`mx-auto my-2 p-2 rounded-full bg-${color}-600`}
+                >
+                  {valor}
+                </div>
+              </CSSTransition>
             ) : null;
           })}
-        </div>
+        </TransitionGroup>
       ) : null}
     </div>
   );

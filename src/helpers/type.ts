@@ -8,3 +8,7 @@ export type arrayC = [number, boolean];
 export interface inputs {
   [key: string]: string;
 }
+export type FadeProps = {
+  in: boolean;
+  time?: number;
+};
