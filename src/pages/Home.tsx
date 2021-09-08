@@ -9,6 +9,7 @@ import { schemaMain } from "../helpers/validador";
 import Fade from "../components/Base/Fade";
 import Simple from "../components/Base/Simple";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import MaquinaAdivina from "../components/MaquinaAdivina";
 
 type historialTP = [number, pistas, number | undefined];
 
@@ -164,9 +165,15 @@ const Home = () => {
                   </button>
                   <button
                     onClick={(e) => setModoDeJuego("HvM")}
-                    className="btn-group border border-l-0 rounded rounded-l-none hover:scale-110 hover:bg-green-200  bg-blue-100 text-black border-green-600"
+                    className="btn-group border hover:scale-110 hover:bg-green-200  bg-blue-100 text-black border-green-600"
                   >
                     Humano Vs Maquina
+                  </button>
+                  <button
+                    onClick={(e) => setModoDeJuego("MvH")}
+                    className="btn-group border border-l-0 rounded rounded-l-none hover:scale-110 hover:bg-red-200  bg-red-100 text-black border-red-600"
+                  >
+                    Maquina Vs Humano
                   </button>
                 </div>
               </div>
@@ -180,6 +187,12 @@ const Home = () => {
           )}
           {modoDeJuego === "HvM" && (
             <MaquinaPistas
+              numeroPrincipal={numeroPrincipal}
+              actualizarHistoial={actualizarHistoial}
+            />
+          )}
+          {modoDeJuego === "MvH" && (
+            <MaquinaAdivina
               numeroPrincipal={numeroPrincipal}
               actualizarHistoial={actualizarHistoial}
             />
