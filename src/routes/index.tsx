@@ -3,8 +3,8 @@ import Conocenos from "../pages/Conocenos";
 import Comojugar from "../pages/Comojugar";
 
 const routes = [
-  { path: "/", name: "Home", Component: Home },
-  { path: "/conocenos", name: "About", Component: Conocenos },
-  { path: "/comojugar", name: "Contact", Component: Comojugar },
+  { path: "/", name: "Inicio", Component: Home },
+  { path: "/conocenos", name: "Conocenos", Component: Conocenos },
+  { path: "/comojugar", name: "Como Jugar ", Component: Comojugar },
 ];
 export default routes;

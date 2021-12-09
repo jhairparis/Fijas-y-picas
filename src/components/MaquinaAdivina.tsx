@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { Props } from "../helpers/type";
+import bug from "../resource/bug.svg";
 
 type pistas = {
   fijas: string;
@@ -159,13 +160,19 @@ const MaquinaAdivina = ({ numeroPrincipal, actualizarHistoial }: Props) => {
 
   return numeroPrincipal ? (
     <div>
-      <span>{adivinado[0] ? adivinado[0] : ""}</span>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="number" {...register("fijas")} placeholder="fijas" />
-        <br />
-        <input type="number" {...register("picas")} placeholder="picas" />
-        <button type="submit">Enviar</button>
-      </form>
+      {true ? (
+        <img src={bug} className="animate-pulse" alt="Bug" />
+      ) : (
+        <>
+          <span>{adivinado[0] ? adivinado[0] : ""}</span>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input type="number" {...register("fijas")} placeholder="fijas" />
+            <br />
+            <input type="number" {...register("picas")} placeholder="picas" />
+            <button type="submit">Enviar</button>
+          </form>
+        </>
+      )}
     </div>
   ) : (
     <></>

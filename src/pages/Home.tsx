@@ -161,7 +161,7 @@ const Home = () => {
                   </button>
                   <button
                     onClick={(e) => setModoDeJuego("HvM")}
-                    className="btn-group border hover:scale-110 hover:bg-green-200  bg-blue-100 text-black border-green-600"
+                    className="btn-group border border-l-0 hover:scale-110 hover:bg-green-200  bg-blue-100 text-black border-green-600"
                   >
                     Humano Vs Maquina
                   </button>
