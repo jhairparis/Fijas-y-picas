@@ -18,11 +18,11 @@ body {
 }
 
 .btn-group {
-  @apply flex justify-center px-4 py-2 text-base focus:outline-none cursor-pointer duration-200 ease-in-out transition;
+  @apply flex justify-center px-4 py-2 text-base focus:outline-none cursor-pointer duration-200 ease-in-out transition select-none;
 }
 
 .btn {
-  @apply transition duration-500 ease-in-out mt-5 hover:shadow-lg text-white font-bold py-2 px-4 rounded  w-full focus:outline-none focus:shadow-lg;
+  @apply transition duration-500 ease-in-out mt-5 hover:shadow-lg text-white font-bold py-2 px-4 rounded  w-full focus:outline-none focus:shadow-lg select-none;
 }
 .btn.btn-blue {
   @apply bg-blue-500 hover:bg-blue-700 focus:bg-blue-700;
@@ -35,4 +35,26 @@ body {
 }
 .btn.btn-yellow {
   @apply bg-yellow-500 hover:bg-yellow-700 focus:bg-yellow-700;
+}
+
+.burbleHistory {
+  @apply mx-auto my-2 p-2 rounded-full select-none transition duration-500 ease-in-out;
+}
+.burbleHistory-blue {
+  @apply bg-blue-600 hover:bg-blue-400 focus:bg-blue-400;
+}
+.burbleHistory-red {
+  @apply bg-red-600 hover:bg-red-400 focus:bg-red-400;
+}
+.burbleHistory-green {
+  @apply bg-green-600 hover:bg-green-400 focus:bg-green-400;
+}
+.burbleHistory-yellow {
+  @apply bg-yellow-600 hover:bg-yellow-400 focus:bg-yellow-400;
+}
+.burbleHistory-gray {
+  @apply bg-gray-600 hover:bg-gray-400 focus:bg-gray-400;
+}
+.burbleHistory-purple {
+  @apply bg-purple-600 hover:bg-purple-400 focus:bg-purple-400;
 }

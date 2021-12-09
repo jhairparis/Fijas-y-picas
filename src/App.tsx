@@ -3,14 +3,14 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navegacion from "./components/Navegacion";
 import { ToastContainer } from "react-toastify";
 import routes from "./routes";
-import { CSSTransition } from "react-transition-group";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const App = () => {
   return (
     <Router>
       <Navegacion />
-      <Switch>
-        <div className="rutas">
+      <TransitionGroup>
+        <Switch>
           {routes.map(({ path, Component }) => (
             <Route key={path} exact path={path}>
               {({ match }) => (
@@ -20,15 +20,13 @@ const App = () => {
                   classNames="page"
                   unmountOnExit
                 >
-                  <div className="page">
-                    <Component />
-                  </div>
+                  <Component />
                 </CSSTransition>
               )}
             </Route>
           ))}
-        </div>
-      </Switch>
+        </Switch>
+      </TransitionGroup>
       <ToastContainer />
     </Router>
   );

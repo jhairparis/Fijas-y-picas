@@ -69,20 +69,14 @@ const Home = () => {
           return modoDeJuego === "HvH" ? (
             item[2] === 0 ? (
               <CSSTransition key={i} timeout={500} classNames="item">
-                <div
-                  key={i}
-                  className={`mx-auto my-2 p-2 rounded-full bg-${color}-600`}
-                >
+                <div key={i} className={`burbleHistory burbleHistory-${color}`}>
                   {valor}
                 </div>
               </CSSTransition>
             ) : null
           ) : (
             <CSSTransition key={i} timeout={500} classNames="item">
-              <div
-                key={i}
-                className={`mx-auto my-2 p-2 rounded-full bg-${color}-500`}
-              >
+              <div key={i} className={`burbleHistory burbleHistory-${color}`}>
                 {valor}
               </div>
             </CSSTransition>
@@ -130,9 +124,11 @@ const Home = () => {
                       id="number"
                       {...register("number")}
                       placeholder="3"
-                      className={`rounded-l-lg p-2 border-t mr-0 border-b border-l text-gray-800  bg-white focus:border-${
-                        errors.number ? "red" : "blue"
-                      }-400 border-gray-200 placeholder-gray-400 focus:outline-none`}
+                      className={`rounded-l-lg p-2 border-t mr-0 border-b border-l text-gray-800  bg-white ${
+                        errors.number
+                          ? "focus:border-red-400"
+                          : "focus:border-blue-400"
+                      } border-gray-200 placeholder-gray-400 focus:outline-none`}
                     />
                     <label
                       htmlFor="number"
@@ -144,11 +140,11 @@ const Home = () => {
                   <button
                     type="submit"
                     disabled={errors.number ? true : false}
-                    className={`px-4 rounded-r-lg bg-${
-                      errors.number ? "red" : "blue"
-                    }-400 text-gray-800 font-bold p-2 uppercase border-${
-                      errors.number ? "red" : "blue"
-                    }-400 border-t border-b border-r focus:outline-none`}
+                    className={`px-4 rounded-r-lg select-none ${
+                      errors.number ? "bg-red-400" : "bg-blue-400"
+                    } text-gray-800 font-bold p-2 uppercase ${
+                      errors.number ? "border-red-400" : "border-blue-400"
+                    } border-t border-b border-r focus:outline-none`}
                   >
                     Ok
                   </button>
@@ -208,7 +204,7 @@ const Home = () => {
               <CSSTransition key={i} timeout={500} classNames="item">
                 <div
                   key={i + Math.floor(Math.random())}
-                  className={`mx-auto my-2 p-2 rounded-full bg-${color}-600`}
+                  className={`burbleHistory burbleHistory-${color}`}
                 >
                   {valor}
                 </div>

@@ -10,10 +10,21 @@
       href="https://fonts.googleapis.com/css2?family=Rampart+One&family=Roboto&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/src/resource/style.css" />
     <title>Fijas y Picas</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="loader">
+        <img src="/src/resource/logo.svg" alt="loader" />
+        <div class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
