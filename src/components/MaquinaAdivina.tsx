@@ -3,6 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { Props } from "../helpers/type";
 import bug from "../resource/bug.svg";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 type pistas = {
   fijas: string;
@@ -18,7 +19,12 @@ let ultimo = false;
 const MaquinaAdivina = ({ numeroPrincipal, actualizarHistoial }: Props) => {
   const [adivinado, setAdivinado] = useState<[number, number[]]>([0, []]);
   const [historial, setHistorial] = useState<historia[]>([]); //Numeros correctos y pistas
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   function genracionNumeros(): [number, number[]] {
     const ad: number[] = [];
@@ -160,19 +166,50 @@ const MaquinaAdivina = ({ numeroPrincipal, actualizarHistoial }: Props) => {
 
   return numeroPrincipal ? (
     <div>
-      {true ? (
-        <img src={bug} className="animate-pulse" alt="Bug" />
-      ) : (
-        <>
-          <span>{adivinado[0] ? adivinado[0] : ""}</span>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <input type="number" {...register("fijas")} placeholder="fijas" />
-            <br />
-            <input type="number" {...register("picas")} placeholder="picas" />
-            <button type="submit">Enviar</button>
-          </form>
-        </>
-      )}
+      <>
+        <span>{adivinado[0] ? adivinado[0] : ""}</span>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <br />
+
+          <TransitionGroup className="grid grid-cols-3 gap-x-1 gap-y-4">
+            <CSSTransition timeout={500} classNames="item">
+              <div className="relative">
+                <input
+                  type="number1"
+                  {...register("picas")}
+                  className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
+                  placeholder="picas"
+                />
+                <label
+                  htmlFor={`number1`}
+                  className="absolute left-0 -top-5 text-gray-600 text-sm ml-1 select-none"
+                >
+                  {errors[`number1`] ? errors[`number1`].message : null}
+                </label>
+              </div>
+            </CSSTransition>
+            <CSSTransition timeout={500} classNames="item">
+              <div className="relative">
+                <input
+                  type="number2"
+                  {...register("fijas")}
+                  className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
+                  placeholder="fijas"
+                />
+                <label
+                  htmlFor={`number2`}
+                  className="absolute left-0 -top-5 text-gray-600 text-sm ml-1 select-none"
+                >
+                  {errors[`number2`] ? errors[`number2`].message : null}
+                </label>
+              </div>
+            </CSSTransition>
+          </TransitionGroup>
+          <button type="submit" className="btn btn-red">
+            Intentar
+          </button>
+        </form>
+      </>
     </div>
   ) : (
     <></>
