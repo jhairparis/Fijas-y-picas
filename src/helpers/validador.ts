@@ -7,7 +7,7 @@ export const schemaMain = yup.object().shape({
     .test("len", "Solo un digito", (val) => val?.toString().length === 1)
     .positive("El numero debe ser positivo")
     .min(2, "El minimo numero es 2")
-    .max(8, "El maximo numero es 8")
+    .max(3, "El maximo numero es 3")
     .required("Ingresa un numero"),
 });
 
