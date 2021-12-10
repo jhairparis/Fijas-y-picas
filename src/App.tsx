@@ -4,6 +4,7 @@ import Navegacion from "./components/Navegacion";
 import { ToastContainer } from "react-toastify";
 import routes from "./routes";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
@@ -25,6 +26,9 @@ const App = () => {
               )}
             </Route>
           ))}
+          <Route path="*">
+            <NotFound />
+          </Route>
         </Switch>
       </TransitionGroup>
       <ToastContainer />
