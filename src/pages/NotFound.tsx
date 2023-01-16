@@ -1,7 +1,10 @@
 import React from "react";
 import notFound from "../resource/not found.svg";
+import { useRouteError } from "react-router-dom";
 
 const NotFound = () => {
+  const error: any = useRouteError();
+
   return (
     <div className="gradient text-white min-h-screen flex items-center">
       <div className="container mx-auto p-4 flex flex-wrap items-center">
@@ -12,6 +15,9 @@ const NotFound = () => {
           <div className="text-6xl font-medium">404</div>
           <div className="text-lg mb-8">
             La pagina que estas buscando no existe o ha sido movida.
+            <p>
+              <i>{error.statusText || error.message}</i>
+            </p>
           </div>
           <a href="/" className="border border-white rounded p-4">
             Ir al inicio

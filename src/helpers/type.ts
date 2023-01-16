@@ -11,4 +11,5 @@ export interface inputs {
 export type FadeProps = {
   in: boolean;
   time?: number;
+  children?: any;
 };

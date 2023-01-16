@@ -2,8 +2,8 @@ import React, { ReactElement, useEffect, useState, KeyboardEvent } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { arrayC, Props, inputs } from "../helpers/type";
-import { schemaEntradas } from "../helpers/validador";
+import { arrayC, Props, inputs } from "../../helpers/type";
+import { schemaEntradas } from "../../helpers/validador";
 
 const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
   const [inputs, setInputs] = useState<ReactElement<HTMLInputElement>[]>([]);
@@ -107,6 +107,9 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
       <form className="my-4" onSubmit={handleSubmit(miniAI)}>
         <TransitionGroup className="grid grid-cols-3 gap-x-1 gap-y-4">
           {inputs.map((item, i) => {
+            let val: any = errors[`number${i}`]
+              ? errors[`number${i}`]?.message
+              : null;
             return (
               <CSSTransition key={i} timeout={500} classNames="item">
                 <div className="relative">
@@ -115,7 +118,7 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
                     htmlFor={`number${i}`}
                     className="absolute left-0 -top-5 text-gray-600 text-sm ml-1 select-none"
                   >
-                    {errors[`number${i}`] ? errors[`number${i}`].message : null}
+                    {val}
                   </label>
                 </div>
               </CSSTransition>

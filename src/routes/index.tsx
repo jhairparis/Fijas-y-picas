@@ -1,10 +1,20 @@
-import Home from "../pages/Home";
-import Conocenos from "../pages/Conocenos";
+import React from "react";
+import { createBrowserRouter } from "react-router-dom";
 import Comojugar from "../pages/Comojugar";
+import ErrorPage from "../pages/NotFound";
+import Game from "../pages/Game";
+import Layout from "../components/Layout";
 
-const routes = [
-  { path: "/", name: "Inicio", Component: Home },
-  { path: "/conocenos", name: "Conocenos", Component: Conocenos },
-  { path: "/comojugar", name: "Como Jugar ", Component: Comojugar },
-];
-export default routes;
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [
+      { path: "/como-jugar", element: <Comojugar /> },
+      { path: "/jugar", element: <Game /> },
+    ],
+  },
+]);
+
+export default router;

@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { Props } from "../helpers/type";
+import { Props } from "../../helpers/type";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 type pistas = {
@@ -2182,12 +2182,13 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
     }
   };
 
-  const onSubmit: SubmitHandler<pistas> = (data) => {
+  const onSubmit: SubmitHandler<any> = (data) => {
     const fijas: number = parseInt(data.fijas),
       picas: number = parseInt(data.picas);
     getPicasFijas(fijas, picas);
   };
-
+  let val: any = errors[`number1`] ? errors[`number1`].message : null;
+  let val2: any = errors[`number2`] ? errors[`number2`].message : null;
   return numeroPrincipal ? (
     <div>
       <>
@@ -2211,7 +2212,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   htmlFor={`number1`}
                   className="absolute left-0 -top-5 text-gray-600 text-sm ml-1 select-none"
                 >
-                  {errors[`number1`] ? errors[`number1`].message : null}
+                  {val}
                 </label>
               </div>
             </CSSTransition>
@@ -2227,7 +2228,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   htmlFor={`number2`}
                   className="absolute left-0 -top-5 text-gray-600 text-sm ml-1 select-none"
                 >
-                  {errors[`number2`] ? errors[`number2`].message : null}
+                  {val2}
                 </label>
               </div>
             </CSSTransition>

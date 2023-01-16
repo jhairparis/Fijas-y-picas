@@ -3,9 +3,9 @@ import React, { ReactElement, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { Props, inputs, arrayC } from "../helpers/type";
-import { schemaEntradas, schemaFijasPicas } from "../helpers/validador";
-import Simple from "./Base/Simple";
+import { Props, inputs, arrayC } from "../../helpers/type";
+import { schemaEntradas, schemaFijasPicas } from "../../helpers/validador";
+import Simple from "../../utils/transitions/Simple";
 
 const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
   const {
@@ -14,7 +14,7 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
     unregister,
     formState: { errors },
   } = useForm();
-  const twoForm = useForm({ resolver: yupResolver(schemaFijasPicas) });
+  const twoForm: any = useForm({ resolver: yupResolver(schemaFijasPicas) });
 
   const [inputs, setInputs] = useState<ReactElement<HTMLInputElement>[]>([]);
   const [jugadorUno, setJugadorUno] = useState<string>("dar");
@@ -156,6 +156,9 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
       >
         <TransitionGroup className="grid grid-cols-3 gap-x-1 gap-y-4">
           {inputs.map((item, i) => {
+            let val: any = errors[`number${i}`]
+              ? errors[`number${i}`]?.message
+              : "";
             return (
               <CSSTransition key={i} timeout={500} classNames="item">
                 <div className="relative">
@@ -164,7 +167,7 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
                     htmlFor={`number${i}`}
                     className="absolute left-0 -top-3.5 text-gray-600 text-sm ml-1 select-none"
                   >
-                    {errors[`number${i}`] ? errors[`number${i}`].message : null}
+                    {val}
                   </label>
                 </div>
               </CSSTransition>
