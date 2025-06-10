@@ -40,11 +40,19 @@ function Footer() {
           </ul>
         </div>
         <div>
-          <h5 className="text-xl font-bold mb-4">Contacto</h5>
-          <p className="text-gray-400">
-            ¿Preguntas o sugerencias? Contáctanos.
-          </p>
-          {/* TODO: Add contact form or email link */}
+          <h5 className="text-xl font-bold mb-4">Síguenos</h5>
+          <div className="flex space-x-4">
+            <a href="#" className="text-gray-400 hover:text-white">
+              <RiGithubFill size={24} />
+            </a>
+            <a href="#" className="text-gray-400 hover:text-white">
+              <RiInstagramFill size={24} />
+            </a>
+            <a href="#" className="text-gray-400 hover:text-white">
+              <RiTwitterFill size={24} />
+            </a>
+          </div>
+          <Newsletter />
         </div>
       </div>
       <div className="text-center text-gray-500 mt-8">
