@@ -1,8 +1,7 @@
 import React from "react";
 import { RiPlayCircleLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
-import HeroImage from "../resource/images/hero-image.png";
-import img from "../resource/im3.svg";
+import Link from "next/link"; // Changed from react-router-dom
+import Image from "next/image"; // Import next/image
 
 function HeroHome() {
   return (
@@ -11,7 +10,14 @@ function HeroHome() {
         className="absolute pointer-events-none top-[45%]"
         aria-hidden="true"
       >
-        <img src={img} alt="hola" className="w-[1360px] opacity-75" />
+        <Image
+          src="/im3.svg"
+          alt="hola"
+          width={1360}
+          height={100}
+          className="w-[1360px] opacity-75"
+        />{" "}
+        {/* Updated path and used next/image */}
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -32,7 +38,7 @@ function HeroHome() {
                 <div>
                   <Link
                     className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0"
-                    to="/jugar"
+                    href="/jugar" // Changed from to to href
                   >
                     Juega ahora mismo
                   </Link>
@@ -51,17 +57,17 @@ function HeroHome() {
           <div>
             <div className="relative flex justify-center mb-8">
               <div className="flex flex-col justify-center">
-                <img
+                <Image
                   className="mx-auto"
-                  src={HeroImage}
-                  width="768"
-                  height="432"
+                  src="/images/hero-image.png" // Updated path
+                  width={768}
+                  height={432}
                   alt="Hero"
                 />
               </div>
               <Link
                 className="absolute top-full flex items-center transform -translate-y-1/2 bg-white rounded-full font-medium group p-4 shadow-lg"
-                to="/jugar"
+                href="/jugar" // Changed from to to href
               >
                 <RiPlayCircleLine className="w-6 h-6 fill-current text-gray-400 group-hover:text-blue-600 flex-shrink-0" />
                 <span className="ml-3">Vamos a jugar</span>

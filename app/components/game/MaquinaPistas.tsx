@@ -1,12 +1,18 @@
-import React, { ReactElement, useEffect, useState, KeyboardEvent } from "react";
+import React, { ReactElement, useEffect, useState, KeyboardEvent, createRef, RefObject } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { arrayC, Props, inputs } from "../../helpers/type";
+import { arrayC, Props, inputs as InputFormValues } from "../../helpers/type";
 import { schemaEntradas } from "../../helpers/validador";
 
+// Define a type for the input items with their refs
+type InputItem = {
+  id: string;
+  nodeRef: RefObject<HTMLDivElement>; // Ref for the CSSTransition's direct child
+};
+
 const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
-  const [inputs, setInputs] = useState<ReactElement<HTMLInputElement>[]>([]);
+  const [inputItems, setInputItems] = useState<InputItem[]>([]); // Renamed state and updated type
   const [numero, setNumero] = useState<number[]>([]);
   const [show, setShow] = useState<boolean>(false);
 
@@ -33,24 +39,18 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
   useEffect(() => {
     for (let i = 0; i < numeroPrincipal; i++) unregister(`number${i}`);
     setNumero(init(numeroPrincipal));
-    setInputs([]);
-    const elementos: ReactElement<HTMLInputElement>[] = [];
+    
+    const newItems: InputItem[] = [];
     for (let i = 0; i < numeroPrincipal; i++) {
-      elementos.push(
-        <input
-          key={i}
-          type="number"
-          id={`number${i}`}
-          {...register(`number${i}`, schemaEntradas)}
-          placeholder={`Digito ${i + 1}`}
-          className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
-        />
-      );
+      newItems.push({
+        id: `number${i}`,
+        nodeRef: createRef<HTMLDivElement>(), // Create ref here
+      });
     }
-    setInputs(elementos);
-  }, [numeroPrincipal]);
+    setInputItems(newItems); // Store items with their refs
+  }, [numeroPrincipal, unregister]); // Added unregister to dependency array
 
-  const miniAI: SubmitHandler<inputs> = (data) => {
+  const miniAI: SubmitHandler<InputFormValues> = (data) => { // Changed inputs to InputFormValues
     const arrayCompleto: Array<arrayC> = [];
     for (let i = 0; i < numeroPrincipal; i++)
       arrayCompleto.push([parseInt(data[`number${i}`]), false]);
@@ -106,16 +106,23 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
     <>
       <form className="my-4" onSubmit={handleSubmit(miniAI)}>
         <TransitionGroup className="grid grid-cols-3 gap-x-1 gap-y-4">
-          {inputs.map((item, i) => {
-            let val: any = errors[`number${i}`]
-              ? errors[`number${i}`]?.message
+          {inputItems.map((item, i) => { // Iterate over inputItems
+            const inputId = item.id;
+            let val: any = errors[inputId]
+              ? errors[inputId]?.message
               : null;
             return (
-              <CSSTransition key={i} timeout={500} classNames="item">
-                <div className="relative">
-                  {item}
+              <CSSTransition key={item.id} timeout={500} classNames="item" nodeRef={item.nodeRef}>
+                <div className="relative" ref={item.nodeRef}> {/* Assign ref to the div */}
+                  <input
+                    id={inputId}
+                    type="number"
+                    {...register(inputId, schemaEntradas)}
+                    placeholder={`Digito ${i + 1}`}
+                    className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
+                  />
                   <label
-                    htmlFor={`number${i}`}
+                    htmlFor={inputId}
                     className="absolute left-0 -top-5 text-gray-600 text-sm ml-1 select-none"
                   >
                     {val}
@@ -125,7 +132,7 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
             );
           })}
         </TransitionGroup>
-        {inputs.length > 0 ? (
+        {inputItems.length > 0 ? ( // Check inputItems.length
           <button type="submit" className="btn btn-yellow">
             Intentar
           </button>
@@ -133,7 +140,7 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
           ""
         )}
       </form>
-      {inputs[0] && (
+      {inputItems.length > 0 && ( // Changed inputs[0] to inputItems.length > 0
         <div className="grid grid-cols-2">
           {show && <span>{numero.join("")}</span>}
           <div

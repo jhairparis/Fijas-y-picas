@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from "react";
 enum peticion {
   exito,
@@ -29,7 +31,15 @@ const Newsletter = () => {
   const onSubmit = () => {
     if (!emailRegex.test(email)) setSubscribe(peticion.fallo);
 
-    const url: any = import.meta.env.VITE_API;
+    // const url: any = import.meta.env.VITE_API; // Vite specific env
+    const url = process.env.NEXT_PUBLIC_API_URL; // Next.js public env variable
+
+    if (!url) {
+      console.error("API URL is not defined. Please set NEXT_PUBLIC_API_URL environment variable.");
+      setSubscribe(peticion.fallo);
+      return;
+    }
+
     fetch(url, {
       method: "POST",
       body: JSON.stringify({ email }),

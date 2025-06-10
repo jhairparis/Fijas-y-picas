@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link"; // Changed from react-router-dom
+import Image from "next/image";
 
 function Header() {
   const [top, setTop] = useState(true);
@@ -21,8 +24,11 @@ function Header() {
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex-shrink-0 mr-4">
-            <Link to="/" className="block" aria-label="Cruip">
-              Fijas y picas
+            <Link href="/" className="block" aria-label="Cruip">
+              <div className="flex items-center">
+                <Image src="/logo.svg" alt="Logo" width={40} height={40} />
+                <h1 className="ml-2 text-xl">Fijas y Picas</h1>
+              </div>
             </Link>
           </div>
 
@@ -30,7 +36,7 @@ function Header() {
             <ul className="flex flex-grow justify-end flex-wrap items-center">
               <li>
                 <Link
-                  to="/jugar"
+                  href="/jugar"
                   className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   Jugar
@@ -38,7 +44,7 @@ function Header() {
               </li>
               <li>
                 <Link
-                  to="/como-jugar"
+                  href="/como-jugar"
                   className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   Instrucciones

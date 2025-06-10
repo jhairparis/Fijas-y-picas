@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+'use client';
+
+import React, { useState, createRef, RefObject } from "react";
 import { useForm } from "react-hook-form";
 import MaquinaPistas from "../components/game/MaquinaPistas";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -10,11 +12,11 @@ import Fade from "../utils/transitions/Fade";
 import Simple from "../utils/transitions/Simple";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import MaquinaAdivina from "../components/game/MaquinaAdivina";
-import { Link } from "react-router-dom";
+import Link from "next/link"; // Changed from react-router-dom
 import { GiClassicalKnowledge, GiWorld } from "react-icons/gi";
 import { SiProbot } from "react-icons/si";
 
-type historialTP = [number, pistas, number | undefined];
+type historialTP = [number, pistas, number | undefined, RefObject<HTMLDivElement>];
 
 const Game = () => {
   const [numeroPrincipal, setNumeroPrincipal] = useState<number>(0);
@@ -40,7 +42,7 @@ const Game = () => {
   };
 
   const actualizarHistoial: fnHistorial = (val, pista, user) => {
-    setHistorial([...historial, [val, pista, user]]);
+    setHistorial([...historial, [val, pista, user, createRef<HTMLDivElement>()]]);
   };
   const onSubmit: any = (data: { number: number }) => {
     setNumeroPrincipal(data.number);
@@ -70,17 +72,18 @@ const Game = () => {
         {historial?.map((item, i) => {
           let color = noRepeticion(i);
           let valor: string = ilustrarPicasYFijas(item);
+          const nodeRef = item[3]; // Get the nodeRef from the item
           return modoDeJuego === "HvH" ? (
             item[2] === 0 ? (
-              <CSSTransition key={i} timeout={500} classNames="item">
-                <div key={i} className={`burbleHistory burbleHistory-${color}`}>
+              <CSSTransition key={i} timeout={500} classNames="item" nodeRef={nodeRef}>
+                <div ref={nodeRef} className={`burbleHistory burbleHistory-${color}`}>
                   {valor}
                 </div>
               </CSSTransition>
             ) : null
           ) : (
-            <CSSTransition key={i} timeout={500} classNames="item">
-              <div key={i} className={`burbleHistory burbleHistory-${color}`}>
+            <CSSTransition key={i} timeout={500} classNames="item" nodeRef={nodeRef}>
+              <div ref={nodeRef} className={`burbleHistory burbleHistory-${color}`}>
                 {valor}
               </div>
             </CSSTransition>
@@ -138,7 +141,7 @@ const Game = () => {
               ¡No olvides visitar las{" "}
               <Link
                 className="text-lg font-bold text-indigo-600"
-                to="/como-jugar"
+                href="/como-jugar" // Changed from to to href
               >
                 instrucciones{" "}
               </Link>{" "}
@@ -289,10 +292,11 @@ const Game = () => {
           {historial?.map((item, i) => {
             let color = noRepeticion(i);
             let valor: string = ilustrarPicasYFijas(item);
+            const nodeRef = item[3]; // Get the nodeRef from the item
             return item[2] === 1 ? (
-              <CSSTransition key={i} timeout={500} classNames="item">
+              <CSSTransition key={i} timeout={500} classNames="item" nodeRef={nodeRef}>
                 <div
-                  key={i + Math.floor(Math.random())}
+                  ref={nodeRef} // Assign the ref here
                   className={`burbleHistory burbleHistory-${color}`}
                 >
                   {valor}

@@ -1,12 +1,10 @@
+'use client';
+
 import React, { useState, useRef, useEffect } from "react";
-import Transition from "../utils/transitions/Transition";
+import Transition from "../utils/transitions/Transition"; // This path might need adjustment
 import { GiClassicalKnowledge, GiWorld } from "react-icons/gi";
 import { SiProbot } from "react-icons/si";
-
-import FeaturesBg1 from "../resource/images/features-bg-1.png";
-import FeaturesBg2 from "../resource/images/features-bg-2.png";
-import FeaturesBg3 from "../resource/images/features-bg-3.png";
-import FeaturesElement from "../resource/images/features-element.png";
+import Image from "next/image"; // Import next/image
 
 function Features() {
   const [tab, setTab] = useState(1);
@@ -44,7 +42,9 @@ function Features() {
             </p>
           </div>
 
+          {/* Section content */}
           <div className="md:grid md:grid-cols-12 md:gap-6">
+            {/* Content */}
             <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6 md:mt-6">
               <div className="md:pr-4 lg:pr-12 xl:pr-16 mb-8">
                 <h3 className="h3 mb-3">Tres Modos de Juego</h3>
@@ -146,90 +146,86 @@ function Features() {
               </div>
             </div>
 
-            <div
-              className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0 md:order-1"
-              ref={tabs}
-            >
-              <div className="relative flex flex-col text-center lg:text-right">
-                <Transition
-                  show={tab === 1}
-                  appear={true}
-                  className="w-full"
-                  enter="transition ease-in-out duration-700 transform order-first"
-                  enterStart="opacity-0 translate-y-16"
-                  enterEnd="opacity-100 translate-y-0"
-                  leave="transition ease-in-out duration-300 transform absolute"
-                  leaveStart="opacity-100 translate-y-0"
-                  leaveEnd="opacity-0 -translate-y-16"
+            <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0 md:order-1">
+              <div className="transition-all">
+                <div
+                  className="relative flex flex-col text-center lg:text-right"
+                  data-aos="zoom-y-out"
+                  ref={tabs}
                 >
-                  <div className="relative inline-flex flex-col">
-                    <img
-                      className="md:max-w-none mx-auto rounded"
-                      src={FeaturesBg1}
-                      width="500"
-                      height="462"
-                      alt="Features bg"
-                    />
-                    <img
-                      className="md:max-w-none absolute w-full left-0 transform animate-float"
-                      src={FeaturesElement}
-                      width="500"
-                      height="44"
-                      alt="Element"
-                      style={{ top: "30%" }}
-                    />
-                  </div>
-                </Transition>
-                <Transition
-                  show={tab === 2}
-                  appear={true}
-                  className="w-full"
-                  enter="transition ease-in-out duration-700 transform order-first"
-                  enterStart="opacity-0 translate-y-16"
-                  enterEnd="opacity-100 translate-y-0"
-                  leave="transition ease-in-out duration-300 transform absolute"
-                  leaveStart="opacity-100 translate-y-0"
-                  leaveEnd="opacity-0 -translate-y-16"
-                >
-                  <div className="relative inline-flex flex-col">
-                    <img
-                      className="md:max-w-none mx-auto rounded"
-                      src={FeaturesBg2}
-                      width="500"
-                      height="462"
-                      alt="Features bg"
-                    />
-                    <img
-                      className="md:max-w-none absolute w-full left-0 transform animate-float"
-                      src={FeaturesElement}
-                      width="500"
-                      height="44"
-                      alt="Element"
-                      style={{ top: "30%" }}
-                    />
-                  </div>
-                </Transition>
-                <Transition
-                  show={tab === 3}
-                  appear={true}
-                  className="w-full"
-                  enter="transition ease-in-out duration-700 transform order-first"
-                  enterStart="opacity-0 translate-y-16"
-                  enterEnd="opacity-100 translate-y-0"
-                  leave="transition ease-in-out duration-300 transform absolute"
-                  leaveStart="opacity-100 translate-y-0"
-                  leaveEnd="opacity-0 -translate-y-16"
-                >
-                  <div className="relative inline-flex flex-col">
-                    <img
-                      className="md:max-w-none mx-auto rounded"
-                      src={FeaturesBg3}
-                      width="500"
-                      height="462"
-                      alt="Features bg"
-                    />
-                  </div>
-                </Transition>
+                  {/* Item 1 */}
+                  <Transition
+                    show={tab === 1}
+                    appear={true}
+                    className="w-full"
+                    enter="transition ease-in-out duration-700 transform order-first"
+                    enterFrom="opacity-0 translate-y-16" // Prop name as per error message
+                    enterTo="opacity-100 translate-y-0"     // Prop name as per error message
+                    leave="transition ease-in-out duration-300 transform absolute"
+                    leaveFrom="opacity-100 translate-y-0" // Prop name as per error message
+                    leaveTo="opacity-0 -translate-y-16"   // Prop name as per error message
+                    beforeEnter={() => heightFix()}          // Prop name as per error message
+                    unmount={false}                        // Prop name as per error message
+                  >
+                    <div className="relative inline-flex flex-col">
+                      <Image // Used next/image
+                        className="md:max-w-none mx-auto rounded"
+                        src="/images/features-bg-1.png" // Updated path
+                        width={500}
+                        height={462}
+                        alt="Features bg 1"
+                      />
+                    </div>
+                  </Transition>
+                  {/* Item 2 */}
+                  <Transition
+                    show={tab === 2}
+                    appear={true}
+                    className="w-full"
+                    enter="transition ease-in-out duration-700 transform order-first"
+                    enterFrom="opacity-0 translate-y-16" // Prop name as per error message
+                    enterTo="opacity-100 translate-y-0"     // Prop name as per error message
+                    leave="transition ease-in-out duration-300 transform absolute"
+                    leaveFrom="opacity-100 translate-y-0" // Prop name as per error message
+                    leaveTo="opacity-0 -translate-y-16"   // Prop name as per error message
+                    beforeEnter={() => heightFix()}          // Prop name as per error message
+                    unmount={false}                        // Prop name as per error message
+                  >
+                    <div className="relative inline-flex flex-col">
+                      <Image // Used next/image
+                        className="md:max-w-none mx-auto rounded"
+                        src="/images/features-bg-2.png" // Updated path
+                        width={500}
+                        height={462}
+                        alt="Features bg 2"
+                      />
+                    </div>
+                  </Transition>
+                  {/* Item 3 */}
+                  <Transition
+                    show={tab === 3}
+                    appear={true}
+                    className="w-full"
+                    enter="transition ease-in-out duration-700 transform order-first"
+                    enterFrom="opacity-0 translate-y-16" // Prop name as per error message
+                    enterTo="opacity-100 translate-y-0"     // Prop name as per error message
+                    leave="transition ease-in-out duration-300 transform absolute"
+                    leaveFrom="opacity-100 translate-y-0" // Prop name as per error message
+                    leaveTo="opacity-0 -translate-y-16"   // Prop name as per error message
+                    beforeEnter={() => heightFix()}          // Prop name as per error message
+                    unmount={false}                        // Prop name as per error message
+                  >
+                    <div className="relative inline-flex flex-col">
+                      <Image // Used next/image
+                        className="md:max-w-none mx-auto rounded"
+                        src="/images/features-bg-3.png" // Updated path
+                        width={500}
+                        height={462}
+                        alt="Features bg 3"
+                      />
+                    </div>
+                  </Transition>
+                </div>
               </div>
             </div>
           </div>

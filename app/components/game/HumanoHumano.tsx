@@ -1,11 +1,18 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState, useRef, createRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { Props, inputs, arrayC } from "../../helpers/type";
+import { Props, inputs as InputFormType, arrayC } from "../../helpers/type";
 import { schemaEntradas, schemaFijasPicas } from "../../helpers/validador";
 import Simple from "../../utils/transitions/Simple";
+
+// Define a type for the input items with their refs
+type InputItem = {
+  id: string;
+  nodeRef: React.RefObject<HTMLDivElement>; // Ref for the CSSTransition's direct child
+  // Add any other properties needed for rendering the input, if not using register directly
+};
 
 const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
   const {
@@ -16,14 +23,14 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
   } = useForm();
   const twoForm: any = useForm({ resolver: yupResolver(schemaFijasPicas) });
 
-  const [inputs, setInputs] = useState<ReactElement<HTMLInputElement>[]>([]);
+  const [inputItems, setInputItems] = useState<InputItem[]>([]); // Changed state name and type
   const [jugadorUno, setJugadorUno] = useState<string>("dar");
   const [jugadorDos, setJugadorDos] = useState<string>("");
   const [mostrarDigitos, setMostrarDigitos] = useState<boolean>();
   const [mostrarFijasEntrada, setmostrarFijasEntrada] = useState<boolean>();
   const [numeroJugado, setNumeroJugado] = useState<number>(0);
 
-  const recepcionEntradas: SubmitHandler<inputs> = (data) => {
+  const recepcionEntradas: SubmitHandler<InputFormType> = (data) => {
     const arrayCompleto: Array<arrayC> = [];
     for (let i = 0; i < numeroPrincipal; i++)
       arrayCompleto.push([parseInt(data[`number${i}`]), false]);
@@ -93,27 +100,22 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
 
   useEffect(() => {
     for (let i = 0; i < numeroPrincipal; i++) unregister(`number${i}`);
-    const elementos: ReactElement<HTMLInputElement>[] = [];
+
+    const newItems: InputItem[] = [];
     for (let i = 0; i < numeroPrincipal; i++) {
-      elementos.push(
-        <input
-          key={i}
-          id={`number${i}`}
-          type="number"
-          {...register(`number${i}`, schemaEntradas)}
-          placeholder={`Digito ${i + 1}`}
-          className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
-        />
-      );
+      newItems.push({
+        id: `number${i}`,
+        nodeRef: createRef<HTMLDivElement>(), // Create ref here
+      });
     }
-    setInputs(elementos);
+    setInputItems(newItems); // Store items with their refs
     setMostrarDigitos(true);
     if (numeroPrincipal > 0) {
       toast.success("Partida Iniciada");
     }
-  }, [numeroPrincipal]);
+  }, [numeroPrincipal, unregister]); // Added unregister to dependency array
 
-  const onSubmit: SubmitHandler<inputs> = (data) => {
+  const onSubmit: SubmitHandler<InputFormType> = (data) => {
     const picas = parseInt(data.picas);
     const fijas = parseInt(data.fijas);
     if (picas + fijas > numeroPrincipal) {
@@ -155,16 +157,23 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
         onSubmit={handleSubmit(recepcionEntradas)}
       >
         <TransitionGroup className="grid grid-cols-3 gap-x-1 gap-y-4">
-          {inputs.map((item, i) => {
-            let val: any = errors[`number${i}`]
-              ? errors[`number${i}`]?.message
+          {inputItems.map((item, i) => {
+            const inputId = `number${i}`;
+            let val: any = errors[inputId]
+              ? errors[inputId]?.message
               : "";
             return (
-              <CSSTransition key={i} timeout={500} classNames="item">
-                <div className="relative">
-                  {item}
+              <CSSTransition key={item.id} timeout={500} classNames="item" nodeRef={item.nodeRef}>
+                <div className="relative" ref={item.nodeRef}>
+                  <input
+                    id={inputId}
+                    type="number"
+                    {...register(inputId, schemaEntradas)}
+                    placeholder={`Digito ${i + 1}`}
+                    className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
+                  />
                   <label
-                    htmlFor={`number${i}`}
+                    htmlFor={inputId}
                     className="absolute left-0 -top-3.5 text-gray-600 text-sm ml-1 select-none"
                   >
                     {val}
@@ -174,13 +183,13 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
             );
           })}
         </TransitionGroup>
-        <Simple in={inputs.length > 0} time={500}>
-          {inputs.length > 0 ? (
+        {inputItems.length > 0 && (
+          <Simple in={inputItems.length > 0} time={500}>
             <button type="submit" className="btn btn-blue">
               Intentar
             </button>
-          ) : null}
-        </Simple>
+          </Simple>
+        )}
       </form>
       <form
         className={mostrarFijasEntrada ? "my-4 " : "hidden"}
