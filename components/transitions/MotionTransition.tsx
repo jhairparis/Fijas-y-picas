@@ -90,12 +90,12 @@ const MotionTransition: React.FC<MotionTransitionProps> = ({
   const variants = {
     initial: initialValues,
     animate: animateValues,
-    exit: exitValues
+    exit: exitValues,
   };
 
   const transition = {
     duration,
-    ease: easing
+    ease: easing,
   };
 
   // Handle beforeEnter callback - moved outside conditional to comply with hooks rules

@@ -5,18 +5,18 @@ import { FadeProps } from "../../helpers/type";
 
 const MotionFade: FC<FadeProps> = ({ in: isVisible, children, time = 500 }) => {
   const fadeVariants = {
-    initial: { 
-      opacity: 0, 
-      x: "-100%" 
+    initial: {
+      opacity: 0,
+      x: "-100%",
     },
-    animate: { 
-      opacity: 1, 
-      x: "0%" 
+    animate: {
+      opacity: 1,
+      x: "0%",
     },
-    exit: { 
-      opacity: 0, 
-      x: "100%" 
-    }
+    exit: {
+      opacity: 0,
+      x: "100%",
+    },
   };
 
   const duration = time / 1000; // Convert to seconds
@@ -30,9 +30,9 @@ const MotionFade: FC<FadeProps> = ({ in: isVisible, children, time = 500 }) => {
           initial="initial"
           animate="animate"
           exit="exit"
-          transition={{ 
+          transition={{
             duration,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         >
           {children}

@@ -28,7 +28,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<{fijas: string, picas: string}>();
+  } = useForm<{ fijas: string; picas: string }>();
 
   const removerDelRecurso = (value: number) => {
     for (let i = 0; i < recurso.length; i++) {
@@ -3300,14 +3300,18 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
     }
   };
 
-  const onSubmit: SubmitHandler<{fijas: string, picas: string}> = (data) => {
+  const onSubmit: SubmitHandler<{ fijas: string; picas: string }> = data => {
     const fijas: number = parseInt(data.fijas),
       picas: number = parseInt(data.picas);
     getPicasFijas(fijas, picas);
   };
 
-  const val: string | undefined = errors[`picas`] ? String(errors[`picas`]?.message) : undefined;
-  const val2: string | undefined = errors[`fijas`] ? String(errors[`fijas`]?.message) : undefined;
+  const val: string | undefined = errors[`picas`]
+    ? String(errors[`picas`]?.message)
+    : undefined;
+  const val2: string | undefined = errors[`fijas`]
+    ? String(errors[`fijas`]?.message)
+    : undefined;
 
   return numeroPrincipal ? (
     <div>

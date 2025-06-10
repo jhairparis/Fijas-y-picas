@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useState } from "react";
 import Link from "next/link";
@@ -17,7 +17,7 @@ function Banner() {
                 href="/privacidad"
               >
                 <span className="font-medium hover:no-underline text-slate-50 mr-[0.5px]">
-                  Aceptas todas las {" "}
+                  Aceptas todas las{" "}
                 </span>
                 Cookies
               </Link>

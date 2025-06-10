@@ -39,7 +39,7 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
   useEffect(() => {
     for (let i = 0; i < numeroPrincipal; i++) unregister(`number${i}`);
     setNumero(init(numeroPrincipal));
-    
+
     const newItems: InputItem[] = [];
     for (let i = 0; i < numeroPrincipal; i++) {
       newItems.push({
@@ -50,14 +50,15 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
     setInputItems(newItems); // Store items with their refs
   }, [numeroPrincipal, unregister]); // Added unregister to dependency array
 
-  const miniAI: SubmitHandler<InputFormValues> = (data) => { // Changed inputs to InputFormValues
+  const miniAI: SubmitHandler<InputFormValues> = data => {
+    // Changed inputs to InputFormValues
     const arrayCompleto: Array<arrayC> = [];
     for (let i = 0; i < numeroPrincipal; i++)
       arrayCompleto.push([parseInt(data[`number${i}`]), false]);
     const arrayValores: number[] = [];
     const comprobar = () => {
       let prueba = true;
-      arrayCompleto.forEach((arr) => arrayValores.push(arr[0]));
+      arrayCompleto.forEach(arr => arrayValores.push(arr[0]));
       //comprobar si hay un elemento repetido en arrayValores
       for (let i = 0; i < arrayValores.length; i++) {
         for (let j = 0; j < arrayValores.length; j++) {
@@ -107,7 +108,8 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
       <form className="my-4" onSubmit={handleSubmit(miniAI)}>
         <div className="grid grid-cols-3 gap-x-1 gap-y-4">
           <AnimatePresence>
-            {inputItems.map((item, i) => { // Iterate over inputItems
+            {inputItems.map((item, i) => {
+              // Iterate over inputItems
               const inputId = item.id;
               const val: string | null = errors[inputId]
                 ? String(errors[inputId]?.message) // Ensure it's a string

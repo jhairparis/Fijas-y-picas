@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
@@ -22,8 +22,8 @@ function Header() {
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ease-in-out ${
-        !top 
-          ? "bg-white/90 backdrop-blur-xl shadow-xl border-b border-gray-200/20" 
+        !top
+          ? "bg-white/90 backdrop-blur-xl shadow-xl border-b border-gray-200/20"
           : "bg-transparent"
       }`}
     >
@@ -31,10 +31,10 @@ function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center group">
-              <Image 
-                src="/logo.svg" 
-                alt="Fijas y Picas Logo" 
-                width={36} 
+              <Image
+                src="/logo.svg"
+                alt="Fijas y Picas Logo"
+                width={36}
                 height={36}
                 className="group-hover:scale-105 transition-transform duration-200"
               />

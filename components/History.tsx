@@ -9,10 +9,10 @@ export default function History() {
         className="absolute inset-0 bg-gradient-to-b from-orange-50 via-amber-50 to-rose-50 pointer-events-none"
         aria-hidden="true"
       />
-      
+
       <div className="absolute top-0 right-1/3 w-72 h-72 bg-gradient-to-r from-amber-400/6 to-rose-400/6 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-gradient-to-r from-rose-400/8 to-orange-400/8 rounded-full blur-3xl" />
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="pt-16 md:pt-20 pb-16 md:pb-20">
           <div className="max-w-4xl mx-auto text-center pb-16 md:pb-20">
@@ -29,7 +29,7 @@ export default function History() {
               </h2>
             </motion.div>
           </div>
-          
+
           <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -47,8 +47,12 @@ export default function History() {
                   <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                     <span className="text-white font-bold text-lg">📜</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Siglo XIX</h3>
-                  <p className="text-gray-600 text-sm">Orígenes en Inglaterra como juego de papel y lápiz</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Siglo XIX
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    Orígenes en Inglaterra como juego de papel y lápiz
+                  </p>
                 </motion.div>
 
                 <motion.div
@@ -61,7 +65,9 @@ export default function History() {
                     <span className="text-white font-bold text-lg">🎲</span>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">1970</h3>
-                  <p className="text-gray-600 text-sm">Mastermind revoluciona el concepto</p>
+                  <p className="text-gray-600 text-sm">
+                    Mastermind revoluciona el concepto
+                  </p>
                 </motion.div>
 
                 <motion.div
@@ -74,7 +80,9 @@ export default function History() {
                     <span className="text-white font-bold text-lg">💻</span>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Hoy</h3>
-                  <p className="text-gray-600 text-sm">Experiencia digital moderna y global</p>
+                  <p className="text-gray-600 text-sm">
+                    Experiencia digital moderna y global
+                  </p>
                 </motion.div>
               </div>
 
@@ -85,10 +93,20 @@ export default function History() {
                 className="prose prose-lg mx-auto text-center"
               >
                 <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                  Lo que comenzó como un simple juego de papel y lápiz en Inglaterra a finales del siglo XIX evolucionó hasta convertirse en Mastermind en la década de 1970. Hoy, <strong className="text-rose-600">Fijas y Picas online</strong> conserva esa esencia: pura lógica y estrategia, sin depender de la suerte.
+                  Lo que comenzó como un simple juego de papel y lápiz en
+                  Inglaterra a finales del siglo XIX evolucionó hasta
+                  convertirse en Mastermind en la década de 1970. Hoy,{" "}
+                  <strong className="text-rose-600">
+                    Fijas y Picas online
+                  </strong>{" "}
+                  conserva esa esencia: pura lógica y estrategia, sin depender
+                  de la suerte.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  Nuestra plataforma digital añade funcionalidades modernas, comunidades y actualización constante de modos de juego, manteniendo viva la tradición de deducción numérica que ha fascinado a generaciones de jugadores en todo el mundo.
+                  Nuestra plataforma digital añade funcionalidades modernas,
+                  comunidades y actualización constante de modos de juego,
+                  manteniendo viva la tradición de deducción numérica que ha
+                  fascinado a generaciones de jugadores en todo el mundo.
                 </p>
               </motion.div>
 
@@ -102,7 +120,10 @@ export default function History() {
                   De Bulls and Cows a la era digital
                 </h4>
                 <p className="text-gray-700 text-center leading-relaxed">
-                  Más de 150 años de evolución han llevado este fascinante juego de deducción desde las páginas de los periódicos victorianos hasta tu navegador, manteniendo intacta su capacidad de desafiar y entretener mentes curiosas.
+                  Más de 150 años de evolución han llevado este fascinante juego
+                  de deducción desde las páginas de los periódicos victorianos
+                  hasta tu navegador, manteniendo intacta su capacidad de
+                  desafiar y entretener mentes curiosas.
                 </p>
               </motion.div>
             </motion.div>

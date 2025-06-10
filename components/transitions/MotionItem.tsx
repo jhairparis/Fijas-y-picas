@@ -7,21 +7,21 @@ interface MotionItemProps {
   duration?: number;
 }
 
-const MotionItem: React.FC<MotionItemProps> = ({ 
-  children, 
+const MotionItem: React.FC<MotionItemProps> = ({
+  children,
   className = "",
-  duration = 0.5 
+  duration = 0.5,
 }) => {
   const itemVariants = {
-    initial: { 
-      opacity: 0 
+    initial: {
+      opacity: 0,
     },
-    animate: { 
-      opacity: 1 
+    animate: {
+      opacity: 1,
     },
-    exit: { 
-      opacity: 0 
-    }
+    exit: {
+      opacity: 0,
+    },
   };
 
   return (
@@ -31,9 +31,9 @@ const MotionItem: React.FC<MotionItemProps> = ({
       initial="initial"
       animate="animate"
       exit="exit"
-      transition={{ 
+      transition={{
         duration,
-        ease: "easeIn"
+        ease: "easeIn",
       }}
       layout
     >

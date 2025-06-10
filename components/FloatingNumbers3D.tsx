@@ -53,7 +53,7 @@ const FloatingNumbers3D = () => {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {numbersData.numbers.map((num) => (
+      {numbersData.numbers.map(num => (
         <div
           key={num.id}
           className="absolute"
@@ -98,7 +98,7 @@ const FloatingNumbers3D = () => {
         </div>
       ))}
 
-      {numbersData.floatingNumbers.map((num) => (
+      {numbersData.floatingNumbers.map(num => (
         <div key={num.id} className="absolute" style={{ left: `${num.x}%` }}>
           <motion.div
             className="relative text-orange-500/70 font-extrabold select-none z-10"
@@ -138,7 +138,7 @@ const FloatingNumbers3D = () => {
         </div>
       ))}
 
-      {numbersData.depthNumbers.map((num) => (
+      {numbersData.depthNumbers.map(num => (
         <div
           key={num.id}
           className="absolute"

@@ -58,10 +58,10 @@ function Features() {
         className="absolute inset-0 bg-gradient-to-b from-rose-50 via-amber-50 to-orange-50 pointer-events-none"
         aria-hidden="true"
       />
-      
+
       <div className="absolute top-0 left-1/3 w-72 h-72 bg-gradient-to-r from-rose-400/6 to-amber-400/6 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-amber-400/8 to-orange-400/8 rounded-full blur-3xl" />
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="pt-16 md:pt-20 pb-16 md:pb-24">
           <div className="max-w-4xl mx-auto text-center pb-16 md:pb-20">
@@ -78,7 +78,12 @@ function Features() {
               </h1>
               <div className="text-lg md:text-xl text-gray-600 leading-relaxed space-y-2">
                 <p>
-                  Descubre todas las funcionalidades modernas que hacen de nuestra plataforma la mejor experiencia para jugar <span className="font-semibold text-rose-600">fijas y picas online</span>.
+                  Descubre todas las funcionalidades modernas que hacen de
+                  nuestra plataforma la mejor experiencia para jugar{" "}
+                  <span className="font-semibold text-rose-600">
+                    fijas y picas online
+                  </span>
+                  .
                 </p>
               </div>
             </motion.div>
@@ -96,11 +101,13 @@ function Features() {
                   Funcionalidades Modernas
                 </h3>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Explora el código y la lógica interna de Fijas y Picas, con tutoriales paso a paso.
-                  Nuestra plataforma digital añade funcionalidades modernas, comunidades y actualización constante de modos de juego.
+                  Explora el código y la lógica interna de Fijas y Picas, con
+                  tutoriales paso a paso. Nuestra plataforma digital añade
+                  funcionalidades modernas, comunidades y actualización
+                  constante de modos de juego.
                 </p>
               </motion.div>
-              
+
               <div className="space-y-4">
                 {tabsData.map((item, index) => (
                   <motion.div
@@ -122,24 +129,32 @@ function Features() {
                     >
                       <div className="flex items-start justify-between">
                         <div className="flex-1 pr-4">
-                          <div className={`text-xl font-bold mb-3 transition-colors duration-300 ${
-                            tab === item.id 
-                              ? "bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent" 
-                              : "text-gray-900 group-hover:text-rose-600"
-                          }`}>
+                          <div
+                            className={`text-xl font-bold mb-3 transition-colors duration-300 ${
+                              tab === item.id
+                                ? "bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent"
+                                : "text-gray-900 group-hover:text-rose-600"
+                            }`}
+                          >
                             {item.title}
                           </div>
-                          <div className={`text-sm leading-relaxed transition-colors duration-300 ${
-                            tab === item.id ? "text-gray-700" : "text-gray-600"
-                          }`}>
+                          <div
+                            className={`text-sm leading-relaxed transition-colors duration-300 ${
+                              tab === item.id
+                                ? "text-gray-700"
+                                : "text-gray-600"
+                            }`}
+                          >
                             {item.description}
                           </div>
                         </div>
-                        <div className={`flex justify-center items-center w-12 h-12 rounded-xl shadow-md transition-all duration-300 flex-shrink-0 ${
-                          tab === item.id
-                            ? "bg-rose-500 text-white shadow-rose-200"
-                            : "bg-white text-gray-600 group-hover:bg-rose-50 group-hover:text-rose-600 group-hover:shadow-lg"
-                        }`}>
+                        <div
+                          className={`flex justify-center items-center w-12 h-12 rounded-xl shadow-md transition-all duration-300 flex-shrink-0 ${
+                            tab === item.id
+                              ? "bg-rose-500 text-white shadow-rose-200"
+                              : "bg-white text-gray-600 group-hover:bg-rose-50 group-hover:text-rose-600 group-hover:shadow-lg"
+                          }`}
+                        >
                           <span className="text-lg">{item.icon}</span>
                         </div>
                       </div>
@@ -156,14 +171,10 @@ function Features() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="relative"
               >
-                <div
-                  className="relative"
-                  ref={tabs}
-                  role="tablist"
-                >
+                <div className="relative" ref={tabs} role="tablist">
                   <AnimatePresence mode="wait">
                     {tabsData.map(
-                      (item) =>
+                      item =>
                         tab === item.id && (
                           <motion.div
                             key={`item-${item.id}`}

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useEffect, useState } from "react";
 enum peticion {
@@ -35,7 +35,9 @@ const Newsletter = () => {
     const url = process.env.NEXT_PUBLIC_API_URL; // Next.js public env variable
 
     if (!url) {
-      console.error("API URL is not defined. Please set NEXT_PUBLIC_API_URL environment variable.");
+      console.error(
+        "API URL is not defined. Please set NEXT_PUBLIC_API_URL environment variable."
+      );
       setSubscribe(peticion.fallo);
       return;
     }
@@ -47,11 +49,11 @@ const Newsletter = () => {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => response.json())
+      .then(response => response.json())
       .then(() => {
         setSubscribe(peticion.exito);
       })
-      .catch((error) => {
+      .catch(error => {
         setSubscribe(peticion.fallo);
         console.log(error);
       });
@@ -83,8 +85,8 @@ const Newsletter = () => {
               subscribe === peticion.exito
                 ? "Gracias por subcribirte"
                 : subscribe === peticion.fallo
-                ? "No se puedo subribirte"
-                : "nombre@jhairparis.com"
+                  ? "No se puedo subribirte"
+                  : "nombre@jhairparis.com"
             }
           />
           {subscribe === peticion.nada ? (

@@ -4,7 +4,7 @@ export const schemaMain = yup.object().shape({
   number: yup
     .number()
     .typeError("Debe ser un numero")
-    .test("len", "Solo un digito", (val) => val?.toString().length === 1)
+    .test("len", "Solo un digito", val => val?.toString().length === 1)
     .positive("El numero debe ser positivo")
     .min(2, "El minimo numero es 2")
     .max(3, "El maximo numero es 3")
@@ -15,7 +15,7 @@ export const schemaFijasPicas = yup.object().shape({
   fijas: yup
     .number()
     .typeError("Debe ser un numero")
-    .test("len", "Solo un digito", (val) => val?.toString().length === 1)
+    .test("len", "Solo un digito", val => val?.toString().length === 1)
     .positive("El numero debe ser positivo")
     .min(0, "El minimo numero es 0")
     .max(9, "El maximo numero es 9")
@@ -23,7 +23,7 @@ export const schemaFijasPicas = yup.object().shape({
   picas: yup
     .number()
     .typeError("Debe ser un numero")
-    .test("len", "Solo un digito", (val) => val?.toString().length === 1)
+    .test("len", "Solo un digito", val => val?.toString().length === 1)
     .positive("El numero debe ser positivo")
     .min(0, "El minimo numero es 0")
     .max(9, "El maximo numero es 9")

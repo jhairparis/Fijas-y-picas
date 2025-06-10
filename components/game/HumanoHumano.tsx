@@ -35,13 +35,13 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
   const [mostrarFijasEntrada, setmostrarFijasEntrada] = useState<boolean>();
   const [numeroJugado, setNumeroJugado] = useState<number>(0);
 
-  const recepcionEntradas: SubmitHandler<InputFormType> = (data) => {
+  const recepcionEntradas: SubmitHandler<InputFormType> = data => {
     const arrayCompleto: Array<arrayC> = [];
     for (let i = 0; i < numeroPrincipal; i++)
       arrayCompleto.push([parseInt(data[`number${i}`]), false]);
 
     const arrayValores: number[] = [];
-    arrayCompleto.forEach((arr) => arrayValores.push(arr[0]));
+    arrayCompleto.forEach(arr => arrayValores.push(arr[0]));
     const comprobar = () => {
       let prueba = true;
       //comprobar si hay un elemento repetido en arrayValores
@@ -120,7 +120,7 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
     }
   }, [numeroPrincipal, unregister]); // Added unregister to dependency array
 
-  const onSubmitFijasPicas: SubmitHandler<FijasPicasForm> = (data) => {
+  const onSubmitFijasPicas: SubmitHandler<FijasPicasForm> = data => {
     const picas = data.picas;
     const fijas = data.fijas;
     if (picas + fijas > numeroPrincipal) {
