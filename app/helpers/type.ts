@@ -11,5 +11,5 @@ export interface inputs {
 export type FadeProps = {
   in: boolean;
   time?: number;
-  children?: any;
+  children?: React.ReactNode; // Changed from any to React.ReactNode
 };

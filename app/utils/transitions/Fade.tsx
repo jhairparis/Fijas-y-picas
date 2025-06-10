@@ -1,18 +1,21 @@
-import React, { FC } from "react";
+import React, { FC, useRef } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import { FadeProps } from "../../helpers/type";
 
 const Fade: FC<FadeProps> = (props) => {
+  const nodeRef = useRef(null);
+  const timeout = props.time || 500; // Default timeout for the transition
+
   return (
     <SwitchTransition>
       <CSSTransition
+        nodeRef={nodeRef}
         key={props.in ? "Goodbye" : "Hello"}
-        addEndListener={(node, done) =>
-          node.addEventListener("transitionend", done, false)
-        }
+        timeout={timeout} // Added timeout prop
         classNames="fade"
+        unmountOnExit
       >
-        <div>{props.children}</div>
+        <div ref={nodeRef}>{props.children}</div>
       </CSSTransition>
     </SwitchTransition>
   );
