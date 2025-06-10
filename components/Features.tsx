@@ -11,30 +11,30 @@ function Features() {
   const tabsData = [
     {
       id: 1,
-      title: "¡Modo Clásico!",
+      title: "IA adaptativa",
       description:
-        "En este emocionante juego, dos jugadores se enfrentan para adivinar el número secreto del otro. ¿Te atreves a retar a tus amigos y familiares a una emocionante partida de fijas y picas? ¡Demuestra tus habilidades de lógica y deducción y conviértete en el mejor jugador de fijas y picas de todos! ¡Anímate a jugar ahora mismo!",
-      icon: <GiClassicalKnowledge />,
+        "Enfréntate a la computadora ajustable a tu nivel de habilidad. Nuestra inteligencia artificial se adapta a tu estilo de juego para ofrecerte siempre el desafío perfecto, desde principiante hasta experto.",
+      icon: <SiProbot />,
       imageSrc: "/images/features-bg-1.png",
-      altText: "Features bg 1",
+      altText: "IA adaptativa",
     },
     {
       id: 2,
-      title: "¡Modo Contra la computadora!",
+      title: "Temporizadores globales",
       description:
-        "¡Disfruta de un emocionante desafío en el modo contra la computadora de fijas y picas! Adivina el número secreto generado aleatoriamente por la computadora y demuestra tus habilidades de lógica y deducción. ¡Anímate a jugar ahora mismo!",
-      icon: <SiProbot />,
+        "Reta el reloj y supera tus propios récords. Compite contra el tiempo en desafíos cronometrados y demuestra tu velocidad de deducción en las tablas de clasificación mundiales.",
+      icon: <GiClassicalKnowledge />,
       imageSrc: "/images/features-bg-2.png",
-      altText: "Features bg 2",
+      altText: "Temporizadores globales",
     },
     {
       id: 3,
-      title: "Torneo Online",
+      title: "Estadísticas y rankings",
       description:
-        "¡Únete al emocionante modo torneo de fijas y picas! Compite contra otros jugadores en un formato de eliminación y lleva a tu equipo a la victoria. ¡Demuestra tus habilidades de lógica y deducción y conviértete en el mejor jugador de fijas y picas de todos!",
+        "Consulta tu posición en tablas locales y mundiales. Analiza tu progreso con estadísticas detalladas de partidas, tiempos promedio y eficiencia de resolución para mejorar continuamente.",
       icon: <GiWorld />,
       imageSrc: "/images/features-bg-3.png",
-      altText: "Features bg 3",
+      altText: "Estadísticas y rankings",
     },
   ];
 
@@ -71,18 +71,15 @@ function Features() {
               transition={{ duration: 0.6 }}
             >
               <span className="inline-block px-4 py-2 bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent text-sm font-semibold tracking-wider uppercase mb-4">
-                Modos de Juego
+                Características destacadas
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-rose-900 to-amber-900 bg-clip-text text-transparent mb-6 leading-tight">
-                Explora los modos de juego
+                Características destacadas
               </h1>
               <div className="text-lg md:text-xl text-gray-600 leading-relaxed space-y-2">
                 <p>
-                  Se reciben pistas sobre cuántos dígitos están en la posición
-                  correcta <span className="font-semibold text-rose-600">(fijas)</span> y cuántos están en el número pero en posición
-                  incorrecta <span className="font-semibold text-amber-600">(picas)</span>.
+                  Descubre todas las funcionalidades modernas que hacen de nuestra plataforma la mejor experiencia para jugar <span className="font-semibold text-rose-600">fijas y picas online</span>.
                 </p>
-                <p className="text-rose-600 font-medium">¡Muy divertido y desafiante!</p>
               </div>
             </motion.div>
           </div>
@@ -96,14 +93,11 @@ function Features() {
                 className="mb-10"
               >
                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                  Tres Modos de Juego
+                  Funcionalidades Modernas
                 </h3>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  ¡Elige tu modo de juego preferido en nuestro juego de fijas y
-                  picas! Enfrenta a otros jugadores en el modo clásico, a la
-                  computadora en el modo contra la computadora o compite en un
-                  torneo contra otros jugadores. ¡Demuestra tus habilidades de
-                  lógica y deducción en cada partida!
+                  Explora el código y la lógica interna de Fijas y Picas, con tutoriales paso a paso.
+                  Nuestra plataforma digital añade funcionalidades modernas, comunidades y actualización constante de modos de juego.
                 </p>
               </motion.div>
               

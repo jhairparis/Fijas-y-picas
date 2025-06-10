@@ -1,6 +1,7 @@
 import HeroHome from "@/components/HeroHome";
 import GameInfo from "@/components/GameInfo";
 import Features from "@/components/Features";
+import History from "@/components/History";
 import Banner from "@/components/Banner";
 
 export default function Page() {
@@ -11,6 +12,7 @@ export default function Page() {
       <HeroHome />
       <GameInfo />
       <Features />
+      <History />
       <Banner />
     </div>
   );

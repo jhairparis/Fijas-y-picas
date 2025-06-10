@@ -98,7 +98,6 @@ const FloatingNumbers3D = () => {
         </div>
       ))}
 
-      {/* Números flotantes verticales optimizados */}
       {numbersData.floatingNumbers.map((num) => (
         <div key={num.id} className="absolute" style={{ left: `${num.x}%` }}>
           <motion.div
@@ -139,7 +138,6 @@ const FloatingNumbers3D = () => {
         </div>
       ))}
 
-      {/* Números con efecto de profundidad optimizados */}
       {numbersData.depthNumbers.map((num) => (
         <div
           key={num.id}

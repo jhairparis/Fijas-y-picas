@@ -25,7 +25,7 @@ export default function GameInfo() {
                 Conoce el Juego
               </span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-amber-900 to-rose-900 bg-clip-text text-transparent mb-8 leading-tight">
-                ¿Qué es Fijas y Picas?
+                ¿Qué hace único a Fijas y Picas?
               </h2>
             </motion.div>
           </div>
@@ -37,26 +37,21 @@ export default function GameInfo() {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                  El Juego
+                  Características únicas
                 </h3>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                  Fijas y Picas es un juego de lógica y deducción donde debes adivinar 
-                  un número secreto de 4 dígitos únicos. Cada intento te dará pistas 
-                  que te ayudarán a descifrar el código:
-                </p>
                 <div className="space-y-4">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
-                    className="flex items-center p-4 bg-white rounded-xl border-2 border-green-200 shadow-lg"
+                    className="flex items-start p-4 bg-white rounded-xl border-2 border-blue-200 shadow-lg"
                   >
-                    <div className="flex justify-center items-center w-12 h-12 rounded-xl bg-green-500 text-white shadow-md flex-shrink-0 mr-4">
-                      <span className="font-bold">F</span>
+                    <div className="flex justify-center items-center w-12 h-12 rounded-xl bg-blue-500 text-white shadow-md flex-shrink-0 mr-4">
+                      <span className="font-bold">🧠</span>
                     </div>
                     <div>
-                      <div className="font-bold text-gray-900 mb-1">Fija</div>
-                      <div className="text-gray-600 text-sm">Dígito correcto en posición correcta</div>
+                      <div className="font-bold text-gray-900 mb-1">Desafío intelectual</div>
+                      <div className="text-gray-600 text-sm">Cada partida exige formular hipótesis, interpretar pistas y refinar tu estrategia.</div>
                     </div>
                   </motion.div>
                   
@@ -64,14 +59,44 @@ export default function GameInfo() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.5 }}
-                    className="flex items-center p-4 bg-white rounded-xl border-2 border-amber-200 shadow-lg"
+                    className="flex items-start p-4 bg-white rounded-xl border-2 border-green-200 shadow-lg"
                   >
-                    <div className="flex justify-center items-center w-12 h-12 rounded-xl bg-amber-500 text-white shadow-md flex-shrink-0 mr-4">
-                      <span className="font-bold">P</span>
+                    <div className="flex justify-center items-center w-12 h-12 rounded-xl bg-green-500 text-white shadow-md flex-shrink-0 mr-4">
+                      <span className="font-bold">📱</span>
                     </div>
                     <div>
-                      <div className="font-bold text-gray-900 mb-1">Pica</div>
-                      <div className="text-gray-600 text-sm">Dígito correcto en posición incorrecta</div>
+                      <div className="font-bold text-gray-900 mb-1">Accesibilidad</div>
+                      <div className="text-gray-600 text-sm">Juega gratis desde cualquier dispositivo, con modos para un solo jugador, multijugador local o torneos globales.</div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                    className="flex items-start p-4 bg-white rounded-xl border-2 border-purple-200 shadow-lg"
+                  >
+                    <div className="flex justify-center items-center w-12 h-12 rounded-xl bg-purple-500 text-white shadow-md flex-shrink-0 mr-4">
+                      <span className="font-bold">🌍</span>
+                    </div>
+                    <div>
+                      <div className="font-bold text-gray-900 mb-1">Multilingüe</div>
+                      <div className="text-gray-600 text-sm">Disponible en Español e Inglés, con documentación y tutoriales adaptados a ambos públicos.</div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7 }}
+                    className="flex items-start p-4 bg-white rounded-xl border-2 border-orange-200 shadow-lg"
+                  >
+                    <div className="flex justify-center items-center w-12 h-12 rounded-xl bg-orange-500 text-white shadow-md flex-shrink-0 mr-4">
+                      <span className="font-bold">👥</span>
+                    </div>
+                    <div>
+                      <div className="font-bold text-gray-900 mb-1">Comunidad activa</div>
+                      <div className="text-gray-600 text-sm">Únete a foros y grupos de Discord para compartir trucos, retos y mejoras de código.</div>
                     </div>
                   </motion.div>
                 </div>
@@ -85,7 +110,7 @@ export default function GameInfo() {
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                  Historia
+                  Cómo empezar
                 </h3>
                 <div className="space-y-6">
                   <motion.div
@@ -94,9 +119,14 @@ export default function GameInfo() {
                     transition={{ duration: 0.5, delay: 0.6 }}
                     className="p-6 bg-white rounded-2xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
                   >
-                    <p className="text-lg text-gray-600 leading-relaxed">
-                      También conocido como &ldquo;Bulls and Cows&rdquo; o &ldquo;Mastermind&rdquo;, este juego 
-                      tiene sus raíces en los juegos de papel y lápiz del siglo XIX.
+                    <div className="flex items-center mb-3">
+                      <div className="w-8 h-8 bg-gradient-to-r from-rose-500 to-amber-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                        1
+                      </div>
+                      <h4 className="font-bold text-gray-900">Jugar ahora</h4>
+                    </div>
+                    <p className="text-gray-600">
+                      Haz clic en <strong>&quot;Jugar ahora&quot;</strong> para iniciar una partida instantánea.
                     </p>
                   </motion.div>
                   
@@ -106,10 +136,31 @@ export default function GameInfo() {
                     transition={{ duration: 0.5, delay: 0.7 }}
                     className="p-6 bg-gradient-to-r from-rose-50 to-amber-50 rounded-2xl border-2 border-rose-200 shadow-lg"
                   >
-                    <p className="text-lg text-gray-700 leading-relaxed">
-                      Se popularizó enormemente con la versión de mesa creada por 
-                      Mordecai Meirowitz en 1970. La versión digital ha mantenido la esencia del juego original: 
-                      desafiar tu mente con pura lógica y estrategia, sin depender de la suerte.
+                    <div className="flex items-center mb-3">
+                      <div className="w-8 h-8 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                        2
+                      </div>
+                      <h4 className="font-bold text-gray-900">Aprende las reglas</h4>
+                    </div>
+                    <p className="text-gray-700">
+                      Si eres nuevo, visita <strong>&quot;Cómo jugar&quot;</strong> para entender las reglas y estrategias.
+                    </p>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                    className="p-6 bg-white rounded-2xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    <div className="flex items-center mb-3">
+                      <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                        3
+                      </div>
+                      <h4 className="font-bold text-gray-900">Regístrate</h4>
+                    </div>
+                    <p className="text-gray-600">
+                      Regístrate para guardar tu historial, competir en torneos y desbloquear logros exclusivos.
                     </p>
                   </motion.div>
                 </div>
@@ -125,45 +176,35 @@ export default function GameInfo() {
           >
             <div className="p-8 bg-gradient-to-r from-rose-50 to-amber-50 rounded-2xl border-2 border-rose-200 shadow-xl">
               <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent mb-6 text-center">
-                ¿Listo para el desafío?
+                Ponte a prueba
               </h3>
               <p className="text-lg text-gray-700 mb-8 text-center leading-relaxed">
-                Pon a prueba tu capacidad de deducción y descubre si puedes 
-                resolver el código en el menor número de intentos posible.
+                ¿Crees tener la mente lo suficientemente aguda? Da el primer paso:
               </p>
               <div className="flex justify-center space-x-6">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.9 }}
-                  className="text-center"
                 >
-                  <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                    <span className="text-3xl mb-3 block">🧠</span>
-                    <p className="text-sm font-semibold text-gray-700">Lógica</p>
-                  </div>
+                  <a
+                    href="/jugar"
+                    className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    Jugar ahora
+                  </a>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 1.0 }}
-                  className="text-center"
                 >
-                  <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                    <span className="text-3xl mb-3 block">🎯</span>
-                    <p className="text-sm font-semibold text-gray-700">Precisión</p>
-                  </div>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.1 }}
-                  className="text-center"
-                >
-                  <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                    <span className="text-3xl mb-3 block">⚡</span>
-                    <p className="text-sm font-semibold text-gray-700">Estrategia</p>
-                  </div>
+                  <a
+                    href="/como-jugar"
+                    className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-700 bg-white hover:bg-gray-50 border-2 border-gray-300 hover:border-rose-300 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    Cómo jugar
+                  </a>
                 </motion.div>
               </div>
             </div>

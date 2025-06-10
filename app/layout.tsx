@@ -7,9 +7,9 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Fijas y Picas - El Juego",
+  title: "Fijas y Picas – El juego de lógica y deducción definitivo",
   description:
-    "Juega Fijas y Picas online. Adivina el número secreto y reta a tus amigos.",
+    "Descubre fijas y picas, el clásico juego de adivinanza que lleva más de un siglo poniendo a prueba la mente. Juega picas y fijas online gratis desde cualquier dispositivo.",
 };
 
 type RootLayoutProps = Readonly<{
