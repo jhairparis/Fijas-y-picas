@@ -9,7 +9,7 @@ function Header() {
 
   useEffect(() => {
     const scrollHandler = () => {
-      window.pageYOffset > 12 ? setTop(false) : setTop(true);
+      setTop(window.pageYOffset <= 12);
     };
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);

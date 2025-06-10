@@ -2,37 +2,33 @@ import React, { Fragment, useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { Props } from "../../helpers/type";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-
-type pistas = {
-  fijas: string;
-  picas: string;
-};
+import { motion } from "framer-motion";
 
 let interacciones = 0;
 let camino = "0";
 let contador = 0;
 let contador2 = 0;
-let contador3 = 0;
 let unidadesTemporales = 0;
 let decenasTemporales = 0;
-let milesTemporales = 0;
+// milesTemporales is declared but never used, removing it
+// let milesTemporales = 0;
 
 let unidades: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 let recurso: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 let decenas: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-let memoria: number[] = [];
-let miles: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const memoria: number[] = [];
+const miles: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-let esGanador: boolean = false;
-let adivinado: number[] = [];
+const adivinado: number[] = [];
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+let esGanador = false;
 
 const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<{fijas: string, picas: string}>();
 
   const removerDelRecurso = (value: number) => {
     for (let i = 0; i < recurso.length; i++) {
@@ -71,13 +67,12 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
 
   useEffect(() => {
     adivinado.splice(0, adivinado.length);
-    esGanador = false;
     camino = "0";
     unidades = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     recurso = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     decenas = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     for (let i = 0; i < numeroPrincipal; i++) {
-      let n = Math.floor(Math.random() * (10 - 1) + 1);
+      const n = Math.floor(Math.random() * (10 - 1) + 1);
       if (adivinado.includes(n)) i--;
       else adivinado.push(n);
     }
@@ -104,8 +99,8 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
       esGanador = true;
     } else {
       if (numeroPrincipal == 2) {
-        let U = adivinado[1];
-        let T = adivinado[0];
+        const U = adivinado[1];
+        const T = adivinado[0];
         if (fijas == 0 && picas == 0) {
           if (camino === "0") {
             removerDelRecurso(T);
@@ -360,7 +355,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             camino = "win";
             adivinado.splice(0, adivinado.length);
             adivinado.push(decenasTemporales);
-            adivinado.push(T);
+            adivinado.push(U);
           } else if (camino === "12") {
             camino = "win";
             adivinado.splice(0, adivinado.length);
@@ -405,9 +400,10 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           toast.error("las picas y fijas deben estar entre 0 y 2");
         }
       } else if (numeroPrincipal == 3) {
-        let U = adivinado[2];
-        let T = adivinado[1];
-        let H = adivinado[0];
+        //012
+        const U = adivinado[2];
+        const T = adivinado[1];
+        const H = adivinado[0];
         if (fijas == 0 && picas == 0) {
           if (camino === "0") {
             removerDelRecurso(H);
@@ -655,1540 +651,2664 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                 break;
               }
             }
-          } else if (camino === "01") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "011") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0111") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0112") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "012") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "02") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "021") {
-            camino = "win";
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(H);
-            adivinado.push(memoria[2]);
-            adivinado.push(memoria[1]);
-          } else if (camino === "0211") {
-            camino = "win";
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(memoria[2]);
-            adivinado.push(memoria[1]);
-            adivinado.push(memoria[0]);
-          } else if (camino === "02111") {
-            camino = "win";
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(memoria[1]);
-            adivinado.push(memoria[0]);
-            adivinado.push(memoria[2]);
-          } else if (camino === "03") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "031") {
-            camino = "0311";
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(H);
-            if (decenas.length > 0) {
-              adivinado.push(decenas[decenas.length - 1]);
-            } else {
-              adivinado.push(0);
-            }
-            adivinado.push(memoria[2]);
-          } else if (camino === "0311") {
-            camino = "03111";
-            removerDelRecurso(T);
-            removerDeMiles(T);
-            removerDeDecenas(T);
-            removerDeUnidades(T);
-
-            adivinado.splice(0, adivinado.length);
-            if (miles.length == 1) {
-              camino = "win";
-              adivinado.push(miles[0]);
-            } else {
-              adivinado.push(miles[miles.length - 1]);
-            }
-            adivinado.push(memoria[1]);
-            adivinado.push(memoria[2]);
-          } else if (camino === "03111" || camino === "03112") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "032") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0321") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03211" || camino === "03212") {
-            esGanador = true;
-
-            toast.success("Yo gane");
           } else if (camino === "1") {
             camino = "11";
-            adivinado.splice(0, adivinado.length);
-
-            adivinado.push(H);
-            adivinado.push(U);
-            adivinado.push(T);
-          } else if (camino === "11") {
-            camino = "113";
-            removerDeMiles(memoria[0]);
-            removerDeMiles(memoria[1]);
-            removerDeMiles(memoria[2]);
-            removerDeMiles(memoria[3]);
-
-            removerDelRecurso(memoria[0]);
             removerDelRecurso(memoria[1]);
             removerDelRecurso(memoria[2]);
-            removerDelRecurso(memoria[3]);
-
-            removerDeDecenas(memoria[0]);
-            removerDeDecenas(memoria[1]);
-            removerDeDecenas(memoria[2]);
-            removerDeDecenas(memoria[3]);
+            decenasTemporales = memoria[0];
 
             removerDeUnidades(memoria[0]);
             removerDeUnidades(memoria[1]);
             removerDeUnidades(memoria[2]);
-            removerDeUnidades(memoria[3]);
 
-            milesTemporales = memoria[0];
             adivinado.splice(0, adivinado.length);
-            for (let i = 0; i < miles.length; i++) {
-              if (i < miles.length) {
-                adivinado.push(miles[i]);
-                adivinado.push(miles[i + 1]);
-                adivinado.push(miles[i + 2]);
-                break;
-              } else {
-                console.log("I couldn't found number");
+            if (unidades.length == 1) {
+              camino = "win";
+              adivinado.push(memoria[0]);
+              adivinado.push(unidades[0]);
+            } else {
+              contador = 0;
+              for (let i = 0; i < unidades.length; i++) {
+                if (unidades[i] != 0) {
+                  if (contador < 2) {
+                    contador++;
+                    memoria.push(unidades[i]);
+                  } else {
+                    adivinado.push(memoria[3]);
+                    adivinado.push(memoria[4]);
+                    break;
+                  }
+                } else {
+                  adivinado.push(memoria[3]);
+                }
               }
             }
-          } else if (camino === "112") {
-            camino = "1121";
-            removerDelRecurso(U);
-            removerDeMiles(U);
-            removerDeDecenas(U);
-            removerDeUnidades(U);
-            memoria.splice(0, memoria.length);
-            memoria.push(H);
-            memoria.push(T);
-            memoria.push(U);
+          } else if (camino === "11") {
+            camino = "win";
             adivinado.splice(0, adivinado.length);
-            adivinado.push(unidadesTemporales);
-            adivinado.push(T);
-            adivinado.push(U);
-          } else if (camino === "1121") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "11211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1122") {
-            camino = "1121";
-            removerDelRecurso(U);
-            removerDeMiles(U);
-            removerDeDecenas(U);
-            removerDeUnidades(U);
-            memoria.splice(0, memoria.length);
-            memoria.push(H);
-            memoria.push(T);
-            memoria.push(U);
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(unidadesTemporales);
-            adivinado.push(T);
-            adivinado.push(U);
-          } else if (camino === "113") {
-            camino = "1131";
-            removerDelRecurso(H);
-            removerDeMiles(H);
-            removerDeDecenas(H);
-            removerDeUnidades(H);
-            memoria.splice(0, memoria.length);
-            memoria.push(H);
-            memoria.push(T);
-            memoria.push(U);
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(H);
-            adivinado.push(T);
-            adivinado.push(milesTemporales);
-          } else if (camino === "1131") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "11311" || camino === "11312") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1132") {
-            camino = "1131";
-            removerDelRecurso(H);
-            removerDeMiles(H);
-            removerDeDecenas(H);
-            removerDeUnidades(H);
-            memoria.splice(0, memoria.length);
-            memoria.push(H);
-            memoria.push(T);
-            memoria.push(U);
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(H);
-            adivinado.push(T);
-            adivinado.push(milesTemporales);
-          } else if (camino === "12") {
-            camino = "121";
-            adivinado.splice(0, adivinado.length);
-
-            adivinado.push(H);
-            adivinado.push(U);
             adivinado.push(decenasTemporales);
-            memoria.splice(0, memoria.length);
-            memoria.push(H);
-            memoria.push(T);
-            memoria.push(U);
-          } else if (camino === "121") {
-            esGanador = true;
+            adivinado.push(U);
+          } else if (camino === "12") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "2") {
+            camino = "23";
+            decenasTemporales = memoria[1];
+            removerDeUnidades(memoria[0]);
+            removerDeUnidades(memoria[1]);
+            removerDeUnidades(memoria[2]);
+            adivinado.splice(0, adivinado.length);
 
-            toast.success("Yo gane");
-          } else if (camino === "1211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1212") {
-            esGanador = true;
-
-            toast.success("Yo gane");
+            if (unidades.length > 1) {
+              adivinado.push(unidades[0]);
+              adivinado.push(unidades[1]);
+            } else {
+              camino = "win";
+              adivinado.push(decenasTemporales);
+              adivinado.push(unidades[0]);
+            }
+          } else if (camino === "21") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "23") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(U);
           }
         } else if (fijas == 0 && picas == 1) {
+          adivinado.splice(0, adivinado.length);
           if (camino === "0") {
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(U);
-            adivinado.push(H);
-            adivinado.push(T);
-          } else if (camino === "01") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "011") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0111") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0112") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "02") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "021") {
-            camino = "0211";
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(miles[0]);
-            adivinado.push(memoria[1]);
-            adivinado.push(unidades[0]);
-          } else if (camino === "0211") {
-            camino = "02111";
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(unidades[0]);
-            adivinado.push(decenas[0]);
-            adivinado.push(memoria[2]);
-          } else if (camino === "02111") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "012") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "031") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0311") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03111" || camino === "03112") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "032") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0321") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03211" || camino === "03212") {
-            esGanador = true;
-
-            toast.success("Yo gane");
+            camino = "2";
+            contador2++;
+            for (let i = 0; i < recurso.length; i++) {
+              if (recurso[i] != U && recurso[i] != T) {
+                adivinado.push(U);
+                adivinado.push(recurso[i]);
+                memoria.push(T);
+                memoria.push(U);
+                memoria.push(recurso[i]);
+                break;
+              }
+            }
           } else if (camino === "1") {
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(U);
-            adivinado.push(H);
-            adivinado.push(T);
+            if (U == 0) {
+              interacciones--;
+              toast.error("Que!! estos no es posible");
+            } else {
+              camino = "win";
+              decenasTemporales = memoria[2];
+              unidadesTemporales = memoria[1];
+              adivinado.push(decenasTemporales);
+              adivinado.push(unidadesTemporales);
+            }
           } else if (camino === "11") {
-            camino = "112";
-            unidadesTemporales = T;
-
-            removerDelRecurso(memoria[0]);
-            removerDeMiles(memoria[0]);
-            removerDeDecenas(memoria[0]);
-            removerDeUnidades(memoria[0]);
-            removerDelRecurso(memoria[1]);
-            removerDeMiles(memoria[1]);
-            removerDeDecenas(memoria[1]);
-            removerDeUnidades(memoria[1]);
-            removerDelRecurso(memoria[2]);
-            removerDeMiles(memoria[2]);
-            removerDeDecenas(memoria[2]);
-            removerDeUnidades(memoria[2]);
-            removerDelRecurso(memoria[3]);
-            removerDeMiles(memoria[3]);
-            removerDeDecenas(memoria[3]);
-            removerDeUnidades(memoria[3]);
+            camino = "win";
             adivinado.splice(0, adivinado.length);
-            for (let i = 0; i < miles.length; i++) {
-              if (i < miles.length) {
-                adivinado.push(miles[i]);
-                adivinado.push(miles[i + 1]);
-                adivinado.push(miles[i + 2]);
-                break;
-              } else {
-                console.log("I couldn't found number");
-              }
+            adivinado.push(decenasTemporales);
+            adivinado.push(U);
+          } else if (camino === "12") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "2") {
+            if (U == 0) {
+              toast.error("Que!! estos no es posible");
+            } else {
+              camino = "win";
+              adivinado.splice(0, adivinado.length);
+              adivinado.push(U);
+              adivinado.push(memoria[0]);
             }
-          } else if (camino === "112") {
-            camino = "1122";
+          } else if (camino === "21") {
+            camino = "win";
+            unidadesTemporales = memoria[0];
             adivinado.splice(0, adivinado.length);
             adivinado.push(U);
-            adivinado.push(H);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "23") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
             adivinado.push(T);
-            contador2++;
-          } else if (camino === "1121") {
-            camino = "11312";
-            milesTemporales = memoria[0];
-            removerDelRecurso(memoria[1]);
-            removerDeMiles(memoria[1]);
-            removerDeDecenas(memoria[1]);
-            removerDeUnidades(memoria[1]);
-
-            removerDelRecurso(memoria[0]);
-            removerDeMiles(memoria[0]);
-            removerDeDecenas(memoria[0]);
-            removerDeUnidades(memoria[0]);
-
-            adivinado.splice(0, adivinado.length);
-            for (let i = 0; i < decenas.length; i++) {
-              if (i < decenas.length) {
-                adivinado.push(milesTemporales);
-                adivinado.push(decenas[i]);
-                adivinado.push(unidadesTemporales);
-                break;
-              } else {
-                console.log("I couldn't found number");
-              }
-            }
-          } else if (camino === "11211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1122") {
-            adivinado.splice(0, adivinado.length);
-            if (contador2 == 2) {
-              esGanador = true;
-              toast.success("Yo gane");
-            } else {
-              adivinado.push(U);
-              adivinado.push(H);
-              adivinado.push(T);
-            }
-            contador2++;
-          } else if (camino === "113") {
-            camino = "1132";
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(U);
-            adivinado.push(H);
-            adivinado.push(T);
-            contador++;
-          } else if (camino === "1131") {
-            camino = "11312";
-            unidadesTemporales = memoria[2];
-            removerDelRecurso(memoria[1]);
-            removerDeMiles(memoria[1]);
-            removerDeDecenas(memoria[1]);
-            removerDeUnidades(memoria[1]);
-
-            removerDelRecurso(memoria[2]);
-            removerDeMiles(memoria[2]);
-            removerDeDecenas(memoria[2]);
-            removerDeUnidades(memoria[2]);
-            adivinado.splice(0, adivinado.length);
-            for (let i = 0; i < decenas.length; i++) {
-              if (i < decenas.length) {
-                adivinado.push(milesTemporales);
-                adivinado.push(decenas[i]);
-                adivinado.push(unidadesTemporales);
-                break;
-              } else {
-                console.log("I couldn't found number");
-              }
-            }
-          } else if (camino === "11311" || camino === "11312") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1132") {
-            adivinado.splice(0, adivinado.length);
-            if (contador == 2) {
-              esGanador = true;
-              toast.success("Yo gane");
-            } else {
-              adivinado.push(U);
-              adivinado.push(H);
-              adivinado.push(T);
-            }
-            contador++;
-          } else if (camino === "121") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1212") {
-            esGanador = true;
-
-            toast.success("Yo gane");
           }
         } else if (fijas == 1 && picas == 1) {
-          if (camino === "0") {
-            adivinado.splice(0, adivinado.length);
-            for (let i = 0; i < numeroPrincipal; i++) {
-              let n = Math.random() * 9 + 1;
-              if (adivinado.includes(n)) i--;
-              else adivinado.push(n);
-            }
-          } else if (camino === "01") {
-            camino = "011";
-            milesTemporales = H;
-            removerDelRecurso(H);
-            removerDeMiles(H);
-            removerDeDecenas(H);
-            removerDeUnidades(H);
-
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(T);
-            adivinado.push(U);
-            adivinado.push(milesTemporales);
-          } else if (camino === "011") {
-            camino = "0112";
-            decenasTemporales = T;
-            removerDelRecurso(H);
-            removerDeMiles(H);
-            removerDeDecenas(H);
-            removerDeUnidades(H);
-            removerDelRecurso(T);
-            removerDeMiles(T);
-            removerDeDecenas(T);
-            removerDeUnidades(T);
-
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(milesTemporales);
-            adivinado.push(decenasTemporales);
-            if (unidades.length == 1) {
-              camino = "win";
-              adivinado.push(unidades[0]);
-            } else {
-              adivinado.push(unidades[unidades.length - 1]);
-            }
-          } else if (camino === "0111") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0112") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "012") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "02") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "021") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "02111") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03") {
-            camino = "032";
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(T);
-            adivinado.push(H);
-            adivinado.push(U);
-          } else if (camino === "031") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0311") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03111" || camino === "03112") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "032") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0321") {
-            camino = "03211";
-            milesTemporales = H;
-            unidadesTemporales = T;
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(milesTemporales);
-            if (decenas.length == 1) {
-              camino = "win";
-              adivinado.push(decenas[0]);
-            } else {
-              adivinado.push(decenas[decenas.length - 1]);
-            }
-            adivinado.push(unidadesTemporales);
-          } else if (camino === "03211" || camino === "03212") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1") {
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(U);
-            adivinado.push(H);
-            adivinado.push(T);
-          } else if (camino === "11") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "112") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1121") {
-            camino = "11211";
-            decenasTemporales = T;
-            removerDelRecurso(memoria[0]);
-            removerDeMiles(memoria[0]);
-            removerDeDecenas(memoria[0]);
-            removerDeUnidades(memoria[0]);
-
-            removerDelRecurso(T);
-            removerDeMiles(T);
-            removerDeDecenas(T);
-            removerDeUnidades(T);
-            adivinado.splice(0, adivinado.length);
-            for (let i = 0; i < miles.length; i++) {
-              if (i < miles.length) {
-                adivinado.push(miles[i]);
-                adivinado.push(decenasTemporales);
-                adivinado.push(unidadesTemporales);
-                break;
-              } else {
-                console.log("I couldn't found number");
-              }
-            }
-          } else if (camino === "11211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "113") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-            console.log("You lose");
-          } else if (camino === "1131") {
-            camino = "11311";
-            decenasTemporales = T;
-            removerDelRecurso(memoria[2]);
-            removerDeMiles(memoria[2]);
-            removerDeDecenas(memoria[2]);
-            removerDeUnidades(memoria[2]);
-
-            removerDelRecurso(T);
-            removerDeMiles(T);
-            removerDeDecenas(T);
-            removerDeUnidades(T);
-            adivinado.splice(0, adivinado.length);
-            for (let i = 0; i < unidades.length; i++) {
-              if (i < unidades.length) {
-                adivinado.push(milesTemporales);
-                adivinado.push(decenasTemporales);
-                adivinado.push(unidades[i]);
-                break;
-              } else {
-                console.log("I couldn't found number");
-              }
-            }
-          } else if (camino === "11311" || camino === "11312") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1132" || camino === "1122") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "121") {
-            camino = "1211";
-            milesTemporales = H;
-            removerDelRecurso(H);
-            removerDeMiles(H);
-            removerDeDecenas(H);
-            removerDeUnidades(H);
-
-            removerDelRecurso(T);
-            removerDeMiles(T);
-            removerDeDecenas(T);
-            removerDeUnidades(T);
-
-            removerDelRecurso(memoria[1]);
-            removerDeMiles(memoria[1]);
-            removerDeDecenas(memoria[1]);
-            removerDeUnidades(memoria[1]);
-
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(milesTemporales);
-            adivinado.push(decenasTemporales);
-            adivinado.push(unidades[unidades.length - 1]);
-          } else if (camino === "1211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1212") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          }
-        } else if (fijas == 2 && picas == 0) {
-          if (camino === "0") {
-            camino = "01";
-            memoria.splice(0, memoria.length);
-            memoria.push(H);
-            memoria.push(T);
-            memoria.push(U);
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(H);
-            adivinado.push(U);
-            adivinado.push(T);
-          } else if (camino === "0111") {
-            camino = "0111";
-            removerDelRecurso(T);
-            removerDeMiles(T);
-            removerDeDecenas(T);
-            removerDeUnidades(T);
-
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(milesTemporales);
-            if (decenas.length == 1) {
-              camino = "win";
-              adivinado.push(decenas[0]);
-            } else {
-              adivinado.push(decenas[decenas.length - 1]);
-            }
-            adivinado.push(unidadesTemporales);
-          } else if (camino === "011") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "01") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0112") {
-            removerDelRecurso(U);
-            removerDeMiles(U);
-            removerDeDecenas(U);
-            removerDeUnidades(U);
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(milesTemporales);
-            adivinado.push(decenasTemporales);
-            if (unidades.length == 1) {
-              camino = "win";
-              adivinado.push(unidades[0]);
-            } else {
-              adivinado.push(unidades[unidades.length - 1]);
-            }
-          } else if (camino === "012") {
-            removerDelRecurso(H);
-            removerDeMiles(H);
-            removerDeDecenas(H);
-            removerDeUnidades(H);
-
-            adivinado.splice(0, adivinado.length);
-            if (miles.length == 1) {
-              camino = "win";
-              adivinado.push(miles[0]);
-            } else {
-              adivinado.push(miles[miles.length - 1]);
-            }
-            adivinado.push(decenasTemporales);
-            adivinado.push(unidadesTemporales);
-          } else if (camino === "02") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "021") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "02111") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03") {
-            camino = "031";
-            removerDelRecurso(H);
-            removerDeMiles(H);
-            removerDeDecenas(H);
-            removerDeUnidades(H);
-
-            removerDelRecurso(T);
-            removerDeMiles(T);
-            removerDeDecenas(T);
-            removerDeUnidades(T);
-
-            removerDelRecurso(U);
-            removerDeMiles(U);
-            removerDeDecenas(U);
-            removerDeUnidades(U);
-
-            memoria.splice(0, memoria.length);
-            memoria.push(H);
-            memoria.push(T);
-            memoria.push(U);
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(H);
-            adivinado.push(T);
-            if (unidades.length == 1) {
-              camino = "win";
-              adivinado.push(unidades[0]);
-            } else {
-              adivinado.push(unidades[unidades.length - 1]);
-            }
-          } else if (camino === "031") {
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(H);
-            adivinado.push(T);
-            if (unidades.length == 1) {
-              camino = "win";
-              adivinado.push(unidades[0]);
-            } else {
-              adivinado.push(unidades[unidades.length - 1]);
-            }
-          } else if (camino === "0311") {
-            camino = "03112";
-            removerDelRecurso(T);
-            removerDeMiles(T);
-            removerDeDecenas(T);
-            removerDeUnidades(T);
-
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(memoria[0]);
-            if (decenas.length == 1) {
-              camino = "win";
-              adivinado.push(decenas[0]);
-            } else {
-              adivinado.push(decenas[decenas.length - 1]);
-            }
-            adivinado.push(memoria[2]);
-          } else if (camino === "03111") {
-            removerDelRecurso(H);
-            removerDeMiles(H);
-            removerDeDecenas(H);
-            removerDeUnidades(H);
-
-            adivinado.splice(0, adivinado.length);
-            if (miles.length == 1) {
-              camino = "win";
-              adivinado.push(miles[0]);
-            } else {
-              adivinado.push(miles[miles.length - 1]);
-            }
-            adivinado.push(memoria[1]);
-            adivinado.push(memoria[2]);
-          } else if (camino === "03112") {
-            removerDelRecurso(T);
-            removerDeMiles(T);
-            removerDeDecenas(T);
-            removerDeUnidades(T);
-
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(memoria[0]);
-            if (decenas.length == 1) {
-              camino = "win";
-              adivinado.push(decenas[0]);
-            } else {
-              adivinado.push(decenas[decenas.length - 1]);
-            }
-            adivinado.push(memoria[2]);
-          } else if (camino === "032") {
-            camino = "0321";
-            decenasTemporales = U;
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(H);
-            adivinado.push(decenasTemporales);
-            adivinado.push(T);
-          } else if (camino === "0321") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03211") {
-            removerDelRecurso(T);
-            removerDeMiles(T);
-            removerDeDecenas(T);
-            removerDeUnidades(T);
-
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(milesTemporales);
-            if (decenas.length == 1) {
-              camino = "win";
-              adivinado.push(decenas[0]);
-            } else {
-              adivinado.push(decenas[decenas.length - 1]);
-            }
-            adivinado.push(unidadesTemporales);
-          } else if (camino === "03212") {
-            removerDelRecurso(H);
-            removerDeMiles(H);
-            removerDeDecenas(H);
-            removerDeUnidades(H);
-
-            if (miles.length == 1) {
-              camino = "win";
-              adivinado.push(miles[0]);
-            } else {
-              adivinado.push(miles[miles.length - 1]);
-            }
-            adivinado.push(decenasTemporales);
-            adivinado.push(unidadesTemporales);
-          } else if (camino === "1") {
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(U);
-            adivinado.push(H);
-            adivinado.push(T);
-          } else if (camino === "11") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "112") {
-            camino = "win";
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(H);
-            adivinado.push(T);
-            adivinado.push(unidadesTemporales);
-          } else if (camino === "1121") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "11211") {
-            removerDelRecurso(H);
-            removerDeMiles(H);
-            removerDeDecenas(H);
-            removerDeUnidades(H);
-            adivinado.splice(0, adivinado.length);
-            if (miles.length == 1) {
-              camino = "win";
-              adivinado.push(miles[0]);
-              adivinado.push(decenasTemporales);
-              adivinado.push(unidadesTemporales);
-            } else {
-              for (let i = 0; i < miles.length; i++) {
-                if (i < miles.length) {
-                  adivinado.push(miles[i]);
-                  adivinado.push(decenasTemporales);
-                  adivinado.push(unidadesTemporales);
-                  break;
-                } else {
-                  console.log("I couldn't found number");
-                }
-              }
-            }
-          } else if (camino === "113") {
-            camino = "win";
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(milesTemporales);
-            adivinado.push(T);
-            adivinado.push(U);
-          } else if (camino === "1131") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "11311") {
-            removerDelRecurso(U);
-            removerDeMiles(U);
-            removerDeDecenas(U);
-            removerDeUnidades(U);
-
-            adivinado.splice(0, adivinado.length);
-            if (unidades.length == 1) {
-              camino = "win";
-              adivinado.push(milesTemporales);
-              adivinado.push(decenasTemporales);
-              adivinado.push(unidades[0]);
-            } else {
-              for (let i = 0; i < unidades.length; i++) {
-                if (i < unidades.length) {
-                  adivinado.push(milesTemporales);
-                  adivinado.push(decenasTemporales);
-                  adivinado.push(unidades[i]);
-                  break;
-                } else {
-                  console.log("I couldn't found number");
-                }
-              }
-            }
-          } else if (camino === "11312") {
-            removerDelRecurso(T);
-            removerDeMiles(T);
-            removerDeDecenas(T);
-            removerDeUnidades(T);
-
-            adivinado.splice(0, adivinado.length);
-            if (unidades.length == 1) {
-              camino = "win";
-              adivinado.push(milesTemporales);
-              adivinado.push(decenas[0]);
-              adivinado.push(unidadesTemporales);
-            } else {
-              for (let i = 0; i < decenas.length; i++) {
-                if (i < unidades.length) {
-                  adivinado.push(milesTemporales);
-                  adivinado.push(decenas[i]);
-                  adivinado.push(unidadesTemporales);
-                  break;
-                } else {
-                  console.log("I couldn't found number");
-                }
-              }
-            }
-          } else if (camino === "1132" || camino === "1122") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "121") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1211") {
-            removerDelRecurso(U);
-            removerDeMiles(U);
-            removerDeDecenas(U);
-            removerDeUnidades(U);
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(milesTemporales);
-            adivinado.push(decenasTemporales);
-            if (unidades.length > 1) {
-              adivinado.push(unidades[unidades.length - 1]);
-            } else {
-              camino = "win";
-              adivinado.push(unidades[0]);
-            }
-          } else if (camino === "1212") {
-            removerDelRecurso(H);
-            removerDeMiles(H);
-            removerDeDecenas(H);
-            removerDeUnidades(H);
-            adivinado.splice(0, adivinado.length);
-            if (miles.length > 1) {
-              adivinado.push(miles[miles.length - 1]);
-            } else {
-              camino = "win";
-              adivinado.push(miles[0]);
-            }
-            adivinado.push(decenasTemporales);
-            adivinado.push(unidadesTemporales);
-          }
-        } else if (fijas == 0 && picas == 2) {
-          if (camino === "0") {
-            camino = "03";
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(U);
-            adivinado.push(H);
-            adivinado.push(T);
-            contador3++;
-          } else if (camino === "01") {
-            camino = "012";
-            decenasTemporales = U;
-            unidadesTemporales = T;
-            removerDelRecurso(U);
-            removerDeMiles(U);
-            removerDeDecenas(U);
-            removerDeUnidades(U);
-
-            removerDelRecurso(T);
-            removerDeMiles(T);
-            removerDeDecenas(T);
-            removerDeUnidades(T);
-
-            removerDelRecurso(H);
-            removerDeMiles(H);
-            removerDeDecenas(H);
-            removerDeUnidades(H);
-
-            adivinado.splice(0, adivinado.length);
-            if (miles.length == 1) {
-              camino = "win";
-              adivinado.push(miles[0]);
-            } else {
-              adivinado.push(miles[miles.length - 1]);
-            }
-            adivinado.push(decenasTemporales);
-            adivinado.push(unidadesTemporales);
-          } else if (camino === "011") {
-            camino = "0111";
-            unidadesTemporales = H;
-            removerDelRecurso(H);
-            removerDeMiles(H);
-            removerDeDecenas(H);
-            removerDeUnidades(H);
-
-            removerDelRecurso(T);
-            removerDeMiles(T);
-            removerDeDecenas(T);
-            removerDeUnidades(T);
-
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(milesTemporales);
-            if (decenas.length == 1) {
-              camino = "win";
-              adivinado.push(decenas[0]);
-            } else {
-              adivinado.push(decenas[decenas.length - 1]);
-            }
-            adivinado.push(unidadesTemporales);
-          } else if (camino === "0111") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0112") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "012") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "02") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "021") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "02111") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03") {
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(U);
-            adivinado.push(H);
-            adivinado.push(T);
-            if (contador3 == 2) {
-              esGanador = true;
-
-              toast.success("Yo gane");
-            }
-            contador3++;
-          } else if (camino === "031") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0311") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03111" || camino === "03112") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "032") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0321") {
-            camino = "03212";
-            decenasTemporales = U;
-            unidadesTemporales = T;
-            adivinado.splice(0, adivinado.length);
-            if (miles.length == 1) {
-              camino = "win";
-              adivinado.push(miles[0]);
-            } else {
-              adivinado.push(miles[miles.length - 1]);
-            }
-            adivinado.push(decenasTemporales);
-            adivinado.push(unidadesTemporales);
-          } else if (camino === "03211" || camino === "03212") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1") {
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(U);
-            adivinado.push(H);
-            adivinado.push(T);
-          } else if (camino === "11") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "121") {
-            camino = "1212";
-            adivinado.splice(0, adivinado.length);
-            unidadesTemporales = T;
-
-            removerDelRecurso(H);
-            removerDeDecenas(H);
-            removerDeUnidades(H);
-            removerDeMiles(H);
-
-            removerDelRecurso(unidadesTemporales);
-            removerDeDecenas(unidadesTemporales);
-            removerDeUnidades(unidadesTemporales);
-            removerDeMiles(unidadesTemporales);
-            if (miles.length > 0) {
-              adivinado.push(miles[miles.length - 1]);
-              adivinado.push(decenasTemporales);
-              adivinado.push(unidadesTemporales);
-            }
-          } else if (camino === "112") {
-            camino = "win";
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(T);
-            adivinado.push(H);
-            adivinado.push(unidadesTemporales);
-          } else if (camino === "1121") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "11211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "113") {
-            camino = "win";
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(milesTemporales);
-            adivinado.push(U);
-            adivinado.push(T);
-          } else if (camino === "1131") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "11311" || camino === "11312") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1132" || camino === "1122") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "12") {
-            camino = "122";
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(U);
-            adivinado.push(decenasTemporales);
-            adivinado.push(H);
-          } else if (camino === "1211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1212") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          }
-        } else if (fijas == 2 && picas == 1) {
-          esGanador = true;
-
-          toast.success("Yo gane");
-        } else if (fijas == 1 && picas == 2) {
-          if (camino === "0") {
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(U);
-            adivinado.push(H);
-            adivinado.push(T);
-          } else if (camino === "01") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0111") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0112") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "011") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "012") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "02") {
-            camino = "021";
-            memoria.splice(0, memoria.length);
-            memoria.push(H);
-            memoria.push(T);
-            memoria.push(U);
-
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(H);
-            adivinado.push(decenas[0]);
-            adivinado.push(unidades[0]);
-          } else if (camino === "021") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "02111") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "031") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0311") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03111" || camino === "03112") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "032") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0321") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03211" || camino === "03212") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1") {
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(U);
-            adivinado.push(H);
-            adivinado.push(T);
-          } else if (camino === "11") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "112") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1121") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "11211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "113") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1131") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "11311" || camino === "11312") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1132" || camino === "1122") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "121") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1212") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          }
-        } else if (fijas == 3) {
-          if (camino === "01") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "011") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "021") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "02111") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "032") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0321") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "11") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "112") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1121") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "113") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1131") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1132" || camino === "1122") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "121") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          }
-        } else if (picas == 3) {
-          if (camino === "0") {
-            camino = "02";
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(U);
-            adivinado.push(H);
-            adivinado.push(T);
-          } else if (camino === "01") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0111") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0112") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "011") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "012") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "02") {
+          camino = "win";
+          toast.error("Que!! estos no es posible");
+        } else if (picas == 2) {
+          if (U == 0) {
+            toast.error("Revisa tus respuestas");
+          } else {
             camino = "win";
             adivinado.splice(0, adivinado.length);
             adivinado.push(U);
-            adivinado.push(H);
             adivinado.push(T);
-          } else if (camino === "021") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "02111") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "031") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0311") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03111" || camino === "03112") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "032") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "0321") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "03211" || camino === "03212") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1") {
-            adivinado.splice(0, adivinado.length);
-            adivinado.push(U);
-            adivinado.push(H);
-            adivinado.push(T);
-          } else if (camino === "11") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "112") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1121") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "11211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "113") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1131") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "11311" || camino === "11312") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1132" || camino === "1122") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "121") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1211") {
-            esGanador = true;
-
-            toast.success("Yo gane");
-          } else if (camino === "1212") {
-            esGanador = true;
-
-            toast.success("Yo gane");
           }
-        } else if (fijas < 0 || fijas > 3 || picas < 0 || picas > 3) {
+        } else if (fijas < 0 || fijas > 2 || picas < 0 || picas > 2) {
           toast.error("Esto valores no son posibles");
         } else {
           toast.error("las picas y fijas deben estar entre 0 y 2");
+        }
+      } else if (numeroPrincipal == 3) {
+        //012
+        const U = adivinado[2];
+        const T = adivinado[1];
+        const H = adivinado[0];
+        if (fijas == 0 && picas == 0) {
+          if (camino === "0") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            adivinado.splice(0, adivinado.length);
+            if (recurso.length == 4) {
+              camino = "win";
+              adivinado.push(recurso[recurso.length - 1]);
+              adivinado.push(recurso[recurso.length - 2]);
+              adivinado.push(recurso[recurso.length - 3]);
+            } else if (recurso.length > 1) {
+              adivinado.push(recurso[recurso.length - 1]);
+              adivinado.push(recurso[recurso.length - 2]);
+              adivinado.push(recurso[recurso.length - 3]);
+            }
+          } else if (camino === "01") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "011") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0111") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0112") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "012") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "02") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "021") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "02111") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "031") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0311") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03111" || camino === "03112") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "032") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0321") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03211" || camino === "03212") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1") {
+            camino = "12";
+            removerDelRecurso(memoria[0]);
+            removerDelRecurso(memoria[1]);
+            removerDelRecurso(memoria[2]);
+            removerDelRecurso(memoria[3]);
+
+            removerDeMiles(memoria[0]);
+            removerDeMiles(memoria[1]);
+            removerDeMiles(memoria[2]);
+            removerDeMiles(memoria[3]);
+
+            removerDeUnidades(memoria[0]);
+            removerDeUnidades(memoria[1]);
+            removerDeUnidades(memoria[2]);
+            removerDeUnidades(memoria[3]);
+
+            removerDeDecenas(memoria[0]);
+            removerDeDecenas(memoria[1]);
+            removerDeDecenas(memoria[2]);
+            removerDeDecenas(memoria[3]);
+
+            decenasTemporales = memoria[1];
+            adivinado.splice(0, adivinado.length);
+            for (let i = 0; i < unidades.length; i++) {
+              if (i < unidades.length) {
+                adivinado.push(unidades[i]);
+                adivinado.push(unidades[i + 1]);
+                adivinado.push(unidades[i + 2]);
+                break;
+              } else {
+                console.log("I couldn't found number");
+              }
+            }
+          } else if (camino === "11") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "112") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+            adivinado.splice(0, adivinado.length);
+            if (miles.length == 0) {
+              esGanador = true;
+
+              toast.success("Yo gane");
+            } else {
+              for (let i = 0; i < miles.length; i++) {
+                if (i < decenas.length) {
+                  adivinado.push(miles[i]);
+                  adivinado.push(miles[i + 1]);
+                  adivinado.push(miles[i + 2]);
+                  break;
+                } else {
+                  console.log("I couldn't found number");
+                }
+              }
+            }
+          } else if (camino === "1121") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "11211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "113") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+
+            adivinado.splice(0, adivinado.length);
+            if (decenas.length == 0) {
+              esGanador = true;
+
+              toast.success("Yo gane");
+            } else {
+              for (let i = 0; i < decenas.length; i++) {
+                if (i < decenas.length) {
+                  adivinado.push(decenas[i]);
+                  adivinado.push(decenas[i + 1]);
+                  adivinado.push(decenas[i + 2]);
+                  break;
+                } else {
+                  console.log("I couldn't found number");
+                }
+              }
+            }
+          } else if (camino === "1131") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "11311" || camino === "11312") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1132" || camino === "1122") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "121") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1212") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          }
+        } else if (fijas == 1 && picas == 0) {
+          if (camino === "0") {
+            camino = "1";
+            adivinado.splice(0, adivinado.length);
+            for (let i = 0; i < recurso.length; i++) {
+              if (recurso[i] != T && recurso[i] != U && recurso[i] != H) {
+                adivinado.push(H);
+                adivinado.push(recurso[i]);
+                adivinado.push(U);
+                memoria.push(H);
+                memoria.push(T);
+                memoria.push(U);
+                memoria.push(recurso[i]);
+                break;
+              }
+            }
+          } else if (camino === "1") {
+            camino = "11";
+            removerDelRecurso(memoria[1]);
+            removerDelRecurso(memoria[2]);
+            decenasTemporales = memoria[0];
+
+            removerDeUnidades(memoria[0]);
+            removerDeUnidades(memoria[1]);
+            removerDeUnidades(memoria[2]);
+
+            adivinado.splice(0, adivinado.length);
+            if (unidades.length == 1) {
+              camino = "win";
+              adivinado.push(memoria[0]);
+              adivinado.push(unidades[0]);
+            } else {
+              contador = 0;
+              for (let i = 0; i < unidades.length; i++) {
+                if (unidades[i] != 0) {
+                  if (contador < 2) {
+                    contador++;
+                    memoria.push(unidades[i]);
+                  } else {
+                    adivinado.push(memoria[3]);
+                    adivinado.push(memoria[4]);
+                    break;
+                  }
+                } else {
+                  adivinado.push(memoria[3]);
+                }
+              }
+            }
+          } else if (camino === "11") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(U);
+          } else if (camino === "12") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "2") {
+            camino = "23";
+            decenasTemporales = memoria[1];
+            removerDeUnidades(memoria[0]);
+            removerDeUnidades(memoria[1]);
+            removerDeUnidades(memoria[2]);
+            adivinado.splice(0, adivinado.length);
+
+            if (unidades.length > 1) {
+              adivinado.push(unidades[0]);
+              adivinado.push(unidades[1]);
+            } else {
+              camino = "win";
+              adivinado.push(decenasTemporales);
+              adivinado.push(unidades[0]);
+            }
+          } else if (camino === "21") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "23") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(U);
+          }
+        } else if (fijas == 0 && picas == 1) {
+          adivinado.splice(0, adivinado.length);
+          if (camino === "0") {
+            camino = "2";
+            contador2++;
+            for (let i = 0; i < recurso.length; i++) {
+              if (recurso[i] != U && recurso[i] != T) {
+                adivinado.push(U);
+                adivinado.push(recurso[i]);
+                memoria.push(T);
+                memoria.push(U);
+                memoria.push(recurso[i]);
+                break;
+              }
+            }
+          } else if (camino === "1") {
+            if (U == 0) {
+              interacciones--;
+              toast.error("Que!! estos no es posible");
+            } else {
+              camino = "win";
+              decenasTemporales = memoria[2];
+              unidadesTemporales = memoria[1];
+              adivinado.push(decenasTemporales);
+              adivinado.push(unidadesTemporales);
+            }
+          } else if (camino === "11") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(U);
+          } else if (camino === "12") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "2") {
+            if (U == 0) {
+              toast.error("Que!! estos no es posible");
+            } else {
+              camino = "win";
+              adivinado.splice(0, adivinado.length);
+              adivinado.push(U);
+              adivinado.push(memoria[0]);
+            }
+          } else if (camino === "21") {
+            camino = "win";
+            unidadesTemporales = memoria[0];
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(U);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "23") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(T);
+          }
+        } else if (fijas == 1 && picas == 1) {
+          camino = "win";
+          toast.error("Que!! estos no es posible");
+        } else if (picas == 2) {
+          if (U == 0) {
+            toast.error("Revisa tus respuestas");
+          } else {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(U);
+            adivinado.push(T);
+          }
+        } else if (fijas < 0 || fijas > 2 || picas < 0 || picas > 2) {
+          toast.error("Esto valores no son posibles");
+        } else {
+          toast.error("las picas y fijas deben estar entre 0 y 2");
+        }
+      } else if (numeroPrincipal == 3) {
+        //012
+        const U = adivinado[2];
+        const T = adivinado[1];
+        const H = adivinado[0];
+        if (fijas == 0 && picas == 0) {
+          if (camino === "0") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            adivinado.splice(0, adivinado.length);
+            if (recurso.length == 4) {
+              camino = "win";
+              adivinado.push(recurso[recurso.length - 1]);
+              adivinado.push(recurso[recurso.length - 2]);
+              adivinado.push(recurso[recurso.length - 3]);
+            } else if (recurso.length > 1) {
+              adivinado.push(recurso[recurso.length - 1]);
+              adivinado.push(recurso[recurso.length - 2]);
+              adivinado.push(recurso[recurso.length - 3]);
+            }
+          } else if (camino === "01") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "011") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0111") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0112") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "012") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "02") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "021") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "02111") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "031") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0311") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03111" || camino === "03112") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "032") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0321") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03211" || camino === "03212") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1") {
+            camino = "12";
+            removerDelRecurso(memoria[0]);
+            removerDelRecurso(memoria[1]);
+            removerDelRecurso(memoria[2]);
+            removerDelRecurso(memoria[3]);
+
+            removerDeMiles(memoria[0]);
+            removerDeMiles(memoria[1]);
+            removerDeMiles(memoria[2]);
+            removerDeMiles(memoria[3]);
+
+            removerDeUnidades(memoria[0]);
+            removerDeUnidades(memoria[1]);
+            removerDeUnidades(memoria[2]);
+            removerDeUnidades(memoria[3]);
+
+            removerDeDecenas(memoria[0]);
+            removerDeDecenas(memoria[1]);
+            removerDeDecenas(memoria[2]);
+            removerDeDecenas(memoria[3]);
+
+            decenasTemporales = memoria[1];
+            adivinado.splice(0, adivinado.length);
+            for (let i = 0; i < unidades.length; i++) {
+              if (i < unidades.length) {
+                adivinado.push(unidades[i]);
+                adivinado.push(unidades[i + 1]);
+                adivinado.push(unidades[i + 2]);
+                break;
+              } else {
+                console.log("I couldn't found number");
+              }
+            }
+          } else if (camino === "11") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "112") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+            adivinado.splice(0, adivinado.length);
+            if (miles.length == 0) {
+              esGanador = true;
+
+              toast.success("Yo gane");
+            } else {
+              for (let i = 0; i < miles.length; i++) {
+                if (i < decenas.length) {
+                  adivinado.push(miles[i]);
+                  adivinado.push(miles[i + 1]);
+                  adivinado.push(miles[i + 2]);
+                  break;
+                } else {
+                  console.log("I couldn't found number");
+                }
+              }
+            }
+          } else if (camino === "1121") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "11211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "113") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+
+            adivinado.splice(0, adivinado.length);
+            if (decenas.length == 0) {
+              esGanador = true;
+
+              toast.success("Yo gane");
+            } else {
+              for (let i = 0; i < decenas.length; i++) {
+                if (i < decenas.length) {
+                  adivinado.push(decenas[i]);
+                  adivinado.push(decenas[i + 1]);
+                  adivinado.push(decenas[i + 2]);
+                  break;
+                } else {
+                  console.log("I couldn't found number");
+                }
+              }
+            }
+          } else if (camino === "1131") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "11311" || camino === "11312") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1132" || camino === "1122") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "121") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1212") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          }
+        } else if (fijas == 1 && picas == 0) {
+          if (camino === "0") {
+            camino = "1";
+            adivinado.splice(0, adivinado.length);
+            for (let i = 0; i < recurso.length; i++) {
+              if (recurso[i] != T && recurso[i] != U && recurso[i] != H) {
+                adivinado.push(H);
+                adivinado.push(recurso[i]);
+                adivinado.push(U);
+                memoria.push(H);
+                memoria.push(T);
+                memoria.push(U);
+                memoria.push(recurso[i]);
+                break;
+              }
+            }
+          } else if (camino === "1") {
+            camino = "11";
+            removerDelRecurso(memoria[1]);
+            removerDelRecurso(memoria[2]);
+            decenasTemporales = memoria[0];
+
+            removerDeUnidades(memoria[0]);
+            removerDeUnidades(memoria[1]);
+            removerDeUnidades(memoria[2]);
+
+            adivinado.splice(0, adivinado.length);
+            if (unidades.length == 1) {
+              camino = "win";
+              adivinado.push(memoria[0]);
+              adivinado.push(unidades[0]);
+            } else {
+              contador = 0;
+              for (let i = 0; i < unidades.length; i++) {
+                if (unidades[i] != 0) {
+                  if (contador < 2) {
+                    contador++;
+                    memoria.push(unidades[i]);
+                  } else {
+                    adivinado.push(memoria[3]);
+                    adivinado.push(memoria[4]);
+                    break;
+                  }
+                } else {
+                  adivinado.push(memoria[3]);
+                }
+              }
+            }
+          } else if (camino === "11") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(U);
+          } else if (camino === "12") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "2") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(U);
+          }
+        } else if (fijas == 0 && picas == 1) {
+          adivinado.splice(0, adivinado.length);
+          if (camino === "0") {
+            camino = "2";
+            contador2++;
+            for (let i = 0; i < recurso.length; i++) {
+              if (recurso[i] != U && recurso[i] != T) {
+                adivinado.push(U);
+                adivinado.push(recurso[i]);
+                memoria.push(T);
+                memoria.push(U);
+                memoria.push(recurso[i]);
+                break;
+              }
+            }
+          } else if (camino === "1") {
+            if (U == 0) {
+              interacciones--;
+              toast.error("Que!! estos no es posible");
+            } else {
+              camino = "win";
+              decenasTemporales = memoria[2];
+              unidadesTemporales = memoria[1];
+              adivinado.push(decenasTemporales);
+              adivinado.push(unidadesTemporales);
+            }
+          } else if (camino === "11") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(U);
+          } else if (camino === "12") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "2") {
+            if (U == 0) {
+              toast.error("Que!! estos no es posible");
+            } else {
+              camino = "win";
+              adivinado.splice(0, adivinado.length);
+              adivinado.push(U);
+              adivinado.push(memoria[0]);
+            }
+          } else if (camino === "21") {
+            camino = "win";
+            unidadesTemporales = memoria[0];
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(U);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "23") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(T);
+          }
+        } else if (fijas == 1 && picas == 1) {
+          camino = "win";
+          toast.error("Que!! estos no es posible");
+        } else if (picas == 2) {
+          if (U == 0) {
+            toast.error("Revisa tus respuestas");
+          } else {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(U);
+            adivinado.push(T);
+          }
+        } else if (fijas < 0 || fijas > 2 || picas < 0 || picas > 2) {
+          toast.error("Esto valores no son posibles");
+        } else {
+          toast.error("las picas y fijas deben estar entre 0 y 2");
+        }
+      } else if (numeroPrincipal == 3) {
+        //012
+        const U = adivinado[2];
+        const T = adivinado[1];
+        const H = adivinado[0];
+        if (fijas == 0 && picas == 0) {
+          if (camino === "0") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            adivinado.splice(0, adivinado.length);
+            if (recurso.length == 4) {
+              camino = "win";
+              adivinado.push(recurso[recurso.length - 1]);
+              adivinado.push(recurso[recurso.length - 2]);
+              adivinado.push(recurso[recurso.length - 3]);
+            } else if (recurso.length > 1) {
+              adivinado.push(recurso[recurso.length - 1]);
+              adivinado.push(recurso[recurso.length - 2]);
+              adivinado.push(recurso[recurso.length - 3]);
+            }
+          } else if (camino === "01") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "011") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0111") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0112") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "012") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "02") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "021") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "02111") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "031") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0311") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03111" || camino === "03112") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "032") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0321") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03211" || camino === "03212") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1") {
+            camino = "12";
+            removerDelRecurso(memoria[0]);
+            removerDelRecurso(memoria[1]);
+            removerDelRecurso(memoria[2]);
+            removerDelRecurso(memoria[3]);
+
+            removerDeMiles(memoria[0]);
+            removerDeMiles(memoria[1]);
+            removerDeMiles(memoria[2]);
+            removerDeMiles(memoria[3]);
+
+            removerDeUnidades(memoria[0]);
+            removerDeUnidades(memoria[1]);
+            removerDeUnidades(memoria[2]);
+            removerDeUnidades(memoria[3]);
+
+            removerDeDecenas(memoria[0]);
+            removerDeDecenas(memoria[1]);
+            removerDeDecenas(memoria[2]);
+            removerDeDecenas(memoria[3]);
+
+            decenasTemporales = memoria[1];
+            adivinado.splice(0, adivinado.length);
+            for (let i = 0; i < unidades.length; i++) {
+              if (i < unidades.length) {
+                adivinado.push(unidades[i]);
+                adivinado.push(unidades[i + 1]);
+                adivinado.push(unidades[i + 2]);
+                break;
+              } else {
+                console.log("I couldn't found number");
+              }
+            }
+          } else if (camino === "11") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "112") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+            adivinado.splice(0, adivinado.length);
+            if (miles.length == 0) {
+              esGanador = true;
+
+              toast.success("Yo gane");
+            } else {
+              for (let i = 0; i < miles.length; i++) {
+                if (i < decenas.length) {
+                  adivinado.push(miles[i]);
+                  adivinado.push(miles[i + 1]);
+                  adivinado.push(miles[i + 2]);
+                  break;
+                } else {
+                  console.log("I couldn't found number");
+                }
+              }
+            }
+          } else if (camino === "1121") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "11211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "113") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+
+            adivinado.splice(0, adivinado.length);
+            if (decenas.length == 0) {
+              esGanador = true;
+
+              toast.success("Yo gane");
+            } else {
+              for (let i = 0; i < decenas.length; i++) {
+                if (i < decenas.length) {
+                  adivinado.push(decenas[i]);
+                  adivinado.push(decenas[i + 1]);
+                  adivinado.push(decenas[i + 2]);
+                  break;
+                } else {
+                  console.log("I couldn't found number");
+                }
+              }
+            }
+          } else if (camino === "1131") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "11311" || camino === "11312") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1132" || camino === "1122") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "121") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1212") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          }
+        } else if (fijas == 1 && picas == 0) {
+          if (camino === "0") {
+            camino = "1";
+            adivinado.splice(0, adivinado.length);
+            for (let i = 0; i < recurso.length; i++) {
+              if (recurso[i] != T && recurso[i] != U && recurso[i] != H) {
+                adivinado.push(H);
+                adivinado.push(recurso[i]);
+                adivinado.push(U);
+                memoria.push(H);
+                memoria.push(T);
+                memoria.push(U);
+                memoria.push(recurso[i]);
+                break;
+              }
+            }
+          } else if (camino === "1") {
+            camino = "11";
+            removerDelRecurso(memoria[1]);
+            removerDelRecurso(memoria[2]);
+            decenasTemporales = memoria[0];
+
+            removerDeUnidades(memoria[0]);
+            removerDeUnidades(memoria[1]);
+            removerDeUnidades(memoria[2]);
+
+            adivinado.splice(0, adivinado.length);
+            if (unidades.length == 1) {
+              camino = "win";
+              adivinado.push(memoria[0]);
+              adivinado.push(unidades[0]);
+            } else {
+              contador = 0;
+              for (let i = 0; i < unidades.length; i++) {
+                if (unidades[i] != 0) {
+                  if (contador < 2) {
+                    contador++;
+                    memoria.push(unidades[i]);
+                  } else {
+                    adivinado.push(memoria[3]);
+                    adivinado.push(memoria[4]);
+                    break;
+                  }
+                } else {
+                  adivinado.push(memoria[3]);
+                }
+              }
+            }
+          } else if (camino === "11") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(U);
+          } else if (camino === "12") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "2") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(U);
+          }
+        } else if (fijas == 0 && picas == 1) {
+          adivinado.splice(0, adivinado.length);
+          if (camino === "0") {
+            camino = "2";
+            contador2++;
+            for (let i = 0; i < recurso.length; i++) {
+              if (recurso[i] != U && recurso[i] != T) {
+                adivinado.push(U);
+                adivinado.push(recurso[i]);
+                memoria.push(T);
+                memoria.push(U);
+                memoria.push(recurso[i]);
+                break;
+              }
+            }
+          } else if (camino === "1") {
+            if (U == 0) {
+              interacciones--;
+              toast.error("Que!! estos no es posible");
+            } else {
+              camino = "win";
+              decenasTemporales = memoria[2];
+              unidadesTemporales = memoria[1];
+              adivinado.push(decenasTemporales);
+              adivinado.push(unidadesTemporales);
+            }
+          } else if (camino === "11") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(U);
+          } else if (camino === "12") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "2") {
+            if (U == 0) {
+              toast.error("Que!! estos no es posible");
+            } else {
+              camino = "win";
+              adivinado.splice(0, adivinado.length);
+              adivinado.push(U);
+              adivinado.push(memoria[0]);
+            }
+          } else if (camino === "21") {
+            camino = "win";
+            unidadesTemporales = memoria[0];
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(U);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "23") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(T);
+          }
+        } else if (fijas == 1 && picas == 1) {
+          camino = "win";
+          toast.error("Que!! estos no es posible");
+        } else if (picas == 2) {
+          if (U == 0) {
+            toast.error("Revisa tus respuestas");
+          } else {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(U);
+            adivinado.push(T);
+          }
+        } else if (fijas < 0 || fijas > 2 || picas < 0 || picas > 2) {
+          toast.error("Esto valores no son posibles");
+        } else {
+          toast.error("las picas y fijas deben estar entre 0 y 2");
+        }
+      } else if (numeroPrincipal == 3) {
+        //012
+        const U = adivinado[2];
+        const T = adivinado[1];
+        const H = adivinado[0];
+        if (fijas == 0 && picas == 0) {
+          if (camino === "0") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            adivinado.splice(0, adivinado.length);
+            if (recurso.length == 4) {
+              camino = "win";
+              adivinado.push(recurso[recurso.length - 1]);
+              adivinado.push(recurso[recurso.length - 2]);
+              adivinado.push(recurso[recurso.length - 3]);
+            } else if (recurso.length > 1) {
+              adivinado.push(recurso[recurso.length - 1]);
+              adivinado.push(recurso[recurso.length - 2]);
+              adivinado.push(recurso[recurso.length - 3]);
+            }
+          } else if (camino === "01") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "011") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0111") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0112") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "012") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "02") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "021") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "02111") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "031") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0311") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03111" || camino === "03112") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "032") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0321") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03211" || camino === "03212") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1") {
+            camino = "12";
+            removerDelRecurso(memoria[0]);
+            removerDelRecurso(memoria[1]);
+            removerDelRecurso(memoria[2]);
+            removerDelRecurso(memoria[3]);
+
+            removerDeMiles(memoria[0]);
+            removerDeMiles(memoria[1]);
+            removerDeMiles(memoria[2]);
+            removerDeMiles(memoria[3]);
+
+            removerDeUnidades(memoria[0]);
+            removerDeUnidades(memoria[1]);
+            removerDeUnidades(memoria[2]);
+            removerDeUnidades(memoria[3]);
+
+            removerDeDecenas(memoria[0]);
+            removerDeDecenas(memoria[1]);
+            removerDeDecenas(memoria[2]);
+            removerDeDecenas(memoria[3]);
+
+            decenasTemporales = memoria[1];
+            adivinado.splice(0, adivinado.length);
+            for (let i = 0; i < unidades.length; i++) {
+              if (i < unidades.length) {
+                adivinado.push(unidades[i]);
+                adivinado.push(unidades[i + 1]);
+                adivinado.push(unidades[i + 2]);
+                break;
+              } else {
+                console.log("I couldn't found number");
+              }
+            }
+          } else if (camino === "11") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "112") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+            adivinado.splice(0, adivinado.length);
+            if (miles.length == 0) {
+              esGanador = true;
+
+              toast.success("Yo gane");
+            } else {
+              for (let i = 0; i < miles.length; i++) {
+                if (i < decenas.length) {
+                  adivinado.push(miles[i]);
+                  adivinado.push(miles[i + 1]);
+                  adivinado.push(miles[i + 2]);
+                  break;
+                } else {
+                  console.log("I couldn't found number");
+                }
+              }
+            }
+          } else if (camino === "1121") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "11211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "113") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+
+            adivinado.splice(0, adivinado.length);
+            if (decenas.length == 0) {
+              esGanador = true;
+
+              toast.success("Yo gane");
+            } else {
+              for (let i = 0; i < decenas.length; i++) {
+                if (i < decenas.length) {
+                  adivinado.push(decenas[i]);
+                  adivinado.push(decenas[i + 1]);
+                  adivinado.push(decenas[i + 2]);
+                  break;
+                } else {
+                  console.log("I couldn't found number");
+                }
+              }
+            }
+          } else if (camino === "1131") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "11311" || camino === "11312") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1132" || camino === "1122") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "121") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1212") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          }
+        } else if (fijas == 1 && picas == 0) {
+          if (camino === "0") {
+            camino = "1";
+            adivinado.splice(0, adivinado.length);
+            for (let i = 0; i < recurso.length; i++) {
+              if (recurso[i] != T && recurso[i] != U && recurso[i] != H) {
+                adivinado.push(H);
+                adivinado.push(recurso[i]);
+                adivinado.push(U);
+                memoria.push(H);
+                memoria.push(T);
+                memoria.push(U);
+                memoria.push(recurso[i]);
+                break;
+              }
+            }
+          } else if (camino === "1") {
+            camino = "11";
+            removerDelRecurso(memoria[1]);
+            removerDelRecurso(memoria[2]);
+            decenasTemporales = memoria[0];
+
+            removerDeUnidades(memoria[0]);
+            removerDeUnidades(memoria[1]);
+            removerDeUnidades(memoria[2]);
+
+            adivinado.splice(0, adivinado.length);
+            if (unidades.length == 1) {
+              camino = "win";
+              adivinado.push(memoria[0]);
+              adivinado.push(unidades[0]);
+            } else {
+              contador = 0;
+              for (let i = 0; i < unidades.length; i++) {
+                if (unidades[i] != 0) {
+                  if (contador < 2) {
+                    contador++;
+                    memoria.push(unidades[i]);
+                  } else {
+                    adivinado.push(memoria[3]);
+                    adivinado.push(memoria[4]);
+                    break;
+                  }
+                } else {
+                  adivinado.push(memoria[3]);
+                }
+              }
+            }
+          } else if (camino === "11") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(U);
+          } else if (camino === "12") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "2") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(U);
+          }
+        } else if (fijas == 0 && picas == 1) {
+          adivinado.splice(0, adivinado.length);
+          if (camino === "0") {
+            camino = "2";
+            contador2++;
+            for (let i = 0; i < recurso.length; i++) {
+              if (recurso[i] != U && recurso[i] != T) {
+                adivinado.push(U);
+                adivinado.push(recurso[i]);
+                memoria.push(T);
+                memoria.push(U);
+                memoria.push(recurso[i]);
+                break;
+              }
+            }
+          } else if (camino === "1") {
+            if (U == 0) {
+              interacciones--;
+              toast.error("Que!! estos no es posible");
+            } else {
+              camino = "win";
+              decenasTemporales = memoria[2];
+              unidadesTemporales = memoria[1];
+              adivinado.push(decenasTemporales);
+              adivinado.push(unidadesTemporales);
+            }
+          } else if (camino === "11") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(U);
+          } else if (camino === "12") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "2") {
+            if (U == 0) {
+              toast.error("Que!! estos no es posible");
+            } else {
+              camino = "win";
+              adivinado.splice(0, adivinado.length);
+              adivinado.push(U);
+              adivinado.push(memoria[0]);
+            }
+          } else if (camino === "21") {
+            camino = "win";
+            unidadesTemporales = memoria[0];
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(U);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "23") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(T);
+          }
+        } else if (fijas == 1 && picas == 1) {
+          camino = "win";
+          toast.error("Que!! estos no es posible");
+        } else if (picas == 2) {
+          if (U == 0) {
+            toast.error("Revisa tus respuestas");
+          } else {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(U);
+            adivinado.push(T);
+          }
+        } else if (fijas < 0 || fijas > 2 || picas < 0 || picas > 2) {
+          toast.error("Esto valores no son posibles");
+        } else {
+          toast.error("las picas y fijas deben estar entre 0 y 2");
+        }
+      } else if (numeroPrincipal == 3) {
+        //012
+        const U = adivinado[2];
+        const T = adivinado[1];
+        const H = adivinado[0];
+        if (fijas == 0 && picas == 0) {
+          if (camino === "0") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            adivinado.splice(0, adivinado.length);
+            if (recurso.length == 4) {
+              camino = "win";
+              adivinado.push(recurso[recurso.length - 1]);
+              adivinado.push(recurso[recurso.length - 2]);
+              adivinado.push(recurso[recurso.length - 3]);
+            } else if (recurso.length > 1) {
+              adivinado.push(recurso[recurso.length - 1]);
+              adivinado.push(recurso[recurso.length - 2]);
+              adivinado.push(recurso[recurso.length - 3]);
+            }
+          } else if (camino === "01") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "011") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0111") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0112") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "012") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "02") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "021") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "02111") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "031") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0311") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03111" || camino === "03112") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "032") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0321") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03211" || camino === "03212") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1") {
+            camino = "12";
+            removerDelRecurso(memoria[0]);
+            removerDelRecurso(memoria[1]);
+            removerDelRecurso(memoria[2]);
+            removerDelRecurso(memoria[3]);
+
+            removerDeMiles(memoria[0]);
+            removerDeMiles(memoria[1]);
+            removerDeMiles(memoria[2]);
+            removerDeMiles(memoria[3]);
+
+            removerDeUnidades(memoria[0]);
+            removerDeUnidades(memoria[1]);
+            removerDeUnidades(memoria[2]);
+            removerDeUnidades(memoria[3]);
+
+            removerDeDecenas(memoria[0]);
+            removerDeDecenas(memoria[1]);
+            removerDeDecenas(memoria[2]);
+            removerDeDecenas(memoria[3]);
+
+            decenasTemporales = memoria[1];
+            adivinado.splice(0, adivinado.length);
+            for (let i = 0; i < unidades.length; i++) {
+              if (i < unidades.length) {
+                adivinado.push(unidades[i]);
+                adivinado.push(unidades[i + 1]);
+                adivinado.push(unidades[i + 2]);
+                break;
+              } else {
+                console.log("I couldn't found number");
+              }
+            }
+          } else if (camino === "11") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "112") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+            adivinado.splice(0, adivinado.length);
+            if (miles.length == 0) {
+              esGanador = true;
+
+              toast.success("Yo gane");
+            } else {
+              for (let i = 0; i < miles.length; i++) {
+                if (i < decenas.length) {
+                  adivinado.push(miles[i]);
+                  adivinado.push(miles[i + 1]);
+                  adivinado.push(miles[i + 2]);
+                  break;
+                } else {
+                  console.log("I couldn't found number");
+                }
+              }
+            }
+          } else if (camino === "1121") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "11211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "113") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+
+            adivinado.splice(0, adivinado.length);
+            if (decenas.length == 0) {
+              esGanador = true;
+
+              toast.success("Yo gane");
+            } else {
+              for (let i = 0; i < decenas.length; i++) {
+                if (i < decenas.length) {
+                  adivinado.push(decenas[i]);
+                  adivinado.push(decenas[i + 1]);
+                  adivinado.push(decenas[i + 2]);
+                  break;
+                } else {
+                  console.log("I couldn't found number");
+                }
+              }
+            }
+          } else if (camino === "1131") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "11311" || camino === "11312") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1132" || camino === "1122") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "121") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1212") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          }
+        } else if (fijas == 1 && picas == 0) {
+          if (camino === "0") {
+            camino = "1";
+            adivinado.splice(0, adivinado.length);
+            for (let i = 0; i < recurso.length; i++) {
+              if (recurso[i] != T && recurso[i] != U && recurso[i] != H) {
+                adivinado.push(H);
+                adivinado.push(recurso[i]);
+                adivinado.push(U);
+                memoria.push(H);
+                memoria.push(T);
+                memoria.push(U);
+                memoria.push(recurso[i]);
+                break;
+              }
+            }
+          } else if (camino === "1") {
+            camino = "11";
+            removerDelRecurso(memoria[1]);
+            removerDelRecurso(memoria[2]);
+            decenasTemporales = memoria[0];
+
+            removerDeUnidades(memoria[0]);
+            removerDeUnidades(memoria[1]);
+            removerDeUnidades(memoria[2]);
+
+            adivinado.splice(0, adivinado.length);
+            if (unidades.length == 1) {
+              camino = "win";
+              adivinado.push(memoria[0]);
+              adivinado.push(unidades[0]);
+            } else {
+              contador = 0;
+              for (let i = 0; i < unidades.length; i++) {
+                if (unidades[i] != 0) {
+                  if (contador < 2) {
+                    contador++;
+                    memoria.push(unidades[i]);
+                  } else {
+                    adivinado.push(memoria[3]);
+                    adivinado.push(memoria[4]);
+                    break;
+                  }
+                } else {
+                  adivinado.push(memoria[3]);
+                }
+              }
+            }
+          } else if (camino === "11") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(U);
+          } else if (camino === "12") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "2") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(U);
+          }
+        } else if (fijas == 0 && picas == 1) {
+          adivinado.splice(0, adivinado.length);
+          if (camino === "0") {
+            camino = "2";
+            contador2++;
+            for (let i = 0; i < recurso.length; i++) {
+              if (recurso[i] != U && recurso[i] != T) {
+                adivinado.push(U);
+                adivinado.push(recurso[i]);
+                memoria.push(T);
+                memoria.push(U);
+                memoria.push(recurso[i]);
+                break;
+              }
+            }
+          } else if (camino === "1") {
+            if (U == 0) {
+              interacciones--;
+              toast.error("Que!! estos no es posible");
+            } else {
+              camino = "win";
+              decenasTemporales = memoria[2];
+              unidadesTemporales = memoria[1];
+              adivinado.push(decenasTemporales);
+              adivinado.push(unidadesTemporales);
+            }
+          } else if (camino === "11") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(U);
+          } else if (camino === "12") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "2") {
+            if (U == 0) {
+              toast.error("Que!! estos no es posible");
+            } else {
+              camino = "win";
+              adivinado.splice(0, adivinado.length);
+              adivinado.push(U);
+              adivinado.push(memoria[0]);
+            }
+          } else if (camino === "21") {
+            camino = "win";
+            unidadesTemporales = memoria[0];
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(U);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "23") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(T);
+          }
+        } else if (fijas == 1 && picas == 1) {
+          camino = "win";
+          toast.error("Que!! estos no es posible");
+        } else if (picas == 2) {
+          if (U == 0) {
+            toast.error("Revisa tus respuestas");
+          } else {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(U);
+            adivinado.push(T);
+          }
+        } else if (fijas < 0 || fijas > 2 || picas < 0 || picas > 2) {
+          toast.error("Esto valores no son posibles");
+        } else {
+          toast.error("las picas y fijas deben estar entre 0 y 2");
+        }
+      } else if (numeroPrincipal == 3) {
+        //012
+        const U = adivinado[2];
+        const T = adivinado[1];
+        const H = adivinado[0];
+        if (fijas == 0 && picas == 0) {
+          if (camino === "0") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            adivinado.splice(0, adivinado.length);
+            if (recurso.length == 4) {
+              camino = "win";
+              adivinado.push(recurso[recurso.length - 1]);
+              adivinado.push(recurso[recurso.length - 2]);
+              adivinado.push(recurso[recurso.length - 3]);
+            } else if (recurso.length > 1) {
+              adivinado.push(recurso[recurso.length - 1]);
+              adivinado.push(recurso[recurso.length - 2]);
+              adivinado.push(recurso[recurso.length - 3]);
+            }
+          } else if (camino === "01") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "011") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0111") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0112") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "012") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "02") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "021") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "02111") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "031") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0311") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03111" || camino === "03112") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "032") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0321") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03211" || camino === "03212") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1") {
+            camino = "12";
+            removerDelRecurso(memoria[0]);
+            removerDelRecurso(memoria[1]);
+            removerDelRecurso(memoria[2]);
+            removerDelRecurso(memoria[3]);
+
+            removerDeMiles(memoria[0]);
+            removerDeMiles(memoria[1]);
+            removerDeMiles(memoria[2]);
+            removerDeMiles(memoria[3]);
+
+            removerDeUnidades(memoria[0]);
+            removerDeUnidades(memoria[1]);
+            removerDeUnidades(memoria[2]);
+            removerDeUnidades(memoria[3]);
+
+            removerDeDecenas(memoria[0]);
+            removerDeDecenas(memoria[1]);
+            removerDeDecenas(memoria[2]);
+            removerDeDecenas(memoria[3]);
+
+            decenasTemporales = memoria[1];
+            adivinado.splice(0, adivinado.length);
+            for (let i = 0; i < unidades.length; i++) {
+              if (i < unidades.length) {
+                adivinado.push(unidades[i]);
+                adivinado.push(unidades[i + 1]);
+                adivinado.push(unidades[i + 2]);
+                break;
+              } else {
+                console.log("I couldn't found number");
+              }
+            }
+          } else if (camino === "11") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "112") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+            adivinado.splice(0, adivinado.length);
+            if (miles.length == 0) {
+              esGanador = true;
+
+              toast.success("Yo gane");
+            } else {
+              for (let i = 0; i < miles.length; i++) {
+                if (i < decenas.length) {
+                  adivinado.push(miles[i]);
+                  adivinado.push(miles[i + 1]);
+                  adivinado.push(miles[i + 2]);
+                  break;
+                } else {
+                  console.log("I couldn't found number");
+                }
+              }
+            }
+          } else if (camino === "1121") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "11211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "113") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+
+            adivinado.splice(0, adivinado.length);
+            if (decenas.length == 0) {
+              esGanador = true;
+
+              toast.success("Yo gane");
+            } else {
+              for (let i = 0; i < decenas.length; i++) {
+                if (i < decenas.length) {
+                  adivinado.push(decenas[i]);
+                  adivinado.push(decenas[i + 1]);
+                  adivinado.push(decenas[i + 2]);
+                  break;
+                } else {
+                  console.log("I couldn't found number");
+                }
+              }
+            }
+          } else if (camino === "1131") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "11311" || camino === "11312") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1132" || camino === "1122") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "121") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1212") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          }
+        } else if (fijas == 1 && picas == 0) {
+          if (camino === "0") {
+            camino = "1";
+            adivinado.splice(0, adivinado.length);
+            for (let i = 0; i < recurso.length; i++) {
+              if (recurso[i] != T && recurso[i] != U && recurso[i] != H) {
+                adivinado.push(H);
+                adivinado.push(recurso[i]);
+                adivinado.push(U);
+                memoria.push(H);
+                memoria.push(T);
+                memoria.push(U);
+                memoria.push(recurso[i]);
+                break;
+              }
+            }
+          } else if (camino === "1") {
+            camino = "11";
+            removerDelRecurso(memoria[1]);
+            removerDelRecurso(memoria[2]);
+            decenasTemporales = memoria[0];
+
+            removerDeUnidades(memoria[0]);
+            removerDeUnidades(memoria[1]);
+            removerDeUnidades(memoria[2]);
+
+            adivinado.splice(0, adivinado.length);
+            if (unidades.length == 1) {
+              camino = "win";
+              adivinado.push(memoria[0]);
+              adivinado.push(unidades[0]);
+            } else {
+              contador = 0;
+              for (let i = 0; i < unidades.length; i++) {
+                if (unidades[i] != 0) {
+                  if (contador < 2) {
+                    contador++;
+                    memoria.push(unidades[i]);
+                  } else {
+                    adivinado.push(memoria[3]);
+                    adivinado.push(memoria[4]);
+                    break;
+                  }
+                } else {
+                  adivinado.push(memoria[3]);
+                }
+              }
+            }
+          } else if (camino === "11") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(U);
+          } else if (camino === "12") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "2") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(U);
+          }
+        } else if (fijas == 0 && picas == 1) {
+          adivinado.splice(0, adivinado.length);
+          if (camino === "0") {
+            camino = "2";
+            contador2++;
+            for (let i = 0; i < recurso.length; i++) {
+              if (recurso[i] != U && recurso[i] != T) {
+                adivinado.push(U);
+                adivinado.push(recurso[i]);
+                memoria.push(T);
+                memoria.push(U);
+                memoria.push(recurso[i]);
+                break;
+              }
+            }
+          } else if (camino === "1") {
+            if (U == 0) {
+              interacciones--;
+              toast.error("Que!! estos no es posible");
+            } else {
+              camino = "win";
+              decenasTemporales = memoria[2];
+              unidadesTemporales = memoria[1];
+              adivinado.push(decenasTemporales);
+              adivinado.push(unidadesTemporales);
+            }
+          } else if (camino === "11") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(U);
+          } else if (camino === "12") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(T);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "2") {
+            if (U == 0) {
+              toast.error("Que!! estos no es posible");
+            } else {
+              camino = "win";
+              adivinado.splice(0, adivinado.length);
+              adivinado.push(U);
+              adivinado.push(memoria[0]);
+            }
+          } else if (camino === "21") {
+            camino = "win";
+            unidadesTemporales = memoria[0];
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(U);
+            adivinado.push(unidadesTemporales);
+          } else if (camino === "23") {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(decenasTemporales);
+            adivinado.push(T);
+          }
+        } else if (fijas == 1 && picas == 1) {
+          camino = "win";
+          toast.error("Que!! estos no es posible");
+        } else if (picas == 2) {
+          if (U == 0) {
+            toast.error("Revisa tus respuestas");
+          } else {
+            camino = "win";
+            adivinado.splice(0, adivinado.length);
+            adivinado.push(U);
+            adivinado.push(T);
+          }
+        } else if (fijas < 0 || fijas > 2 || picas < 0 || picas > 2) {
+          toast.error("Esto valores no son posibles");
+        } else {
+          toast.error("las picas y fijas deben estar entre 0 y 2");
+        }
+      } else if (numeroPrincipal == 3) {
+        //012
+        const U = adivinado[2];
+        const T = adivinado[1];
+        const H = adivinado[0];
+        if (fijas == 0 && picas == 0) {
+          if (camino === "0") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            adivinado.splice(0, adivinado.length);
+            if (recurso.length == 4) {
+              camino = "win";
+              adivinado.push(recurso[recurso.length - 1]);
+              adivinado.push(recurso[recurso.length - 2]);
+              adivinado.push(recurso[recurso.length - 3]);
+            } else if (recurso.length > 1) {
+              adivinado.push(recurso[recurso.length - 1]);
+              adivinado.push(recurso[recurso.length - 2]);
+              adivinado.push(recurso[recurso.length - 3]);
+            }
+          } else if (camino === "01") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "011") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0111") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0112") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "012") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "02") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "021") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "02111") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "031") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0311") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03111" || camino === "03112") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "032") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "0321") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "03211" || camino === "03212") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1") {
+            camino = "12";
+            removerDelRecurso(memoria[0]);
+            removerDelRecurso(memoria[1]);
+            removerDelRecurso(memoria[2]);
+            removerDelRecurso(memoria[3]);
+
+            removerDeMiles(memoria[0]);
+            removerDeMiles(memoria[1]);
+            removerDeMiles(memoria[2]);
+            removerDeMiles(memoria[3]);
+
+            removerDeUnidades(memoria[0]);
+            removerDeUnidades(memoria[1]);
+            removerDeUnidades(memoria[2]);
+            removerDeUnidades(memoria[3]);
+
+            removerDeDecenas(memoria[0]);
+            removerDeDecenas(memoria[1]);
+            removerDeDecenas(memoria[2]);
+            removerDeDecenas(memoria[3]);
+
+            decenasTemporales = memoria[1];
+            adivinado.splice(0, adivinado.length);
+            for (let i = 0; i < unidades.length; i++) {
+              if (i < unidades.length) {
+                adivinado.push(unidades[i]);
+                adivinado.push(unidades[i + 1]);
+                adivinado.push(unidades[i + 2]);
+                break;
+              } else {
+                console.log("I couldn't found number");
+              }
+            }
+          } else if (camino === "11") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "112") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+            adivinado.splice(0, adivinado.length);
+            if (miles.length == 0) {
+              esGanador = true;
+
+              toast.success("Yo gane");
+            } else {
+              for (let i = 0; i < miles.length; i++) {
+                if (i < decenas.length) {
+                  adivinado.push(miles[i]);
+                  adivinado.push(miles[i + 1]);
+                  adivinado.push(miles[i + 2]);
+                  break;
+                } else {
+                  console.log("I couldn't found number");
+                }
+              }
+            }
+          } else if (camino === "1121") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "11211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "113") {
+            removerDelRecurso(H);
+            removerDelRecurso(T);
+            removerDelRecurso(U);
+
+            removerDeMiles(H);
+            removerDeMiles(T);
+            removerDeMiles(U);
+
+            removerDeDecenas(H);
+            removerDeDecenas(T);
+            removerDeDecenas(U);
+
+            removerDeUnidades(H);
+            removerDeUnidades(T);
+            removerDeUnidades(U);
+
+            adivinado.splice(0, adivinado.length);
+            if (decenas.length == 0) {
+              esGanador = true;
+
+              toast.success("Yo gane");
+            } else {
+              for (let i = 0; i < decenas.length; i++) {
+                if (i < decenas.length) {
+                  adivinado.push(decenas[i]);
+                  adivinado.push(decenas[i + 1]);
+                  adivinado.push(decenas[i + 2]);
+                  break;
+                } else {
+                  console.log("I couldn't found number");
+                }
+              }
+            }
+          } else if (camino === "1131") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "11311" || camino === "11312") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1132" || camino === "1122") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "121") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1211") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          } else if (camino === "1212") {
+            esGanador = true;
+
+            toast.success("Yo gane");
+          }
         }
       }
     }
   };
 
-  const onSubmit: SubmitHandler<any> = (data) => {
+  const onSubmit: SubmitHandler<{fijas: string, picas: string}> = (data) => {
     const fijas: number = parseInt(data.fijas),
       picas: number = parseInt(data.picas);
     getPicasFijas(fijas, picas);
   };
-  let val: any = errors[`number1`] ? errors[`number1`].message : null;
-  let val2: any = errors[`number2`] ? errors[`number2`].message : null;
+
+  const val: string | undefined = errors[`picas`] ? String(errors[`picas`]?.message) : undefined;
+  const val2: string | undefined = errors[`fijas`] ? String(errors[`fijas`]?.message) : undefined;
+
   return numeroPrincipal ? (
     <div>
       <>
@@ -2199,41 +3319,100 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             ))}
           </span>
           <br />
-          <TransitionGroup className="grid grid-cols-3 gap-x-1 gap-y-4">
-            <CSSTransition timeout={500} classNames="item">
-              <div className="relative">
-                <input
-                  type="number1"
-                  {...register("picas")}
-                  className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
-                  placeholder="picas"
-                />
-                <label
-                  htmlFor={`number1`}
-                  className="absolute left-0 -top-5 text-gray-600 text-sm ml-1 select-none"
-                >
-                  {val}
-                </label>
-              </div>
-            </CSSTransition>
-            <CSSTransition timeout={500} classNames="item">
-              <div className="relative">
-                <input
-                  type="number2"
-                  {...register("fijas")}
-                  className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
-                  placeholder="fijas"
-                />
-                <label
-                  htmlFor={`number2`}
-                  className="absolute left-0 -top-5 text-gray-600 text-sm ml-1 select-none"
-                >
-                  {val2}
-                </label>
-              </div>
-            </CSSTransition>
-          </TransitionGroup>
-          <button type="submit" className="btn btn-red">
+          <div className="grid grid-cols-3 gap-x-1 gap-y-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, ease: "easeIn" }}
+              className="relative"
+            >
+              <input
+                type="number1"
+                {...register("picas")}
+                className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
+                placeholder="picas"
+              />
+              <label
+                htmlFor={`number1`}
+                className="absolute left-0 -top-5 text-gray-600 text-sm ml-1 select-none"
+              >
+                {val}
+              </label>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, ease: "easeIn", delay: 0.1 }}
+              className="relative"
+            >
+              <input
+                type="number2"
+                {...register("fijas")}
+                className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
+                placeholder="fijas"
+              />
+              <label
+                htmlFor={`number2`}
+                className="absolute left-0 -top-5 text-gray-600 text-sm ml-1 select-none"
+              >
+                {val2}
+              </label>
+            </motion.div>
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div>
+              <label htmlFor="fijas">Fijas</label>
+              <input
+                id="fijas"
+                type="number"
+                {...register("fijas", {
+                  required: "Este campo es requerido",
+                  min: {
+                    value: 0,
+                    message: "El valor debe ser positivo",
+                  },
+                  max: {
+                    value: numeroPrincipal,
+                    message: `El valor debe ser menor o igual a ${numeroPrincipal}`,
+                  },
+                })}
+                placeholder="0"
+                className="w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none"
+              />
+              {errors.fijas && (
+                <p className="text-red-500 text-xs italic">
+                  {String(errors.fijas.message)}
+                </p>
+              )}
+            </div>
+            <div>
+              <label htmlFor="picas">Picas</label>
+              <input
+                id="picas"
+                type="number"
+                {...register("picas", {
+                  required: "Este campo es requerido",
+                  min: {
+                    value: 0,
+                    message: "El valor debe ser positivo",
+                  },
+                  max: {
+                    value: numeroPrincipal,
+                    message: `El valor debe ser menor o igual a ${numeroPrincipal}`,
+                  },
+                })}
+                placeholder="0"
+                className="w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none"
+              />
+              {errors.picas && (
+                <p className="text-red-500 text-xs italic">
+                  {String(errors.picas.message)}
+                </p>
+              )}
+            </div>
+          </div>
+
+          <button type="submit" className="btn btn-yellow">
             Intentar
           </button>
         </form>

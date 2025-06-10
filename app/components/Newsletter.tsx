@@ -48,7 +48,7 @@ const Newsletter = () => {
       },
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then(() => {
         setSubscribe(peticion.exito);
       })
       .catch((error) => {
@@ -61,7 +61,7 @@ const Newsletter = () => {
     }, 3000);
   };
 
-  function handleChange(event: any) {
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     setEmail(event.target.value);
   }
 

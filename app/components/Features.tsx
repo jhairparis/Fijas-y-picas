@@ -1,20 +1,19 @@
-'use client';
-
+"use client";
 import React, { useState, useRef, useEffect } from "react";
-import Transition from "../utils/transitions/Transition"; // This path might need adjustment
+import { motion, AnimatePresence } from "framer-motion";
 import { GiClassicalKnowledge, GiWorld } from "react-icons/gi";
 import { SiProbot } from "react-icons/si";
-import Image from "next/image"; // Import next/image
+import Image from "next/image";
 
 function Features() {
   const [tab, setTab] = useState(1);
 
-  const tabs: any = useRef(null);
+  const tabs = useRef<HTMLDivElement>(null);
 
   const heightFix = () => {
     if (tabs.current?.children[tab]) {
-      tabs.current.style.height =
-        tabs.current.children[tab - 1].offsetHeight + "px";
+      const childElement = tabs.current.children[tab - 1] as HTMLElement;
+      tabs.current.style.height = childElement.offsetHeight + "px";
     }
   };
 
@@ -153,78 +152,83 @@ function Features() {
                   data-aos="zoom-y-out"
                   ref={tabs}
                 >
-                  {/* Item 1 */}
-                  <Transition
-                    show={tab === 1}
-                    appear={true}
-                    className="w-full"
-                    enter="transition ease-in-out duration-700 transform order-first"
-                    enterFrom="opacity-0 translate-y-16" // Prop name as per error message
-                    enterTo="opacity-100 translate-y-0"     // Prop name as per error message
-                    leave="transition ease-in-out duration-300 transform absolute"
-                    leaveFrom="opacity-100 translate-y-0" // Prop name as per error message
-                    leaveTo="opacity-0 -translate-y-16"   // Prop name as per error message
-                    beforeEnter={() => heightFix()}          // Prop name as per error message
-                    unmount={false}                        // Prop name as per error message
-                  >
-                    <div className="relative inline-flex flex-col">
-                      <Image // Used next/image
-                        className="md:max-w-none mx-auto rounded"
-                        src="/images/features-bg-1.png" // Updated path
-                        width={500}
-                        height={462}
-                        alt="Features bg 1"
-                      />
-                    </div>
-                  </Transition>
-                  {/* Item 2 */}
-                  <Transition
-                    show={tab === 2}
-                    appear={true}
-                    className="w-full"
-                    enter="transition ease-in-out duration-700 transform order-first"
-                    enterFrom="opacity-0 translate-y-16" // Prop name as per error message
-                    enterTo="opacity-100 translate-y-0"     // Prop name as per error message
-                    leave="transition ease-in-out duration-300 transform absolute"
-                    leaveFrom="opacity-100 translate-y-0" // Prop name as per error message
-                    leaveTo="opacity-0 -translate-y-16"   // Prop name as per error message
-                    beforeEnter={() => heightFix()}          // Prop name as per error message
-                    unmount={false}                        // Prop name as per error message
-                  >
-                    <div className="relative inline-flex flex-col">
-                      <Image // Used next/image
-                        className="md:max-w-none mx-auto rounded"
-                        src="/images/features-bg-2.png" // Updated path
-                        width={500}
-                        height={462}
-                        alt="Features bg 2"
-                      />
-                    </div>
-                  </Transition>
-                  {/* Item 3 */}
-                  <Transition
-                    show={tab === 3}
-                    appear={true}
-                    className="w-full"
-                    enter="transition ease-in-out duration-700 transform order-first"
-                    enterFrom="opacity-0 translate-y-16" // Prop name as per error message
-                    enterTo="opacity-100 translate-y-0"     // Prop name as per error message
-                    leave="transition ease-in-out duration-300 transform absolute"
-                    leaveFrom="opacity-100 translate-y-0" // Prop name as per error message
-                    leaveTo="opacity-0 -translate-y-16"   // Prop name as per error message
-                    beforeEnter={() => heightFix()}          // Prop name as per error message
-                    unmount={false}                        // Prop name as per error message
-                  >
-                    <div className="relative inline-flex flex-col">
-                      <Image // Used next/image
-                        className="md:max-w-none mx-auto rounded"
-                        src="/images/features-bg-3.png" // Updated path
-                        width={500}
-                        height={462}
-                        alt="Features bg 3"
-                      />
-                    </div>
-                  </Transition>
+                  <AnimatePresence mode="wait">
+                    {/* Item 1 */}
+                    {tab === 1 && (
+                      <motion.div
+                        key="item-1"
+                        className="w-full"
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -16 }}
+                        transition={{
+                          duration: 0.7,
+                          ease: "easeInOut",
+                        }}
+                        onAnimationStart={() => heightFix()}
+                      >
+                        <div className="relative inline-flex flex-col">
+                          <Image // Used next/image
+                            className="md:max-w-none mx-auto rounded"
+                            src="/images/features-bg-1.png" // Updated path
+                            width={500}
+                            height={462}
+                            alt="Features bg 1"
+                          />
+                        </div>
+                      </motion.div>
+                    )}
+                    {/* Item 2 */}
+                    {tab === 2 && (
+                      <motion.div
+                        key="item-2"
+                        className="w-full"
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -16 }}
+                        transition={{
+                          duration: 0.7,
+                          ease: "easeInOut",
+                        }}
+                        onAnimationStart={() => heightFix()}
+                      >
+                        <div className="relative inline-flex flex-col">
+                          <Image // Used next/image
+                            className="md:max-w-none mx-auto rounded"
+                            src="/images/features-bg-2.png" // Updated path
+                            width={500}
+                            height={462}
+                            alt="Features bg 2"
+                          />
+                        </div>
+                      </motion.div>
+                    )}
+                    {/* Item 3 */}
+                    {tab === 3 && (
+                      <motion.div
+                        key="item-3"
+                        className="w-full"
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -16 }}
+                        transition={{
+                          duration: 0.7,
+                          ease: "easeInOut",
+                        }}
+                        onAnimationStart={() => heightFix()}
+                      >
+                        <div className="relative inline-flex flex-col">
+                          <Image // Used next/image
+                            className="md:max-w-none mx-auto rounded"
+                            src="/images/features-bg-3.png" // Updated path
+                            width={500}
+                            height={462}
+                            alt="Features bg 3"
+                          />
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </div>
             </div>

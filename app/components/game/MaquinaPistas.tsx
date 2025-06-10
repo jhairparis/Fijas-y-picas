@@ -1,14 +1,14 @@
-import React, { ReactElement, useEffect, useState, KeyboardEvent, createRef, RefObject } from "react";
+import React, { useEffect, useState, createRef, RefObject } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { motion, AnimatePresence } from "framer-motion";
 import { arrayC, Props, inputs as InputFormValues } from "../../helpers/type";
 import { schemaEntradas } from "../../helpers/validador";
 
 // Define a type for the input items with their refs
 type InputItem = {
   id: string;
-  nodeRef: RefObject<HTMLDivElement>; // Ref for the CSSTransition's direct child
+  nodeRef: RefObject<HTMLDivElement | null>; // Ref for the CSSTransition's direct child
 };
 
 const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
@@ -24,7 +24,7 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
   } = useForm();
 
   function init(val: number): number[] {
-    let numer: number[] = [];
+    const numer: number[] = [];
     for (let i = 0; i < val; i++) {
       const r: number = Math.floor(Math.random() * (10 - 1) + 1);
       if (!numer.includes(r)) {
@@ -105,15 +105,22 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
   return (
     <>
       <form className="my-4" onSubmit={handleSubmit(miniAI)}>
-        <TransitionGroup className="grid grid-cols-3 gap-x-1 gap-y-4">
-          {inputItems.map((item, i) => { // Iterate over inputItems
-            const inputId = item.id;
-            let val: any = errors[inputId]
-              ? errors[inputId]?.message
-              : null;
-            return (
-              <CSSTransition key={item.id} timeout={500} classNames="item" nodeRef={item.nodeRef}>
-                <div className="relative" ref={item.nodeRef}> {/* Assign ref to the div */}
+        <div className="grid grid-cols-3 gap-x-1 gap-y-4">
+          <AnimatePresence>
+            {inputItems.map((item, i) => { // Iterate over inputItems
+              const inputId = item.id;
+              const val: string | null = errors[inputId]
+                ? String(errors[inputId]?.message) // Ensure it's a string
+                : null;
+              return (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: "easeIn" }}
+                  className="relative"
+                >
                   <input
                     id={inputId}
                     type="number"
@@ -127,11 +134,11 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
                   >
                     {val}
                   </label>
-                </div>
-              </CSSTransition>
-            );
-          })}
-        </TransitionGroup>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </div>
         {inputItems.length > 0 ? ( // Check inputItems.length
           <button type="submit" className="btn btn-yellow">
             Intentar
@@ -145,7 +152,7 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
           {show && <span>{numero.join("")}</span>}
           <div
             className="col-start-2 flex items-center cursor-pointer"
-            onClick={(e) => {
+            onClick={() => {
               setShow(!show);
             }}
           >

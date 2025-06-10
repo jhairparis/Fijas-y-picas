@@ -1,17 +1,22 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import React, { ReactElement, useEffect, useState, useRef, createRef } from "react";
+import React, { useEffect, useState, createRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { motion, AnimatePresence } from "framer-motion";
 import { Props, inputs as InputFormType, arrayC } from "../../helpers/type";
 import { schemaEntradas, schemaFijasPicas } from "../../helpers/validador";
-import Simple from "../../utils/transitions/Simple";
+import MotionSimple from "../transitions/MotionSimple";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 // Define a type for the input items with their refs
 type InputItem = {
   id: string;
-  nodeRef: React.RefObject<HTMLDivElement>; // Ref for the CSSTransition's direct child
+  nodeRef: React.RefObject<HTMLDivElement | null>; // Ref for the CSSTransition's direct child
   // Add any other properties needed for rendering the input, if not using register directly
+};
+
+type FijasPicasForm = {
+  fijas: number;
+  picas: number;
 };
 
 const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
@@ -21,7 +26,7 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
     unregister,
     formState: { errors },
   } = useForm();
-  const twoForm: any = useForm({ resolver: yupResolver(schemaFijasPicas) });
+  const twoForm = useForm({ resolver: yupResolver(schemaFijasPicas) });
 
   const [inputItems, setInputItems] = useState<InputItem[]>([]); // Changed state name and type
   const [jugadorUno, setJugadorUno] = useState<string>("dar");
@@ -115,9 +120,9 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
     }
   }, [numeroPrincipal, unregister]); // Added unregister to dependency array
 
-  const onSubmit: SubmitHandler<InputFormType> = (data) => {
-    const picas = parseInt(data.picas);
-    const fijas = parseInt(data.fijas);
+  const onSubmitFijasPicas: SubmitHandler<FijasPicasForm> = (data) => {
+    const picas = data.picas;
+    const fijas = data.fijas;
     if (picas + fijas > numeroPrincipal) {
       toast.error(
         "la suma de las pistas no puede ser superior al numero de digitos que se escogieron"
@@ -156,15 +161,22 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
         className={mostrarDigitos ? "my-4 " : "hidden"}
         onSubmit={handleSubmit(recepcionEntradas)}
       >
-        <TransitionGroup className="grid grid-cols-3 gap-x-1 gap-y-4">
-          {inputItems.map((item, i) => {
-            const inputId = `number${i}`;
-            let val: any = errors[inputId]
-              ? errors[inputId]?.message
-              : "";
-            return (
-              <CSSTransition key={item.id} timeout={500} classNames="item" nodeRef={item.nodeRef}>
-                <div className="relative" ref={item.nodeRef}>
+        <div className="grid grid-cols-3 gap-x-1 gap-y-4">
+          <AnimatePresence>
+            {inputItems.map((item, i) => {
+              const inputId = `number${i}`;
+              const val: string = errors[inputId]
+                ? String(errors[inputId]?.message || "")
+                : "";
+              return (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: "easeIn" }}
+                  className="relative"
+                >
                   <input
                     id={inputId}
                     type="number"
@@ -178,22 +190,22 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
                   >
                     {val}
                   </label>
-                </div>
-              </CSSTransition>
-            );
-          })}
-        </TransitionGroup>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </div>
         {inputItems.length > 0 && (
-          <Simple in={inputItems.length > 0} time={500}>
+          <MotionSimple in={inputItems.length > 0} time={500}>
             <button type="submit" className="btn btn-blue">
               Intentar
             </button>
-          </Simple>
+          </MotionSimple>
         )}
       </form>
       <form
         className={mostrarFijasEntrada ? "my-4 " : "hidden"}
-        onSubmit={twoForm.handleSubmit(onSubmit)}
+        onSubmit={twoForm.handleSubmit(onSubmitFijasPicas)}
       >
         <span>{numeroJugado}</span>
         <div className="grid grid-cols-3 gap-1 mt-4">

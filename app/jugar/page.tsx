@@ -1,5 +1,4 @@
-'use client';
-
+"use client";
 import React, { useState, createRef, RefObject } from "react";
 import { useForm } from "react-hook-form";
 import MaquinaPistas from "../components/game/MaquinaPistas";
@@ -8,15 +7,20 @@ import HumanoHumano from "../components/game/HumanoHumano";
 import { toast } from "react-toastify";
 import { fnHistorial, pistas } from "../helpers/type";
 import { schemaMain } from "../helpers/validador";
-import Fade from "../utils/transitions/Fade";
-import Simple from "../utils/transitions/Simple";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import MotionFade from "../components/transitions/MotionFade";
+import MotionSimple from "../components/transitions/MotionSimple";
+import { motion, AnimatePresence } from "framer-motion";
 import MaquinaAdivina from "../components/game/MaquinaAdivina";
-import Link from "next/link"; // Changed from react-router-dom
+import Link from "next/link";
 import { GiClassicalKnowledge, GiWorld } from "react-icons/gi";
 import { SiProbot } from "react-icons/si";
 
-type historialTP = [number, pistas, number | undefined, RefObject<HTMLDivElement>];
+type historialTP = [
+  number,
+  pistas,
+  number | undefined,
+  RefObject<HTMLDivElement | null>
+];
 
 const Game = () => {
   const [numeroPrincipal, setNumeroPrincipal] = useState<number>(0);
@@ -42,9 +46,12 @@ const Game = () => {
   };
 
   const actualizarHistoial: fnHistorial = (val, pista, user) => {
-    setHistorial([...historial, [val, pista, user, createRef<HTMLDivElement>()]]);
+    setHistorial([
+      ...historial,
+      [val, pista, user, createRef<HTMLDivElement>()],
+    ]);
   };
-  const onSubmit: any = (data: { number: number }) => {
+  const onSubmit = (data: { number: number }) => {
     setNumeroPrincipal(data.number);
   };
   const ilustrarPicasYFijas = (item: historialTP): string => {
@@ -65,36 +72,47 @@ const Game = () => {
     }
     return valor;
   };
-  let val: any = errors.number?.message;
+  const val: string = String(errors.number?.message || "");
   return (
     <div className="grid grid-cols-6 gap-2 font-sans">
-      <TransitionGroup className="col-span-1 flex flex-col justify-center">
-        {historial?.map((item, i) => {
-          let color = noRepeticion(i);
-          let valor: string = ilustrarPicasYFijas(item);
-          const nodeRef = item[3]; // Get the nodeRef from the item
-          return modoDeJuego === "HvH" ? (
-            item[2] === 0 ? (
-              <CSSTransition key={i} timeout={500} classNames="item" nodeRef={nodeRef}>
-                <div ref={nodeRef} className={`burbleHistory burbleHistory-${color}`}>
+      <div className="col-span-1 flex flex-col justify-center">
+        <AnimatePresence>
+          {historial?.map((item, i) => {
+            const color = noRepeticion(i);
+            const valor: string = ilustrarPicasYFijas(item);
+            return modoDeJuego === "HvH" ? (
+              item[2] === 0 ? (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: "easeIn" }}
+                  className={`burbleHistory burbleHistory-${color}`}
+                >
                   {valor}
-                </div>
-              </CSSTransition>
-            ) : null
-          ) : (
-            <CSSTransition key={i} timeout={500} classNames="item" nodeRef={nodeRef}>
-              <div ref={nodeRef} className={`burbleHistory burbleHistory-${color}`}>
+                </motion.div>
+              ) : null
+            ) : (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5, ease: "easeIn" }}
+                className={`burbleHistory burbleHistory-${color}`}
+              >
                 {valor}
-              </div>
-            </CSSTransition>
-          );
-        })}
-      </TransitionGroup>
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
+      </div>
       <div className="col-span-4 flex justify-center items-center">
         <div className="p-6 max-w-lg mx-auto">
-          <Simple in={modoDeJuego !== ""} time={500}>
+          <MotionSimple in={modoDeJuego !== ""} time={500}>
             <button
-              onClick={(e) => {
+              onClick={() => {
                 setModoDeJuego("");
                 setHistorial([]);
                 toast.error("Se cerro el juego");
@@ -114,7 +132,7 @@ const Game = () => {
                 />
               </svg>
             </button>
-          </Simple>
+          </MotionSimple>
 
           <div className="p-4">
             <h1 className="font-logo text-4xl text-center my-4 select-none hover:text-gray-700">
@@ -149,97 +167,93 @@ const Game = () => {
             </p>
           </div>
 
-          <Fade in={modoDeJuego !== ""}>
-            {modoDeJuego !== "" ? (
-              <>
-                <p className="my-4">
-                  Hola humano, con cuantos digitos deseas jugar
-                </p>
-                <form onSubmit={handleSubmit(onSubmit)} className="my-3 flex">
-                  <div className="relative">
-                    <input
-                      type="number"
-                      id="number"
-                      {...register("number")}
-                      placeholder="3"
-                      className={`rounded-l-lg p-2 border-t mr-0 border-b border-l text-gray-800  bg-white ${
-                        errors.number
-                          ? "focus:border-red-400"
-                          : "focus:border-blue-400"
-                      } border-gray-200 placeholder-gray-400 focus:outline-none`}
-                    />
-                    <label
-                      htmlFor="number"
-                      className="absolute left-0 -top-5 text-gray-600 text-sm ml-1 select-none"
-                    >
-                      {val}
-                    </label>
-                  </div>
-                  <button
-                    type="submit"
-                    disabled={errors.number ? true : false}
-                    className={`px-4 rounded-r-lg select-none ${
-                      errors.number ? "bg-red-400" : "bg-blue-400"
-                    } text-gray-800 font-bold p-2 uppercase ${
-                      errors.number ? "border-red-400" : "border-blue-400"
-                    } border-t border-b border-r focus:outline-none`}
-                  >
-                    Ok
-                  </button>
-                </form>
-              </>
-            ) : (
-              <>
-                <button
-                  type="button"
-                  onClick={(e) => setModoDeJuego("HvH")}
-                  className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                >
-                  <GiClassicalKnowledge
-                    aria-hidden="true"
-                    className="w-8 h-8 mr-2 fill-current"
-                  />
-                  Modo Clasico (H Vs H)
-                </button>
-                <button
-                  type="button"
-                  onClick={(e) => setModoDeJuego("HsvHs")}
-                  className=" text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                >
-                  <GiWorld
-                    aria-hidden="true"
-                    className="w-8 h-8 mr-2 fill-current"
-                  />
-                  Torneo Online (Hs Vs Hs)
-                </button>
+          <MotionFade in={modoDeJuego === ""}>
+            <button
+              type="button"
+              onClick={() => setModoDeJuego("HvH")}
+              className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            >
+              <GiClassicalKnowledge
+                aria-hidden="true"
+                className="w-8 h-8 mr-2 fill-current"
+              />
+              Modo Clasico (H Vs H)
+            </button>
+            <button
+              type="button"
+              onClick={() => setModoDeJuego("HsvHs")}
+              className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            >
+              <GiWorld
+                aria-hidden="true"
+                className="w-8 h-8 mr-2 fill-current"
+              />
+              Torneo Online (Hs Vs Hs)
+            </button>
 
-                <div className="inline-flex rounded-md shadow-sm" role="group">
-                  <button
-                    type="button"
-                    className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
-                    onClick={(e) => setModoDeJuego("HvM")}
-                  >
-                    <SiProbot
-                      aria-hidden="true"
-                      className="w-8 h-8 mr-2 fill-current"
-                    />
-                    Modo Contra la computadora (H Vs M)
-                  </button>
-                  <button
-                    type="button"
-                    className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
-                    onClick={(e) => setModoDeJuego("MvH")}
-                  >
-                    <SiProbot
-                      aria-hidden="true"
-                      className="w-8 h-8 mr-2 fill-current"
-                    />
-                    Modo Contra la computadora (M Vs H)
-                  </button>
-                </div>
-              </>
-            )}
-          </Fade>
+            <div className="inline-flex rounded-md shadow-sm" role="group">
+              <button
+                type="button"
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
+                onClick={() => setModoDeJuego("HvM")}
+              >
+                <SiProbot
+                  aria-hidden="true"
+                  className="w-8 h-8 mr-2 fill-current"
+                />
+                Modo Contra la computadora (H Vs M)
+              </button>
+              <button
+                type="button"
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
+                onClick={() => setModoDeJuego("MvH")}
+              >
+                <SiProbot
+                  aria-hidden="true"
+                  className="w-8 h-8 mr-2 fill-current"
+                />
+                Modo Contra la computadora (M Vs H)
+              </button>
+            </div>
+          </MotionFade>
+
+          <MotionFade in={modoDeJuego !== "" && numeroPrincipal === 0}>
+            <p className="my-4">
+              Hola humano, con cuantos digitos deseas jugar
+            </p>
+            <form onSubmit={handleSubmit(onSubmit)} className="my-3 flex">
+              <div className="relative">
+                <input
+                  type="number"
+                  id="number"
+                  {...register("number")}
+                  placeholder="3"
+                  className={`rounded-l-lg p-2 border-t mr-0 border-b border-l text-gray-800  bg-white ${
+                    errors.number
+                      ? "focus:border-red-400"
+                      : "focus:border-blue-400"
+                  } border-gray-200 placeholder-gray-400 focus:outline-none`}
+                />
+                <label
+                  htmlFor="number"
+                  className="absolute left-0 -top-5 text-gray-600 text-sm ml-1 select-none"
+                >
+                  {val}
+                </label>
+              </div>
+              <button
+                type="submit"
+                disabled={errors.number ? true : false}
+                className={`px-4 rounded-r-lg select-none ${
+                  errors.number ? "bg-red-400" : "bg-blue-400"
+                } text-gray-800 font-bold p-2 uppercase ${
+                  errors.number ? "border-red-400" : "border-blue-400"
+                } border-t border-b border-r focus:outline-none`}
+              >
+                Ok
+              </button>
+            </form>
+          </MotionFade>
           {modoDeJuego === "HvH" && (
             <HumanoHumano
               numeroPrincipal={numeroPrincipal}
@@ -288,23 +302,26 @@ const Game = () => {
         </div>
       </div>
       {modoDeJuego === "HvH" ? (
-        <TransitionGroup className="col-span-1 flex flex-col justify-center">
-          {historial?.map((item, i) => {
-            let color = noRepeticion(i);
-            let valor: string = ilustrarPicasYFijas(item);
-            const nodeRef = item[3]; // Get the nodeRef from the item
-            return item[2] === 1 ? (
-              <CSSTransition key={i} timeout={500} classNames="item" nodeRef={nodeRef}>
-                <div
-                  ref={nodeRef} // Assign the ref here
+        <div className="col-span-1 flex flex-col justify-center">
+          <AnimatePresence>
+            {historial?.map((item, i) => {
+              const color = noRepeticion(i);
+              const valor: string = ilustrarPicasYFijas(item);
+              return item[2] === 1 ? (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: "easeIn" }}
                   className={`burbleHistory burbleHistory-${color}`}
                 >
                   {valor}
-                </div>
-              </CSSTransition>
-            ) : null;
-          })}
-        </TransitionGroup>
+                </motion.div>
+              ) : null;
+            })}
+          </AnimatePresence>
+        </div>
       ) : null}
     </div>
   );

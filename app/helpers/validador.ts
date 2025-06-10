@@ -37,7 +37,7 @@ export const schemaEntradas = {
     message: "Solo un digito",
   },
   validate: {
-    positive: (v: any) => parseInt(v) >= 0 || "El valor debe ser positivo",
+    positive: (v: string) => parseInt(v) >= 0 || "El valor debe ser positivo",
   },
   min: {
     value: 0,
