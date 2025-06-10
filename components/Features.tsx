@@ -55,17 +55,15 @@ function Features() {
   return (
     <section className="relative">
       <div
-        className="absolute inset-0 bg-gradient-to-br from-rose-50 via-amber-50 to-orange-50 pointer-events-none"
+        className="absolute inset-0 bg-gradient-to-b from-rose-50 via-amber-50 to-orange-50 pointer-events-none"
         aria-hidden="true"
       />
       
-      {/* Decorative elements aligned with HeroHome */}
-      <div className="absolute top-0 right-1/4 w-64 h-64 bg-gradient-to-r from-amber-400/8 to-orange-400/8 rounded-full blur-3xl transform -translate-y-1/2" />
-      <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 w-80 h-80 bg-gradient-to-r from-rose-400/10 to-amber-400/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-r from-amber-400/10 to-orange-400/10 rounded-full blur-2xl transform translate-y-1/4" />
+      <div className="absolute top-0 left-1/3 w-72 h-72 bg-gradient-to-r from-rose-400/6 to-amber-400/6 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-amber-400/8 to-orange-400/8 rounded-full blur-3xl" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="pt-16 md:pt-24 pb-16 md:pb-24">
+        <div className="pt-16 md:pt-20 pb-16 md:pb-24">
           <div className="max-w-4xl mx-auto text-center pb-16 md:pb-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -75,7 +73,7 @@ function Features() {
               <span className="inline-block px-4 py-2 bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent text-sm font-semibold tracking-wider uppercase mb-4">
                 Modos de Juego
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-rose-900 to-amber-900 bg-clip-text text-transparent mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-rose-900 to-amber-900 bg-clip-text text-transparent mb-6 leading-tight">
                 Explora los modos de juego
               </h1>
               <div className="text-lg md:text-xl text-gray-600 leading-relaxed space-y-2">
@@ -97,7 +95,7 @@ function Features() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="mb-10"
               >
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
                   Tres Modos de Juego
                 </h3>
                 <p className="text-lg text-gray-600 leading-relaxed">
@@ -157,7 +155,6 @@ function Features() {
               </div>
             </div>
 
-            {/* Image Panel */}
             <div className="lg:col-span-6">
               <motion.div
                 initial={{ opacity: 0, x: 20 }}

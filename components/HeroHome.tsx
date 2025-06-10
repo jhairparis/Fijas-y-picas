@@ -7,8 +7,12 @@ import FloatingNumbers3D from "./FloatingNumbers3D";
 function HeroHome() {
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-rose-50 to-amber-50 pointer-events-none" aria-hidden="true" />
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-rose-400/10 to-amber-400/10 rounded-full blur-3xl" />
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-orange-50 via-rose-50 to-amber-50 pointer-events-none" aria-hidden="true" />
+      
+      {/* Subtle decorative elements */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-rose-400/8 to-amber-400/8 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-amber-400/6 to-orange-400/6 rounded-full blur-3xl" />
       
       <div
         className="absolute pointer-events-none inset-0 w-full h-full opacity-80"
@@ -18,7 +22,7 @@ function HeroHome() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+        <div className="pt-32 pb-16 md:pt-40 md:pb-20">
           <div className="text-center pb-12 md:pb-16">
             <div className="mb-6">
               <span className="inline-block px-4 py-2 bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent text-sm font-semibold tracking-wider uppercase mb-4">
