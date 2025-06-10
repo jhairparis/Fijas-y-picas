@@ -67,7 +67,7 @@ const Game = () => {
   };
   let val: any = errors.number?.message;
   return (
-    <div className="grid grid-cols-6 gap-2 font-init">
+    <div className="grid grid-cols-6 gap-2 font-sans">
       <TransitionGroup className="col-span-1 flex flex-col justify-center">
         {historial?.map((item, i) => {
           let color = noRepeticion(i);

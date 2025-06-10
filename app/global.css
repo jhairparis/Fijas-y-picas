@@ -1,7 +1,5 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-@import "./animaciones";
+@import "tailwindcss";
+@import "./styles/animaciones";
 
 body {
   @apply bg-blue-300;
@@ -10,7 +8,7 @@ body {
 }
 
 .link {
-  @apply block mx-2 p-1 text-base font-init text-gray-900 focus:outline-none lg:inline-block hover:text-indigo-400 focus:text-blue-500;
+  @apply block mx-2 p-1 text-base font-sans text-gray-900 focus:outline-none lg:inline-block hover:text-indigo-400 focus:text-blue-500;
 }
 
 .link.active {

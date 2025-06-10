@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Fijas y Picas</title>
   </head>
-  <body class="flex w-screen h-screen font-init bg-red-300">
+  <body class="flex w-screen h-screen font-sans bg-red-300">
     <div class="flex-none" id="history"></div>
     <div class="flex-1 flex justify-center items-center h-full">
       <span id="adivino"></span>
