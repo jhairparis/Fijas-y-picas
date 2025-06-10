@@ -34,11 +34,14 @@ function Features() {
         <div className="pt-12 md:pt-20">
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
             <h1 className="h2 mb-4">Explora los modos de juego</h1>
-            <p className="text-xl text-gray-600">
-              Se reciben pistas sobre cuántos dígitos están en la posición
-              correcta (fijas) y cuántos están en el número pero en posición
-              incorrecta (picas). ¡Muy divertido y desafiante!
-            </p>
+            <div className="text-xl text-gray-600">
+              <p>
+                Se reciben pistas sobre cuántos dígitos están en la posición
+                correcta (fijas) y cuántos están en el número pero en posición
+                incorrecta (picas).
+              </p>
+              <p>¡Muy divertido y desafiante!</p>
+            </div>
           </div>
 
           {/* Section content */}

@@ -1,7 +1,6 @@
-import Banner from "../components/Banner";
-import Features from "../components/Features";
-import HeroHome from "../components/HeroHome";
-import Newsletter from "../components/Newsletter";
+import HeroHome from "@/components/HeroHome";
+import Features from "@/components/Features";
+import Banner from "@/components/Banner";
 
 export default function Page() {
   return (
@@ -9,7 +8,6 @@ export default function Page() {
       <HeroHome />
       <Features />
       <Banner />
-      <Newsletter />
     </>
   );
 }
