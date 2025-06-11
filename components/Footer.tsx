@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link"; // Changed from react-router-dom
-import { RiGithubFill, RiInstagramFill, RiTwitterFill } from "react-icons/ri";
+import { LuGithub, LuInstagram, LuTwitter } from "react-icons/lu";
 import Newsletter from "./Newsletter";
 
 function Footer() {
@@ -32,7 +32,7 @@ function Footer() {
                   href="#"
                   className="group flex items-center justify-center w-12 h-12 bg-gray-800 hover:bg-gray-700 rounded-xl transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-gray-500/25 border-2 border-transparent hover:border-rose-400"
                 >
-                  <RiGithubFill
+                  <LuGithub
                     className="text-gray-400 group-hover:text-rose-400 transition-colors duration-300"
                     size={20}
                   />
@@ -41,7 +41,7 @@ function Footer() {
                   href="#"
                   className="group flex items-center justify-center w-12 h-12 bg-gray-800 hover:bg-gray-700 rounded-xl transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-gray-500/25 border-2 border-transparent hover:border-amber-400"
                 >
-                  <RiInstagramFill
+                  <LuInstagram
                     className="text-gray-400 group-hover:text-amber-400 transition-colors duration-300"
                     size={20}
                   />
@@ -50,7 +50,7 @@ function Footer() {
                   href="#"
                   className="group flex items-center justify-center w-12 h-12 bg-gray-800 hover:bg-gray-700 rounded-xl transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-gray-500/25 border-2 border-transparent hover:border-orange-400"
                 >
-                  <RiTwitterFill
+                  <LuTwitter
                     className="text-gray-400 group-hover:text-orange-400 transition-colors duration-300"
                     size={20}
                   />

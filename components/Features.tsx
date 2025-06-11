@@ -1,8 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { GiClassicalKnowledge, GiWorld } from "react-icons/gi";
-import { SiProbot } from "react-icons/si";
+import { LuBrain, LuGlobe, LuBot } from "react-icons/lu";
 import Image from "next/image";
 
 function Features() {
@@ -14,7 +13,7 @@ function Features() {
       title: "IA adaptativa",
       description:
         "Enfréntate a la computadora ajustable a tu nivel de habilidad. Nuestra inteligencia artificial se adapta a tu estilo de juego para ofrecerte siempre el desafío perfecto, desde principiante hasta experto.",
-      icon: <SiProbot />,
+      icon: <LuBot />,
       imageSrc: "/images/features-bg-1.png",
       altText: "IA adaptativa",
     },
@@ -23,7 +22,7 @@ function Features() {
       title: "Temporizadores globales",
       description:
         "Reta el reloj y supera tus propios récords. Compite contra el tiempo en desafíos cronometrados y demuestra tu velocidad de deducción en las tablas de clasificación mundiales.",
-      icon: <GiClassicalKnowledge />,
+      icon: <LuBrain />,
       imageSrc: "/images/features-bg-2.png",
       altText: "Temporizadores globales",
     },
@@ -32,7 +31,7 @@ function Features() {
       title: "Estadísticas y rankings",
       description:
         "Consulta tu posición en tablas locales y mundiales. Analiza tu progreso con estadísticas detalladas de partidas, tiempos promedio y eficiencia de resolución para mejorar continuamente.",
-      icon: <GiWorld />,
+      icon: <LuGlobe />,
       imageSrc: "/images/features-bg-3.png",
       altText: "Estadísticas y rankings",
     },

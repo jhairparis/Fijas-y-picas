@@ -1,5 +1,5 @@
 import React from "react";
-import { RiPlayCircleLine } from "react-icons/ri";
+import { LuPlay } from "react-icons/lu";
 import Link from "next/link";
 import Image from "next/image";
 import FloatingNumbers3D from "./FloatingNumbers3D";
@@ -85,7 +85,7 @@ function HeroHome() {
                 className="flex items-center bg-white hover:bg-gradient-to-r hover:from-rose-50 hover:to-amber-50 rounded-full font-semibold group p-5 shadow-xl hover:shadow-2xl border-2 border-transparent hover:border-rose-200 transition-all duration-300"
                 href="/jugar"
               >
-                <RiPlayCircleLine className="w-7 h-7 fill-current text-rose-500 group-hover:text-amber-600 flex-shrink-0 transition-colors duration-300" />
+                <LuPlay className="w-7 h-7 fill-current text-rose-500 group-hover:text-amber-600 flex-shrink-0 transition-colors duration-300" />
                 <span className="ml-3 text-gray-700 group-hover:text-gray-900 transition-colors duration-300">
                   Vamos a jugar
                 </span>

@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { RiPlayCircleLine } from "react-icons/ri";
+import { LuPlay } from "react-icons/lu";
 
 const Comojugar = () => {
   return (
@@ -336,7 +336,7 @@ const Comojugar = () => {
                 href="/jugar"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
               >
-                <RiPlayCircleLine className="w-6 h-6 mr-2" />
+                <LuPlay className="w-6 h-6 mr-2" />
                 Empieza a jugar ahora
               </Link>
             </div>

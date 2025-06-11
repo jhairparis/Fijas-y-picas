@@ -12,9 +12,7 @@ import MotionSimple from "../../components/transitions/MotionSimple";
 import { motion, AnimatePresence } from "framer-motion";
 import MaquinaAdivina from "../../components/game/MaquinaAdivina";
 import Link from "next/link";
-import { GiClassicalKnowledge, GiWorld } from "react-icons/gi";
-import { SiProbot } from "react-icons/si";
-import { IoCloseCircleOutline } from "react-icons/io5";
+import { LuBrain, LuGlobe, LuBot, LuX } from "react-icons/lu";
 
 type historialTP = [
   number,
@@ -179,7 +177,7 @@ const Game = () => {
                       }}
                       className="absolute top-0 right-0 z-10 bg-red-500 hover:bg-red-700 text-white font-bold p-2 rounded-full flex items-center justify-center shadow-lg transition-colors duration-150"
                     >
-                      <IoCloseCircleOutline className="w-5 h-5" />
+                      <LuX className="w-5 h-5" />
                     </button>
                   </MotionSimple>
 
@@ -196,7 +194,7 @@ const Game = () => {
                           onClick={() => setModoDeJuego("HvH")}
                           className="w-full text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-3 text-center flex items-center justify-center shadow-md hover:shadow-lg transition-all"
                         >
-                          <GiClassicalKnowledge
+                          <LuBrain
                             aria-hidden="true"
                             className="w-6 h-6 mr-2 fill-current"
                           />
@@ -208,7 +206,7 @@ const Game = () => {
                           onClick={() => setModoDeJuego("HsvHs")}
                           className="w-full text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 font-medium rounded-lg text-lg px-5 py-3 text-center flex items-center justify-center shadow-md hover:shadow-lg transition-all"
                         >
-                          <GiWorld
+                          <LuGlobe
                             aria-hidden="true"
                             className="w-6 h-6 mr-2 fill-current"
                           />
@@ -221,7 +219,7 @@ const Game = () => {
                             className="text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 font-medium rounded-lg text-base px-4 py-3 text-center flex items-center justify-center shadow-md hover:shadow-lg transition-all"
                             onClick={() => setModoDeJuego("HvM")}
                           >
-                            <SiProbot
+                            <LuBot
                               aria-hidden="true"
                               className="w-5 h-5 mr-2 fill-current"
                             />
@@ -233,7 +231,7 @@ const Game = () => {
                             className="text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 font-medium rounded-lg text-base px-4 py-3 text-center flex items-center justify-center shadow-md hover:shadow-lg transition-all"
                             onClick={() => setModoDeJuego("MvH")}
                           >
-                            <SiProbot
+                            <LuBot
                               aria-hidden="true"
                               className="w-5 h-5 mr-2 fill-current"
                             />
