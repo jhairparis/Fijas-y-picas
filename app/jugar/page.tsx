@@ -14,12 +14,13 @@ import MaquinaAdivina from "../../components/game/MaquinaAdivina";
 import Link from "next/link";
 import { GiClassicalKnowledge, GiWorld } from "react-icons/gi";
 import { SiProbot } from "react-icons/si";
+import { IoCloseCircleOutline } from "react-icons/io5";
 
 type historialTP = [
   number,
   pistas,
   number | undefined,
-  RefObject<HTMLDivElement | null>
+  RefObject<HTMLDivElement | null>,
 ];
 
 const Game = () => {
@@ -33,27 +34,33 @@ const Game = () => {
   } = useForm({
     resolver: yupResolver(schemaMain),
   });
-  const colores = ["red", "green", "blue", "yellow", "gray", "purple"];
 
-  let v = 0;
-  const noRepeticion = (i: number) => {
-    v++;
-    if (i < colores.length) return colores[i];
-    else {
-      if (v > colores.length - 1) v = 0;
-      return colores[v];
-    }
+  const colores = [
+    "bg-red-500",
+    "bg-green-500",
+    "bg-blue-500",
+    "bg-yellow-500",
+    "bg-gray-500",
+    "bg-purple-500",
+    "bg-pink-500",
+    "bg-indigo-500",
+  ];
+
+  const noRepeticion = (i: number): string => {
+    return colores[i % colores.length];
   };
 
   const actualizarHistoial: fnHistorial = (val, pista, user) => {
-    setHistorial([
-      ...historial,
+    setHistorial(prevHistorial => [
+      ...prevHistorial,
       [val, pista, user, createRef<HTMLDivElement>()],
     ]);
   };
+
   const onSubmit = (data: { number: number }) => {
     setNumeroPrincipal(data.number);
   };
+
   const ilustrarPicasYFijas = (item: historialTP): string => {
     let valor: string = "";
     if (item[1].text !== undefined) {
@@ -72,258 +79,380 @@ const Game = () => {
     }
     return valor;
   };
-  const val: string = String(errors.number?.message || "");
-  return (
-    <div className="grid grid-cols-6 gap-2 font-sans">
-      <div className="col-span-1 flex flex-col justify-center">
-        <AnimatePresence>
-          {historial?.map((item, i) => {
-            const color = noRepeticion(i);
-            const valor: string = ilustrarPicasYFijas(item);
-            return modoDeJuego === "HvH" ? (
-              item[2] === 0 ? (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5, ease: "easeIn" }}
-                  className={`burbleHistory burbleHistory-${color}`}
-                >
-                  {valor}
-                </motion.div>
-              ) : null
-            ) : (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, ease: "easeIn" }}
-                className={`burbleHistory burbleHistory-${color}`}
-              >
-                {valor}
-              </motion.div>
-            );
-          })}
-        </AnimatePresence>
-      </div>
-      <div className="col-span-4 flex justify-center items-center">
-        <div className="p-6 max-w-lg mx-auto">
-          <MotionSimple in={modoDeJuego !== ""} time={500}>
-            <button
-              onClick={() => {
-                setModoDeJuego("");
-                setHistorial([]);
-                toast.error("Se cerro el juego");
-              }}
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-                />
-              </svg>
-            </button>
-          </MotionSimple>
 
-          <div className="p-4">
-            <h1 className="font-logo text-4xl text-center my-4 select-none hover:text-gray-700">
-              Fijas y Picas
-            </h1>
-            <p className="text-gray-700 mb-4">
-              A lo largo de la historia, este juego ha sido una prueba de la
-              astucia, la deducción y la lógica de los jugadores.
-              <span className="text-lg font-bold text-indigo-600">
-                {" "}
-                Pero no te dejes engañar por su simplicidad,
-              </span>{" "}
-              porque detrás de cada partida se esconde una oportunidad única de
-              <span className="text-lg font-bold text-indigo-600">
-                {" "}
-                desafiar a tus habilidades y mejorar tus estrategias.
-              </span>{" "}
-              ¡Así que no te rindas nunca, siempre está el próximo número
-              secreto esperando por ti! ¡Buena suerte y disfruta del juego!
-              <br />
-              <br />
-            </p>
-            <p className="text-gray-700 mb-4">
-              ¡No olvides visitar las{" "}
-              <Link
-                className="text-lg font-bold text-indigo-600"
-                href="/como-jugar" // Changed from to to href
-              >
-                instrucciones{" "}
-              </Link>{" "}
-              para aprender a jugar!
-            </p>
+  const val: string = String(errors.number?.message || "");
+
+  return (
+    <section className="relative min-h-screen overflow-hidden">
+      {/* Background gradients consistent with site design */}
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-orange-50 via-rose-50 to-amber-50 pointer-events-none"
+        aria-hidden="true"
+      />
+
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-rose-400/8 to-amber-400/8 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-amber-400/6 to-orange-400/6 rounded-full blur-3xl" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="pt-16 md:pt-20 pb-16 md:pb-20">
+          {/* Header section */}
+          <div className="max-w-4xl mx-auto text-center pb-12 md:pb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="inline-block px-4 py-2 bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent text-sm font-semibold tracking-wider uppercase mb-4">
+                Jugar Ahora
+              </span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-rose-900 to-amber-900 bg-clip-text text-transparent mb-6 leading-tight">
+                Jugar picas y fijas online – Desafía tu mente con lógica pura
+              </h1>
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
+                Desde sus orígenes en los tradicionales juegos de lápiz y papel
+                del siglo XIX hasta su adaptación digital actual,{" "}
+                <strong>picas y fijas</strong> (también llamado{" "}
+                <em>fijas y picas</em>) sigue siendo un reto universal de
+                astucia, deducción y estrategia. En esta versión online podrás
+                enfrentarte a un número secreto generado aleatoriamente por
+                nuestro servidor o retar a amigos en tiempo real, todo desde tu
+                navegador, sin descargas ni instalaciones.
+              </p>
+            </motion.div>
           </div>
 
-          <MotionFade in={modoDeJuego === ""}>
-            <button
-              type="button"
-              onClick={() => setModoDeJuego("HvH")}
-              className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-            >
-              <GiClassicalKnowledge
-                aria-hidden="true"
-                className="w-8 h-8 mr-2 fill-current"
-              />
-              Modo Clasico (H Vs H)
-            </button>
-            <button
-              type="button"
-              onClick={() => setModoDeJuego("HsvHs")}
-              className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-            >
-              <GiWorld
-                aria-hidden="true"
-                className="w-8 h-8 mr-2 fill-current"
-              />
-              Torneo Online (Hs Vs Hs)
-            </button>
-
-            <div className="inline-flex rounded-md shadow-sm" role="group">
-              <button
-                type="button"
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
-                onClick={() => setModoDeJuego("HvM")}
-              >
-                <SiProbot
-                  aria-hidden="true"
-                  className="w-8 h-8 mr-2 fill-current"
-                />
-                Modo Contra la computadora (H Vs M)
-              </button>
-              <button
-                type="button"
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
-                onClick={() => setModoDeJuego("MvH")}
-              >
-                <SiProbot
-                  aria-hidden="true"
-                  className="w-8 h-8 mr-2 fill-current"
-                />
-                Modo Contra la computadora (M Vs H)
-              </button>
-            </div>
-          </MotionFade>
-
-          <MotionFade in={modoDeJuego !== "" && numeroPrincipal === 0}>
-            <p className="my-4">
-              Hola humano, con cuantos digitos deseas jugar
-            </p>
-            <form onSubmit={handleSubmit(onSubmit)} className="my-3 flex">
-              <div className="relative">
-                <input
-                  type="number"
-                  id="number"
-                  {...register("number")}
-                  placeholder="3"
-                  className={`rounded-l-lg p-2 border-t mr-0 border-b border-l text-gray-800  bg-white ${
-                    errors.number
-                      ? "focus:border-red-400"
-                      : "focus:border-blue-400"
-                  } border-gray-200 placeholder-gray-400 focus:outline-none`}
-                />
-                <label
-                  htmlFor="number"
-                  className="absolute left-0 -top-5 text-gray-600 text-sm ml-1 select-none"
-                >
-                  {val}
-                </label>
+          {/* Game container with design consistency */}
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-200/50 p-6 md:p-8">
+            <div className="grid grid-cols-1 lg:grid-cols-6 gap-6">
+              {/* History sidebar */}
+              <div className="lg:col-span-1 order-2 lg:order-1">
+                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-gray-200/50">
+                  <h3 className="text-sm font-semibold text-gray-700 mb-4 text-center">
+                    {modoDeJuego === "HvH" ? "Jugador 1" : "Tu historial"}
+                  </h3>
+                  <div className="space-y-2">
+                    <AnimatePresence>
+                      {historial?.map((item, i) => {
+                        const color = noRepeticion(i);
+                        const valor: string = ilustrarPicasYFijas(item);
+                        return modoDeJuego === "HvH" ? (
+                          item[2] === 0 ? (
+                            <motion.div
+                              key={i}
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -10 }}
+                              transition={{ duration: 0.3, ease: "easeOut" }}
+                              className={`${color} text-white text-sm font-medium text-center p-2 rounded-lg shadow`}
+                            >
+                              {valor}
+                            </motion.div>
+                          ) : null
+                        ) : (
+                          <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.3, ease: "easeOut" }}
+                            className={`${color} text-white text-sm font-medium text-center p-2 rounded-lg shadow`}
+                          >
+                            {valor}
+                          </motion.div>
+                        );
+                      })}
+                    </AnimatePresence>
+                  </div>
+                </div>
               </div>
-              <button
-                type="submit"
-                disabled={errors.number ? true : false}
-                className={`px-4 rounded-r-lg select-none ${
-                  errors.number ? "bg-red-400" : "bg-blue-400"
-                } text-gray-800 font-bold p-2 uppercase ${
-                  errors.number ? "border-red-400" : "border-blue-400"
-                } border-t border-b border-r focus:outline-none`}
-              >
-                Ok
-              </button>
-            </form>
-          </MotionFade>
-          {modoDeJuego === "HvH" && (
-            <HumanoHumano
-              numeroPrincipal={numeroPrincipal}
-              actualizarHistoial={actualizarHistoial}
-            />
-          )}
-          {modoDeJuego === "HvM" && (
-            <MaquinaPistas
-              numeroPrincipal={numeroPrincipal}
-              actualizarHistoial={actualizarHistoial}
-            />
-          )}
-          {modoDeJuego === "MvH" && (
-            <MaquinaAdivina
-              numeroPrincipal={numeroPrincipal}
-              actualizarHistoial={actualizarHistoial}
-            />
-          )}
-          {modoDeJuego === "HsvHs" && (
-            <div className="text-center p-4">
-              <h1 className="text-2xl font-bold text-gray-800 mb-4">
-                Lo sentimos
-              </h1>
-              <p className="text-gray-700 mb-4">
-                Actualmente no hemos podido desarrollar el modo de juego torneo
-                de fijas y picas. Estamos trabajando arduamente para ofrecerte
-                esta emocionante opción de juego lo más pronto posible.
-                <br />
-                <span className="text-lg font-bold text-indigo-600">
-                  ¡Si te gustaría ayudarnos a desarrollar este modo de juego, no
-                  dudes y ve a nuestro GITHUB!
-                </span>
-                <br />
-                Estamos siempre buscando la colaboración de jugadores
-                apasionados como tú. ¡Juntos podemos hacer de fijas y picas un
-                juego aún mejor!
-              </p>
-              <a
-                className="btn text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4"
-                href="https://github.com/IllustriousLoop/Fijas-y-picas"
-              >
-                Ayudar!!
-              </a>
+
+              {/* Main game area */}
+              <div className="lg:col-span-4 order-1 lg:order-2">
+                <div className="relative">
+                  {/* Close button */}
+                  <MotionSimple in={modoDeJuego !== ""} time={500}>
+                    <button
+                      onClick={() => {
+                        setModoDeJuego("");
+                        setHistorial([]);
+                        toast.error("Se cerró el juego");
+                      }}
+                      className="absolute top-0 right-0 z-10 bg-red-500 hover:bg-red-700 text-white font-bold p-2 rounded-full flex items-center justify-center shadow-lg transition-colors duration-150"
+                    >
+                      <IoCloseCircleOutline className="w-5 h-5" />
+                    </button>
+                  </MotionSimple>
+
+                  {/* Game mode selection */}
+                  <MotionFade in={modoDeJuego === ""}>
+                    <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200/50 mb-6">
+                      <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+                        Selecciona un modo de juego
+                      </h2>
+
+                      <div className="space-y-4">
+                        <button
+                          type="button"
+                          onClick={() => setModoDeJuego("HvH")}
+                          className="w-full text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-3 text-center flex items-center justify-center shadow-md hover:shadow-lg transition-all"
+                        >
+                          <GiClassicalKnowledge
+                            aria-hidden="true"
+                            className="w-6 h-6 mr-2 fill-current"
+                          />
+                          Modo Clásico (H Vs H)
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setModoDeJuego("HsvHs")}
+                          className="w-full text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 font-medium rounded-lg text-lg px-5 py-3 text-center flex items-center justify-center shadow-md hover:shadow-lg transition-all"
+                        >
+                          <GiWorld
+                            aria-hidden="true"
+                            className="w-6 h-6 mr-2 fill-current"
+                          />
+                          Torneo Online (Hs Vs Hs)
+                        </button>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <button
+                            type="button"
+                            className="text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 font-medium rounded-lg text-base px-4 py-3 text-center flex items-center justify-center shadow-md hover:shadow-lg transition-all"
+                            onClick={() => setModoDeJuego("HvM")}
+                          >
+                            <SiProbot
+                              aria-hidden="true"
+                              className="w-5 h-5 mr-2 fill-current"
+                            />
+                            H Vs M
+                          </button>
+
+                          <button
+                            type="button"
+                            className="text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 font-medium rounded-lg text-base px-4 py-3 text-center flex items-center justify-center shadow-md hover:shadow-lg transition-all"
+                            onClick={() => setModoDeJuego("MvH")}
+                          >
+                            <SiProbot
+                              aria-hidden="true"
+                              className="w-5 h-5 mr-2 fill-current"
+                            />
+                            M Vs H
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </MotionFade>
+
+                  {/* Number input form */}
+                  <MotionFade in={modoDeJuego !== "" && numeroPrincipal === 0}>
+                    <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200/50 mb-6">
+                      <p className="mb-4 text-lg text-gray-800 text-center font-medium">
+                        Hola humano, ¿con cuántos dígitos deseas jugar?
+                      </p>
+                      <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        className="flex justify-center"
+                      >
+                        <div className="flex">
+                          <input
+                            type="number"
+                            {...register("number")}
+                            placeholder="3"
+                            className={`rounded-l-lg p-3 border-t border-b border-l text-gray-800 bg-white ${
+                              errors.number
+                                ? "focus:border-red-400 border-red-300"
+                                : "focus:border-amber-400 border-gray-300"
+                            } placeholder-gray-400 focus:outline-none focus:ring-2 ${
+                              errors.number
+                                ? "focus:ring-red-300"
+                                : "focus:ring-amber-300"
+                            }`}
+                          />
+                          <button
+                            type="submit"
+                            disabled={!!errors.number}
+                            className={`px-6 rounded-r-lg select-none ${
+                              errors.number
+                                ? "bg-red-400 border-red-400"
+                                : "bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 border-amber-400"
+                            } text-white font-bold p-3 uppercase border-t border-b border-r focus:outline-none transition-all duration-150`}
+                          >
+                            Ok
+                          </button>
+                        </div>
+                      </form>
+                      {errors.number && (
+                        <p className="text-red-600 text-sm mt-2 text-center">
+                          {val}
+                        </p>
+                      )}
+                    </div>
+                  </MotionFade>
+
+                  {/* Game components */}
+                  {modoDeJuego === "HvH" && (
+                    <HumanoHumano
+                      numeroPrincipal={numeroPrincipal}
+                      actualizarHistoial={actualizarHistoial}
+                    />
+                  )}
+                  {modoDeJuego === "HvM" && (
+                    <MaquinaPistas
+                      numeroPrincipal={numeroPrincipal}
+                      actualizarHistoial={actualizarHistoial}
+                    />
+                  )}
+                  {modoDeJuego === "MvH" && (
+                    <MaquinaAdivina
+                      numeroPrincipal={numeroPrincipal}
+                      actualizarHistoial={actualizarHistoial}
+                    />
+                  )}
+                  {modoDeJuego === "HsvHs" && (
+                    <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200/50 text-center">
+                      <h2 className="text-2xl font-bold text-gray-800 mb-4">
+                        Lo sentimos
+                      </h2>
+                      <p className="text-gray-700 mb-6 leading-relaxed">
+                        Actualmente no hemos podido desarrollar el modo de juego
+                        torneo de fijas y picas. Estamos trabajando arduamente
+                        para ofrecerte esta emocionante opción de juego lo más
+                        pronto posible.
+                      </p>
+                      <p className="text-lg font-bold text-rose-600 mb-6">
+                        ¡Si te gustaría ayudarnos a desarrollar este modo de
+                        juego, no dudes y ve a nuestro GITHUB!
+                      </p>
+                      <p className="text-gray-700 mb-6">
+                        Estamos siempre buscando la colaboración de jugadores
+                        apasionados como tú. ¡Juntos podemos hacer de fijas y
+                        picas un juego aún mejor!
+                      </p>
+                      <a
+                        className="inline-block bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 text-white px-6 py-3 rounded-lg font-bold transition-all duration-300"
+                        href="https://github.com/IllustriousLoop/Fijas-y-picas"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Ayudar!!
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Second history sidebar for HvH mode */}
+              {modoDeJuego === "HvH" && (
+                <div className="lg:col-span-1 order-3">
+                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-gray-200/50">
+                    <h3 className="text-sm font-semibold text-gray-700 mb-4 text-center">
+                      Jugador 2
+                    </h3>
+                    <div className="space-y-2">
+                      <AnimatePresence>
+                        {historial?.map((item, i) => {
+                          const color = noRepeticion(i);
+                          const valor: string = ilustrarPicasYFijas(item);
+                          return item[2] === 1 ? (
+                            <motion.div
+                              key={i}
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -10 }}
+                              transition={{ duration: 0.3, ease: "easeOut" }}
+                              className={`${color} text-white text-sm font-medium text-center p-2 rounded-lg shadow`}
+                            >
+                              {valor}
+                            </motion.div>
+                          ) : null;
+                        })}
+                      </AnimatePresence>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+          </div>
+
+          {/* Information section */}
+          <div className="max-w-4xl mx-auto mt-16 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-200/50"
+            >
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                ¿Por qué jugar picas y fijas online?
+              </h2>
+              <p className="text-gray-700 mb-6 leading-relaxed">
+                Además de ser un pasatiempo adictivo,{" "}
+                <strong>picas y fijas online</strong> fortalece tu pensamiento
+                lógico, la resolución de problemas y la capacidad para procesar
+                información parcial. Cada intento aporta pistas —fijas (dígitos
+                correctos en la posición exacta) y picas (dígitos correctos en
+                posición distinta)— y tu objetivo es deducir el código en el
+                menor número de rondas.
+              </p>
+
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Modos de juego disponibles
+              </h3>
+              <ul className="text-left space-y-2 mb-6">
+                <li className="flex items-start">
+                  <span className="text-rose-600 mr-2">•</span>
+                  <span>
+                    <strong>Clásico versus humano:</strong> Compite contra un
+                    amigo, turnándose para adivinar el código secreto de cada
+                    uno.
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-rose-600 mr-2">•</span>
+                  <span>
+                    <strong>Contra la computadora:</strong> Pon a prueba tu
+                    ingenio frente a un rival con inteligencia artificial
+                    entrenada en técnicas de deducción.
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-rose-600 mr-2">•</span>
+                  <span>
+                    <strong>Torneo en línea:</strong> Participa en eliminatorias
+                    con jugadores de todo el mundo y asciende en el ranking
+                    global.
+                  </span>
+                </li>
+              </ul>
+
+              <p className="text-gray-700 mb-6">
+                Prepárate para sumergirte en un desafío de lógica sin igual.
+                Cada partida es distinta: el número secreto cambia, y con él tu
+                necesidad de diseñar nuevas estrategias. ¡Buena suerte!
+              </p>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                Comienza la partida
+              </h2>
+              <p className="text-gray-700 mb-6">
+                Haz clic en el botón <strong>&quot;Jugar ahora&quot;</strong> y
+                para sumergirte en un desafío de lógica sin igual. Cada partida
+                es distinta: el número secreto cambia, y con él tu necesidad de
+                diseñar nuevas estrategias. ¡Buena suerte!
+              </p>
+
+              <Link
+                className="inline-block bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 text-white px-6 py-3 rounded-lg font-bold transition-all duration-300"
+                href="/como-jugar"
+              >
+                Ver instrucciones detalladas
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </div>
-      {modoDeJuego === "HvH" ? (
-        <div className="col-span-1 flex flex-col justify-center">
-          <AnimatePresence>
-            {historial?.map((item, i) => {
-              const color = noRepeticion(i);
-              const valor: string = ilustrarPicasYFijas(item);
-              return item[2] === 1 ? (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5, ease: "easeIn" }}
-                  className={`burbleHistory burbleHistory-${color}`}
-                >
-                  {valor}
-                </motion.div>
-              ) : null;
-            })}
-          </AnimatePresence>
-        </div>
-      ) : null}
-    </div>
+    </section>
   );
 };
 
