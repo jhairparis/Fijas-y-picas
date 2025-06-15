@@ -333,7 +333,7 @@ const Comojugar = () => {
                 es una nueva oportunidad de superarte!
               </p>
               <Link
-                href="/jugar"
+                href="/jugar/hvh"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
               >
                 <LuPlay className="w-6 h-6 mr-2" />
