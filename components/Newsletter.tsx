@@ -1,6 +1,20 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+
+interface NewsletterProps {
+  dict: {
+    newsletter: {
+      title: string;
+      description: string;
+      placeholder: string;
+      button: string;
+      success: string;
+      error: string;
+    };
+  };
+}
+
 enum peticion {
   exito,
   fallo,
@@ -16,7 +30,7 @@ const n =
 
 const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
-const Newsletter = () => {
+const Newsletter = ({ dict }: NewsletterProps) => {
   const [subscribe, setSubscribe] = useState<peticion>(peticion.nada);
   const [style, setStyle] = useState(n);
   const [email, setEmail] = useState("");
@@ -69,9 +83,11 @@ const Newsletter = () => {
 
   return (
     <div>
-      <h6 className="text-gray-800 font-medium mb-2">Subscribete</h6>
+      <h6 className="text-gray-800 font-medium mb-2">
+        {dict.newsletter.title}
+      </h6>
       <p className="text-sm text-gray-600 mb-4">
-        Get the latest news and articles to your inbox every month.
+        {dict.newsletter.description}
       </p>
 
       <div className="mb-6">
@@ -83,10 +99,10 @@ const Newsletter = () => {
             onChange={handleChange}
             placeholder={
               subscribe === peticion.exito
-                ? "Gracias por subcribirte"
+                ? dict.newsletter.success
                 : subscribe === peticion.fallo
-                  ? "No se puedo subribirte"
-                  : "nombre@jhairparis.com"
+                  ? dict.newsletter.error
+                  : dict.newsletter.placeholder
             }
           />
           {subscribe === peticion.nada ? (
@@ -95,7 +111,7 @@ const Newsletter = () => {
               onClick={() => onSubmit()}
               className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Enviar
+              {dict.newsletter.button}
             </button>
           ) : (
             ""

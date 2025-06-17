@@ -3,8 +3,15 @@ import { LuPlay } from "react-icons/lu";
 import Link from "next/link";
 import Image from "next/image";
 import FloatingNumbers3D from "./FloatingNumbers3D";
+import type { Locale } from "@/lib/i18n";
+import type { Dictionary } from "@/lib/types";
 
-function HeroHome() {
+interface HeroHomeProps {
+  dict: Dictionary;
+  lang: Locale;
+}
+
+function HeroHome({ dict, lang }: HeroHomeProps) {
   return (
     <section className="relative overflow-hidden">
       <div
@@ -27,42 +34,35 @@ function HeroHome() {
           <div className="text-center pb-12 md:pb-16">
             <div className="mb-6">
               <span className="inline-block px-4 py-2 bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent text-sm font-semibold tracking-wider uppercase mb-4">
-                El Juego de Lógica y Deducción Definitivo
+                {dict.hero.subtitle}
               </span>
             </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tighter tracking-tighter mb-6">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-rose-500 to-amber-500">
-                Fijas y Picas
+                {dict.hero.title}
               </span>{" "}
-              <span className="text-gray-900">
-                – El juego de lógica y deducción definitivo
-              </span>
+              <span className="text-gray-900">– {dict.hero.subtitle}</span>
             </h1>
             <div className="max-w-4xl mx-auto">
-              <p className="text-xl md:text-2xl text-gray-700 mb-10 leading-relaxed">
-                Descubre <strong>fijas y picas</strong>, el clásico juego de
-                adivinanza que lleva más de un siglo poniendo a prueba la mente
-                de millones de jugadores. Originado en los pasatiempos de papel
-                y lápiz del siglo XIX como &quot;Bulls and Cows&quot; y
-                popularizado comercialmente con Mastermind en 1970, hoy lo
-                traemos directamente a tu navegador para que juegues{" "}
-                <strong>picas y fijas online</strong> sin descargar nada.
-              </p>
+              <p
+                className="text-xl md:text-2xl text-gray-700 mb-10 leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: dict.hero.description }}
+              />
               <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center sm:space-x-4">
                 <div className="mb-4 sm:mb-0">
                   <Link
                     className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full sm:w-auto"
-                    href="/jugar"
+                    href={`/${lang}/jugar`}
                   >
-                    Jugar ahora
+                    {dict.hero.playNow}
                   </Link>
                 </div>
                 <div>
                   <Link
                     className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-700 bg-white hover:bg-gray-50 border-2 border-gray-300 hover:border-rose-300 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 w-full sm:w-auto"
-                    href="/como-jugar"
+                    href={`/${lang}/como-jugar`}
                   >
-                    Cómo jugar
+                    {dict.hero.learnMore}
                   </Link>
                 </div>
               </div>
@@ -83,11 +83,11 @@ function HeroHome() {
             <div className="flex justify-center">
               <Link
                 className="flex items-center bg-white hover:bg-gradient-to-r hover:from-rose-50 hover:to-amber-50 rounded-full font-semibold group p-5 shadow-xl hover:shadow-2xl border-2 border-transparent hover:border-rose-200 transition-all duration-300"
-                href="/jugar"
+                href={`/${lang}/jugar`}
               >
                 <LuPlay className="w-7 h-7 fill-current text-rose-500 group-hover:text-amber-600 flex-shrink-0 transition-colors duration-300" />
                 <span className="ml-3 text-gray-700 group-hover:text-gray-900 transition-colors duration-300">
-                  Vamos a jugar
+                  {dict.hero.playNow}
                 </span>
               </Link>
             </div>

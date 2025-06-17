@@ -2,8 +2,15 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import type { Locale } from "@/lib/i18n";
+import type { Dictionary } from "@/lib/types";
 
-function Banner() {
+interface BannerProps {
+  dict: Dictionary;
+  lang: Locale;
+}
+
+function Banner({ dict, lang }: BannerProps) {
   const [bannerOpen, setBannerOpen] = useState(true);
 
   return (
@@ -14,19 +21,19 @@ function Banner() {
             <div className="text-slate-500 inline-flex">
               <Link
                 className="font-medium hover:underline text-emerald-400"
-                href="/privacidad"
+                href={`/${lang}/privacidad`}
               >
                 <span className="font-medium hover:no-underline text-slate-50 mr-[0.5px]">
-                  Aceptas todas las{" "}
+                  {dict.banner.acceptText}{" "}
                 </span>
-                Cookies
+                {dict.banner.cookies}
               </Link>
             </div>
             <button
               className="text-slate-500 hover:text-slate-400 pl-2 ml-3 border-l border-gray-700"
               onClick={() => setBannerOpen(false)}
             >
-              <span className="sr-only">Close</span>
+              <span className="sr-only">{dict.banner.close}</span>
               <svg
                 className="w-4 h-4 shrink-0 fill-current"
                 viewBox="0 0 16 16"

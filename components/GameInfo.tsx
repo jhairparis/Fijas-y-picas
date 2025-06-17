@@ -1,8 +1,16 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
+import type { Locale } from "@/lib/i18n";
+import type { Dictionary } from "@/lib/types";
 
-export default function GameInfo() {
+interface GameInfoProps {
+  dict: Dictionary;
+  lang: Locale;
+}
+
+export default function GameInfo({ dict, lang }: GameInfoProps) {
   return (
     <section className="relative">
       <div
@@ -22,10 +30,10 @@ export default function GameInfo() {
               transition={{ duration: 0.6 }}
             >
               <span className="inline-block px-4 py-2 bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent text-sm font-semibold tracking-wider uppercase mb-4">
-                Conoce el Juego
+                {dict.gameInfo.subtitle}
               </span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-amber-900 to-rose-900 bg-clip-text text-transparent mb-8 leading-tight">
-                ¿Qué hace único a Fijas y Picas?
+                {dict.gameInfo.title}
               </h2>
             </motion.div>
           </div>
@@ -38,7 +46,7 @@ export default function GameInfo() {
               className="text-center mb-16"
             >
               <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 leading-tight">
-                Características únicas
+                {dict.gameInfo.uniqueFeatures}
               </h3>
             </motion.div>
 
@@ -286,12 +294,12 @@ export default function GameInfo() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <a
-                      href="/jugar"
+                    <Link
+                      href={`/${lang}/jugar`}
                       className="inline-flex items-center justify-center px-10 py-5 text-xl font-semibold text-white bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 rounded-full shadow-2xl hover:shadow-rose-400/25 transition-all duration-300 transform"
                     >
                       🎯 Jugar ahora
-                    </a>
+                    </Link>
                   </motion.div>
 
                   <motion.div
@@ -301,12 +309,12 @@ export default function GameInfo() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <a
-                      href="/como-jugar"
+                    <Link
+                      href={`/${lang}/como-jugar`}
                       className="inline-flex items-center justify-center px-10 py-5 text-xl font-semibold text-gray-700 bg-white/80 backdrop-blur-sm hover:bg-white border-2 border-gray-200 hover:border-rose-300 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform"
                     >
                       📚 Cómo jugar
-                    </a>
+                    </Link>
                   </motion.div>
                 </div>
               </div>

@@ -1,28 +1,30 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./global.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// Metadata básico y neutro para el layout raíz
 export const metadata: Metadata = {
-  title: "Fijas y Picas – El juego de lógica y deducción definitivo",
-  description:
-    "Descubre fijas y picas, el clásico juego de adivinanza que lleva más de un siglo poniendo a prueba la mente. Juega picas y fijas online gratis desde cualquier dispositivo.",
+  title: "Fijas y Picas",
+  description: "Classic logic and deduction game online",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  metadataBase: new URL("https://fijasypicas.jhairparis.com"),
 };
 
-type RootLayoutProps = Readonly<{
+// Root layout - required by Next.js
+export default function RootLayout({
+  children,
+}: {
   children: React.ReactNode;
-}>;
-
-export default function RootLayout({ children }: RootLayoutProps) {
+}) {
   return (
-    <html lang="es">
+    <html suppressHydrationWarning>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
-        <Header />
-        <main className="flex-grow pt-20">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

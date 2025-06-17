@@ -3,6 +3,11 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { Props } from "../../helpers/type";
 import { motion } from "framer-motion";
+import type { Dictionary } from "@/lib/types";
+
+interface MaquinaAdivinaProps extends Props {
+  dict: Dictionary;
+}
 
 let interacciones = 0;
 let camino = "0";
@@ -23,7 +28,7 @@ const adivinado: number[] = [];
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 let esGanador = false;
 
-const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
+const MaquinaAdivina = ({ numeroPrincipal, dict }: MaquinaAdivinaProps) => {
   const {
     register,
     handleSubmit,
@@ -82,20 +87,18 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
   const getPicasFijas = (fijas: number, picas: number) => {
     if (interacciones != 0) interacciones++;
     if (picas + fijas > numeroPrincipal) {
-      toast.error(
-        "La suma de las pistas no debe se mayor a el numero de digitos escogido"
-      );
-      toast.success("La maquina es la ganadora");
+      toast.error(dict.game.errors.sumExceeded);
+      toast.success(dict.game.success.machineWon);
       esGanador = true;
     } else if (fijas == numeroPrincipal) {
-      toast.success("La maquina es la ganadora");
-      toast.error("Has perdido");
+      toast.success(dict.game.success.machineWon);
+      toast.error(dict.game.success.playerWon);
       esGanador = true;
     } else if (camino == "win") {
       interacciones--;
-      toast.info("Revise mis respuesta y soy el ganador");
-      toast.success("La maquina es la ganadora");
-      toast.error("Has perdido");
+      toast.info(dict.game.info.checkAnswer);
+      toast.success(dict.game.success.machineWon);
+      toast.error(dict.game.success.playerWon);
       esGanador = true;
     } else {
       if (numeroPrincipal == 2) {
@@ -145,8 +148,8 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(decenas[i + 1]);
                   break;
                 } else {
-                  toast.error("No fue posible encontrar el numero");
-                  toast.success("Eres el ganador");
+                  toast.error(dict.game.errors.couldNotFind);
+                  toast.success(dict.game.success.youWon);
                 }
               }
             }
@@ -209,8 +212,8 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                     adivinado.push(decenas[i + 1]);
                     break;
                   } else {
-                    toast.error("I couldn't found number");
-                    toast.success("You are Winner");
+                    toast.error(dict.game.errors.couldNotFind);
+                    toast.success(dict.game.success.youWon);
                   }
                 }
               }
@@ -235,8 +238,8 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                     adivinado.push(unidades[i + 1]);
                     break;
                   } else {
-                    toast.error("I couldn't found number");
-                    toast.success("You are Winner");
+                    toast.error(dict.game.errors.couldNotFind);
+                    toast.success(dict.game.success.youWon);
                   }
                 }
               }
@@ -343,7 +346,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           } else if (camino === "1") {
             if (U == 0) {
               interacciones--;
-              toast.error("Que!! estos no es posible");
+              toast.error(dict.game.errors.impossible);
             } else {
               camino = "win";
               decenasTemporales = memoria[2];
@@ -363,7 +366,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             adivinado.push(memoria[1]);
           } else if (camino === "2") {
             if (U == 0) {
-              toast.error("Que!! estos no es posible");
+              toast.error(dict.game.errors.impossible);
             } else {
               camino = "win";
               adivinado.splice(0, adivinado.length);
@@ -384,10 +387,10 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           }
         } else if (fijas == 1 && picas == 1) {
           camino = "win";
-          toast.error("Que!! estos no es posible");
+          toast.error(dict.game.errors.impossible);
         } else if (picas == 2) {
           if (U == 0) {
-            toast.error("Revisa tus respuestas");
+            toast.error(dict.game.errors.checkAnswers);
           } else {
             camino = "win";
             adivinado.splice(0, adivinado.length);
@@ -395,9 +398,9 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             adivinado.push(T);
           }
         } else if (fijas < 0 || fijas > 2 || picas < 0 || picas > 2) {
-          toast.error("Esto valores no son posibles");
+          toast.error(dict.game.errors.impossibleValues);
         } else {
-          toast.error("las picas y fijas deben estar entre 0 y 2");
+          toast.error(dict.game.errors.rangeError);
         }
       } else if (numeroPrincipal == 3) {
         //012
@@ -436,67 +439,67 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           } else if (camino === "01") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "011") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0111") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0112") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "012") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "02") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "021") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "02111") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "031") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0311") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03111" || camino === "03112") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "032") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0321") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03211" || camino === "03212") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1") {
             camino = "12";
             removerDelRecurso(memoria[0]);
@@ -528,13 +531,13 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                 adivinado.push(unidades[i + 2]);
                 break;
               } else {
-                console.log("I couldn't found number");
+                console.log(dict.game.errors.debugNotFound);
               }
             }
           } else if (camino === "11") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "112") {
             removerDelRecurso(H);
             removerDelRecurso(T);
@@ -555,7 +558,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             if (miles.length == 0) {
               esGanador = true;
 
-              toast.success("Yo gane");
+              toast.success(dict.game.success.iWon);
             } else {
               for (let i = 0; i < miles.length; i++) {
                 if (i < decenas.length) {
@@ -564,18 +567,18 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(miles[i + 2]);
                   break;
                 } else {
-                  console.log("I couldn't found number");
+                  console.log(dict.game.errors.debugNotFound);
                 }
               }
             }
           } else if (camino === "1121") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "11211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "113") {
             removerDelRecurso(H);
             removerDelRecurso(T);
@@ -597,7 +600,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             if (decenas.length == 0) {
               esGanador = true;
 
-              toast.success("Yo gane");
+              toast.success(dict.game.success.iWon);
             } else {
               for (let i = 0; i < decenas.length; i++) {
                 if (i < decenas.length) {
@@ -606,34 +609,34 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(decenas[i + 2]);
                   break;
                 } else {
-                  console.log("I couldn't found number");
+                  console.log(dict.game.errors.debugNotFound);
                 }
               }
             }
           } else if (camino === "1131") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "11311" || camino === "11312") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1132" || camino === "1122") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "121") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1212") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           }
         } else if (fijas == 1 && picas == 0) {
           if (camino === "0") {
@@ -738,7 +741,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           } else if (camino === "1") {
             if (U == 0) {
               interacciones--;
-              toast.error("Que!! estos no es posible");
+              toast.error(dict.game.errors.impossible);
             } else {
               camino = "win";
               decenasTemporales = memoria[2];
@@ -758,7 +761,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             adivinado.push(unidadesTemporales);
           } else if (camino === "2") {
             if (U == 0) {
-              toast.error("Que!! estos no es posible");
+              toast.error(dict.game.errors.impossible);
             } else {
               camino = "win";
               adivinado.splice(0, adivinado.length);
@@ -779,10 +782,10 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           }
         } else if (fijas == 1 && picas == 1) {
           camino = "win";
-          toast.error("Que!! estos no es posible");
+          toast.error(dict.game.errors.impossible);
         } else if (picas == 2) {
           if (U == 0) {
-            toast.error("Revisa tus respuestas");
+            toast.error(dict.game.errors.checkAnswers);
           } else {
             camino = "win";
             adivinado.splice(0, adivinado.length);
@@ -790,9 +793,9 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             adivinado.push(T);
           }
         } else if (fijas < 0 || fijas > 2 || picas < 0 || picas > 2) {
-          toast.error("Esto valores no son posibles");
+          toast.error(dict.game.errors.impossibleValues);
         } else {
-          toast.error("las picas y fijas deben estar entre 0 y 2");
+          toast.error(dict.game.errors.rangeError);
         }
       } else if (numeroPrincipal == 3) {
         //012
@@ -831,67 +834,67 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           } else if (camino === "01") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "011") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0111") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0112") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "012") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "02") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "021") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "02111") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "031") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0311") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03111" || camino === "03112") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "032") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0321") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03211" || camino === "03212") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1") {
             camino = "12";
             removerDelRecurso(memoria[0]);
@@ -923,13 +926,13 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                 adivinado.push(unidades[i + 2]);
                 break;
               } else {
-                console.log("I couldn't found number");
+                console.log(dict.game.errors.debugNotFound);
               }
             }
           } else if (camino === "11") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "112") {
             removerDelRecurso(H);
             removerDelRecurso(T);
@@ -950,7 +953,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             if (miles.length == 0) {
               esGanador = true;
 
-              toast.success("Yo gane");
+              toast.success(dict.game.success.iWon);
             } else {
               for (let i = 0; i < miles.length; i++) {
                 if (i < decenas.length) {
@@ -959,18 +962,18 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(miles[i + 2]);
                   break;
                 } else {
-                  console.log("I couldn't found number");
+                  console.log(dict.game.errors.debugNotFound);
                 }
               }
             }
           } else if (camino === "1121") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "11211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "113") {
             removerDelRecurso(H);
             removerDelRecurso(T);
@@ -992,7 +995,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             if (decenas.length == 0) {
               esGanador = true;
 
-              toast.success("Yo gane");
+              toast.success(dict.game.success.iWon);
             } else {
               for (let i = 0; i < decenas.length; i++) {
                 if (i < decenas.length) {
@@ -1001,34 +1004,34 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(decenas[i + 2]);
                   break;
                 } else {
-                  console.log("I couldn't found number");
+                  console.log(dict.game.errors.debugNotFound);
                 }
               }
             }
           } else if (camino === "1131") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "11311" || camino === "11312") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1132" || camino === "1122") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "121") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1212") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           }
         } else if (fijas == 1 && picas == 0) {
           if (camino === "0") {
@@ -1133,7 +1136,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           } else if (camino === "1") {
             if (U == 0) {
               interacciones--;
-              toast.error("Que!! estos no es posible");
+              toast.error(dict.game.errors.impossible);
             } else {
               camino = "win";
               decenasTemporales = memoria[2];
@@ -1153,7 +1156,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             adivinado.push(unidadesTemporales);
           } else if (camino === "2") {
             if (U == 0) {
-              toast.error("Que!! estos no es posible");
+              toast.error(dict.game.errors.impossible);
             } else {
               camino = "win";
               adivinado.splice(0, adivinado.length);
@@ -1174,10 +1177,10 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           }
         } else if (fijas == 1 && picas == 1) {
           camino = "win";
-          toast.error("Que!! estos no es posible");
+          toast.error(dict.game.errors.impossible);
         } else if (picas == 2) {
           if (U == 0) {
-            toast.error("Revisa tus respuestas");
+            toast.error(dict.game.errors.checkAnswers);
           } else {
             camino = "win";
             adivinado.splice(0, adivinado.length);
@@ -1185,9 +1188,9 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             adivinado.push(T);
           }
         } else if (fijas < 0 || fijas > 2 || picas < 0 || picas > 2) {
-          toast.error("Esto valores no son posibles");
+          toast.error(dict.game.errors.impossibleValues);
         } else {
-          toast.error("las picas y fijas deben estar entre 0 y 2");
+          toast.error(dict.game.errors.rangeError);
         }
       } else if (numeroPrincipal == 3) {
         //012
@@ -1226,67 +1229,67 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           } else if (camino === "01") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "011") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0111") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0112") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "012") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "02") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "021") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "02111") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "031") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0311") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03111" || camino === "03112") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "032") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0321") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03211" || camino === "03212") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1") {
             camino = "12";
             removerDelRecurso(memoria[0]);
@@ -1318,13 +1321,13 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                 adivinado.push(unidades[i + 2]);
                 break;
               } else {
-                console.log("I couldn't found number");
+                console.log(dict.game.errors.debugNotFound);
               }
             }
           } else if (camino === "11") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "112") {
             removerDelRecurso(H);
             removerDelRecurso(T);
@@ -1345,7 +1348,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             if (miles.length == 0) {
               esGanador = true;
 
-              toast.success("Yo gane");
+              toast.success(dict.game.success.iWon);
             } else {
               for (let i = 0; i < miles.length; i++) {
                 if (i < decenas.length) {
@@ -1354,18 +1357,18 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(miles[i + 2]);
                   break;
                 } else {
-                  console.log("I couldn't found number");
+                  console.log(dict.game.errors.debugNotFound);
                 }
               }
             }
           } else if (camino === "1121") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "11211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "113") {
             removerDelRecurso(H);
             removerDelRecurso(T);
@@ -1387,7 +1390,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             if (decenas.length == 0) {
               esGanador = true;
 
-              toast.success("Yo gane");
+              toast.success(dict.game.success.iWon);
             } else {
               for (let i = 0; i < decenas.length; i++) {
                 if (i < decenas.length) {
@@ -1396,34 +1399,34 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(decenas[i + 2]);
                   break;
                 } else {
-                  console.log("I couldn't found number");
+                  console.log(dict.game.errors.debugNotFound);
                 }
               }
             }
           } else if (camino === "1131") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "11311" || camino === "11312") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1132" || camino === "1122") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "121") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1212") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           }
         } else if (fijas == 1 && picas == 0) {
           if (camino === "0") {
@@ -1507,7 +1510,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           } else if (camino === "1") {
             if (U == 0) {
               interacciones--;
-              toast.error("Que!! estos no es posible");
+              toast.error(dict.game.errors.impossible);
             } else {
               camino = "win";
               decenasTemporales = memoria[2];
@@ -1527,7 +1530,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             adivinado.push(unidadesTemporales);
           } else if (camino === "2") {
             if (U == 0) {
-              toast.error("Que!! estos no es posible");
+              toast.error(dict.game.errors.impossible);
             } else {
               camino = "win";
               adivinado.splice(0, adivinado.length);
@@ -1548,10 +1551,10 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           }
         } else if (fijas == 1 && picas == 1) {
           camino = "win";
-          toast.error("Que!! estos no es posible");
+          toast.error(dict.game.errors.impossible);
         } else if (picas == 2) {
           if (U == 0) {
-            toast.error("Revisa tus respuestas");
+            toast.error(dict.game.errors.checkAnswers);
           } else {
             camino = "win";
             adivinado.splice(0, adivinado.length);
@@ -1559,9 +1562,9 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             adivinado.push(T);
           }
         } else if (fijas < 0 || fijas > 2 || picas < 0 || picas > 2) {
-          toast.error("Esto valores no son posibles");
+          toast.error(dict.game.errors.impossibleValues);
         } else {
-          toast.error("las picas y fijas deben estar entre 0 y 2");
+          toast.error(dict.game.errors.rangeError);
         }
       } else if (numeroPrincipal == 3) {
         //012
@@ -1600,67 +1603,67 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           } else if (camino === "01") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "011") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0111") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0112") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "012") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "02") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "021") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "02111") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "031") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0311") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03111" || camino === "03112") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "032") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0321") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03211" || camino === "03212") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1") {
             camino = "12";
             removerDelRecurso(memoria[0]);
@@ -1692,13 +1695,13 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                 adivinado.push(unidades[i + 2]);
                 break;
               } else {
-                console.log("I couldn't found number");
+                console.log(dict.game.errors.debugNotFound);
               }
             }
           } else if (camino === "11") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "112") {
             removerDelRecurso(H);
             removerDelRecurso(T);
@@ -1719,7 +1722,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             if (miles.length == 0) {
               esGanador = true;
 
-              toast.success("Yo gane");
+              toast.success(dict.game.success.iWon);
             } else {
               for (let i = 0; i < miles.length; i++) {
                 if (i < decenas.length) {
@@ -1728,18 +1731,18 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(miles[i + 2]);
                   break;
                 } else {
-                  console.log("I couldn't found number");
+                  console.log(dict.game.errors.debugNotFound);
                 }
               }
             }
           } else if (camino === "1121") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "11211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "113") {
             removerDelRecurso(H);
             removerDelRecurso(T);
@@ -1761,7 +1764,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             if (decenas.length == 0) {
               esGanador = true;
 
-              toast.success("Yo gane");
+              toast.success(dict.game.success.iWon);
             } else {
               for (let i = 0; i < decenas.length; i++) {
                 if (i < decenas.length) {
@@ -1770,34 +1773,34 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(decenas[i + 2]);
                   break;
                 } else {
-                  console.log("I couldn't found number");
+                  console.log(dict.game.errors.debugNotFound);
                 }
               }
             }
           } else if (camino === "1131") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "11311" || camino === "11312") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1132" || camino === "1122") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "121") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1212") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           }
         } else if (fijas == 1 && picas == 0) {
           if (camino === "0") {
@@ -1881,7 +1884,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           } else if (camino === "1") {
             if (U == 0) {
               interacciones--;
-              toast.error("Que!! estos no es posible");
+              toast.error(dict.game.errors.impossible);
             } else {
               camino = "win";
               decenasTemporales = memoria[2];
@@ -1901,7 +1904,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             adivinado.push(unidadesTemporales);
           } else if (camino === "2") {
             if (U == 0) {
-              toast.error("Que!! estos no es posible");
+              toast.error(dict.game.errors.impossible);
             } else {
               camino = "win";
               adivinado.splice(0, adivinado.length);
@@ -1922,10 +1925,10 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           }
         } else if (fijas == 1 && picas == 1) {
           camino = "win";
-          toast.error("Que!! estos no es posible");
+          toast.error(dict.game.errors.impossible);
         } else if (picas == 2) {
           if (U == 0) {
-            toast.error("Revisa tus respuestas");
+            toast.error(dict.game.errors.checkAnswers);
           } else {
             camino = "win";
             adivinado.splice(0, adivinado.length);
@@ -1933,9 +1936,9 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             adivinado.push(T);
           }
         } else if (fijas < 0 || fijas > 2 || picas < 0 || picas > 2) {
-          toast.error("Esto valores no son posibles");
+          toast.error(dict.game.errors.impossibleValues);
         } else {
-          toast.error("las picas y fijas deben estar entre 0 y 2");
+          toast.error(dict.game.errors.rangeError);
         }
       } else if (numeroPrincipal == 3) {
         //012
@@ -1974,67 +1977,67 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           } else if (camino === "01") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "011") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0111") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0112") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "012") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "02") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "021") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "02111") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "031") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0311") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03111" || camino === "03112") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "032") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0321") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03211" || camino === "03212") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1") {
             camino = "12";
             removerDelRecurso(memoria[0]);
@@ -2066,13 +2069,13 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                 adivinado.push(unidades[i + 2]);
                 break;
               } else {
-                console.log("I couldn't found number");
+                console.log(dict.game.errors.debugNotFound);
               }
             }
           } else if (camino === "11") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "112") {
             removerDelRecurso(H);
             removerDelRecurso(T);
@@ -2093,7 +2096,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             if (miles.length == 0) {
               esGanador = true;
 
-              toast.success("Yo gane");
+              toast.success(dict.game.success.iWon);
             } else {
               for (let i = 0; i < miles.length; i++) {
                 if (i < decenas.length) {
@@ -2102,18 +2105,18 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(miles[i + 2]);
                   break;
                 } else {
-                  console.log("I couldn't found number");
+                  console.log(dict.game.errors.debugNotFound);
                 }
               }
             }
           } else if (camino === "1121") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "11211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "113") {
             removerDelRecurso(H);
             removerDelRecurso(T);
@@ -2135,7 +2138,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             if (decenas.length == 0) {
               esGanador = true;
 
-              toast.success("Yo gane");
+              toast.success(dict.game.success.iWon);
             } else {
               for (let i = 0; i < decenas.length; i++) {
                 if (i < decenas.length) {
@@ -2144,34 +2147,34 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(decenas[i + 2]);
                   break;
                 } else {
-                  console.log("I couldn't found number");
+                  console.log(dict.game.errors.debugNotFound);
                 }
               }
             }
           } else if (camino === "1131") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "11311" || camino === "11312") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1132" || camino === "1122") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "121") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1212") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           }
         } else if (fijas == 1 && picas == 0) {
           if (camino === "0") {
@@ -2255,7 +2258,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           } else if (camino === "1") {
             if (U == 0) {
               interacciones--;
-              toast.error("Que!! estos no es posible");
+              toast.error(dict.game.errors.impossible);
             } else {
               camino = "win";
               decenasTemporales = memoria[2];
@@ -2275,7 +2278,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             adivinado.push(unidadesTemporales);
           } else if (camino === "2") {
             if (U == 0) {
-              toast.error("Que!! estos no es posible");
+              toast.error(dict.game.errors.impossible);
             } else {
               camino = "win";
               adivinado.splice(0, adivinado.length);
@@ -2296,10 +2299,10 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           }
         } else if (fijas == 1 && picas == 1) {
           camino = "win";
-          toast.error("Que!! estos no es posible");
+          toast.error(dict.game.errors.impossible);
         } else if (picas == 2) {
           if (U == 0) {
-            toast.error("Revisa tus respuestas");
+            toast.error(dict.game.errors.checkAnswers);
           } else {
             camino = "win";
             adivinado.splice(0, adivinado.length);
@@ -2307,9 +2310,9 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             adivinado.push(T);
           }
         } else if (fijas < 0 || fijas > 2 || picas < 0 || picas > 2) {
-          toast.error("Esto valores no son posibles");
+          toast.error(dict.game.errors.impossibleValues);
         } else {
-          toast.error("las picas y fijas deben estar entre 0 y 2");
+          toast.error(dict.game.errors.rangeError);
         }
       } else if (numeroPrincipal == 3) {
         //012
@@ -2348,67 +2351,67 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           } else if (camino === "01") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "011") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0111") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0112") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "012") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "02") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "021") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "02111") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "031") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0311") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03111" || camino === "03112") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "032") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0321") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03211" || camino === "03212") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1") {
             camino = "12";
             removerDelRecurso(memoria[0]);
@@ -2440,13 +2443,13 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                 adivinado.push(unidades[i + 2]);
                 break;
               } else {
-                console.log("I couldn't found number");
+                console.log(dict.game.errors.debugNotFound);
               }
             }
           } else if (camino === "11") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "112") {
             removerDelRecurso(H);
             removerDelRecurso(T);
@@ -2467,7 +2470,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             if (miles.length == 0) {
               esGanador = true;
 
-              toast.success("Yo gane");
+              toast.success(dict.game.success.iWon);
             } else {
               for (let i = 0; i < miles.length; i++) {
                 if (i < decenas.length) {
@@ -2476,18 +2479,18 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(miles[i + 2]);
                   break;
                 } else {
-                  console.log("I couldn't found number");
+                  console.log(dict.game.errors.debugNotFound);
                 }
               }
             }
           } else if (camino === "1121") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "11211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "113") {
             removerDelRecurso(H);
             removerDelRecurso(T);
@@ -2509,7 +2512,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             if (decenas.length == 0) {
               esGanador = true;
 
-              toast.success("Yo gane");
+              toast.success(dict.game.success.iWon);
             } else {
               for (let i = 0; i < decenas.length; i++) {
                 if (i < decenas.length) {
@@ -2518,34 +2521,34 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(decenas[i + 2]);
                   break;
                 } else {
-                  console.log("I couldn't found number");
+                  console.log(dict.game.errors.debugNotFound);
                 }
               }
             }
           } else if (camino === "1131") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "11311" || camino === "11312") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1132" || camino === "1122") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "121") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1212") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           }
         } else if (fijas == 1 && picas == 0) {
           if (camino === "0") {
@@ -2629,7 +2632,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           } else if (camino === "1") {
             if (U == 0) {
               interacciones--;
-              toast.error("Que!! estos no es posible");
+              toast.error(dict.game.errors.impossible);
             } else {
               camino = "win";
               decenasTemporales = memoria[2];
@@ -2649,7 +2652,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             adivinado.push(unidadesTemporales);
           } else if (camino === "2") {
             if (U == 0) {
-              toast.error("Que!! estos no es posible");
+              toast.error(dict.game.errors.impossible);
             } else {
               camino = "win";
               adivinado.splice(0, adivinado.length);
@@ -2670,10 +2673,10 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           }
         } else if (fijas == 1 && picas == 1) {
           camino = "win";
-          toast.error("Que!! estos no es posible");
+          toast.error(dict.game.errors.impossible);
         } else if (picas == 2) {
           if (U == 0) {
-            toast.error("Revisa tus respuestas");
+            toast.error(dict.game.errors.checkAnswers);
           } else {
             camino = "win";
             adivinado.splice(0, adivinado.length);
@@ -2681,9 +2684,9 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             adivinado.push(T);
           }
         } else if (fijas < 0 || fijas > 2 || picas < 0 || picas > 2) {
-          toast.error("Esto valores no son posibles");
+          toast.error(dict.game.errors.impossibleValues);
         } else {
-          toast.error("las picas y fijas deben estar entre 0 y 2");
+          toast.error(dict.game.errors.rangeError);
         }
       } else if (numeroPrincipal == 3) {
         //012
@@ -2722,67 +2725,67 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           } else if (camino === "01") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "011") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0111") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0112") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "012") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "02") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "021") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "02111") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "031") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0311") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03111" || camino === "03112") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "032") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0321") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03211" || camino === "03212") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1") {
             camino = "12";
             removerDelRecurso(memoria[0]);
@@ -2814,13 +2817,13 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                 adivinado.push(unidades[i + 2]);
                 break;
               } else {
-                console.log("I couldn't found number");
+                console.log(dict.game.errors.debugNotFound);
               }
             }
           } else if (camino === "11") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "112") {
             removerDelRecurso(H);
             removerDelRecurso(T);
@@ -2841,7 +2844,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             if (miles.length == 0) {
               esGanador = true;
 
-              toast.success("Yo gane");
+              toast.success(dict.game.success.iWon);
             } else {
               for (let i = 0; i < miles.length; i++) {
                 if (i < decenas.length) {
@@ -2850,18 +2853,18 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(miles[i + 2]);
                   break;
                 } else {
-                  console.log("I couldn't found number");
+                  console.log(dict.game.errors.debugNotFound);
                 }
               }
             }
           } else if (camino === "1121") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "11211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "113") {
             removerDelRecurso(H);
             removerDelRecurso(T);
@@ -2883,7 +2886,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             if (decenas.length == 0) {
               esGanador = true;
 
-              toast.success("Yo gane");
+              toast.success(dict.game.success.iWon);
             } else {
               for (let i = 0; i < decenas.length; i++) {
                 if (i < decenas.length) {
@@ -2892,34 +2895,34 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(decenas[i + 2]);
                   break;
                 } else {
-                  console.log("I couldn't found number");
+                  console.log(dict.game.errors.debugNotFound);
                 }
               }
             }
           } else if (camino === "1131") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "11311" || camino === "11312") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1132" || camino === "1122") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "121") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1212") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           }
         } else if (fijas == 1 && picas == 0) {
           if (camino === "0") {
@@ -3003,7 +3006,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           } else if (camino === "1") {
             if (U == 0) {
               interacciones--;
-              toast.error("Que!! estos no es posible");
+              toast.error(dict.game.errors.impossible);
             } else {
               camino = "win";
               decenasTemporales = memoria[2];
@@ -3023,7 +3026,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             adivinado.push(unidadesTemporales);
           } else if (camino === "2") {
             if (U == 0) {
-              toast.error("Que!! estos no es posible");
+              toast.error(dict.game.errors.impossible);
             } else {
               camino = "win";
               adivinado.splice(0, adivinado.length);
@@ -3044,10 +3047,10 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           }
         } else if (fijas == 1 && picas == 1) {
           camino = "win";
-          toast.error("Que!! estos no es posible");
+          toast.error(dict.game.errors.impossible);
         } else if (picas == 2) {
           if (U == 0) {
-            toast.error("Revisa tus respuestas");
+            toast.error(dict.game.errors.checkAnswers);
           } else {
             camino = "win";
             adivinado.splice(0, adivinado.length);
@@ -3055,9 +3058,9 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             adivinado.push(T);
           }
         } else if (fijas < 0 || fijas > 2 || picas < 0 || picas > 2) {
-          toast.error("Esto valores no son posibles");
+          toast.error(dict.game.errors.impossibleValues);
         } else {
-          toast.error("las picas y fijas deben estar entre 0 y 2");
+          toast.error(dict.game.errors.rangeError);
         }
       } else if (numeroPrincipal == 3) {
         //012
@@ -3096,67 +3099,67 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           } else if (camino === "01") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "011") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0111") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0112") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "012") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "02") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "021") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "02111") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "031") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0311") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03111" || camino === "03112") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "032") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "0321") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "03211" || camino === "03212") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1") {
             camino = "12";
             removerDelRecurso(memoria[0]);
@@ -3188,13 +3191,13 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                 adivinado.push(unidades[i + 2]);
                 break;
               } else {
-                console.log("I couldn't found number");
+                console.log(dict.game.errors.debugNotFound);
               }
             }
           } else if (camino === "11") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "112") {
             removerDelRecurso(H);
             removerDelRecurso(T);
@@ -3215,7 +3218,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             if (miles.length == 0) {
               esGanador = true;
 
-              toast.success("Yo gane");
+              toast.success(dict.game.success.iWon);
             } else {
               for (let i = 0; i < miles.length; i++) {
                 if (i < decenas.length) {
@@ -3224,18 +3227,18 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(miles[i + 2]);
                   break;
                 } else {
-                  console.log("I couldn't found number");
+                  console.log(dict.game.errors.debugNotFound);
                 }
               }
             }
           } else if (camino === "1121") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "11211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "113") {
             removerDelRecurso(H);
             removerDelRecurso(T);
@@ -3257,7 +3260,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
             if (decenas.length == 0) {
               esGanador = true;
 
-              toast.success("Yo gane");
+              toast.success(dict.game.success.iWon);
             } else {
               for (let i = 0; i < decenas.length; i++) {
                 if (i < decenas.length) {
@@ -3266,34 +3269,34 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                   adivinado.push(decenas[i + 2]);
                   break;
                 } else {
-                  console.log("I couldn't found number");
+                  console.log(dict.game.errors.debugNotFound);
                 }
               }
             }
           } else if (camino === "1131") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "11311" || camino === "11312") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1132" || camino === "1122") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "121") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1211") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           } else if (camino === "1212") {
             esGanador = true;
 
-            toast.success("Yo gane");
+            toast.success(dict.game.success.iWon);
           }
         }
       }
@@ -3334,7 +3337,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                 type="number1"
                 {...register("picas")}
                 className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
-                placeholder="picas"
+                placeholder={dict.game.ui.picas}
               />
               <label
                 htmlFor={`number1`}
@@ -3353,7 +3356,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
                 type="number2"
                 {...register("fijas")}
                 className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
-                placeholder="fijas"
+                placeholder={dict.game.ui.fijas}
               />
               <label
                 htmlFor={`number2`}
@@ -3417,7 +3420,7 @@ const MaquinaAdivina = ({ numeroPrincipal }: Props) => {
           </div>
 
           <button type="submit" className="btn btn-yellow">
-            Intentar
+            {dict.game.ui.give}
           </button>
         </form>
       </>

@@ -3,37 +3,39 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { LuBrain, LuGlobe, LuBot } from "react-icons/lu";
 import Image from "next/image";
+import type { Dictionary } from "@/lib/types";
 
-function Features() {
+interface FeaturesProps {
+  dict: Dictionary;
+}
+
+function Features({ dict }: FeaturesProps) {
   const [tab, setTab] = useState(1);
 
   const tabsData = [
     {
       id: 1,
-      title: "IA adaptativa",
-      description:
-        "Enfréntate a la computadora ajustable a tu nivel de habilidad. Nuestra inteligencia artificial se adapta a tu estilo de juego para ofrecerte siempre el desafío perfecto, desde principiante hasta experto.",
+      title: dict.features.tabs.ai.title,
+      description: dict.features.tabs.ai.description,
       icon: <LuBot />,
       imageSrc: "/images/features-bg-1.png",
-      altText: "IA adaptativa",
+      altText: dict.features.tabs.ai.title,
     },
     {
       id: 2,
-      title: "Temporizadores globales",
-      description:
-        "Reta el reloj y supera tus propios récords. Compite contra el tiempo en desafíos cronometrados y demuestra tu velocidad de deducción en las tablas de clasificación mundiales.",
+      title: dict.features.tabs.timers.title,
+      description: dict.features.tabs.timers.description,
       icon: <LuBrain />,
       imageSrc: "/images/features-bg-2.png",
-      altText: "Temporizadores globales",
+      altText: dict.features.tabs.timers.title,
     },
     {
       id: 3,
-      title: "Estadísticas y rankings",
-      description:
-        "Consulta tu posición en tablas locales y mundiales. Analiza tu progreso con estadísticas detalladas de partidas, tiempos promedio y eficiencia de resolución para mejorar continuamente.",
+      title: dict.features.tabs.statistics.title,
+      description: dict.features.tabs.statistics.description,
       icon: <LuGlobe />,
       imageSrc: "/images/features-bg-3.png",
-      altText: "Estadísticas y rankings",
+      altText: dict.features.tabs.statistics.title,
     },
   ];
 
@@ -70,15 +72,14 @@ function Features() {
               transition={{ duration: 0.6 }}
             >
               <span className="inline-block px-4 py-2 bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent text-sm font-semibold tracking-wider uppercase mb-4">
-                Características destacadas
+                {dict.features.subtitle}
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-rose-900 to-amber-900 bg-clip-text text-transparent mb-6 leading-tight">
-                Características destacadas
+                {dict.features.title}
               </h1>
               <div className="text-lg md:text-xl text-gray-600 leading-relaxed space-y-2">
                 <p>
-                  Descubre todas las funcionalidades modernas que hacen de
-                  nuestra plataforma la mejor experiencia para jugar{" "}
+                  {dict.features.description}{" "}
                   <span className="font-semibold text-rose-600">
                     fijas y picas online
                   </span>
@@ -97,13 +98,10 @@ function Features() {
                 className="mb-10"
               >
                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                  Funcionalidades Modernas
+                  {dict.features.modern}
                 </h3>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Explora el código y la lógica interna de Fijas y Picas, con
-                  tutoriales paso a paso. Nuestra plataforma digital añade
-                  funcionalidades modernas, comunidades y actualización
-                  constante de modos de juego.
+                  {dict.features.modernDescription}
                 </p>
               </motion.div>
 

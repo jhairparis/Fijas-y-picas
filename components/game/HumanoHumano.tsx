@@ -6,6 +6,7 @@ import { Props, inputs as InputFormType, arrayC } from "../../helpers/type";
 import { schemaEntradas, schemaFijasPicas } from "../../helpers/validador";
 import MotionSimple from "../transitions/MotionSimple";
 import { yupResolver } from "@hookform/resolvers/yup";
+import type { Dictionary } from "@/lib/types";
 
 // Define a type for the input items with their refs
 type InputItem = {
@@ -19,7 +20,15 @@ type FijasPicasForm = {
   picas: number;
 };
 
-const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
+interface HumanoHumanoProps extends Props {
+  dict: Dictionary;
+}
+
+const HumanoHumano = ({
+  numeroPrincipal,
+  actualizarHistoial,
+  dict,
+}: HumanoHumanoProps) => {
   const {
     register,
     handleSubmit,
@@ -57,7 +66,9 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
     const numeroR = comprobar();
     arrayCompleto.forEach((val, i) => {
       if (isNaN(val[0])) {
-        toast.error("Ingresa un digito en la casilla numero: " + (i + 1));
+        toast.error(
+          dict.game.errors.invalidNumber.replace("{{position}}", String(i + 1))
+        );
       } else if (!numeroR) {
         if (i === numeroPrincipal - 1) {
           if (jugadorUno === "dar") {
@@ -66,7 +77,7 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
               {
                 picas: 0,
                 fijas: 0,
-                text: "Hay un valor repetido",
+                text: dict.game.errors.duplicateNumber,
               },
               0
             );
@@ -76,24 +87,24 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
               {
                 picas: 0,
                 fijas: 0,
-                text: "Hay un valor repetido",
+                text: dict.game.errors.duplicateNumber,
               },
               1
             );
           }
-          toast.info("Recuerda ninguna cifra se repite");
+          toast.info(dict.game.info.duplicateReminder);
         }
       } else {
         if (i === numeroPrincipal - 1) {
           if (jugadorUno === "dar") {
             setJugadorUno("espera");
             setJugadorDos("pista");
-            toast.info("Jugador 2 dale las  picas y fijas a juagador 1");
+            toast.info(dict.game.info.player2GivePicas);
             setNumeroJugado(parseInt(arrayValores.join("")));
           } else if (jugadorDos === "dar") {
             setJugadorUno("pista");
             setJugadorDos("espera");
-            toast.info("Jugador 1 dale las  picas y fijas a juagador 2");
+            toast.info(dict.game.info.player1GivePicas);
             setNumeroJugado(parseInt(arrayValores.join("")));
           }
           setMostrarDigitos(false);
@@ -116,39 +127,37 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
     setInputItems(newItems); // Store items with their refs
     setMostrarDigitos(true);
     if (numeroPrincipal > 0) {
-      toast.success("Partida Iniciada");
+      toast.success(dict.game.success.gameStarted);
     }
-  }, [numeroPrincipal, unregister]); // Added unregister to dependency array
+  }, [numeroPrincipal, unregister, dict.game.success.gameStarted]); // Added unregister and dict to dependency array
 
   const onSubmitFijasPicas: SubmitHandler<FijasPicasForm> = data => {
     const picas = data.picas;
     const fijas = data.fijas;
     if (picas + fijas > numeroPrincipal) {
-      toast.error(
-        "la suma de las pistas no puede ser superior al numero de digitos que se escogieron"
-      );
+      toast.error(dict.game.errors.sumExceeded);
     } else if (fijas === numeroPrincipal) {
       if (jugadorUno === "espera") {
-        toast.success("Jugador 1 has ganado");
+        toast.success(dict.game.success.player1Won);
       }
       if (jugadorDos === "espera") {
-        toast.success("Jugador 2 has ganado");
+        toast.success(dict.game.success.player2Won);
       }
     } else {
       if (jugadorUno === "espera") {
         actualizarHistoial(numeroJugado, { picas, fijas }, 0);
         setJugadorUno("");
         setJugadorDos("dar");
-        toast.info("Intenta adivinar el numero del jugador 1");
+        toast.info(dict.game.info.guessPlayer1);
       } else if (jugadorDos === "pista") {
         setJugadorUno("dar");
         setJugadorDos("");
-        toast.info("Intenta adivinar el numero del jugador 2");
+        toast.info(dict.game.info.guessPlayer2);
       } else if (jugadorDos === "espera") {
         setJugadorUno("dar");
         setJugadorDos("");
         actualizarHistoial(numeroJugado, { picas, fijas }, 1);
-        toast.info("Intenta adivinar el numero del jugador 2");
+        toast.info(dict.game.info.guessPlayer2);
       }
       setmostrarFijasEntrada(false);
       setMostrarDigitos(true);
@@ -181,7 +190,10 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
                     id={inputId}
                     type="number"
                     {...register(inputId, schemaEntradas)}
-                    placeholder={`Digito ${i + 1}`}
+                    placeholder={dict.game.ui.digit.replace(
+                      "{{number}}",
+                      String(i + 1)
+                    )}
                     className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
                   />
                   <label
@@ -198,7 +210,7 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
         {inputItems.length > 0 && (
           <MotionSimple in={inputItems.length > 0} time={500}>
             <button type="submit" className="btn btn-blue">
-              Intentar
+              {dict.game.ui.attempt}
             </button>
           </MotionSimple>
         )}
@@ -214,7 +226,7 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
               type="number"
               id="fijas"
               {...twoForm.register("fijas")}
-              placeholder="fijas"
+              placeholder={dict.game.ui.fijas}
               className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
             />
             <label
@@ -229,7 +241,7 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
               type="number"
               id="picas"
               {...twoForm.register("picas")}
-              placeholder="picas"
+              placeholder={dict.game.ui.picas}
               className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
             />
             <label
@@ -241,7 +253,7 @@ const HumanoHumano = ({ numeroPrincipal, actualizarHistoial }: Props) => {
           </div>
         </div>
         <button type="submit" className="btn btn-green">
-          Dar
+          {dict.game.ui.give}
         </button>
       </form>
     </>

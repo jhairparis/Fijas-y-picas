@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { motion, AnimatePresence } from "framer-motion";
 import { arrayC, Props, inputs as InputFormValues } from "../../helpers/type";
 import { schemaEntradas } from "../../helpers/validador";
+import type { Dictionary } from "@/lib/types";
 
 // Define a type for the input items with their refs
 type InputItem = {
@@ -11,7 +12,15 @@ type InputItem = {
   nodeRef: RefObject<HTMLDivElement | null>; // Ref for the CSSTransition's direct child
 };
 
-const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
+interface MaquinaPistasProps extends Props {
+  dict: Dictionary;
+}
+
+const MaquinaPistas = ({
+  numeroPrincipal,
+  actualizarHistoial,
+  dict,
+}: MaquinaPistasProps) => {
   const [inputItems, setInputItems] = useState<InputItem[]>([]); // Renamed state and updated type
   const [numero, setNumero] = useState<number[]>([]);
   const [show, setShow] = useState<boolean>(false);
@@ -74,15 +83,17 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
     let picas = 0;
     arrayCompleto.forEach((val, i) => {
       if (isNaN(val[0])) {
-        toast.error("Ingresa un digito en la casilla numero: " + (i + 1));
+        toast.error(
+          dict.game.errors.invalidNumber.replace("{{position}}", String(i + 1))
+        );
       } else if (!numeroR) {
         if (i === numeroPrincipal - 1) {
           actualizarHistoial(parseInt(arrayValores.join("")), {
             picas: 0,
             fijas: 0,
-            text: "Hay un valor repetido",
+            text: dict.game.errors.duplicateNumber,
           });
-          toast.info("Recuerda ninguna cifra se repite");
+          toast.info(dict.game.info.duplicateReminder);
         }
       } else {
         if (val[0] === numero[i]) {
@@ -95,9 +106,13 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
         if (i === numeroPrincipal - 1) {
           actualizarHistoial(parseInt(arrayValores.join("")), { picas, fijas });
           if (fijas === numeroPrincipal) {
-            toast.success("¡¡¡GANASTE!!! 🚀");
+            toast.success(dict.game.success.congratulations);
           } else {
-            toast(`hay ${fijas} fijas y ${picas} picas`);
+            toast(
+              dict.game.info.picasAndFijas
+                .replace("{{fijas}}", String(fijas))
+                .replace("{{picas}}", String(picas))
+            );
           }
         }
       }
@@ -127,7 +142,10 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
                     id={inputId}
                     type="number"
                     {...register(inputId, schemaEntradas)}
-                    placeholder={`Digito ${i + 1}`}
+                    placeholder={dict.game.ui.digit.replace(
+                      "{{number}}",
+                      String(i + 1)
+                    )}
                     className={`w-full mt-2 mr-6 py-2 px-4 text-base appearance-none border-2 border-transparent focus:border-purple-600 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg focus:outline-none`}
                   />
                   <label
@@ -143,7 +161,7 @@ const MaquinaPistas = ({ numeroPrincipal, actualizarHistoial }: Props) => {
         </div>
         {inputItems.length > 0 ? ( // Check inputItems.length
           <button type="submit" className="btn btn-yellow">
-            Intentar
+            {dict.game.ui.attempt}
           </button>
         ) : (
           ""

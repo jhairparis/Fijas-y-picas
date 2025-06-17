@@ -3,8 +3,18 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { LuPlay } from "react-icons/lu";
+import type { Locale } from "@/lib/i18n";
+import type { Dictionary } from "@/lib/types";
 
-const Comojugar = () => {
+interface ComoJugarContentProps {
+  lang: Locale;
+  dict: Dictionary;
+}
+
+export default function ComoJugarContent({
+  lang,
+  dict,
+}: ComoJugarContentProps) {
   return (
     <section className="relative overflow-hidden">
       <div
@@ -24,17 +34,15 @@ const Comojugar = () => {
               transition={{ duration: 0.6 }}
             >
               <span className="inline-block px-4 py-2 bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent text-sm font-semibold tracking-wider uppercase mb-4">
-                Guía de Juego
+                {dict.comoJugar?.subtitle || "Guía de Juego"}
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-rose-900 to-amber-900 bg-clip-text text-transparent mb-8 leading-tight">
-                Cómo jugar a fijas y picas – Guía completa de deducción
+                {dict.comoJugar?.title ||
+                  "Cómo jugar a fijas y picas – Guía completa de deducción"}
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
-                En <strong>fijas y picas</strong>, uno de los juegos de lógica
-                más antiguos y universales, tu misión es{" "}
-                <strong>adivinar un número secreto</strong> de cuatro dígitos
-                únicos. Con cada intento recibirás pistas que te acercan a la
-                solución.
+                {dict.comoJugar?.description ||
+                  "En fijas y picas, uno de los juegos de lógica más antiguos y universales, tu misión es adivinar un número secreto de cuatro dígitos únicos. Con cada intento recibirás pistas que te acercan a la solución."}
               </p>
             </motion.div>
           </div>
@@ -47,7 +55,7 @@ const Comojugar = () => {
               className="text-center mb-12"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Reglas básicas
+                {dict.comoJugar?.basicRules?.title || "Reglas básicas"}
               </h2>
             </motion.div>
 
@@ -65,10 +73,14 @@ const Comojugar = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-gray-900">
-                        <strong>Código secreto de 4 dígitos:</strong>
+                        <strong>
+                          {dict.comoJugar?.basicRules?.rule1?.title ||
+                            "Código secreto de 4 dígitos:"}
+                        </strong>
                       </p>
                       <p className="text-gray-600">
-                        Cada dígito es distinto (por ejemplo, 2037).
+                        {dict.comoJugar?.basicRules?.rule1?.description ||
+                          "Cada dígito es distinto (por ejemplo, 2037)."}
                       </p>
                     </div>
                   </div>
@@ -78,10 +90,14 @@ const Comojugar = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-gray-900">
-                        <strong>Intento:</strong>
+                        <strong>
+                          {dict.comoJugar?.basicRules?.rule2?.title ||
+                            "Intento:"}
+                        </strong>
                       </p>
                       <p className="text-gray-600">
-                        Propones otro número de 4 cifras sin repeticiones.
+                        {dict.comoJugar?.basicRules?.rule2?.description ||
+                          "Propones otro número de 4 cifras sin repeticiones."}
                       </p>
                     </div>
                   </div>
@@ -91,13 +107,14 @@ const Comojugar = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-gray-900">
-                        <strong>Respuesta:</strong>
+                        <strong>
+                          {dict.comoJugar?.basicRules?.rule3?.title ||
+                            "Respuesta:"}
+                        </strong>
                       </p>
                       <p className="text-gray-600">
-                        Te informamos cuántas <strong>fijas</strong> (dígitos
-                        correctos en la posición exacta) y cuántas{" "}
-                        <strong>picas</strong> (dígitos correctos en distinta
-                        posición) obtuviste.
+                        {dict.comoJugar?.basicRules?.rule3?.description ||
+                          "Te informamos cuántas fijas (dígitos correctos en la posición exacta) y cuántas picas (dígitos correctos en distinta posición) obtuviste."}
                       </p>
                     </div>
                   </div>
@@ -112,12 +129,13 @@ const Comojugar = () => {
               className="bg-gradient-to-br from-white/90 to-gray-50/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-gray-200/50"
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-                Ejemplo detallado
+                {dict.comoJugar?.detailedExample?.title || "Ejemplo detallado"}
               </h3>
               <div className="max-w-4xl mx-auto">
                 <div className="bg-gray-100 rounded-2xl p-6 mb-6">
                   <p className="text-center text-lg font-semibold text-gray-800 mb-2">
-                    Número secreto:{" "}
+                    {dict.comoJugar?.detailedExample?.secretNumber ||
+                      "Número secreto:"}{" "}
                     <span className="font-mono bg-gray-800 text-white px-3 py-1 rounded">
                       5327
                     </span>
@@ -127,25 +145,32 @@ const Comojugar = () => {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center bg-white rounded-2xl p-4 border border-gray-200">
                     <div className="text-center">
-                      <p className="text-sm text-gray-500 mb-1">Intento</p>
+                      <p className="text-sm text-gray-500 mb-1">
+                        {dict.comoJugar?.detailedExample?.attempt || "Intento"}
+                      </p>
                       <p className="font-mono text-xl font-bold">5728</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-sm text-gray-500 mb-1">Resultado</p>
+                      <p className="text-sm text-gray-500 mb-1">
+                        {dict.comoJugar?.detailedExample?.result || "Resultado"}
+                      </p>
                       <div className="flex justify-center space-x-4">
                         <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
-                          1 Fija
+                          1 {dict.comoJugar?.detailedExample?.fijas || "Fija"}
                         </span>
                         <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">
-                          2 Picas
+                          2 {dict.comoJugar?.detailedExample?.picas || "Picas"}
                         </span>
                       </div>
                     </div>
                     <div className="text-center">
-                      <p className="text-sm text-gray-500 mb-1">Análisis</p>
+                      <p className="text-sm text-gray-500 mb-1">
+                        {dict.comoJugar?.detailedExample?.analysis ||
+                          "Análisis"}
+                      </p>
                       <p className="text-sm text-gray-700">
-                        5 en primera posición correcta, 7 y 2 existen pero
-                        cambian de lugar
+                        {dict.comoJugar?.detailedExample?.analysisText ||
+                          "5 en primera posición correcta, 7 y 2 existen pero cambian de lugar"}
                       </p>
                     </div>
                   </div>
@@ -153,9 +178,12 @@ const Comojugar = () => {
 
                 <div className="mt-6 bg-blue-50 rounded-2xl p-4 border border-blue-200">
                   <p className="text-blue-800 text-center">
-                    <strong>💡 Información:</strong> Gracias a esta información,
-                    podrás descartar dígitos y ubicar los correctos con lógica
-                    deductiva.
+                    <strong>
+                      💡{" "}
+                      {dict.comoJugar?.detailedExample?.info || "Información:"}
+                    </strong>{" "}
+                    {dict.comoJugar?.detailedExample?.infoText ||
+                      "Gracias a esta información, podrás descartar dígitos y ubicar los correctos con lógica deductiva."}
                   </p>
                 </div>
               </div>
@@ -170,7 +198,7 @@ const Comojugar = () => {
               className="text-center mb-12"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Consejos de expertos
+                {dict.comoJugar?.expertTips?.title || "Consejos de expertos"}
               </h2>
             </motion.div>
 
@@ -186,8 +214,8 @@ const Comojugar = () => {
                     •
                   </div>
                   <p className="text-gray-700">
-                    Empieza con números que incluyan dígitos alejados (0–9) para
-                    maximizar la información de la primera pista.
+                    {dict.comoJugar?.expertTips?.tip1 ||
+                      "Empieza con números que incluyan dígitos alejados (0–9) para maximizar la información de la primera pista."}
                   </p>
                 </div>
                 <div className="flex items-start">
@@ -195,8 +223,8 @@ const Comojugar = () => {
                     •
                   </div>
                   <p className="text-gray-700">
-                    Anota cada intento y pista; construye un pequeño mapa de
-                    posibilidades.
+                    {dict.comoJugar?.expertTips?.tip2 ||
+                      "Anota cada intento y pista; construye un pequeño mapa de posibilidades."}
                   </p>
                 </div>
                 <div className="flex items-start">
@@ -204,8 +232,8 @@ const Comojugar = () => {
                     •
                   </div>
                   <p className="text-gray-700">
-                    Prioriza descartar primero dígitos para acotar el rango de
-                    búsqueda.
+                    {dict.comoJugar?.expertTips?.tip3 ||
+                      "Prioriza descartar primero dígitos para acotar el rango de búsqueda."}
                   </p>
                 </div>
               </div>
@@ -220,7 +248,7 @@ const Comojugar = () => {
               className="text-center mb-12"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Modos avanzados
+                {dict.comoJugar?.advancedModes?.title || "Modos avanzados"}
               </h2>
             </motion.div>
 
@@ -232,11 +260,14 @@ const Comojugar = () => {
                 className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-gray-200/50"
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  <strong>Repeticiones permitidas</strong>
+                  <strong>
+                    {dict.comoJugar?.advancedModes?.repeats?.title ||
+                      "Repeticiones permitidas"}
+                  </strong>
                 </h3>
                 <p className="text-gray-600">
-                  Aumenta la dificultad permitiendo dígitos iguales en el código
-                  secreto.
+                  {dict.comoJugar?.advancedModes?.repeats?.description ||
+                    "Aumenta la dificultad permitiendo dígitos iguales en el código secreto."}
                 </p>
               </motion.div>
 
@@ -247,11 +278,14 @@ const Comojugar = () => {
                 className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-gray-200/50"
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  <strong>Longitud variable</strong>
+                  <strong>
+                    {dict.comoJugar?.advancedModes?.variableLength?.title ||
+                      "Longitud variable"}
+                  </strong>
                 </h3>
                 <p className="text-gray-600">
-                  Juega con códigos de 3 a 6 dígitos según tu nivel de
-                  experiencia.
+                  {dict.comoJugar?.advancedModes?.variableLength?.description ||
+                    "Juega con códigos de 3 a 6 dígitos según tu nivel de experiencia."}
                 </p>
               </motion.div>
 
@@ -262,11 +296,14 @@ const Comojugar = () => {
                 className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-gray-200/50"
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  <strong>Contrarreloj</strong>
+                  <strong>
+                    {dict.comoJugar?.advancedModes?.timed?.title ||
+                      "Contrarreloj"}
+                  </strong>
                 </h3>
                 <p className="text-gray-600">
-                  Adivina el código antes de que se agote el tiempo para llevar
-                  tu lógica al límite.
+                  {dict.comoJugar?.advancedModes?.timed?.description ||
+                    "Adivina el código antes de que se agote el tiempo para llevar tu lógica al límite."}
                 </p>
               </motion.div>
             </div>
@@ -280,7 +317,7 @@ const Comojugar = () => {
               className="text-center mb-12"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Preguntas frecuentes
+                {dict.comoJugar.faq.title}
               </h2>
             </motion.div>
 
@@ -292,11 +329,10 @@ const Comojugar = () => {
                 className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-gray-200/50"
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  ¿Qué es una pica?
+                  {dict.comoJugar.faq.whatIsPica.question}
                 </h3>
                 <p className="text-gray-600">
-                  Es un dígito correcto que existe en el código secreto, pero en
-                  posición diferente a la propuesta.
+                  {dict.comoJugar.faq.whatIsPica.answer}
                 </p>
               </motion.div>
 
@@ -307,12 +343,10 @@ const Comojugar = () => {
                 className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-gray-200/50"
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  ¿En qué difiere &quot;fijas y picas&quot; de Mastermind?
+                  {dict.comoJugar.faq.vsMastermind.question}
                 </h3>
                 <p className="text-gray-600">
-                  Mastermind usa clavijas de colores para marcar los aciertos,
-                  pero la mecánica de &quot;fijas&quot; y &quot;picas&quot; es
-                  idéntica a la lógica numérica de nuestro juego.
+                  {dict.comoJugar.faq.vsMastermind.answer}
                 </p>
               </motion.div>
             </div>
@@ -326,18 +360,17 @@ const Comojugar = () => {
           >
             <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl border border-gray-200/50 max-w-2xl mx-auto">
               <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                ¿Listo para el Desafío?
+                {dict.comoJugar.challenge.title}
               </h3>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Pon a prueba tu lógica y habilidades de deducción. ¡Cada partida
-                es una nueva oportunidad de superarte!
+                {dict.comoJugar.challenge.description}
               </p>
               <Link
-                href="/jugar/hvh"
+                href={`/${lang}/jugar`}
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
               >
                 <LuPlay className="w-6 h-6 mr-2" />
-                Empieza a jugar ahora
+                {dict.comoJugar.challenge.playButton}
               </Link>
             </div>
           </motion.div>
@@ -345,6 +378,4 @@ const Comojugar = () => {
       </div>
     </section>
   );
-};
-
-export default Comojugar;
+}

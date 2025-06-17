@@ -1,8 +1,41 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import type { Locale } from "@/lib/i18n";
+import type { Dictionary } from "@/lib/types";
 
-export default function History() {
+interface HistoryProps {
+  dict: Dictionary;
+  lang: Locale;
+}
+
+// Temporary interface to handle history section
+interface HistoryDict {
+  subtitle: string;
+  evolutionTitle: string;
+  timeline: {
+    "19th": { era: string; title: string; description: string };
+    "1970": { era: string; title: string; description: string };
+    digital: { era: string; title: string; description: string };
+  };
+  legacy: {
+    title: string;
+    description1: string;
+    description2: string;
+    stats: {
+      years: string;
+      yearsLabel: string;
+      possibilities: string;
+      possibilitiesLabel: string;
+      passion: string;
+      passionLabel: string;
+    };
+  };
+}
+
+export default function History({ dict }: HistoryProps) {
+  const history = dict.history as unknown as HistoryDict;
+
   return (
     <section className="relative">
       <div
@@ -22,10 +55,10 @@ export default function History() {
               transition={{ duration: 0.6 }}
             >
               <span className="inline-block px-4 py-2 bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent text-sm font-semibold tracking-wider uppercase mb-4">
-                Tradición y Evolución
+                {history.subtitle}
               </span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-amber-900 to-orange-900 bg-clip-text text-transparent mb-8 leading-tight">
-                Historia y evolución
+                {history.evolutionTitle}
               </h2>
             </motion.div>
           </div>
@@ -124,15 +157,13 @@ export default function History() {
                 >
                   <div className="w-1/2 pr-8 text-right">
                     <div className="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-sm font-semibold rounded-full mb-2">
-                      Siglo XIX
+                      {history.timeline["19th"].era}
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      Los Inicios Victorianos
+                      {history.timeline["19th"].title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
-                      En Inglaterra, &quot;Bulls and Cows&quot; emerge como
-                      entretenimiento en periódicos. Un simple juego de papel
-                      que desafía la mente con lógica pura.
+                      {history.timeline["19th"].description}
                     </p>
                   </div>
                   <div className="relative flex-shrink-0">
@@ -166,15 +197,13 @@ export default function History() {
                   </div>
                   <div className="w-1/2 pl-8">
                     <div className="inline-block px-3 py-1 bg-rose-100 text-rose-800 text-sm font-semibold rounded-full mb-2">
-                      1970
+                      {history.timeline["1970"].era}
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      La Revolución Mastermind
+                      {history.timeline["1970"].title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
-                      Mordechai Meirowitz transforma el concepto en el icónico
-                      juego de mesa que conquistaría el mundo con colores y
-                      estrategia.
+                      {history.timeline["1970"].description}
                     </p>
                   </div>
                 </motion.div>
@@ -188,15 +217,13 @@ export default function History() {
                 >
                   <div className="w-1/2 pr-8 text-right">
                     <div className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full mb-2">
-                      Era Digital
+                      {history.timeline.digital.era}
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      Fijas y Picas Online
+                      {history.timeline.digital.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
-                      La evolución digital mantiene la esencia mientras añade
-                      comunidades globales, estadísticas y modos de juego
-                      innovadores.
+                      {history.timeline.digital.description}
                     </p>
                   </div>
                   <div className="relative flex-shrink-0">
@@ -225,31 +252,20 @@ export default function History() {
 
                 <div className="relative px-8 py-12">
                   <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent mb-8">
-                    Un legado que perdura
+                    {history.legacy.title}
                   </h3>
 
                   <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
-                    <p>
-                      De las páginas amarillentas de los periódicos victorianos
-                      a las pantallas modernas,
-                      <strong className="text-rose-600">
-                        {" "}
-                        Fijas y Picas
-                      </strong>{" "}
-                      ha mantenido su esencia:
-                      <em>pura deducción lógica sin depender del azar</em>.
-                    </p>
-
-                    <p>
-                      Cada era ha añadido su toque especial: los ingleses dieron
-                      la base, Mastermind añadió el componente visual, y
-                      nosotros aportamos la
-                      <strong className="text-blue-600">
-                        {" "}
-                        experiencia digital global
-                      </strong>
-                      que conecta mentes brillantes de todo el mundo.
-                    </p>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: history.legacy.description1,
+                      }}
+                    />
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: history.legacy.description2,
+                      }}
+                    />
                   </div>
 
                   {/* Estadística llamativa */}
@@ -261,28 +277,28 @@ export default function History() {
                   >
                     <div className="text-center">
                       <div className="text-4xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
-                        150+
+                        {history.legacy.stats.years}
                       </div>
                       <div className="text-sm text-gray-600 font-medium">
-                        Años de evolución
+                        {history.legacy.stats.yearsLabel}
                       </div>
                     </div>
                     <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-300 to-transparent"></div>
                     <div className="text-center">
                       <div className="text-4xl font-bold bg-gradient-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent">
-                        ∞
+                        {history.legacy.stats.possibilities}
                       </div>
                       <div className="text-sm text-gray-600 font-medium">
-                        Posibilidades
+                        {history.legacy.stats.possibilitiesLabel}
                       </div>
                     </div>
                     <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-300 to-transparent"></div>
                     <div className="text-center">
                       <div className="text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-                        1
+                        {history.legacy.stats.passion}
                       </div>
                       <div className="text-sm text-gray-600 font-medium">
-                        Pasión global
+                        {history.legacy.stats.passionLabel}
                       </div>
                     </div>
                   </motion.div>

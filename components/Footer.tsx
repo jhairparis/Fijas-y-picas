@@ -1,9 +1,16 @@
 import React from "react";
-import Link from "next/link"; // Changed from react-router-dom
+import Link from "next/link";
 import { LuGithub, LuInstagram, LuTwitter } from "react-icons/lu";
 import Newsletter from "./Newsletter";
+import type { Locale } from "@/lib/i18n";
+import type { Dictionary } from "@/lib/types";
 
-function Footer() {
+interface FooterProps {
+  lang: Locale;
+  dict: Dictionary;
+}
+
+function Footer({ lang, dict }: FooterProps) {
   return (
     <footer className="relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900" />
@@ -17,16 +24,17 @@ function Footer() {
           <div className="lg:col-span-2">
             <div className="mb-6">
               <h3 className="text-2xl font-bold bg-gradient-to-r from-rose-400 to-amber-400 bg-clip-text text-transparent mb-4">
-                Fijas y Picas
+                {dict.footer.title}
               </h3>
               <p className="text-gray-400 text-lg leading-relaxed max-w-md">
-                Un juego de lógica y deducción que desafiará tu mente. Adivina
-                el número secreto y conviértete en el campeón de fijas y picas.
+                {dict.footer.description}
               </p>
             </div>
 
             <div>
-              <h4 className="text-white font-semibold mb-4">Síguenos</h4>
+              <h4 className="text-white font-semibold mb-4">
+                {dict.footer.followUs}
+              </h4>
               <div className="flex space-x-4">
                 <a
                   href="#"
@@ -59,33 +67,35 @@ function Footer() {
             </div>
           </div>
           <div>
-            <h4 className="text-white font-semibold mb-6">Enlaces Rápidos</h4>
+            <h4 className="text-white font-semibold mb-6">
+              {dict.footer.quickLinks}
+            </h4>
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/"
+                  href={`/${lang}`}
                   className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group"
                 >
                   <span className="w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-rose-500 to-amber-500 transition-all duration-300 mr-0 group-hover:mr-3"></span>
-                  Inicio
+                  {dict.navigation.home}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/como-jugar"
+                  href={`/${lang}/como-jugar`}
                   className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group"
                 >
                   <span className="w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-rose-500 to-amber-500 transition-all duration-300 mr-0 group-hover:mr-3"></span>
-                  ¿Cómo jugar?
+                  {dict.footer.howToPlay}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/jugar"
+                  href={`/${lang}/jugar`}
                   className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group"
                 >
                   <span className="w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-rose-500 to-amber-500 transition-all duration-300 mr-0 group-hover:mr-3"></span>
-                  Jugar
+                  {dict.footer.game}
                 </Link>
               </li>
               <li>
@@ -101,28 +111,28 @@ function Footer() {
           </div>
           <div>
             <h4 className="text-white font-semibold mb-6">Newsletter</h4>
-            <Newsletter />
+            <Newsletter dict={dict} />
           </div>
         </div>
 
         <div className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Fijas y Picas. Todos los derechos
-              reservados.
+              © {new Date().getFullYear()} {dict.footer.title}.{" "}
+              {dict.footer.allRightsReserved}
             </p>
             <div className="flex space-x-6 text-sm">
               <Link
-                href="/terminos"
+                href={`/${lang}/terminos`}
                 className="text-gray-500 hover:text-gray-300 transition-colors duration-300"
               >
-                Términos de Servicio
+                {dict.footer.terms}
               </Link>
               <Link
-                href="/privacidad"
+                href={`/${lang}/privacidad`}
                 className="text-gray-500 hover:text-gray-300 transition-colors duration-300"
               >
-                Privacidad
+                {dict.footer.privacy}
               </Link>
             </div>
           </div>

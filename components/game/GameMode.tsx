@@ -1,19 +1,22 @@
 "use client";
+
 import React, { useState, createRef, RefObject, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useParams, useRouter } from "next/navigation";
-import MaquinaPistas from "../../../components/game/MaquinaPistas";
+import { useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
-import HumanoHumano from "../../../components/game/HumanoHumano";
 import { toast } from "react-toastify";
-import { fnHistorial, pistas } from "../../../helpers/type";
-import { schemaMain } from "../../../helpers/validador";
-import MotionFade from "../../../components/transitions/MotionFade";
-import MotionSimple from "../../../components/transitions/MotionSimple";
 import { motion, AnimatePresence } from "framer-motion";
-import MaquinaAdivina from "../../../components/game/MaquinaAdivina";
 import Link from "next/link";
 import { LuBrain, LuGlobe, LuBot, LuX } from "react-icons/lu";
+
+import MaquinaPistas from "@/components/game/MaquinaPistas";
+import HumanoHumano from "@/components/game/HumanoHumano";
+import MaquinaAdivina from "@/components/game/MaquinaAdivina";
+import MotionFade from "@/components/transitions/MotionFade";
+import MotionSimple from "@/components/transitions/MotionSimple";
+import { fnHistorial, pistas } from "@/helpers/type";
+import { schemaMain } from "@/helpers/validador";
+import type { Dictionary } from "@/lib/types";
 
 type historialTP = [
   number,
@@ -24,18 +27,21 @@ type historialTP = [
 
 // Definir los modos de juego válidos
 const MODOS_VALIDOS = {
-  hvh: { name: "Humano vs Humano", component: "HvH", icon: LuBrain },
-  hvm: { name: "Humano vs Máquina", component: "HvM", icon: LuBot },
-  mvh: { name: "Máquina vs Humano", component: "MvH", icon: LuBot },
-  torneo: { name: "Torneo Online", component: "HsvHs", icon: LuGlobe },
+  hvh: { name: "hvh", component: "HvH", icon: LuBrain },
+  hvm: { name: "hvm", component: "HvM", icon: LuBot },
+  mvh: { name: "mvh", component: "MvH", icon: LuBot },
+  torneo: { name: "torneo", component: "HsvHs", icon: LuGlobe },
 } as const;
 
 type ModoType = keyof typeof MODOS_VALIDOS;
 
-const GameMode = () => {
-  const params = useParams();
+interface GameModeProps {
+  modo: string;
+  dict: Dictionary;
+}
+
+export default function GameMode({ modo, dict }: GameModeProps) {
   const router = useRouter();
-  const modo = params.modo as string;
 
   const [numeroPrincipal, setNumeroPrincipal] = useState<number>(0);
   const [historial, setHistorial] = useState<historialTP[]>([]);
@@ -51,11 +57,11 @@ const GameMode = () => {
   // Verificar si el modo es válido
   useEffect(() => {
     if (!modo || !(modo.toLowerCase() in MODOS_VALIDOS)) {
-      toast.error("Modo de juego no válido");
+      toast.error(dict.game.errors.invalidNumber || "Modo de juego no válido");
       router.push("/jugar");
       return;
     }
-  }, [modo, router]);
+  }, [modo, router, dict]);
 
   const modoConfig = MODOS_VALIDOS[modo?.toLowerCase() as ModoType];
   const modoDeJuego = modoConfig?.component || "";
@@ -133,22 +139,27 @@ const GameMode = () => {
               transition={{ duration: 0.6 }}
             >
               <span className="inline-block px-4 py-2 bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent text-sm font-semibold tracking-wider uppercase mb-4">
-                Modo: {modoConfig.name}
+                {dict.gamePage?.modePrefix || "Modo:"}{" "}
+                {dict.gamePage?.modes?.[
+                  modo?.toLowerCase() as keyof typeof dict.gamePage.modes
+                ] ||
+                  modoConfig?.name ||
+                  modo}
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-rose-900 to-amber-900 bg-clip-text text-transparent mb-8 leading-tight">
-                Fijas y Picas Online
+                {dict.gamePage?.title || "Fijas y Picas Online"}
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
-                Desafía tu mente con el clásico juego de lógica y deducción.
-                Adivina el número secreto usando las pistas de{" "}
-                <strong>fijas</strong> y <strong>picas</strong>.
+                {dict.gamePage?.description ||
+                  "Desafía tu mente con el clásico juego de lógica y deducción. Adivina el número secreto usando las pistas de fijas y picas."}
               </p>
 
               <Link
                 className="inline-block bg-white text-rose-600 hover:text-rose-700 px-6 py-3 rounded-xl font-bold text-base transition-all duration-300 hover:shadow-xl hover:scale-105 mt-6"
                 href="/como-jugar"
               >
-                Ver Instrucciones Detalladas
+                {dict.gamePage?.detailedInstructions ||
+                  "Ver Instrucciones Detalladas"}
               </Link>
             </motion.div>
           </div>
@@ -159,7 +170,9 @@ const GameMode = () => {
               {/* History sidebar */}
               <div className="lg:col-span-1 order-2 lg:order-1">
                 <h3 className="text-sm font-semibold text-gray-700 mb-4 text-center">
-                  {modoDeJuego === "HvH" ? "Jugador 1" : "Tu historial"}
+                  {modoDeJuego === "HvH"
+                    ? dict.gamePage?.player1 || "Jugador 1"
+                    : dict.gamePage?.yourHistory || "Tu historial"}
                 </h3>
                 <div className="space-y-2">
                   <AnimatePresence>
@@ -200,7 +213,7 @@ const GameMode = () => {
               {modoDeJuego === "HvH" && (
                 <div className="lg:col-span-1 order-3">
                   <h3 className="text-sm font-semibold text-gray-700 mb-4 text-center">
-                    Jugador 2
+                    {dict.gamePage?.player2 || "Jugador 2"}
                   </h3>
                   <div className="space-y-2">
                     <AnimatePresence>
@@ -232,7 +245,9 @@ const GameMode = () => {
                   <button
                     onClick={() => {
                       setHistorial([]);
-                      toast.error("Se cerró el juego");
+                      toast.error(
+                        dict.gamePage?.gameClosedMessage || "Se cerró el juego"
+                      );
                       router.push("/jugar");
                     }}
                     className="absolute top-0 right-0 z-10 bg-red-500 hover:bg-red-700 text-white font-bold p-2 rounded-full flex items-center justify-center shadow-lg transition-colors duration-150"
@@ -245,7 +260,8 @@ const GameMode = () => {
                 <MotionFade in={numeroPrincipal === 0}>
                   <div className="mb-6">
                     <p className="mb-4 text-lg text-gray-800 text-center font-medium">
-                      Hola humano, ¿con cuántos dígitos deseas jugar?
+                      {dict.gamePage?.digitQuestion ||
+                        "Hola humano, ¿con cuántos dígitos deseas jugar?"}
                     </p>
                     <form
                       onSubmit={handleSubmit(onSubmit)}
@@ -275,7 +291,7 @@ const GameMode = () => {
                               : "bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 border-amber-400"
                           } text-white font-bold p-3 uppercase border-t border-b border-r focus:outline-none transition-all duration-150`}
                         >
-                          Ok
+                          {dict.gamePage?.submitButton || "Ok"}
                         </button>
                       </div>
                     </form>
@@ -292,39 +308,41 @@ const GameMode = () => {
                   <HumanoHumano
                     numeroPrincipal={numeroPrincipal}
                     actualizarHistoial={actualizarHistoial}
+                    dict={dict}
                   />
                 )}
                 {modoDeJuego === "HvM" && (
                   <MaquinaPistas
                     numeroPrincipal={numeroPrincipal}
                     actualizarHistoial={actualizarHistoial}
+                    dict={dict}
                   />
                 )}
                 {modoDeJuego === "MvH" && (
                   <MaquinaAdivina
                     numeroPrincipal={numeroPrincipal}
                     actualizarHistoial={actualizarHistoial}
+                    dict={dict}
                   />
                 )}
                 {modoDeJuego === "HsvHs" && (
                   <div className="text-center">
                     <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                      Lo sentimos
+                      {dict.gamePage?.tournamentNotAvailable?.title ||
+                        "Lo sentimos"}
                     </h2>
                     <p className="text-gray-700 mb-6 leading-relaxed">
-                      Actualmente no hemos podido desarrollar el modo de juego
-                      torneo de fijas y picas. Estamos trabajando arduamente
-                      para ofrecerte esta emocionante opción de juego lo más
-                      pronto posible.
+                      {dict.gamePage?.tournamentNotAvailable?.description ||
+                        "Actualmente no hemos podido desarrollar el modo de juego torneo de fijas y picas. Estamos trabajando arduamente para ofrecerte esta emocionante opción de juego lo más pronto posible."}
                     </p>
                     <p className="text-lg font-bold text-rose-600 mb-6">
-                      ¡Si te gustaría ayudarnos a desarrollar este modo de
-                      juego, no dudes y ve a nuestro GITHUB!
+                      {dict.gamePage?.tournamentNotAvailable?.githubMessage ||
+                        "¡Si te gustaría ayudarnos a desarrollar este modo de juego, no dudes y ve a nuestro GITHUB!"}
                     </p>
                     <p className="text-gray-700 mb-6">
-                      Estamos siempre buscando la colaboración de jugadores
-                      apasionados como tú. ¡Juntos podemos hacer de fijas y
-                      picas un juego aún mejor!
+                      {dict.gamePage?.tournamentNotAvailable
+                        ?.collaborationMessage ||
+                        "Estamos siempre buscando la colaboración de jugadores apasionados como tú. ¡Juntos podemos hacer de fijas y picas un juego aún mejor!"}
                     </p>
                     <a
                       className="inline-block bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 text-white px-6 py-3 rounded-lg font-bold transition-all duration-300"
@@ -332,7 +350,8 @@ const GameMode = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Ayudar!!
+                      {dict.gamePage?.tournamentNotAvailable?.helpButton ||
+                        "Ayudar!!"}
                     </a>
                   </div>
                 )}
@@ -343,6 +362,4 @@ const GameMode = () => {
       </div>
     </section>
   );
-};
-
-export default GameMode;
+}

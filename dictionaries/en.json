@@ -1,0 +1,446 @@
+{
+  "navigation": {
+    "home": "Home",
+    "howToPlay": "How to Play",
+    "play": "Play"
+  },
+  "languages": {
+    "es": "Spanish",
+    "en": "English",
+    "fr": "French"
+  },
+  "hero": {
+    "title": "Bulls and Cows",
+    "subtitle": "The ultimate logic and deduction game",
+    "description": "Discover Bulls and Cows, the classic guessing game that has been challenging minds for over a century. Play online for free from any device.",
+    "playNow": "Play Now",
+    "learnMore": "Learn More"
+  },
+  "gameInfo": {
+    "title": "What is Bulls and Cows?",
+    "subtitle": "Get to Know the Game",
+    "description": "A logic game where you must guess a secret number. With each attempt you receive clues: 'Bulls' are correct digits in the correct position, 'Cows' are correct digits in the wrong position.",
+    "uniqueFeatures": "Unique Features",
+    "features": {
+      "logic": {
+        "title": "Pure Logic",
+        "description": "No luck, only deductive reasoning"
+      },
+      "difficulty": {
+        "title": "Difficulty Levels",
+        "description": "From beginner to expert"
+      },
+      "unlimited": {
+        "title": "Unlimited Games",
+        "description": "Play as many times as you want"
+      },
+      "strategy": {
+        "title": "Strategy",
+        "description": "Develop your logical thinking"
+      }
+    }
+  },
+  "features": {
+    "title": "Game Features",
+    "subtitle": "Highlighted Features",
+    "description": "Discover all the modern functionalities that make our platform the best experience to play Bulls and Cows online.",
+    "modern": "Modern Features",
+    "modernDescription": "Explore the code and internal logic of Bulls and Cows, with step-by-step tutorials. Our digital platform adds modern features, communities, and constant updates of game modes.",
+    "tabs": {
+      "ai": {
+        "title": "Adaptive AI",
+        "description": "Face the computer adjustable to your skill level. Our artificial intelligence adapts to your playing style to always offer you the perfect challenge, from beginner to expert."
+      },
+      "timers": {
+        "title": "Global Timers",
+        "description": "Challenge the clock and beat your own records. Compete against time in timed challenges and demonstrate your deduction speed on global leaderboards."
+      },
+      "statistics": {
+        "title": "Statistics and Rankings",
+        "description": "Check your position in local and global tables. Analyze your progress with detailed game statistics, average times and resolution efficiency to continuously improve."
+      }
+    },
+    "items": {
+      "logic": {
+        "title": "Pure Logic",
+        "description": "No luck, only deductive reasoning"
+      },
+      "difficulty": {
+        "title": "Difficulty Levels",
+        "description": "From beginner to expert"
+      },
+      "unlimited": {
+        "title": "Unlimited Games",
+        "description": "Play as many times as you want"
+      }
+    }
+  },
+  "history": {
+    "title": "Game History",
+    "description": "The Bulls and Cows game has its origins in the 19th century. Also known as 'Fijas y Picas' in Spanish, it has fascinated generations with its simplicity and strategic depth.",
+    "subtitle": "Tradition and Evolution",
+    "evolutionTitle": "History and evolution",
+    "timeline": {
+      "19th": {
+        "era": "19th Century",
+        "title": "Victorian Beginnings",
+        "description": "In England, \"Bulls and Cows\" emerges as newspaper entertainment. A simple paper game that challenges the mind with pure logic."
+      },
+      "1970": {
+        "era": "1970",
+        "title": "The Mastermind Revolution",
+        "description": "Mordechai Meirowitz transforms the concept into the iconic board game that would conquer the world with colors and strategy."
+      },
+      "digital": {
+        "era": "Digital Era",
+        "title": "Bulls and Cows Online",
+        "description": "Digital evolution maintains the essence while adding global communities, statistics and innovative game modes."
+      }
+    },
+    "legacy": {
+      "title": "A lasting legacy",
+      "description1": "From the yellowed pages of Victorian newspapers to modern screens, <strong>Bulls and Cows</strong> has maintained its essence: <em>pure logical deduction without relying on chance.</em>",
+      "description2": "Each era has added its special touch: the English gave the foundation, Mastermind added the visual component, and we bring the <strong>global digital experience</strong> that connects brilliant minds from around the world.",
+      "stats": {
+        "years": "150+",
+        "yearsLabel": "Years of evolution",
+        "possibilities": "∞",
+        "possibilitiesLabel": "Possibilities",
+        "passion": "1",
+        "passionLabel": "Global passion"
+      }
+    }
+  },
+  "comoJugar": {
+    "title": "How to play Bulls and Cows – Complete deduction guide",
+    "subtitle": "Game Guide",
+    "description": "In Bulls and Cows, one of the oldest and most universal logic games, your mission is to guess a secret number of four unique digits. With each attempt you will receive clues that bring you closer to the solution.",
+    "basicRules": {
+      "title": "Basic rules",
+      "rule1": {
+        "title": "4-digit secret code:",
+        "description": "Each digit is different (for example, 2037)."
+      },
+      "rule2": {
+        "title": "Attempt:",
+        "description": "You propose another 4-digit number without repetitions."
+      },
+      "rule3": {
+        "title": "Response:",
+        "description": "We tell you how many bulls (correct digits in the exact position) and how many cows (correct digits in different position) you got."
+      }
+    },
+    "detailedExample": {
+      "title": "Detailed example",
+      "secretNumber": "Secret number:",
+      "attempt": "Attempt",
+      "result": "Result",
+      "analysis": "Analysis",
+      "analysisText": "5 in first position correct, 7 and 2 exist but change places",
+      "info": "Information:",
+      "infoText": "Thanks to this information, you can discard digits and locate the correct ones with deductive logic.",
+      "fijas": "Bull",
+      "picas": "Cow"
+    },
+    "expertTips": {
+      "title": "Expert tips",
+      "tip1": "Start with numbers that include distant digits (0–9) to maximize information from the first clue.",
+      "tip2": "Write down each attempt and clue; build a small map of possibilities.",
+      "tip3": "Prioritize discarding digits first to narrow the search range."
+    },
+    "advancedModes": {
+      "title": "Advanced modes",
+      "repeats": {
+        "title": "Repeats allowed",
+        "description": "Increase difficulty by allowing equal digits in the secret code."
+      },
+      "variableLength": {
+        "title": "Variable length",
+        "description": "Play with codes from 3 to 6 digits according to your experience level."
+      },
+      "timed": {
+        "title": "Against the clock",
+        "description": "Guess the code before time runs out to push your logic to the limit."
+      }
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "whatIsPica": {
+        "question": "What is a cow?",
+        "answer": "It is a correct digit that exists in the secret code, but in a different position than proposed."
+      },
+      "vsMastermind": {
+        "question": "How does \"Bulls and Cows\" differ from Mastermind?",
+        "answer": "Mastermind uses colored pegs to mark hits, but the mechanics of \"bulls\" and \"cows\" is identical to the numerical logic of our game."
+      }
+    },
+    "challenge": {
+      "title": "Ready for the Challenge?",
+      "description": "Test your logic and deduction skills. Every game is a new opportunity to surpass yourself!",
+      "playButton": "Start playing now"
+    }
+  },
+  "gamePage": {
+    "modePrefix": "Mode:",
+    "title": "Bulls and Cows Online",
+    "description": "Challenge your mind with the Bulls and Cows game. Use your logic and deduction to guess the secret number using clues that will be given by a human player or machine. You choose!",
+    "detailedInstructions": "View Detailed Instructions",
+    "player1": "Player 1",
+    "player2": "Player 2",
+    "yourHistory": "Your history",
+    "gameClosedMessage": "Game closed",
+    "digitQuestion": "Hello human, how many digits do you want to play with?",
+    "submitButton": "Ok",
+    "tournamentNotAvailable": {
+      "title": "We're sorry",
+      "description": "We haven't been able to develop the Bulls and Cows tournament game mode yet. We are working hard to offer you this exciting game option as soon as possible.",
+      "githubMessage": "If you would like to help us develop this game mode, don't hesitate and go to our GITHUB!",
+      "collaborationMessage": "We are always looking for collaboration from passionate players like you. Together we can make Bulls and Cows an even better game!",
+      "helpButton": "Help!!"
+    },
+    "modes": {
+      "hvh": "Human vs Human",
+      "hvm": "Human vs Machine",
+      "mvh": "Machine vs Human",
+      "torneo": "Online Tournament"
+    }
+  },
+  "gameContent": {
+    "title": "Bulls and Cows Online",
+    "subtitle": "Play Now",
+    "description": "From its origins in traditional 19th-century pencil-and-paper games to its current digital adaptation, <strong>Bulls and Cows</strong> (also called <em>Cows and Bulls</em>) remains a universal challenge of wit, deduction, and strategy. In this online version, you can face a secret number generated randomly by our server or challenge friends in real time, all from your browser, with no downloads or installations.",
+    "callToAction": {
+      "title": "Ready for the Challenge?",
+      "description": "Each game is unique. The secret number changes, and with it your need to design new strategies.",
+      "fixedHint": "🎯 Bulls: Correct position",
+      "picasHint": "🤡 Cows: Correct number",
+      "detailedInstructions": "View Detailed Instructions"
+    },
+    "information": {
+      "heroSection": {
+        "title": "Why play Bulls and Cows online?",
+        "description": "Besides being an addictive pastime, <strong>Bulls and Cows online</strong> strengthens your logical thinking, problem-solving skills, and ability to process partial information. Each attempt provides clues —bulls (correct digits in the exact position) and cows (correct digits in a different position)— and your goal is to deduce the code in the fewest number of rounds."
+      },
+      "benefits": {
+        "mentalPower": {
+          "title": "Mental Power",
+          "description": "Each game strengthens your logical thinking and strategic deduction abilities."
+        },
+        "precision": {
+          "title": "Precision",
+          "description": "Develop your ability to process clues and make precise decisions under pressure."
+        },
+        "mentalAgility": {
+          "title": "Mental Agility",
+          "description": "Improve your processing speed and ability to adapt to new challenges."
+        }
+      },
+      "gameModes": {
+        "title": "Available Game Modes",
+        "subtitle": "Choose your preferred game mode in our Bulls and Cows game! Each mode offers a unique experience of logic and deduction.",
+        "classic": {
+          "title": "Classic Human vs Human",
+          "popularBadge": "Most Popular",
+          "description": "In this exciting game, two players face off to guess each other's secret number. Do you dare to challenge your friends and family to an exciting game of Bulls and Cows? Show off your logic and deduction skills and become the best Bulls and Cows player of all!",
+          "features": {
+            "players": "👥 2 Players",
+            "strategy": "🧠 Strategy",
+            "realTime": "⚡ Real Time"
+          }
+        },
+        "humanVsMachine": {
+          "title": "Human vs Machine",
+          "subtitle": "Train your skills",
+          "description": "Enjoy an exciting challenge against the computer! Guess the randomly generated secret number and demonstrate your logic skills.",
+          "features": {
+            "ai": "🤖 Advanced AI",
+            "practice": "📊 Practice"
+          }
+        },
+        "machineVsHuman": {
+          "title": "Machine vs Human",
+          "subtitle": "Reverse challenge",
+          "description": "The AI tries to guess your secret number. Watch how our advanced algorithms process the clues you give them.",
+          "features": {
+            "reverse": "🔄 Reverse Role",
+            "algorithms": "🧮 Algorithms"
+          }
+        },
+        "tournament": {
+          "title": "Online Tournament",
+          "comingSoonBadge": "Coming Soon",
+          "description": "Join the exciting Bulls and Cows tournament mode! Compete against other players in an elimination format and lead your team to victory. Show off your logic and deduction skills and become the best Bulls and Cows player of all!",
+          "features": {
+            "global": "🌍 Global Multiplayer",
+            "elimination": "🏆 Elimination",
+            "rankings": "📈 Rankings"
+          },
+          "collaboration": {
+            "title": "Help us develop this mode!",
+            "description": "We are looking for passionate collaborators to make this feature a reality.",
+            "buttonText": "Contribute on GitHub"
+          }
+        }
+      }
+    }
+  },
+  "gameMode": {
+    "humanVsHuman": "Human vs Human",
+    "humanVsMachine": "Human vs Machine",
+    "machineGuesses": "Machine Guesses",
+    "humanVsHumanDesc": "Play against another player locally",
+    "humanVsMachineDesc": "Face artificial intelligence",
+    "machineGuessesDesc": "The machine tries to guess your number",
+    "onlineTournament": "Online Tournament",
+    "onlineTournamentDesc": "Compete against players from around the world",
+    "selectGameMode": "Select a game mode",
+    "playNow": "Play now",
+    "comingSoon": "Coming soon"
+  },
+  "footer": {
+    "title": "Bulls and Cows",
+    "description": "The logic and deduction game that challenges your mind. Enjoy hours of intelligent entertainment.",
+    "quickLinks": "Quick Links",
+    "game": "Play",
+    "howToPlay": "How to Play",
+    "aboutUs": "About Us",
+    "contact": "Contact",
+    "legal": "Legal",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "followUs": "Follow Us",
+    "allRightsReserved": "All rights reserved"
+  },
+  "newsletter": {
+    "title": "Subscribe",
+    "description": "Get the latest news and articles to your inbox every month.",
+    "placeholder": "name@example.com",
+    "button": "Send",
+    "success": "Thanks for subscribing!",
+    "error": "Could not complete subscription"
+  },
+  "banner": {
+    "acceptText": "You accept all",
+    "cookies": "Cookies",
+    "close": "Close"
+  },
+  "metadata": {
+    "title": "Bulls and Cows – The ultimate logic and deduction game",
+    "description": "Discover Bulls and Cows, the classic guessing game that has been challenging minds for over a century. Play online for free from any device.",
+    "keywords": [
+      "bulls and cows",
+      "logic game",
+      "deduction",
+      "numbers",
+      "mastermind",
+      "online game",
+      "number guessing",
+      "puzzle game",
+      "brain teaser",
+      "mind game"
+    ],
+    "openGraph": {
+      "siteName": "Bulls and Cows"
+    },
+    "pages": {
+      "comoJugar": {
+        "title": "How to Play Bulls and Cows - Complete Guide and Strategies",
+        "description": "Learn how to play Bulls and Cows with our complete guide. Rules, strategies and tricks to master this classic logic and deduction game.",
+        "keywords": [
+          "how to play bulls and cows",
+          "bulls and cows rules",
+          "bulls and cows tutorial",
+          "bulls and cows strategies",
+          "mastermind guide",
+          "learn bulls and cows"
+        ]
+      },
+      "jugar": {
+        "title": "Play Bulls and Cows Online - Multiple Game Modes",
+        "description": "Choose your favorite game mode in Bulls and Cows. Human vs Human, against AI or let the machine guess your number. Start playing now!",
+        "keywords": [
+          "play bulls and cows",
+          "bulls and cows game modes",
+          "bulls and cows online",
+          "choose mode bulls and cows",
+          "logic games online"
+        ]
+      },
+      "humanoHumano": {
+        "title": "Human vs Human - Bulls and Cows Online",
+        "description": "Play Bulls and Cows in Human vs Human mode. One player thinks of a number and the other guesses it. Perfect for playing with friends and testing your logic.",
+        "keywords": [
+          "bulls and cows human vs human",
+          "two player bulls and cows",
+          "bulls and cows multiplayer",
+          "play with friends bulls and cows",
+          "human mode bulls and cows"
+        ]
+      },
+      "maquinaAdivina": {
+        "title": "Computer Guesses - Bulls and Cows Online",
+        "description": "Challenge artificial intelligence in Bulls and Cows. You think of a number and the machine tries to guess it. Can the AI crack your secret number?",
+        "keywords": [
+          "bulls and cows vs ai",
+          "computer guesses bulls and cows",
+          "artificial intelligence bulls and cows",
+          "challenge ai bulls and cows",
+          "computer guesses number"
+        ]
+      },
+      "maquinaPistas": {
+        "title": "Computer Gives Clues - Bulls and Cows Online",
+        "description": "Play against the machine in Bulls and Cows. The AI generates a secret number and you try to guess it. Test your logic against artificial intelligence.",
+        "keywords": [
+          "bulls and cows against computer",
+          "computer gives clues bulls and cows",
+          "guess number ai",
+          "play against computer bulls and cows",
+          "ai challenge bulls and cows"
+        ]
+      }
+    }
+  },
+  "game": {
+    "errors": {
+      "invalidNumber": "Enter a digit in box number: {{position}}",
+      "duplicateNumber": "There is a repeated value",
+      "sumExceeded": "The sum of clues cannot exceed the number of digits chosen",
+      "tryAgain": "An unexpected error occurred. Please try again.",
+      "impossible": "What!! this is not possible",
+      "checkAnswers": "Check your answers",
+      "impossibleValues": "These values are not possible",
+      "couldNotFind": "I couldn't find the number",
+      "rangeError": "Bulls and cows must be between 0 and 2",
+      "debugNotFound": "I couldn't find the number"
+    },
+    "info": {
+      "duplicateReminder": "Remember no digit repeats",
+      "player2GivePicas": "Player 2 give the picas and fijas to player 1",
+      "player1GivePicas": "Player 1 give the picas and fijas to player 2",
+      "guessPlayer1": "Try to guess player 1's number",
+      "guessPlayer2": "Try to guess player 2's number",
+      "thinking": "Thinking...",
+      "picasAndFijas": "there are {{fijas}} bulls and {{picas}} cows",
+      "checkAnswer": "Check my answer and I am the winner"
+    },
+    "success": {
+      "gameStarted": "Game Started",
+      "player1Won": "Player 1 has won",
+      "player2Won": "Player 2 has won",
+      "congratulations": "Congratulations! You have guessed the number",
+      "machineGuessed": "I have guessed the number! It is {{number}}",
+      "machineWon": "The machine is the winner",
+      "youWon": "You are the winner",
+      "playerWon": "You lost",
+      "iWon": "I won"
+    },
+    "ui": {
+      "attempt": "Try",
+      "give": "Give",
+      "digit": "Digit {{number}}",
+      "fijas": "bulls",
+      "picas": "cows"
+    }
+  }
+}
