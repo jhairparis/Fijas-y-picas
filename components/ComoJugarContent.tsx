@@ -34,16 +34,15 @@ export default function ComoJugarContent({
               transition={{ duration: 0.6 }}
             >
               <span className="inline-block px-4 py-2 bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent text-sm font-semibold tracking-wider uppercase mb-4">
-                {dict.comoJugar?.subtitle || "Guía de Juego"}
+                {dict.comoJugar.subtitle}
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-rose-900 to-amber-900 bg-clip-text text-transparent mb-8 leading-tight">
-                {dict.comoJugar?.title ||
-                  "Cómo jugar a fijas y picas – Guía completa de deducción"}
+                {dict.comoJugar.title}
               </h1>
-              <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
-                {dict.comoJugar?.description ||
-                  "En fijas y picas, uno de los juegos de lógica más antiguos y universales, tu misión es adivinar un número secreto de cuatro dígitos únicos. Con cada intento recibirás pistas que te acercan a la solución."}
-              </p>
+              <p
+                className="text-xl md:text-2xl text-gray-700 leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: dict.comoJugar.description }}
+              />
             </motion.div>
           </div>
 

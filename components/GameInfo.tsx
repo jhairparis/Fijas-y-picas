@@ -64,11 +64,10 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
                   <div className="absolute inset-0 w-20 h-20 mx-auto bg-blue-400 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
                 </div>
                 <h4 className="text-xl font-bold text-gray-900 mb-3">
-                  Desafío intelectual
+                  {dict.gameInfo.features.logic.title}
                 </h4>
                 <p className="text-gray-600 leading-relaxed">
-                  Cada partida exige formular hipótesis, interpretar pistas y
-                  refinar tu estrategia.
+                  {dict.gameInfo.features.logic.description}
                 </p>
               </motion.div>
 
@@ -80,16 +79,15 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
               >
                 <div className="relative mb-6">
                   <div className="w-20 h-20 mx-auto bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-3xl transform group-hover:scale-110 transition-all duration-300 shadow-lg">
-                    📱
+                    🥵
                   </div>
                   <div className="absolute inset-0 w-20 h-20 mx-auto bg-green-400 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
                 </div>
                 <h4 className="text-xl font-bold text-gray-900 mb-3">
-                  Accesibilidad
+                  {dict.gameInfo.features.difficulty.title}
                 </h4>
                 <p className="text-gray-600 leading-relaxed">
-                  Juega gratis desde cualquier dispositivo, con modos para un
-                  solo jugador, multijugador local o torneos globales.
+                  {dict.gameInfo.features.difficulty.description}
                 </p>
               </motion.div>
 
@@ -101,16 +99,15 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
               >
                 <div className="relative mb-6">
                   <div className="w-20 h-20 mx-auto bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-3xl transform group-hover:scale-110 transition-all duration-300 shadow-lg">
-                    🌍
+                    🤕
                   </div>
                   <div className="absolute inset-0 w-20 h-20 mx-auto bg-purple-400 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
                 </div>
                 <h4 className="text-xl font-bold text-gray-900 mb-3">
-                  Multilingüe
+                  {dict.gameInfo.features.unlimited.title}
                 </h4>
                 <p className="text-gray-600 leading-relaxed">
-                  Disponible en Español e Inglés, con documentación y tutoriales
-                  adaptados a ambos públicos.
+                  {dict.gameInfo.features.unlimited.description}
                 </p>
               </motion.div>
 
@@ -122,16 +119,15 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
               >
                 <div className="relative mb-6">
                   <div className="w-20 h-20 mx-auto bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-3xl transform group-hover:scale-110 transition-all duration-300 shadow-lg">
-                    👥
+                    🧠
                   </div>
                   <div className="absolute inset-0 w-20 h-20 mx-auto bg-orange-400 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
                 </div>
                 <h4 className="text-xl font-bold text-gray-900 mb-3">
-                  Comunidad activa
+                  {dict.gameInfo.features.strategy.title}
                 </h4>
                 <p className="text-gray-600 leading-relaxed">
-                  Únete a foros y grupos de Discord para compartir trucos, retos
-                  y mejoras de código.
+                  {dict.gameInfo.features.strategy.description}
                 </p>
               </motion.div>
             </div>
@@ -146,14 +142,13 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
               className="text-center mb-16"
             >
               <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 leading-tight">
-                Cómo empezar
+                {dict.howToStart.title}
               </h3>
             </motion.div>
 
             <div className="max-w-5xl mx-auto">
               {/* Diseño tipo escalones ascendentes */}
               <div className="relative">
-                {/* Escalón 1 - Más bajo */}
                 <motion.div
                   initial={{ opacity: 0, y: 50, scale: 0.9 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -173,20 +168,20 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
                             1
                           </span>
                           <h4 className="text-2xl font-bold text-gray-900">
-                            Jugar ahora
+                            {dict.howToStart.steps.playNow.title}
                           </h4>
                         </div>
                         <p className="text-gray-700 leading-relaxed text-lg">
-                          Haz clic en <strong>&quot;Jugar ahora&quot;</strong>{" "}
-                          para iniciar una partida instantánea. ¡Es la forma más
-                          rápida de sumergirte en el desafío!
+                          {dict.howToStart.steps.playNow.description.replace(
+                            "{playNowButton}",
+                            dict.hero.playNow
+                          )}
                         </p>
                       </div>
                     </div>
                   </div>
                 </motion.div>
 
-                {/* Escalón 2 - Medio */}
                 <motion.div
                   initial={{ opacity: 0, y: 50, scale: 0.9 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -206,20 +201,20 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
                             2
                           </span>
                           <h4 className="text-2xl font-bold text-gray-900">
-                            Aprende las reglas
+                            {dict.howToStart.steps.learnRules.title}
                           </h4>
                         </div>
                         <p className="text-gray-700 leading-relaxed text-lg">
-                          Si eres nuevo, visita{" "}
-                          <strong>&quot;Cómo jugar&quot;</strong> para dominar
-                          las reglas y descubrir estrategias ganadoras.
+                          {dict.howToStart.steps.learnRules.description.replace(
+                            "{howToPlayLink}",
+                            dict.navigation.howToPlay
+                          )}
                         </p>
                       </div>
                     </div>
                   </div>
                 </motion.div>
 
-                {/* Escalón 3 - Más alto */}
                 <motion.div
                   initial={{ opacity: 0, y: 50, scale: 0.9 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -230,7 +225,7 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
                     <div className="flex items-center space-x-6">
                       <div className="flex-shrink-0">
                         <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg transform rotate-6">
-                          👤
+                          🏆
                         </div>
                       </div>
                       <div className="flex-1">
@@ -239,12 +234,11 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
                             3
                           </span>
                           <h4 className="text-2xl font-bold text-gray-900">
-                            Regístrate
+                            {dict.howToStart.steps.compete.title}
                           </h4>
                         </div>
                         <p className="text-gray-700 leading-relaxed text-lg">
-                          Únete a la comunidad para guardar tu progreso,
-                          competir en torneos y desbloquear logros exclusivos.
+                          {dict.howToStart.steps.compete.description}
                         </p>
                       </div>
                     </div>
@@ -266,7 +260,6 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
             </div>
           </div>
 
-          {/* Call to Action - Diseño moderno */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -274,16 +267,14 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
             className="text-center"
           >
             <div className="relative">
-              {/* Efectos de fondo */}
               <div className="absolute inset-0 bg-gradient-to-r from-rose-100 to-amber-100 rounded-3xl blur-3xl opacity-60"></div>
 
               <div className="relative py-16 px-8">
                 <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent mb-6">
-                  Ponte a prueba
+                  {dict.gameInfo.description.split(".")[0]}
                 </h3>
                 <p className="text-xl text-gray-700 mb-12 max-w-2xl mx-auto leading-relaxed">
-                  ¿Crees tener la mente lo suficientemente aguda? Da el primer
-                  paso:
+                  {dict.gameInfo.description}
                 </p>
 
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
@@ -298,7 +289,7 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
                       href={`/${lang}/jugar`}
                       className="inline-flex items-center justify-center px-10 py-5 text-xl font-semibold text-white bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 rounded-full shadow-2xl hover:shadow-rose-400/25 transition-all duration-300 transform"
                     >
-                      🎯 Jugar ahora
+                      🎯 {dict.hero.playNow}
                     </Link>
                   </motion.div>
 
@@ -313,7 +304,7 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
                       href={`/${lang}/como-jugar`}
                       className="inline-flex items-center justify-center px-10 py-5 text-xl font-semibold text-gray-700 bg-white/80 backdrop-blur-sm hover:bg-white border-2 border-gray-200 hover:border-rose-300 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform"
                     >
-                      📚 Cómo jugar
+                      📚 {dict.navigation.howToPlay}
                     </Link>
                   </motion.div>
                 </div>

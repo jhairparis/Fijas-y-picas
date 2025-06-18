@@ -2,7 +2,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { LuCircleDot } from "react-icons/lu";
 import { Locale } from "@/lib/i18n";
 import { Dictionary } from "@/lib/types";
 
@@ -18,12 +17,12 @@ export default function FAQContent({ lang, dict, faqData }: FAQContentProps) {
   return (
     <section className="relative overflow-hidden">
       <div
-        className="absolute inset-0 bg-gradient-to-b from-blue-50 via-indigo-50 to-purple-50 pointer-events-none"
+        className="absolute inset-0 bg-gradient-to-b from-orange-50 via-rose-50 to-amber-50 pointer-events-none"
         aria-hidden="true"
       />
 
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-blue-400/8 to-indigo-400/8 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-indigo-400/6 to-purple-400/6 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-rose-400/8 to-amber-400/8 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-amber-400/6 to-orange-400/6 rounded-full blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="pt-16 md:pt-20 pb-16 md:pb-20">
@@ -34,14 +33,15 @@ export default function FAQContent({ lang, dict, faqData }: FAQContentProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-flex items-center justify-center p-2 bg-blue-100 rounded-full mb-6">
-                <LuCircleDot className="w-8 h-8 text-blue-600" />
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent mb-8 leading-tight">
+              <span className="inline-block px-4 py-2 bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent text-sm font-semibold tracking-wider uppercase mb-4">
+                {dict.faq.subtitle}
+              </span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-rose-900 to-amber-900 bg-clip-text text-transparent mb-8 leading-tight">
                 {dict.faq.title}
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
-                {dict.faq.description}
+                {dict.faq?.description ||
+                  "Encuentra respuestas rápidas sobre reglas, estrategias y modos de juego de Fijas y Picas."}
               </p>
             </motion.div>
           </div>
@@ -52,13 +52,17 @@ export default function FAQContent({ lang, dict, faqData }: FAQContentProps) {
               {faqs.map((faq, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-gray-200/50 hover:shadow-2xl transition-all duration-300"
+                  initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{
+                    duration: 0.7,
+                    delay: index * 0.15,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                  }}
+                  className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-gray-200/50 hover:shadow-2xl hover:bg-white/90 transition-all duration-500 transform hover:-translate-y-2"
                 >
                   <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 flex items-start">
-                    <span className="inline-flex items-center justify-center w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-sm font-bold rounded-full mr-4 mt-1 flex-shrink-0">
+                    <span className="inline-flex items-center justify-center w-8 h-8 bg-gradient-to-r from-rose-500 to-amber-500 text-white text-sm font-bold rounded-full mr-4 mt-1 flex-shrink-0 shadow-lg">
                       {index + 1}
                     </span>
                     {faq.question}
@@ -83,24 +87,23 @@ export default function FAQContent({ lang, dict, faqData }: FAQContentProps) {
           >
             <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl border border-gray-200/50 max-w-2xl mx-auto">
               <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                ¿Listo para jugar?
+                {dict.comoJugar.challenge.title}
               </h3>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Ahora que conoces las respuestas a las preguntas más frecuentes,
-                ¡es hora de poner a prueba tus conocimientos!
+                {dict.comoJugar.challenge.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href={`/${lang}/jugar`}
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                 >
-                  Jugar Ahora
+                  {dict.comoJugar.challenge.playButton}
                 </Link>
                 <Link
                   href={`/${lang}/como-jugar`}
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 bg-white hover:bg-blue-50 border-2 border-blue-200 hover:border-blue-300 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-rose-600 bg-white hover:bg-rose-50 border-2 border-rose-200 hover:border-rose-300 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                 >
-                  Guía Completa
+                  {dict.hero.learnMore}
                 </Link>
               </div>
             </div>

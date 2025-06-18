@@ -12,110 +12,110 @@
   },
   "hero": {
     "title": "Fijas y Picas",
-    "subtitle": "El juego de lógica y deducción definitivo",
-    "description": "Descubre <strong>fijas y picas</strong>, el clásico juego de adivinanza que lleva más de un siglo poniendo a prueba la mente de millones de jugadores. Originado en los pasatiempos de papel y lápiz del siglo XIX como &quot;Bulls and Cows&quot; y popularizado comercialmente con Mastermind en 1970, hoy lo traemos directamente a tu navegador para que juegues <strong>picas y fijas online</strong> sin descargar nada.",
-    "playNow": "Jugar Ahora",
-    "learnMore": "Aprender Más"
+    "subtitle": "El juego de lógica, estrategia y deducción definitivo - 100 % gratis y en línea",
+    "description": "Descubre <strong>fijas y picas online gratis</strong>, el legendario <em>rompecabezas de números</em> que, desde finales del siglo XIX, ha puesto a prueba la agilidad mental de millones de personas en todo el mundo. Conocido internacionalmente como “<em>Bulls&nbsp;and&nbsp;Cows</em>”, e inmortalizado en 1970 con el tablero <em>Mastermind</em>, hoy lo traemos a tu navegador para que disfrutes de partidas infinitas sin descargas, sin anuncios invasivos y con todas las ventajas de una plataforma moderna: estadísticas, rankings globales y modos de juego multijugador en tiempo real. ¡Sé parte de la historia y reta tu mente ahora mismo con <strong>picas y fijas</strong>!",
+    "playNow": "Jugar ahora",
+    "learnMore": "Más información"
   },
   "gameInfo": {
     "title": "¿Qué es Fijas y Picas?",
-    "subtitle": "Conoce el Juego",
-    "description": "Un juego de lógica donde debes adivinar un número secreto. Con cada intento recibes pistas: 'Fijas' son dígitos correctos en la posición correcta, 'Picas' son dígitos correctos en posición incorrecta.",
+    "subtitle": "Conoce a fondo el juego de deducción numérica",
+    "description": "Fijas y picas es un juego de <strong>lógica pura</strong> donde tu objetivo consiste en descifrar un <em>número secreto</em>. En cada intento recibes dos pistas esenciales: “<strong>fijas</strong>” (dígito correcto y en la posición exacta) y “<strong>picas</strong>” (dígito correcto en posición incorrecta). Sin azar, todo depende de tu razonamiento deductivo y tu capacidad para descartar posibilidades.",
     "uniqueFeatures": "Características únicas",
     "features": {
       "logic": {
-        "title": "Lógica Pura",
-        "description": "Sin suerte, solo razonamiento deductivo"
+        "title": "Lógica pura",
+        "description": "Sin suerte, solo razonamiento deductivo y análisis estratégico"
       },
       "difficulty": {
-        "title": "Niveles de Dificultad",
-        "description": "Desde principiante hasta experto"
+        "title": "Niveles de dificultad",
+        "description": "Selecciona entre principiante, intermedio, avanzado o experto"
       },
       "unlimited": {
-        "title": "Partidas Ilimitadas",
-        "description": "Juega tantas veces como quieras"
+        "title": "Partidas ilimitadas",
+        "description": "Juega tantas veces como quieras, sin restricciones ni límites diarios"
       },
       "strategy": {
         "title": "Estrategia",
-        "description": "Desarrolla tu pensamiento lógico"
+        "description": "Desarrolla tu pensamiento lógico y mejora tu patrón de deducción cada partida"
       }
     }
   },
   "features": {
-    "title": "Características del Juego",
+    "title": "Todas las funcionalidades del juego",
     "subtitle": "Características destacadas",
-    "description": "Descubre todas las funcionalidades modernas que hacen de nuestra plataforma la mejor experiencia para jugar fijas y picas online.",
-    "modern": "Funcionalidades Modernas",
-    "modernDescription": "Explora el código y la lógica interna de Fijas y Picas, con tutoriales paso a paso. Nuestra plataforma digital añade funcionalidades modernas, comunidades y actualización constante de modos de juego.",
+    "description": "Descubre por qué nuestra plataforma es la mejor forma de <strong>jugar fijas y picas online</strong>: IA potente, tablas de clasificación globales, estadísticas avanzadas y comunidad activa.",
+    "modern": "Funcionalidades modernas",
+    "modernDescription": "Explora el código abierto, tutoriales paso a paso y participa en una comunidad que evoluciona el juego con actualizaciones constantes, nuevos retos semanales y torneos globales.",
     "tabs": {
       "ai": {
         "title": "IA adaptativa",
-        "description": "Enfréntate a la computadora ajustable a tu nivel de habilidad. Nuestra inteligencia artificial se adapta a tu estilo de juego para ofrecerte siempre el desafío perfecto, desde principiante hasta experto."
+        "description": "Desafía a nuestra inteligencia artificial dinámica, que se ajusta automáticamente a tu estilo y nivel de juego para ofrecerte partidas siempre retadoras."
       },
       "timers": {
         "title": "Temporizadores globales",
-        "description": "Reta el reloj y supera tus propios récords. Compite contra el tiempo en desafíos cronometrados y demuestra tu velocidad de deducción en las tablas de clasificación mundiales."
+        "description": "Compite contra el reloj y contra otros jugadores. Registra tus mejores tiempos y escala posiciones en nuestros marcadores internacionales."
       },
       "statistics": {
         "title": "Estadísticas y rankings",
-        "description": "Consulta tu posición en tablas locales y mundiales. Analiza tu progreso con estadísticas detalladas de partidas, tiempos promedio y eficiencia de resolución para mejorar continuamente."
+        "description": "Analiza tu progreso con gráficos de rendimiento, tasa de aciertos y media de intentos. ¡Comparte tus logros y presume de tu lógica!"
       }
     },
     "items": {
       "logic": {
-        "title": "Lógica Pura",
-        "description": "Sin suerte, solo razonamiento deductivo"
+        "title": "Lógica pura",
+        "description": "Razonamiento sin azar ni suposiciones aleatorias"
       },
       "difficulty": {
-        "title": "Niveles de Dificultad",
-        "description": "Desde principiante hasta experto"
+        "title": "Niveles de dificultad",
+        "description": "Domina el juego paso a paso, desde principiante hasta experto"
       },
       "unlimited": {
-        "title": "Partidas Ilimitadas",
-        "description": "Juega tantas veces como quieras"
+        "title": "Partidas ilimitadas",
+        "description": "Práctica continua para convertirte en un maestro del juego"
       }
     }
   },
   "history": {
-    "title": "Historia del Juego",
-    "description": "El juego de Fijas y Picas tiene sus orígenes en el siglo XIX. También conocido como 'Bulls and Cows' en inglés, ha fascinado a generaciones con su simplicidad y profundidad estratégica.",
-    "subtitle": "Tradición y Evolución",
-    "evolutionTitle": "Historia y evolución",
+    "title": "Historia del juego",
+    "description": "Fijas y picas se remonta al siglo XIX, donde surgió como un pasatiempo de papel y lápiz en los salones victorianos de Inglaterra bajo el nombre “Bulls and Cows”. Con su mezcla única de estrategia y simplicidad, ha cautivado desde entonces a generaciones enteras.",
+    "subtitle": "Tradición y evolución",
+    "evolutionTitle": "Cronología",
     "timeline": {
       "19th": {
         "era": "Siglo XIX",
-        "title": "Los Inicios Victorianos",
-        "description": "En Inglaterra, \"Bulls and Cows\" emerge como entretenimiento en periódicos. Un simple juego de papel que desafía la mente con lógica pura."
+        "title": "Los inicios victorianos",
+        "description": "El juego emerge en periódicos y clubes de intelectuales británicos como un reto de deducción matemática."
       },
       "1970": {
         "era": "1970",
-        "title": "La Revolución Mastermind",
-        "description": "Mordechai Meirowitz transforma el concepto en el icónico juego de mesa que conquistaría el mundo con colores y estrategia."
+        "title": "La revolución Mastermind",
+        "description": "El inventor Mordechai Meirowitz adapta el concepto con clavijas de colores y lo lanza al mercado global, convirtiéndose en un éxito de ventas."
       },
       "digital": {
-        "era": "Era Digital",
-        "title": "Fijas y Picas Online",
-        "description": "La evolución digital mantiene la esencia mientras añade comunidades globales, estadísticas y modos de juego innovadores."
+        "era": "Era digital",
+        "title": "Fijas y picas online",
+        "description": "La versión web conserva la esencia lógica, sumando rankings, estadísticas y desafíos en tiempo real para jugadores de todo el mundo."
       }
     },
     "legacy": {
       "title": "Un legado que perdura",
-      "description1": "De las páginas amarillentas de los periódicos victorianos a las pantallas modernas, <strong>Fijas y Picas</strong> ha mantenido su esencia: <em>pura deducción lógica sin depender del azar.</em>",
-      "description2": "Cada era ha añadido su toque especial: los ingleses dieron la base, Mastermind añadió el componente visual, y nosotros aportamos la <strong>experiencia digital global</strong> que conecta mentes brillantes de todo el mundo.",
+      "description1": "Desde los periódicos victorianos hasta tu smartphone, <strong>fijas y picas</strong> ha mantenido su premisa: pura deducción sin depender del azar.",
+      "description2": "Cada época añadió una capa: los ingleses dieron la base numérica, Mastermind aportó la estética visual y esta plataforma aporta la <strong>experiencia digital global</strong> 24/7.",
       "stats": {
         "years": "150+",
-        "yearsLabel": "Años de evolución",
+        "yearsLabel": "Años de historia",
         "possibilities": "∞",
-        "possibilitiesLabel": "Posibilidades",
+        "possibilitiesLabel": "Posibilidades únicas",
         "passion": "1",
         "passionLabel": "Pasión global"
       }
     }
   },
   "comoJugar": {
-    "title": "Cómo jugar a fijas y picas - Guía completa de deducción",
-    "subtitle": "Guía de Juego",
-    "description": "En fijas y picas, uno de los juegos de lógica más antiguos y universales, tu misión es adivinar un número secreto de cuatro dígitos únicos. Con cada intento recibirás pistas que te acercan a la solución.",
+    "title": "Cómo jugar fijas y picas - guía completa de deducción",
+    "subtitle": "Reglas y estrategia paso a paso",
+    "description": "En <strong>fijas y picas</strong>, uno de los juegos de lógica más universales y adictivos, tu misión es descifrar un número secreto de cuatro dígitos únicos usando solo tu razonamiento. Cada intento aporta pistas valiosas que te acercan a la solución definitiva.",
     "basicRules": {
       "title": "Reglas básicas",
       "rule1": {
@@ -124,11 +124,11 @@
       },
       "rule2": {
         "title": "Intento:",
-        "description": "Propones otro número de 4 cifras sin repeticiones."
+        "description": "Propón otro número de 4 dígitos distintos."
       },
       "rule3": {
         "title": "Respuesta:",
-        "description": "Te informamos cuántas fijas (dígitos correctos en la posición exacta) y cuántas picas (dígitos correctos en distinta posición) obtuviste."
+        "description": "El sistema indica cuántas <strong>fijas</strong> y <strong>picas</strong> obtuviste en ese intento."
       }
     },
     "detailedExample": {
@@ -137,137 +137,137 @@
       "attempt": "Intento",
       "result": "Resultado",
       "analysis": "Análisis",
-      "analysisText": "5 en primera posición correcta, 7 y 2 existen pero cambian de lugar",
+      "analysisText": "5 en posición correcta; 7 y 2 existen pero deben reubicarse",
       "info": "Información:",
-      "infoText": "Gracias a esta información, podrás descartar dígitos y ubicar los correctos con lógica deductiva.",
+      "infoText": "Con estos datos descartarás dígitos y posicionarás los correctos con lógica.",
       "fijas": "Fija",
       "picas": "Picas"
     },
     "expertTips": {
       "title": "Consejos de expertos",
-      "tip1": "Empieza con números que incluyan dígitos alejados (0–9) para maximizar la información de la primera pista.",
-      "tip2": "Anota cada intento y pista; construye un pequeño mapa de posibilidades.",
-      "tip3": "Prioriza descartar primero dígitos para acotar el rango de búsqueda."
+      "tip1": "Inicia con dígitos muy variados (0-9) para obtener la máxima información.",
+      "tip2": "Registra cada intento y pista en una hoja o app para visualizar patrones.",
+      "tip3": "Descarta dígitos lo antes posible para reducir el número de combinaciones."
     },
     "advancedModes": {
       "title": "Modos avanzados",
       "repeats": {
         "title": "Repeticiones permitidas",
-        "description": "Aumenta la dificultad permitiendo dígitos iguales en el código secreto."
+        "description": "Añade dificultad permitiendo dígitos duplicados en el código."
       },
       "variableLength": {
         "title": "Longitud variable",
-        "description": "Juega con códigos de 3 a 6 dígitos según tu nivel de experiencia."
+        "description": "Configura códigos de 3 a 6 dígitos según tu experiencia."
       },
       "timed": {
         "title": "Contrarreloj",
-        "description": "Adivina el código antes de que se agote el tiempo para llevar tu lógica al límite."
+        "description": "Adivina el código antes de que el temporizador llegue a cero."
       }
     },
     "challenge": {
-      "title": "¿Listo para el Desafío?",
-      "description": "Pon a prueba tu lógica y habilidades de deducción. ¡Cada partida es una nueva oportunidad de superarte!",
+      "title": "¿Listo para el desafío?",
+      "description": "Demuestra tu destreza lógica. ¡Cada partida es una nueva oportunidad de batir tu propio récord!",
       "playButton": "Empieza a jugar ahora"
     }
   },
   "gamePage": {
     "modePrefix": "Modo:",
-    "title": "Fijas y Picas Online",
-    "description": "Desafía tu mente con el juego fijas y picas. Usa tu lógica y deducción para lograr adivinar el número secreto usando las pistas que te darán un jugador humano o máquina. ¡Tú eliges!",
-    "detailedInstructions": "Ver Instrucciones Detalladas",
+    "title": "Fijas y Picas online - juega gratis en tu navegador",
+    "description": "Reta tu mente con el clásico <strong>fijas y picas</strong>. Usa la lógica para descubrir el número secreto con las pistas que ofrece un adversario humano o nuestra IA. ¡Tú eliges!",
+    "detailedInstructions": "Ver instrucciones detalladas",
     "player1": "Jugador 1",
     "player2": "Jugador 2",
     "yourHistory": "Tu historial",
-    "gameClosedMessage": "Se cerró el juego",
-    "digitQuestion": "Hola humano, ¿con cuántos dígitos deseas jugar?",
-    "submitButton": "Ok",
+    "gameClosedMessage": "La partida se cerró",
+    "digitQuestion": "¿Con cuántos dígitos quieres jugar?",
+    "submitButton": "Aceptar",
     "tournamentNotAvailable": {
       "title": "Lo sentimos",
-      "description": "Actualmente no hemos podido desarrollar el modo de juego torneo de fijas y picas. Estamos trabajando arduamente para ofrecerte esta emocionante opción de juego lo más pronto posible.",
-      "githubMessage": "¡Si te gustaría ayudarnos a desarrollar este modo de juego, no dudes y ve a nuestro GITHUB!",
-      "collaborationMessage": "Estamos siempre buscando la colaboración de jugadores apasionados como tú. ¡Juntos podemos hacer de fijas y picas un juego aún mejor!",
-      "helpButton": "Ayudar!!"
+      "description": "El modo torneo aún está en desarrollo. ¡Pronto podrás competir en ligas mundiales!",
+      "githubMessage": "Si deseas aportar al desarrollo, visita nuestro GITHUB",
+      "collaborationMessage": "Buscamos colaboradores apasionados. ¡Construyamos juntos el mejor juego de fijas y picas!",
+      "helpButton": "¡Quiero ayudar!"
     },
     "modes": {
       "hvh": "Humano vs Humano",
       "hvm": "Humano vs Máquina",
       "mvh": "Máquina vs Humano",
-      "torneo": "Torneo Online"
+      "torneo": "Torneo online"
     }
   },
   "gameContent": {
-    "title": "Jugar picas y fijas online - Desafía tu mente con lógica pura",
-    "subtitle": "Jugar Ahora",
-    "description": "Desde sus orígenes en los tradicionales juegos de lápiz y papel del siglo XIX hasta su adaptación digital actual, <strong>picas y fijas</strong> (también llamado <em>fijas y picas</em>) sigue siendo un reto universal de astucia, deducción y estrategia. En esta versión online podrás enfrentarte a un número secreto generado aleatoriamente por nuestro servidor o retar a amigos en tiempo real, todo desde tu navegador, sin descargas ni instalaciones.",
+    "title": "Jugar picas y fijas online - desafía tu mente con lógica pura",
+    "subtitle": "Comienza ahora",
+    "description": "Desde los juegos de papel y lápiz del siglo XIX hasta su sofisticada versión digital, <strong>picas y fijas</strong> sigue siendo un reto universal de ingenio. Juega contra la computadora o invita a tus amigos en tiempo real; todo desde tu navegador, sin descargas ni registros complicados.",
     "callToAction": {
-      "title": "¿Listo para el Desafío?",
-      "description": "Cada partida es única. El número secreto cambia, y con él tu necesidad de diseñar nuevas estrategias.",
-      "fixedHint": "🎯 Fijas: Posición correcta",
-      "picasHint": "🤡 Picas: Número correcto",
-      "detailedInstructions": "Ver Instrucciones Detalladas"
+      "title": "¿Preparado para la acción?",
+      "description": "Cada partida te obligará a diseñar nuevas estrategias. ¡No hay dos códigos iguales!",
+      "fixedHint": "🎯 Fijas: dígito y posición correctos",
+      "picasHint": "🤡 Picas: dígito correcto en posición incorrecta",
+      "detailedInstructions": "Ver instrucciones detalladas"
     },
     "information": {
       "heroSection": {
-        "title": "¿Por qué jugar picas y fijas online?",
-        "description": "Además de ser un pasatiempo adictivo, <strong>picas y fijas online</strong> fortalece tu pensamiento lógico, la resolución de problemas y la capacidad para procesar información parcial. Cada intento aporta pistas —fijas (dígitos correctos en la posición exacta) y picas (dígitos correctos en posición distinta)— y tu objetivo es deducir el código en el menor número de rondas."
+        "title": "Ventajas de jugar picas y fijas online",
+        "description": "Además de ser un <em>pasatiempo adictivo</em>, <strong>picas y fijas online</strong> fortalece tu pensamiento lógico, resolución de problemas y capacidad para procesar información parcial con rapidez."
       },
       "benefits": {
         "mentalPower": {
-          "title": "Potencia Mental",
-          "description": "Cada partida fortalece tu pensamiento lógico y capacidad de deducción estratégica."
+          "title": "Potencia mental",
+          "description": "Cada partida ejercita tu lógica y capacidad de deducción estratégica."
         },
         "precision": {
           "title": "Precisión",
-          "description": "Desarrolla tu habilidad para procesar pistas y tomar decisiones precisas bajo presión."
+          "description": "Mejora tu habilidad para analizar pistas y tomar decisiones acertadas bajo presión."
         },
         "mentalAgility": {
-          "title": "Agilidad Mental",
-          "description": "Mejora tu velocidad de procesamiento y capacidad de adaptación a nuevos desafíos."
+          "title": "Agilidad mental",
+          "description": "Aumenta tu velocidad de procesamiento y adaptabilidad ante nuevos retos."
         }
       },
       "gameModes": {
-        "title": "Modos de Juego Disponibles",
-        "subtitle": "¡Elige tu modo de juego preferido en nuestro juego de fijas y picas! Cada modo ofrece una experiencia única de lógica y deducción.",
+        "title": "Modos de juego disponibles",
+        "subtitle": "Elige tu modalidad favorita",
         "classic": {
           "title": "Clásico Humano vs Humano",
-          "popularBadge": "Más Popular",
-          "description": "En este emocionante juego, dos jugadores se enfrentan para adivinar el número secreto del otro. ¿Te atreves a retar a tus amigos y familiares a una emocionante partida de fijas y picas? ¡Demuestra tus habilidades de lógica y deducción y conviértete en el mejor jugador de fijas y picas de todos!",
+          "popularBadge": "Más popular",
+          "description": "Reta a amigos y familiares cara a cara. ¡Demuestra quién tiene la mejor estrategia y conviértete en leyenda!",
           "features": {
-            "players": "👥 2 Jugadores",
+            "players": "👥 2 jugadores",
             "strategy": "🧠 Estrategia",
-            "realTime": "⚡ Tiempo Real"
+            "realTime": "⚡ Tiempo real"
           }
         },
         "humanVsMachine": {
           "title": "Humano vs Máquina",
           "subtitle": "Entrena tus habilidades",
-          "description": "¡Disfruta de un emocionante desafío contra la computadora! Adivina el número secreto generado aleatoriamente y demuestra tus habilidades de lógica.",
+          "description": "Enfréntate a nuestra IA avanzada y demuestra tu lógica resolviendo el número secreto generado aleatoriamente.",
           "features": {
-            "ai": "🤖 IA Avanzada",
-            "practice": "📊 Práctica"
+            "ai": "🤖 IA avanzada",
+            "practice": "📊 Práctica ilimitada"
           }
         },
         "machineVsHuman": {
           "title": "Máquina vs Humano",
           "subtitle": "Desafío inverso",
-          "description": "La IA intenta adivinar tu número secreto. Observa cómo nuestros algoritmos avanzados procesan las pistas que les das.",
+          "description": "Permite que la IA intente adivinar tu código y observa cómo aplica algoritmos de deducción.",
           "features": {
-            "reverse": "🔄 Rol Inverso",
-            "algorithms": "🧮 Algoritmos"
+            "reverse": "🔄 Rol inverso",
+            "algorithms": "🧮 Algoritmos inteligentes"
           }
         },
         "tournament": {
-          "title": "Torneo Online",
+          "title": "Torneo online",
           "comingSoonBadge": "Próximamente",
-          "description": "¡Únete al emocionante modo torneo de fijas y picas! Compite contra otros jugadores en un formato de eliminación y lleva a tu equipo a la victoria. ¡Demuestra tus habilidades de lógica y deducción y conviértete en el mejor jugador de fijas y picas de todos!",
+          "description": "Compite en brackets de eliminación y escala el ranking global. ¡Demuestra tu talento al mundo!",
           "features": {
-            "global": "🌍 Multijugador Global",
+            "global": "🌍 Multijugador global",
             "elimination": "🏆 Eliminatorias",
             "rankings": "📈 Rankings"
           },
           "collaboration": {
-            "title": "¡Ayúdanos a desarrollar este modo!",
-            "description": "Estamos buscando colaboradores apasionados para hacer realidad esta característica.",
+            "title": "¡Sé parte del desarrollo!",
+            "description": "¿Eres desarrollador o diseñador? Únete a nuestro proyecto de código abierto y construyamos juntos el mejor modo torneo.",
             "buttonText": "Contribuir en GitHub"
           }
         }
@@ -277,22 +277,22 @@
   "gameMode": {
     "humanVsHuman": "Humano vs Humano",
     "humanVsMachine": "Humano vs Máquina",
-    "machineGuesses": "Máquina Adivina",
-    "humanVsHumanDesc": "Juega contra otro jugador en modo local",
-    "humanVsMachineDesc": "Enfréntate a la inteligencia artificial",
-    "machineGuessesDesc": "La máquina intenta adivinar tu número",
-    "onlineTournament": "Torneo Online",
-    "onlineTournamentDesc": "Compite contra jugadores de todo el mundo",
+    "machineGuesses": "Máquina adivina",
+    "humanVsHumanDesc": "Juega contra otro jugador localmente",
+    "humanVsMachineDesc": "Desafía a la inteligencia artificial",
+    "machineGuessesDesc": "La máquina intenta descifrar tu número",
+    "onlineTournament": "Torneo online",
+    "onlineTournamentDesc": "Compite con jugadores de todo el planeta",
     "selectGameMode": "Selecciona un modo de juego",
     "playNow": "Jugar ahora",
     "comingSoon": "Próximamente"
   },
   "footer": {
     "title": "Fijas y Picas",
-    "description": "El juego de lógica y deducción que desafía tu mente. Disfruta de horas de entretenimiento inteligente.",
-    "quickLinks": "Enlaces Rápidos",
+    "description": "El juego de lógica y deducción que desafía tu mente — juega gratis, aprende estrategias y forma parte de una comunidad global.",
+    "quickLinks": "Enlaces rápidos",
     "game": "Jugar",
-    "howToPlay": "Cómo Jugar",
+    "howToPlay": "Cómo jugar",
     "aboutUs": "Acerca de",
     "contact": "Contacto",
     "legal": "Legal",
@@ -302,143 +302,140 @@
     "allRightsReserved": "Todos los derechos reservados"
   },
   "newsletter": {
-    "title": "Suscríbete",
-    "description": "Recibe las últimas noticias y artículos en tu bandeja de entrada cada mes.",
+    "title": "Suscríbete a nuestro boletín",
+    "description": "Recibe noticias, estrategias y retos semanales directamente en tu bandeja de entrada.",
     "placeholder": "nombre@example.com",
-    "button": "Enviar",
+    "button": "Suscribirme",
     "success": "¡Gracias por suscribirte!",
-    "error": "No se pudo completar la suscripción"
+    "error": "No se pudo completar la suscripción. Inténtalo de nuevo."
   },
   "banner": {
     "acceptText": "Aceptas todas las",
-    "cookies": "Cookies",
+    "cookies": "cookies",
     "close": "Cerrar"
   },
   "metadata": {
-    "title": "Fijas y Picas - El juego de lógica y deducción definitivo",
-    "description": "Descubre fijas y picas, el clásico juego de adivinanza que lleva más de un siglo poniendo a prueba la mente. Juega picas y fijas online gratis desde cualquier dispositivo.",
+    "title": "Fijas y Picas - Juega gratis el mejor juego de lógica y deducción online",
+    "description": "Disfruta de fijas y picas (también conocido como picas y fijas o Bulls and Cows) en español. Juega gratis desde cualquier dispositivo, mejora tu lógica y compite en rankings globales.",
     "keywords": [
       "fijas y picas",
       "picas y fijas",
-      "juego lógica",
-      "deducción",
-      "números",
-      "mastermind",
-      "juego online",
-      "bulls and cows español",
-      "adivinanza números",
-      "juego mental"
+      "bulls and cows",
+      "mastermind online",
+      "juego de lógica",
+      "rompecabezas numérico",
+      "juegos mentales gratis",
+      "estrategia y deducción",
+      "jugar en línea",
+      "juegos de números",
+      "entrenamiento cerebral",
+      "juego de adivinanza",
+      "fijas y picas reglas",
+      "fijas y picas estrategia"
     ],
     "openGraph": {
       "siteName": "Fijas y Picas"
     },
     "pages": {
       "comoJugar": {
-        "title": "Cómo Jugar Fijas y Picas - Guía Completa y Estrategias",
-        "description": "Aprende a jugar Fijas y Picas con nuestra guía completa. Reglas, estrategias y trucos para dominar este clásico juego de lógica y deducción.",
+        "title": "Cómo jugar Fijas y Picas - reglas, ejemplos y estrategias avanzadas",
+        "description": "Aprende paso a paso a dominar Fijas y Picas con ejemplos prácticos, consejos de expertos y tácticas para reducir intentos.",
         "keywords": [
-          "como jugar fijas y picas",
+          "cómo jugar fijas y picas",
           "reglas fijas y picas",
-          "tutorial fijas y picas",
-          "estrategias fijas y picas",
-          "guía mastermind",
-          "aprender fijas y picas"
+          "tutorial picas y fijas",
+          "estrategia fijas y picas",
+          "guía mastermind"
         ]
       },
       "jugar": {
-        "title": "Jugar Fijas y Picas Online - Múltiples Modos de Juego",
-        "description": "Elige tu modo de juego favorito en Fijas y Picas. Humano vs Humano, contra la IA o deja que la máquina adivine tu número. ¡Empieza a jugar ahora!",
+        "title": "Jugar Fijas y Picas online gratis - múltiples modos de juego",
+        "description": "Elige entre Humano vs Humano, enfrentarte a la IA o dejar que la máquina adivine tu número. Sin registros ni descargas.",
         "keywords": [
           "jugar fijas y picas",
-          "modos de juego fijas y picas",
-          "fijas y picas online",
-          "elegir modo fijas y picas",
-          "juegos de lógica online"
+          "juego de lógica gratis",
+          "picas y fijas online",
+          "modos de juego",
+          "juegos de deducción"
         ]
       },
       "humanoHumano": {
-        "title": "Humano vs Humano - Fijas y Picas Online",
-        "description": "Juega Fijas y Picas en modo Humano vs Humano. Un jugador piensa el número y el otro lo adivina. Ideal para jugar con amigos y poner a prueba tu lógica.",
+        "title": "Humano vs Humano - Fijas y Picas online multijugador",
+        "description": "Reta a un amigo en partidas locales o remotas. Pon a prueba tu capacidad lógica en tiempo real.",
         "keywords": [
-          "fijas y picas humano vs humano",
-          "juego dos jugadores fijas y picas",
           "fijas y picas multijugador",
-          "jugar con amigos fijas y picas",
-          "modo humano fijas y picas"
+          "juego dos jugadores",
+          "picas y fijas con amigos",
+          "battles de lógica"
         ]
       },
       "maquinaAdivina": {
-        "title": "Máquina Adivina - Fijas y Picas Online",
-        "description": "Desafía a la inteligencia artificial en Fijas y Picas. Tú piensas un número y la máquina intenta adivinarlo. ¿Podrá la IA descifrar tu número secreto?",
+        "title": "Máquina adivina - reta a la IA en Fijas y Picas",
+        "description": "Piensa un número y observa cómo nuestra IA intenta descifrarlo usando algoritmos avanzados.",
         "keywords": [
-          "fijas y picas vs ia",
-          "máquina adivina fijas y picas",
-          "inteligencia artificial fijas y picas",
-          "desafiar ia fijas y picas",
-          "computadora adivina número"
+          "fijas y picas vs IA",
+          "inteligencia artificial",
+          "juego de deducción IA",
+          "algoritmos de búsqueda"
         ]
       },
       "maquinaPistas": {
-        "title": "Máquina da Pistas - Fijas y Picas Online",
-        "description": "Juega contra la máquina en Fijas y Picas. La IA genera un número secreto y tú intentas adivinarlo. Pon a prueba tu lógica contra la inteligencia artificial.",
+        "title": "Máquina da pistas - adivina el número secreto generado por la IA",
+        "description": "Afronta el reto clásico contra la computadora. ¿Serás capaz de vencer al algoritmo?",
         "keywords": [
-          "fijas y picas contra máquina",
-          "máquina da pistas fijas y picas",
-          "adivinar número ia",
-          "jugar contra computadora fijas y picas",
-          "desafío ia fijas y picas"
+          "picas y fijas contra máquina",
+          "número secreto IA",
+          "desafío de lógica"
         ]
       },
       "faq": {
-        "title": "Preguntas Frecuentes - Fijas y Picas",
-        "description": "Respuestas a las preguntas más frecuentes sobre el juego Fijas y Picas. Aprende todo sobre fijas, picas, estrategias y reglas del juego.",
+        "title": "Preguntas frecuentes - todo sobre Fijas y Picas",
+        "description": "Resolvemos las dudas más comunes: reglas, estrategias, diferencias con Mastermind y más.",
         "keywords": [
-          "faq fijas y picas",
-          "preguntas frecuentes fijas y picas",
-          "ayuda fijas y picas",
-          "dudas fijas y picas",
-          "reglas fijas y picas",
-          "estrategias fijas y picas",
-          "soporte fijas y picas"
+          "preguntas frecuentes",
+          "fijas y picas FAQ",
+          "ayuda",
+          "soporte",
+          "estrategias"
         ]
       }
     }
   },
   "faq": {
-    "title": "Preguntas Frecuentes",
+    "title": "Preguntas frecuentes",
     "subtitle": "Respuestas a tus dudas sobre Fijas y Picas",
-    "description": "Encuentra respuestas a las preguntas más comunes sobre el juego Fijas y Picas. Todo lo que necesitas saber para dominar este fascinante juego de lógica.",
+    "description": "Encuentra respuestas rápidas sobre reglas, estrategias y modos de juego de Fijas y Picas.",
     "whatIsPica": {
       "question": "¿Qué es una pica?",
-      "answer": "Es un dígito correcto que existe en el código secreto, pero en posición diferente a la propuesta."
+      "answer": "Un dígito correcto que figura en el código secreto pero en posición diferente a la propuesta."
     },
     "whatIsFija": {
       "question": "¿Qué es una fija?",
-      "answer": "Es un dígito correcto que está en la posición exacta del código secreto. Es la mejor pista que puedes obtener."
+      "answer": "Un dígito correcto y en la posición exacta dentro del código secreto."
     },
     "vsMastermind": {
-      "question": "¿En qué difiere \"fijas y picas\" de Mastermind?",
-      "answer": "Mastermind usa clavijas de colores para marcar los aciertos, pero la mecánica de \"fijas\" y \"picas\" es idéntica a la lógica numérica de nuestro juego."
+      "question": "¿En qué difiere Fijas y Picas de Mastermind?",
+      "answer": "Mastermind usa clavijas de colores; Fijas y Picas emplea números, pero la lógica de deducción es idéntica."
     },
     "howManyDigits": {
       "question": "¿Cuántos dígitos tiene el código secreto?",
-      "answer": "Por defecto son 4 dígitos únicos, pero puedes elegir entre 3 a 6 dígitos según tu nivel de experiencia y preferencia."
+      "answer": "Por defecto son 4 dígitos únicos, pero puedes elegir entre 3 y 6 según tu nivel."
     },
     "canRepeatDigits": {
-      "question": "¿Se pueden repetir los dígitos en el código secreto?",
-      "answer": "En el modo clásico no se repiten dígitos. Sin embargo, ofrecemos un modo avanzado donde sí se permiten repeticiones para mayor dificultad."
+      "question": "¿Se pueden repetir dígitos?",
+      "answer": "En el modo clásico no. En el modo avanzado sí, para añadir dificultad."
     },
     "bestStrategy": {
       "question": "¿Cuál es la mejor estrategia para ganar?",
-      "answer": "Comienza con números que tengan dígitos variados (como 0, 3, 6, 9) para obtener máxima información. Anota cada intento y usa la lógica deductiva para eliminar posibilidades."
+      "answer": "Empieza con dígitos variados, anota cada pista y utiliza lógica deductiva para descartar combinaciones imposibles."
     },
     "minimumAttempts": {
-      "question": "¿Cuál es el mínimo número de intentos para resolver el juego?",
-      "answer": "Teóricamente es posible resolverlo en 1 intento con mucha suerte, pero usando estrategia lógica, un jugador experto puede resolverlo consistentemente en 4-6 intentos."
+      "question": "¿Cuántos intentos mínimos se necesitan?",
+      "answer": "Con mucha suerte podría resolverse en 1 intento, pero un jugador experto promedio lo logra en 4-6."
     },
     "isThereTimeLimit": {
-      "question": "¿Hay límite de tiempo para jugar?",
-      "answer": "No hay límite de tiempo en el modo clásico. Sin embargo, ofrecemos un modo contrarreloj para quienes buscan un desafío adicional."
+      "question": "¿Hay límite de tiempo?",
+      "answer": "En el modo clásico no. El modo contrarreloj introduce un temporizador para añadir presión."
     }
   },
   "game": {
@@ -485,14 +482,14 @@
   },
   "structuredData": {
     "general": {
-      "disambiguatingDescription": "Juego clásico de deducción y lógica donde los jugadores adivinan un número secreto usando pistas lógicas llamadas 'fijas' (posición exacta) y 'picas' (posición incorrecta).",
+      "disambiguatingDescription": "Juego clásico de lógica y deducción numérica: adivina un código secreto usando pistas conocidas como fijas y picas.",
       "alternateName": ["Bulls and Cows", "Mastermind", "Picas y Fijas"],
       "applicationCategory": "Juego",
-      "applicationSubCategory": "Juego de Rompecabezas de Lógica",
+      "applicationSubCategory": "Rompecabezas de lógica",
       "applicationSuite": "Fijas y Picas",
-      "browserRequirements": "Requiere soporte HTML5 y JavaScript habilitado.",
-      "availableOnDevice": "Cualquier dispositivo con navegador web moderno",
-      "operatingSystem": "Multiplataforma (Windows, macOS, Linux, iOS, Android)",
+      "browserRequirements": "Navegador moderno con soporte HTML5 y JavaScript",
+      "availableOnDevice": "Cualquier dispositivo con conexión a Internet",
+      "operatingSystem": "Windows, macOS, Linux, iOS, Android",
       "softwareVersion": "2.0.0",
       "featureList": [
         "Modo multijugador Humano vs Humano",
@@ -502,46 +499,40 @@
         "Soporte multiidioma (Español, Inglés, Francés)",
         "Sistema de retroalimentación en tiempo real",
         "Seguimiento del historial de juego",
-        "Diseño responsivo para todos los dispositivos"
+        "Diseño responsive"
       ],
-      "memoryRequirements": "Mínimo (menos de 1MB RAM)",
-      "storageRequirements": "Ninguno (basado en navegador)",
-      "permissions": "No se requieren permisos especiales",
-      "releaseNotes": "Algoritmos de IA mejorados, interfaz de usuario actualizada y soporte multiidioma.",
+      "memoryRequirements": "Menos de 1 MB de RAM",
+      "storageRequirements": "0 MB - juego basado en navegador",
+      "permissions": "Sin permisos especiales",
+      "releaseNotes": "Nueva interfaz, motor IA optimizado y torneos (en beta).",
       "isAccessibleForFree": true,
       "isFamilyFriendly": true,
-      "keywords": "juegos de lógica, juegos de deducción, adivinanza de números, fijas y picas, mastermind, juegos de rompecabezas, entrenamiento cerebral",
-      "genre": ["Lógica", "Rompecabezas", "Estrategia", "Deducción"],
-      "gamePlatform": ["Navegador Web"],
-      "playMode": ["Un jugador", "Multijugador", "Cooperativo"],
-      "gameEdition": "Edición Web",
+      "keywords": "fijas y picas, picas y fijas, bulls and cows, mastermind, juego lógico, rompecabezas numérico, entrenamiento mental",
+      "genre": ["Lógica", "Rompecabezas", "Estrategia"],
+      "gamePlatform": ["Navegador web"],
+      "playMode": ["Un jugador", "Multijugador"],
+      "gameEdition": "Edición web 2025",
       "numberOfPlayersValue": "1-2",
       "gameLocation": "En línea",
-      "characterAttribute": [
-        "Pensamiento lógico",
-        "Razonamiento deductivo",
-        "Reconocimiento de patrones",
-        "Planificación estratégica"
-      ],
+      "characterAttribute": ["Pensamiento lógico", "Razonamiento deductivo"],
       "gameItem": [
-        "Códigos de números secretos",
-        "Pistas de retroalimentación (fijas y picas)",
-        "Registro del historial de juego",
-        "Interfaz de selección de dígitos"
+        "Códigos numéricos",
+        "Pistas de respuesta",
+        "Historial de juego"
       ],
       "quest": [
-        "Adivinar el número secreto en el mínimo de intentos",
-        "Usar deducción lógica para eliminar posibilidades",
+        "Adivinar el número secreto con mínima cantidad de intentos",
+        "Optimizar la deducción lógica",
         "Decodificar el número del oponente usando pistas"
       ],
-      "dateCreated": "2023-01-01",
-      "datePublished": "2023-01-01",
+      "dateCreated": "2025-06-18",
+      "datePublished": "2025-06-18",
       "license": "https://opensource.org/licenses/MIT",
-      "aboutName": "Juego de lógica de descifrado de códigos",
+      "aboutName": "Juego de deducción numérica",
       "aboutDescription": "Juego de deducción matemática donde los jugadores usan razonamiento lógico para adivinar combinaciones de números secretos",
       "contentRating": "E",
       "typicalAgeRange": "8+",
-      "audienceType": "Público General",
+      "audienceType": "Todo público",
       "suggestedMinAge": 8,
       "suggestedMaxAge": 99,
       "educationalUse": "Entrenamiento de lógica, razonamiento matemático, resolución de problemas",
@@ -556,15 +547,15 @@
         "/images/features-bg-2.png",
         "/images/features-bg-3.png"
       ],
-      "fileSize": "Menos de 1MB",
-      "softwareRequirements": "Navegador web moderno con JavaScript habilitado",
-      "processorRequirements": "Cualquier procesador moderno",
-      "countriesSupported": "En todo el mundo",
-      "interactivityType": "activo",
+      "fileSize": "Menos de 1 MB",
+      "softwareRequirements": "Navegador con JavaScript habilitado",
+      "processorRequirements": "CPU de gama básica o superior",
+      "countriesSupported": "Global",
+      "interactivityType": "Activo",
       "accessibilityFeature": [
         "Navegación por teclado",
-        "Compatible con lector de pantalla",
-        "Modo de alto contraste disponible"
+        "Compatibilidad con lectores de pantalla",
+        "Modo alto contraste"
       ],
       "actor": [],
       "director": [],
@@ -579,7 +570,7 @@
       ],
       "trailer": [],
       "softwareAddOn": [],
-      "softwareHelpName": "Guía de Cómo Jugar",
+      "softwareHelpName": "Guía de juego",
       "softwareHelpPath": "/como-jugar",
       "supportingData": [],
       "countriesNotSupported": "",
@@ -587,9 +578,9 @@
       "award": null
     },
     "article": {
-      "articleSection": "Guía de Juego",
-      "wordCount": 1500,
-      "aboutName": "Tutorial del Juego Fijas y Picas",
+      "articleSection": "Guía de juego",
+      "wordCount": 1600,
+      "aboutName": "Tutorial del juego Fijas y Picas",
       "aboutDescription": "Aprende a jugar el clásico juego de deducción lógica Fijas y Picas"
     },
     "organization": {
@@ -602,6 +593,23 @@
       "aboutName": "Juego Fijas y Picas",
       "aboutDescription": "Preguntas frecuentes sobre el juego de deducción lógica Fijas y Picas",
       "websiteName": "Fijas y Picas"
+    }
+  },
+  "howToStart": {
+    "title": "Cómo empezar",
+    "steps": {
+      "playNow": {
+        "title": "Jugar ahora",
+        "description": "Haz clic en \"{playNowButton}\" para iniciar una partida instantánea. ¡Es la forma más rápida de sumergirte en el desafío!"
+      },
+      "learnRules": {
+        "title": "Aprende las reglas",
+        "description": "Si eres nuevo, visita \"{howToPlayLink}\" para dominar las reglas y descubrir estrategias ganadoras."
+      },
+      "compete": {
+        "title": "Compite",
+        "description": "Únete a la comunidad para guardar tu progreso, competir en torneos y desbloquear logros exclusivos."
+      }
     }
   }
 }

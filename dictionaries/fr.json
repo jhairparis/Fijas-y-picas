@@ -476,6 +476,12 @@
       "iWon": "J'ai gagné"
     },
     "ui": {
+      "attempt": "Intentar",
+      "give": "Dar",
+      "digit": "Dígito {{number}}",
+      "fijas": "fijas",
+      "picas": "picas"
+    }
   },
   "structuredData": {
     "general": {

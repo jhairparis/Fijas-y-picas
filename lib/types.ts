@@ -85,6 +85,24 @@ export interface DictionaryGameInfo {
   };
 }
 
+export interface DictionaryHowToStart {
+  title: string;
+  steps: {
+    playNow: {
+      title: string;
+      description: string;
+    };
+    learnRules: {
+      title: string;
+      description: string;
+    };
+    compete: {
+      title: string;
+      description: string;
+    };
+  };
+}
+
 export interface DictionaryFeatures {
   title: string;
   subtitle: string;
@@ -462,6 +480,7 @@ export interface Dictionary {
   languages: DictionaryLanguages;
   hero: DictionaryHero;
   gameInfo: DictionaryGameInfo;
+  howToStart: DictionaryHowToStart;
   features: DictionaryFeatures;
   history: DictionaryHistory;
   comoJugar: DictionaryComoJugar;
