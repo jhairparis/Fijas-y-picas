@@ -8,7 +8,6 @@ import {
   generateWebsiteSchema,
   generateOrganizationSchema,
 } from "@/lib/structured-data";
-import { generateA11yMeta } from "@/lib/seo-2025-utils";
 
 // Generar parámetros estáticos para todos los locales
 export async function generateStaticParams() {
@@ -25,15 +24,11 @@ export async function generateMetadata({
   const dict = await getDictionary(lang);
   const baseUrl = "https://fijasypicas.jhairparis.com";
 
-  // Mapeo de locales a códigos de idioma completos
   const localeMap = {
     es: "es_ES",
     en: "en_US",
     fr: "fr_FR",
   };
-
-  // Modern accessibility and security meta tags for 2025
-  const a11yMeta = generateA11yMeta();
 
   return {
     title: dict.metadata.title,
@@ -80,10 +75,6 @@ export async function generateMetadata({
         "max-snippet": -1,
       },
     },
-    // Enhanced metadata for 2025
-    other: {
-      ...a11yMeta,
-    } as Record<string, string>,
   };
 }
 

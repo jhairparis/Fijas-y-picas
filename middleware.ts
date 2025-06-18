@@ -1,6 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { locales, getLocale } from "./lib/i18n";
-import { generateSecurityHeaders } from "./lib/seo-2025-utils";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -17,13 +16,7 @@ export function middleware(request: NextRequest) {
     pathname.startsWith("/static/") ||
     pathname.match(/\.(ico|png|jpg|jpeg|gif|svg|css|js|woff|woff2|ttf|eot)$/)
   ) {
-    const response = NextResponse.next();
-    // Add security headers to static resources too
-    const securityHeaders = generateSecurityHeaders();
-    Object.entries(securityHeaders).forEach(([key, value]) => {
-      response.headers.set(key, value);
-    });
-    return response;
+    return NextResponse.next();
   }
 
   // Skip if already has locale
@@ -32,24 +25,13 @@ export function middleware(request: NextRequest) {
   );
 
   if (pathnameHasLocale) {
-    // Add security headers for localized routes
-    const response = NextResponse.next();
-    const securityHeaders = generateSecurityHeaders();
-    Object.entries(securityHeaders).forEach(([key, value]) => {
-      response.headers.set(key, value);
-    });
-    return response;
+    return NextResponse.next();
   }
 
   // Skip root path - let it be handled by the root route
   if (pathname === "/") {
     const locale = getLocale(request);
-    const response = NextResponse.redirect(new URL(`/${locale}`, request.url));
-    const securityHeaders = generateSecurityHeaders();
-    Object.entries(securityHeaders).forEach(([key, value]) => {
-      response.headers.set(key, value);
-    });
-    return response;
+    return NextResponse.redirect(new URL(`/${locale}`, request.url));
   }
 
   // For other paths, add locale prefix
@@ -57,12 +39,7 @@ export function middleware(request: NextRequest) {
   const newUrl = new URL(`/${locale}${pathname}`, request.url);
   newUrl.search = request.nextUrl.search;
 
-  const response = NextResponse.redirect(newUrl);
-  const securityHeaders = generateSecurityHeaders();
-  Object.entries(securityHeaders).forEach(([key, value]) => {
-    response.headers.set(key, value);
-  });
-  return response;
+  return NextResponse.redirect(newUrl);
 }
 
 export const config = {
