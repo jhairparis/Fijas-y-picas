@@ -482,5 +482,126 @@
       "fijas": "fijas",
       "picas": "picas"
     }
+  },
+  "structuredData": {
+    "general": {
+      "disambiguatingDescription": "Juego clásico de deducción y lógica donde los jugadores adivinan un número secreto usando pistas lógicas llamadas 'fijas' (posición exacta) y 'picas' (posición incorrecta).",
+      "alternateName": ["Bulls and Cows", "Mastermind", "Picas y Fijas"],
+      "applicationCategory": "Juego",
+      "applicationSubCategory": "Juego de Rompecabezas de Lógica",
+      "applicationSuite": "Fijas y Picas",
+      "browserRequirements": "Requiere soporte HTML5 y JavaScript habilitado.",
+      "availableOnDevice": "Cualquier dispositivo con navegador web moderno",
+      "operatingSystem": "Multiplataforma (Windows, macOS, Linux, iOS, Android)",
+      "softwareVersion": "2.0.0",
+      "featureList": [
+        "Modo multijugador Humano vs Humano",
+        "Juego Humano vs IA",
+        "Modo IA vs Humano",
+        "Longitud de código variable (2-6 dígitos)",
+        "Soporte multiidioma (Español, Inglés, Francés)",
+        "Sistema de retroalimentación en tiempo real",
+        "Seguimiento del historial de juego",
+        "Diseño responsivo para todos los dispositivos"
+      ],
+      "memoryRequirements": "Mínimo (menos de 1MB RAM)",
+      "storageRequirements": "Ninguno (basado en navegador)",
+      "permissions": "No se requieren permisos especiales",
+      "releaseNotes": "Algoritmos de IA mejorados, interfaz de usuario actualizada y soporte multiidioma.",
+      "isAccessibleForFree": true,
+      "isFamilyFriendly": true,
+      "keywords": "juegos de lógica, juegos de deducción, adivinanza de números, fijas y picas, mastermind, juegos de rompecabezas, entrenamiento cerebral",
+      "genre": ["Lógica", "Rompecabezas", "Estrategia", "Deducción"],
+      "gamePlatform": ["Navegador Web"],
+      "playMode": ["Un jugador", "Multijugador", "Cooperativo"],
+      "gameEdition": "Edición Web",
+      "numberOfPlayersValue": "1-2",
+      "gameLocation": "En línea",
+      "characterAttribute": [
+        "Pensamiento lógico",
+        "Razonamiento deductivo",
+        "Reconocimiento de patrones",
+        "Planificación estratégica"
+      ],
+      "gameItem": [
+        "Códigos de números secretos",
+        "Pistas de retroalimentación (fijas y picas)",
+        "Registro del historial de juego",
+        "Interfaz de selección de dígitos"
+      ],
+      "quest": [
+        "Adivinar el número secreto en el mínimo de intentos",
+        "Usar deducción lógica para eliminar posibilidades",
+        "Decodificar el número del oponente usando pistas"
+      ],
+      "dateCreated": "2023-01-01",
+      "datePublished": "2023-01-01",
+      "license": "https://opensource.org/licenses/MIT",
+      "aboutName": "Juego de lógica de descifrado de códigos",
+      "aboutDescription": "Juego de deducción matemática donde los jugadores usan razonamiento lógico para adivinar combinaciones de números secretos",
+      "contentRating": "E",
+      "typicalAgeRange": "8+",
+      "audienceType": "Público General",
+      "suggestedMinAge": 8,
+      "suggestedMaxAge": 99,
+      "educationalUse": "Entrenamiento de lógica, razonamiento matemático, resolución de problemas",
+      "teaches": [
+        "Deducción lógica",
+        "Reconocimiento de patrones",
+        "Pensamiento estratégico",
+        "Razonamiento matemático"
+      ],
+      "screenshot": [
+        "/images/features-bg-1.png",
+        "/images/features-bg-2.png",
+        "/images/features-bg-3.png"
+      ],
+      "fileSize": "Menos de 1MB",
+      "softwareRequirements": "Navegador web moderno con JavaScript habilitado",
+      "processorRequirements": "Cualquier procesador moderno",
+      "countriesSupported": "En todo el mundo",
+      "interactivityType": "activo",
+      "accessibilityFeature": [
+        "Navegación por teclado",
+        "Compatible con lector de pantalla",
+        "Modo de alto contraste disponible"
+      ],
+      "actor": [],
+      "director": [],
+      "musicBy": [],
+      "cheatCode": [],
+      "gameServer": [],
+      "gameTip": [
+        "Comienza con números que contengan dígitos diversos para obtener la máxima información",
+        "Lleva registro de todos los intentos y pistas sistemáticamente",
+        "Elimina combinaciones de dígitos imposibles temprano",
+        "Usa deducción lógica en lugar de adivinanzas aleatorias"
+      ],
+      "trailer": [],
+      "softwareAddOn": [],
+      "softwareHelpName": "Guía de Cómo Jugar",
+      "softwareHelpPath": "/como-jugar",
+      "supportingData": [],
+      "countriesNotSupported": "",
+      "aggregateRating": null,
+      "award": null
+    },
+    "article": {
+      "articleSection": "Guía de Juego",
+      "wordCount": 1500,
+      "aboutName": "Tutorial del Juego Fijas y Picas",
+      "aboutDescription": "Aprende a jugar el clásico juego de deducción lógica Fijas y Picas"
+    },
+    "organization": {
+      "name": "Fijas y Picas",
+      "description": "Juego clásico de lógica y deducción en línea",
+      "contactType": "servicio al cliente",
+      "availableLanguage": ["Español", "Inglés", "Francés"]
+    },
+    "faq": {
+      "aboutName": "Juego Fijas y Picas",
+      "aboutDescription": "Preguntas frecuentes sobre el juego de deducción lógica Fijas y Picas",
+      "websiteName": "Fijas y Picas"
+    }
   }
 }

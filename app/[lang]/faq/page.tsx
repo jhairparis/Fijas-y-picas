@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
 import FAQContent from "@/components/FAQContent";
-import { generateFAQSchemaFromDictionary } from "@/lib/structured-data";
 import { generateArticleMetadata } from "@/lib/generate-metadata";
-import { PUBLIC_URL_ } from "@/lib/config";
+import { generateFAQSchema } from "@/lib/structured-data";
 
 interface PageProps {
   params: Promise<{ lang: Locale }>;
@@ -23,23 +22,39 @@ export default async function PreguntasFrecuentes({ params }: PageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
 
-  // Generate FAQ schema from dictionary data
-  const faqSchema = generateFAQSchemaFromDictionary(
-    dict,
-    lang,
-    `${PUBLIC_URL_}/${lang}/faq`
-  );
+  const faqs: { question: string; answer: string }[] = [];
+
+  if (dict.faq) {
+    for (const key of Object.keys(dict.faq)) {
+      if (key !== "title" && key !== "subtitle" && key !== "description") {
+        const value = dict.faq[key as keyof typeof dict.faq];
+
+        if (
+          typeof value === "object" &&
+          value !== null &&
+          typeof value.question === "string" &&
+          typeof value.answer === "string"
+        ) {
+          faqs.push({
+            question: value.question,
+            answer: value.answer,
+          });
+        }
+      }
+    }
+  }
+
+  const faqSchema = generateFAQSchema(lang, dict, faqs, `/faq`);
 
   return (
     <>
-      {/* FAQ JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(faqSchema),
         }}
       />
-      <FAQContent lang={lang} dict={dict} />
+      <FAQContent lang={lang} dict={dict} faqData={faqs} />
     </>
   );
 }

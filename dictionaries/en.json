@@ -13,7 +13,7 @@
   "hero": {
     "title": "Bulls and Cows",
     "subtitle": "The ultimate logic and deduction game",
-    "description": "Discover Bulls and Cows, the classic guessing game that has been challenging minds for over a century. Play online for free from any device.",
+    "description": "Discover <strong>Bulls and Cows</strong>, the classic guessing game that has been challenging minds for over a century. Originating from 19th-century paper and pencil pastimes as &quot;Bulls and Cows&quot; and commercially popularized with Mastermind in 1970, today we bring it directly to your browser so you can play <strong>Bulls and Cows online</strong> without downloading anything.",
     "playNow": "Play Now",
     "learnMore": "Learn More"
   },
@@ -196,7 +196,7 @@
     }
   },
   "gameContent": {
-    "title": "Bulls and Cows Online",
+    "title": "Play Bulls and Cows online - Challenge your mind with pure logic",
     "subtitle": "Play Now",
     "description": "From its origins in traditional 19th-century pencil-and-paper games to its current digital adaptation, <strong>Bulls and Cows</strong> (also called <em>Cows and Bulls</em>) remains a universal challenge of wit, deduction, and strategy. In this online version, you can face a secret number generated randomly by our server or challenge friends in real time, all from your browser, with no downloads or installations.",
     "callToAction": {
@@ -481,6 +481,127 @@
       "digit": "Digit {{number}}",
       "fijas": "bulls",
       "picas": "cows"
+    }
+  },
+  "structuredData": {
+    "general": {
+      "disambiguatingDescription": "Classic deduction and logic game where players guess a secret number using logical clues called 'bulls' (exact position) and 'cows' (wrong position).",
+      "alternateName": ["Bulls and Cows", "Mastermind", "Cows and Bulls"],
+      "applicationCategory": "Game",
+      "applicationSubCategory": "Logic Puzzle Game",
+      "applicationSuite": "Bulls and Cows",
+      "browserRequirements": "Requires HTML5 support and JavaScript enabled.",
+      "availableOnDevice": "Any device with modern web browser",
+      "operatingSystem": "Cross-platform (Windows, macOS, Linux, iOS, Android)",
+      "softwareVersion": "2.0.0",
+      "featureList": [
+        "Human vs Human multiplayer mode",
+        "Human vs AI game",
+        "AI vs Human mode",
+        "Variable code length (2-6 digits)",
+        "Multi-language support (Spanish, English, French)",
+        "Real-time feedback system",
+        "Game history tracking",
+        "Responsive design for all devices"
+      ],
+      "memoryRequirements": "Minimal (less than 1MB RAM)",
+      "storageRequirements": "None (browser-based)",
+      "permissions": "No special permissions required",
+      "releaseNotes": "Improved AI algorithms, updated user interface, and multi-language support.",
+      "isAccessibleForFree": true,
+      "isFamilyFriendly": true,
+      "keywords": "logic games, deduction games, number guessing, bulls and cows, mastermind, puzzle games, brain training",
+      "genre": ["Logic", "Puzzle", "Strategy", "Deduction"],
+      "gamePlatform": ["Web Browser"],
+      "playMode": ["Single-player", "Multiplayer", "Cooperative"],
+      "gameEdition": "Web Edition",
+      "numberOfPlayersValue": "1-2",
+      "gameLocation": "Online",
+      "characterAttribute": [
+        "Logical thinking",
+        "Deductive reasoning",
+        "Pattern recognition",
+        "Strategic planning"
+      ],
+      "gameItem": [
+        "Secret number codes",
+        "Feedback clues (bulls and cows)",
+        "Game history log",
+        "Digit selection interface"
+      ],
+      "quest": [
+        "Guess the secret number in minimum attempts",
+        "Use logical deduction to eliminate possibilities",
+        "Decode opponent's number using clues"
+      ],
+      "dateCreated": "2023-01-01",
+      "datePublished": "2023-01-01",
+      "license": "https://opensource.org/licenses/MIT",
+      "aboutName": "Code-cracking logic game",
+      "aboutDescription": "Mathematical deduction game where players use logical reasoning to guess secret number combinations",
+      "contentRating": "E",
+      "typicalAgeRange": "8+",
+      "audienceType": "General Public",
+      "suggestedMinAge": 8,
+      "suggestedMaxAge": 99,
+      "educationalUse": "Logic training, mathematical reasoning, problem solving",
+      "teaches": [
+        "Logical deduction",
+        "Pattern recognition",
+        "Strategic thinking",
+        "Mathematical reasoning"
+      ],
+      "screenshot": [
+        "/images/features-bg-1.png",
+        "/images/features-bg-2.png",
+        "/images/features-bg-3.png"
+      ],
+      "fileSize": "Less than 1MB",
+      "softwareRequirements": "Modern web browser with JavaScript enabled",
+      "processorRequirements": "Any modern processor",
+      "countriesSupported": "Worldwide",
+      "interactivityType": "active",
+      "accessibilityFeature": [
+        "Keyboard navigation",
+        "Screen reader compatible",
+        "High contrast mode available"
+      ],
+      "actor": [],
+      "director": [],
+      "musicBy": [],
+      "cheatCode": [],
+      "gameServer": [],
+      "gameTip": [
+        "Start with numbers containing diverse digits to get maximum information",
+        "Keep track of all attempts and clues systematically",
+        "Eliminate impossible digit combinations early",
+        "Use logical deduction instead of random guessing"
+      ],
+      "trailer": [],
+      "softwareAddOn": [],
+      "softwareHelpName": "How to Play Guide",
+      "softwareHelpPath": "/how-to-play",
+      "supportingData": [],
+      "countriesNotSupported": "",
+      "aggregateRating": null,
+      "award": null
+    },
+    "article": {
+      "articleSection": "Game Guide",
+      "wordCount": 1500,
+      "aboutName": "Bulls and Cows Game Tutorial",
+      "aboutDescription": "Learn to play the classic logical deduction game Bulls and Cows"
+    },
+    "organization": {
+      "name": "Bulls and Cows",
+      "description": "Classic logic and deduction game online",
+      "contactType": "customer service",
+      "availableLanguage": ["Spanish", "English", "French"]
+    },
+    "faq": {
+      "aboutName": "Bulls and Cows Game",
+      "aboutDescription": "Frequently asked questions about the Bulls and Cows logic deduction game",
+      "websiteName": "Bulls and Cows"
     }
   }
 }

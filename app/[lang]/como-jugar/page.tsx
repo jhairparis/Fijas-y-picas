@@ -29,7 +29,8 @@ export default async function ComoJugar({ params }: PageProps) {
     currentMeta.title,
     currentMeta.description,
     "/como-jugar",
-    lang
+    lang,
+    dict
   );
 
   return (

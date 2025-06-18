@@ -375,6 +375,87 @@ export interface DictionaryMetadata {
   };
 }
 
+export interface DictionaryStructuredData {
+  general: {
+    disambiguatingDescription: string;
+    alternateName: string[];
+    applicationCategory: string;
+    applicationSubCategory: string;
+    applicationSuite: string;
+    browserRequirements: string;
+    availableOnDevice: string;
+    operatingSystem: string;
+    softwareVersion: string;
+    featureList: string[];
+    memoryRequirements: string;
+    storageRequirements: string;
+    permissions: string;
+    releaseNotes: string;
+    isAccessibleForFree: boolean;
+    isFamilyFriendly: boolean;
+    keywords: string;
+    genre: string[];
+    gamePlatform: string[];
+    playMode: string[];
+    gameEdition: string;
+    numberOfPlayersValue: string;
+    gameLocation: string;
+    characterAttribute: string[];
+    gameItem: string[];
+    quest: string[];
+    dateCreated: string;
+    datePublished: string;
+    license: string;
+    aboutName: string;
+    aboutDescription: string;
+    contentRating: string;
+    typicalAgeRange: string;
+    audienceType: string;
+    suggestedMinAge: number;
+    suggestedMaxAge: number;
+    educationalUse: string;
+    teaches: string[];
+    screenshot: string[];
+    fileSize: string;
+    softwareRequirements: string;
+    processorRequirements: string;
+    countriesSupported: string;
+    interactivityType: string;
+    accessibilityFeature: string[];
+    actor: string[];
+    director: string[];
+    musicBy: string[];
+    cheatCode: string[];
+    gameServer: string[];
+    gameTip: string[];
+    trailer: string[];
+    softwareAddOn: string[];
+    softwareHelpName: string;
+    softwareHelpPath: string;
+    supportingData: string[];
+    countriesNotSupported: string;
+    aggregateRating: null;
+    award: null;
+  };
+  article: {
+    articleSection: string;
+    wordCount: number;
+    aboutName: string;
+    aboutDescription: string;
+  };
+  organization: {
+    name: string;
+    description: string;
+    contactType: string;
+    availableLanguage: string[];
+  };
+  faq: {
+    aboutName: string;
+    aboutDescription: string;
+    websiteName: string;
+  };
+}
+
 // Main Dictionary interface
 export interface Dictionary {
   navigation: DictionaryNavigation;
@@ -393,4 +474,5 @@ export interface Dictionary {
   faq: DictionaryFAQ;
   metadata: DictionaryMetadata;
   game: DictionaryGame;
+  structuredData: DictionaryStructuredData;
 }

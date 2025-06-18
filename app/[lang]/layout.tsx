@@ -4,15 +4,17 @@ import Footer from "@/components/Footer";
 import LanguageProvider from "@/components/LanguageProvider";
 import { getDictionary } from "@/lib/dictionary";
 import { locales, type Locale } from "@/lib/i18n";
-import {
-  generateWebsiteSchema,
-  generateOrganizationSchema,
-} from "@/lib/structured-data";
+import { generateOrganizationSchema } from "@/lib/structured-data";
 import GenMetadata from "@/lib/generate-metadata";
 
 interface Props_ {
   params: Promise<{ lang: Locale }>;
 }
+
+type LanguageLayoutProps = Readonly<{
+  children: React.ReactNode;
+  params: Promise<{ lang: Locale }>;
+}>;
 
 // Generar parámetros estáticos para todos los locales
 export async function generateStaticParams() {
@@ -26,38 +28,20 @@ export async function generateMetadata({ params }: Props_): Promise<Metadata> {
   return GenMetadata(dict, lang, "/");
 }
 
-type LanguageLayoutProps = Readonly<{
-  children: React.ReactNode;
-  params: Promise<{ lang: Locale }>;
-}>;
-
 export default async function LanguageLayout({
   children,
   params,
 }: LanguageLayoutProps) {
   const { lang } = await params;
 
-  // Validar que el locale sea válido
-  if (!locales.includes(lang)) {
-    return <div>Locale no válido</div>;
-  }
+  if (!locales.includes(lang)) return <div>Locale no válido</div>;
 
-  // Obtener el diccionario
   const dict = await getDictionary(lang);
 
-  // Generar structured data
-  const websiteSchema = generateWebsiteSchema(lang, dict);
-  const organizationSchema = generateOrganizationSchema();
+  const organizationSchema = generateOrganizationSchema(dict);
 
   return (
     <LanguageProvider lang={lang}>
-      {/* JSON-LD Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(websiteSchema),
-        }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

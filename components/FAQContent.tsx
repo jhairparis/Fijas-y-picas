@@ -1,41 +1,19 @@
 "use client";
-
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { LuCircleDot } from "react-icons/lu";
-import type { Locale } from "@/lib/i18n";
-import type { Dictionary } from "@/lib/types";
+import { Locale } from "@/lib/i18n";
+import { Dictionary } from "@/lib/types";
 
 interface FAQContentProps {
   lang: Locale;
   dict: Dictionary;
+  faqData: { question: string; answer: string }[];
 }
 
-export default function FAQContent({ lang, dict }: FAQContentProps) {
-  const faqData = dict.faq;
-
-  const faqs: { question: string; answer: string }[] = [];
-
-  if (faqData) {
-    for (const key of Object.keys(faqData)) {
-      if (key !== "title" && key !== "subtitle" && key !== "description") {
-        const value = faqData[key as keyof typeof faqData];
-
-        if (
-          typeof value === "object" &&
-          value !== null &&
-          typeof value.question === "string" &&
-          typeof value.answer === "string"
-        ) {
-          faqs.push({
-            question: value.question,
-            answer: value.answer,
-          });
-        }
-      }
-    }
-  }
+export default function FAQContent({ lang, dict, faqData }: FAQContentProps) {
+  const faqs = faqData;
 
   return (
     <section className="relative overflow-hidden">
@@ -60,11 +38,10 @@ export default function FAQContent({ lang, dict }: FAQContentProps) {
                 <LuCircleDot className="w-8 h-8 text-blue-600" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent mb-8 leading-tight">
-                {faqData?.title || "Preguntas Frecuentes"}
+                {dict.faq.title}
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
-                {faqData?.description ||
-                  "Encuentra respuestas a las preguntas más comunes sobre Fijas y Picas. Todo lo que necesitas saber para dominar este fascinante juego de lógica."}
+                {dict.faq.description}
               </p>
             </motion.div>
           </div>

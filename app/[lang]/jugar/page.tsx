@@ -3,7 +3,7 @@ import { getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
 import GameContent from "@/components/GameContent";
 import { generateGamePageMetadata } from "@/lib/generate-metadata";
-import { generateGameSchema } from "@/lib/structured-data";
+import { GameSchemaGeneral } from "@/lib/structured-data";
 
 interface PageProps {
   params: Promise<{ lang: Locale }>;
@@ -22,19 +22,11 @@ export async function generateMetadata({
 export default async function Game({ params }: PageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
-  const currentMeta = dict.metadata.pages.jugar;
 
-  const gameSchema = generateGameSchema(
-    currentMeta.title,
-    currentMeta.description,
-    "/jugar",
-    lang,
-    "general"
-  );
+  const gameSchema = GameSchemaGeneral(lang, dict);
 
   return (
     <>
-      {/* Game page JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
