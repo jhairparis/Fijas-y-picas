@@ -24,8 +24,7 @@ export default async function Game({ params }: PageProps) {
   const dict = await getDictionary(lang);
   const baseUrl = "https://fijasypicas.jhairparis.com";
   const currentMeta = dict.metadata.pages.jugar;
-  const gameUrl =
-    lang === "es" ? `${baseUrl}/jugar` : `${baseUrl}/${lang}/jugar`;
+  const gameUrl = `${baseUrl}/${lang}/jugar`;
 
   // Generate game schema for the main game page
   const gameSchema = generateGameSchema(

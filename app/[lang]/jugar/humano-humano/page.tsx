@@ -34,10 +34,7 @@ export default async function HumanoHumanoPage({
   const dict = await getDictionary(lang);
   const baseUrl = "https://fijasypicas.jhairparis.com";
   const currentMeta = dict.metadata.pages.humanoHumano;
-  const gameUrl =
-    lang === "es"
-      ? `${baseUrl}/jugar/humano-humano`
-      : `${baseUrl}/${lang}/jugar/humano-humano`;
+  const gameUrl = `${baseUrl}/${lang}/jugar/humano-humano`;
 
   // Generate game schema
   const gameSchema = generateGameSchema(

@@ -29,10 +29,7 @@ export default async function MaquinaPistasPage({ params }: PageProps) {
   const dict = await getDictionary(lang);
   const baseUrl = "https://fijasypicas.jhairparis.com";
   const currentMeta = dict.metadata.pages.maquinaPistas;
-  const gameUrl =
-    lang === "es"
-      ? `${baseUrl}/jugar/maquina-pistas`
-      : `${baseUrl}/${lang}/jugar/maquina-pistas`;
+  const gameUrl = `${baseUrl}/${lang}/jugar/maquina-pistas`;
 
   // Generate game schema
   const gameSchema = generateGameSchema(

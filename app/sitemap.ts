@@ -33,19 +33,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const alternates: Record<string, string> = {};
 
       locales.forEach(altLocale => {
-        const altUrl =
-          altLocale === "es"
-            ? `${baseUrl}${route}`
-            : `${baseUrl}/${altLocale}${route}`;
-        alternates[altLocale] = altUrl;
+        alternates[altLocale] = `${baseUrl}/${altLocale}${route}`;
       });
 
       // Agrega x-default para español como idioma por defecto
       alternates["x-default"] = `${baseUrl}${route}`;
 
       // URL principal para este locale y ruta
-      const mainUrl =
-        locale === "es" ? `${baseUrl}${route}` : `${baseUrl}/${locale}${route}`;
+      const mainUrl = `${baseUrl}/${locale}${route}`;
 
       sitemapEntries.push({
         url: mainUrl,

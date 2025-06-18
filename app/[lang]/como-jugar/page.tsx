@@ -24,8 +24,7 @@ export default async function ComoJugar({ params }: PageProps) {
   const dict = await getDictionary(lang);
   const baseUrl = "https://fijasypicas.jhairparis.com";
   const currentMeta = dict.metadata.pages.comoJugar;
-  const articleUrl =
-    lang === "es" ? `${baseUrl}/como-jugar` : `${baseUrl}/${lang}/como-jugar`;
+  const articleUrl = `${baseUrl}/${lang}/como-jugar`;
 
   // Generate article schema
   const articleSchema = generateArticleSchema(

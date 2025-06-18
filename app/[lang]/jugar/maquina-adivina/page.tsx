@@ -29,10 +29,7 @@ export default async function MaquinaAdivinaPage({ params }: PageProps) {
   const dict = await getDictionary(lang);
   const baseUrl = "https://fijasypicas.jhairparis.com";
   const currentMeta = dict.metadata.pages.maquinaAdivina;
-  const gameUrl =
-    lang === "es"
-      ? `${baseUrl}/jugar/maquina-adivina`
-      : `${baseUrl}/${lang}/jugar/maquina-adivina`;
+  const gameUrl = `${baseUrl}/${lang}/jugar/maquina-adivina`;
 
   // Generate game schema
   const gameSchema = generateGameSchema(
