@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/jugar/maquina-adivina",
     "/jugar/maquina-pistas",
     "/como-jugar",
+    "/faq",
   ];
 
   // Prioridades específicas por tipo de página
@@ -20,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "": 1.0, // página principal
     "/jugar": 0.9,
     "/como-jugar": 0.8,
+    "/faq": 0.8,
     "/jugar/humano-humano": 0.7,
     "/jugar/maquina-adivina": 0.7,
     "/jugar/maquina-pistas": 0.7,

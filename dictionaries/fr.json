@@ -2,7 +2,8 @@
   "navigation": {
     "home": "Accueil",
     "howToPlay": "Comment Jouer",
-    "play": "Jouer"
+    "play": "Jouer",
+    "faq": "FAQ"
   },
   "languages": {
     "es": "Espagnol",
@@ -161,17 +162,6 @@
       "timed": {
         "title": "Contre la montre",
         "description": "Devinez le code avant que le temps ne s'épuise pour pousser votre logique à la limite."
-      }
-    },
-    "faq": {
-      "title": "Questions fréquemment posées",
-      "whatIsPica": {
-        "question": "Qu'est-ce qu'une vache ?",
-        "answer": "C'est un chiffre correct qui existe dans le code secret, mais dans une position différente de celle proposée."
-      },
-      "vsMastermind": {
-        "question": "En quoi \"Taureaux et Vaches\" diffère-t-il de Mastermind ?",
-        "answer": "Mastermind utilise des chevilles colorées pour marquer les réussites, mais la mécanique des \"taureaux\" et \"vaches\" est identique à la logique numérique de notre jeu."
       }
     },
     "challenge": {
@@ -398,7 +388,57 @@
           "jouer contre ordinateur taureaux et vaches",
           "défi ia taureaux et vaches"
         ]
+      },
+      "faq": {
+        "title": "Questions Fréquentes - Taureaux et Vaches",
+        "description": "Réponses aux questions les plus fréquentes sur le jeu Taureaux et Vaches. Apprenez tout sur les taureaux, les vaches, les stratégies et les règles du jeu.",
+        "keywords": [
+          "faq taureaux et vaches",
+          "questions fréquentes taureaux et vaches",
+          "aide taureaux et vaches",
+          "doutes taureaux et vaches",
+          "règles taureaux et vaches",
+          "stratégies taureaux et vaches",
+          "support taureaux et vaches"
+        ]
       }
+    }
+  },
+  "faq": {
+    "title": "Questions Fréquentes",
+    "subtitle": "Réponses à vos questions sur Taureaux et Vaches",
+    "description": "Trouvez des réponses aux questions les plus courantes sur le jeu Taureaux et Vaches. Tout ce que vous devez savoir pour maîtriser ce fascinant jeu de logique.",
+    "whatIsPica": {
+      "question": "Qu'est-ce qu'une vache ?",
+      "answer": "C'est un chiffre correct qui existe dans le code secret, mais à une position différente de celle proposée."
+    },
+    "whatIsFija": {
+      "question": "Qu'est-ce qu'un taureau ?",
+      "answer": "C'est un chiffre correct qui est à la position exacte du code secret. C'est la meilleure indication que vous puissiez obtenir."
+    },
+    "vsMastermind": {
+      "question": "En quoi \"taureaux et vaches\" diffère-t-il de Mastermind ?",
+      "answer": "Mastermind utilise des chevilles colorées pour marquer les succès, mais la mécanique des \"taureaux\" et \"vaches\" est identique à la logique numérique de notre jeu."
+    },
+    "howManyDigits": {
+      "question": "Combien de chiffres a le code secret ?",
+      "answer": "Par défaut, ce sont 4 chiffres uniques, mais vous pouvez choisir entre 3 à 6 chiffres selon votre niveau d'expérience et vos préférences."
+    },
+    "canRepeatDigits": {
+      "question": "Les chiffres peuvent-ils se répéter dans le code secret ?",
+      "answer": "En mode classique, les chiffres ne se répètent pas. Cependant, nous proposons un mode avancé où les répétitions sont autorisées pour plus de difficulté."
+    },
+    "bestStrategy": {
+      "question": "Quelle est la meilleure stratégie pour gagner ?",
+      "answer": "Commencez avec des nombres ayant des chiffres variés (comme 0, 3, 6, 9) pour obtenir un maximum d'informations. Notez chaque tentative et utilisez la logique déductive pour éliminer les possibilités."
+    },
+    "minimumAttempts": {
+      "question": "Quel est le nombre minimum de tentatives pour résoudre le jeu ?",
+      "answer": "Théoriquement, il est possible de le résoudre en 1 tentative avec beaucoup de chance, mais en utilisant la stratégie logique, un joueur expert peut le résoudre de manière consistante en 4-6 tentatives."
+    },
+    "isThereTimeLimit": {
+      "question": "Y a-t-il une limite de temps pour jouer ?",
+      "answer": "Il n'y a pas de limite de temps en mode classique. Cependant, nous proposons un mode contre-la-montre pour ceux qui cherchent un défi supplémentaire."
     }
   },
   "game": {

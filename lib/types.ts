@@ -61,6 +61,7 @@ export interface DictionaryNavigation {
   home: string;
   howToPlay: string;
   play: string;
+  faq: string;
 }
 
 export interface DictionaryHero {
@@ -161,11 +162,7 @@ export interface DictionaryComoJugar {
     variableLength: { title: string; description: string };
     timed: { title: string; description: string };
   };
-  faq: {
-    title: string;
-    whatIsPica: { question: string; answer: string };
-    vsMastermind: { question: string; answer: string };
-  };
+
   challenge: {
     title: string;
     description: string;
@@ -323,6 +320,20 @@ export interface DictionaryBanner {
   close: string;
 }
 
+export interface DictionaryFAQ {
+  title: string;
+  subtitle: string;
+  description: string;
+  whatIsPica: { question: string; answer: string };
+  whatIsFija: { question: string; answer: string };
+  vsMastermind: { question: string; answer: string };
+  howManyDigits: { question: string; answer: string };
+  canRepeatDigits: { question: string; answer: string };
+  bestStrategy: { question: string; answer: string };
+  minimumAttempts: { question: string; answer: string };
+  isThereTimeLimit: { question: string; answer: string };
+}
+
 export interface DictionaryMetadata {
   title: string;
   description: string;
@@ -356,6 +367,11 @@ export interface DictionaryMetadata {
       description: string;
       keywords: string[];
     };
+    faq: {
+      title: string;
+      description: string;
+      keywords: string[];
+    };
   };
 }
 
@@ -374,6 +390,7 @@ export interface Dictionary {
   footer: DictionaryFooter;
   newsletter: DictionaryNewsletter;
   banner: DictionaryBanner;
+  faq: DictionaryFAQ;
   metadata: DictionaryMetadata;
   game: DictionaryGame;
 }

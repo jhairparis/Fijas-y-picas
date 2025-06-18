@@ -2,7 +2,8 @@
   "navigation": {
     "home": "Home",
     "howToPlay": "How to Play",
-    "play": "Play"
+    "play": "Play",
+    "faq": "FAQ"
   },
   "languages": {
     "es": "Spanish",
@@ -161,17 +162,6 @@
       "timed": {
         "title": "Against the clock",
         "description": "Guess the code before time runs out to push your logic to the limit."
-      }
-    },
-    "faq": {
-      "title": "Frequently asked questions",
-      "whatIsPica": {
-        "question": "What is a cow?",
-        "answer": "It is a correct digit that exists in the secret code, but in a different position than proposed."
-      },
-      "vsMastermind": {
-        "question": "How does \"Bulls and Cows\" differ from Mastermind?",
-        "answer": "Mastermind uses colored pegs to mark hits, but the mechanics of \"bulls\" and \"cows\" is identical to the numerical logic of our game."
       }
     },
     "challenge": {
@@ -398,7 +388,57 @@
           "play against computer bulls and cows",
           "ai challenge bulls and cows"
         ]
+      },
+      "faq": {
+        "title": "Frequently Asked Questions - Bulls and Cows",
+        "description": "Answers to the most frequently asked questions about the Bulls and Cows game. Learn everything about bulls, cows, strategies and game rules.",
+        "keywords": [
+          "faq bulls and cows",
+          "frequently asked questions bulls and cows",
+          "bulls and cows help",
+          "bulls and cows doubts",
+          "bulls and cows rules",
+          "bulls and cows strategies",
+          "bulls and cows support"
+        ]
       }
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to your questions about Bulls and Cows",
+    "description": "Find answers to the most common questions about the Bulls and Cows game. Everything you need to know to master this fascinating logic game.",
+    "whatIsPica": {
+      "question": "What is a cow?",
+      "answer": "It is a correct digit that exists in the secret code, but in a different position from the proposed one."
+    },
+    "whatIsFija": {
+      "question": "What is a bull?",
+      "answer": "It is a correct digit that is in the exact position of the secret code. It is the best clue you can get."
+    },
+    "vsMastermind": {
+      "question": "How does \"bulls and cows\" differ from Mastermind?",
+      "answer": "Mastermind uses colored pegs to mark hits, but the mechanics of \"bulls\" and \"cows\" is identical to the numerical logic of our game."
+    },
+    "howManyDigits": {
+      "question": "How many digits does the secret code have?",
+      "answer": "By default it's 4 unique digits, but you can choose between 3 to 6 digits according to your experience level and preference."
+    },
+    "canRepeatDigits": {
+      "question": "Can digits be repeated in the secret code?",
+      "answer": "In classic mode digits don't repeat. However, we offer an advanced mode where repetitions are allowed for greater difficulty."
+    },
+    "bestStrategy": {
+      "question": "What is the best strategy to win?",
+      "answer": "Start with numbers that have varied digits (like 0, 3, 6, 9) to get maximum information. Write down each attempt and use deductive logic to eliminate possibilities."
+    },
+    "minimumAttempts": {
+      "question": "What is the minimum number of attempts to solve the game?",
+      "answer": "Theoretically it's possible to solve it in 1 attempt with a lot of luck, but using logical strategy, an expert player can solve it consistently in 4-6 attempts."
+    },
+    "isThereTimeLimit": {
+      "question": "Is there a time limit to play?",
+      "answer": "There is no time limit in classic mode. However, we offer a time trial mode for those seeking an additional challenge."
     }
   },
   "game": {

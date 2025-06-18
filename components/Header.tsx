@@ -81,6 +81,18 @@ function Header({ lang, dict }: HeaderProps) {
                 </Link>
               </li>
               <li>
+                <Link
+                  href={`/${lang}/faq`}
+                  className={`font-semibold transition-all duration-200 ${
+                    isActive("/faq")
+                      ? "text-rose-600 border-b-2 border-rose-600 pb-1"
+                      : "text-gray-700 hover:text-rose-600"
+                  }`}
+                >
+                  {dict.navigation.faq}
+                </Link>
+              </li>
+              <li>
                 <LanguageSwitcher currentLang={lang} dict={dict} />
               </li>
             </ul>
@@ -107,6 +119,16 @@ function Header({ lang, dict }: HeaderProps) {
                 }`}
               >
                 {dict.navigation.howToPlay}
+              </Link>
+              <Link
+                href={`/${lang}/faq`}
+                className={`text-sm font-semibold transition-colors duration-200 ${
+                  isActive("/faq")
+                    ? "text-rose-600"
+                    : "text-gray-700 hover:text-rose-600"
+                }`}
+              >
+                {dict.navigation.faq}
               </Link>
               <LanguageSwitcher currentLang={lang} dict={dict} />
             </div>

@@ -309,49 +309,6 @@ export default function ComoJugarContent({
             </div>
           </div>
 
-          <div className="max-w-6xl mx-auto mb-20">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.3 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                {dict.comoJugar.faq.title}
-              </h2>
-            </motion.div>
-
-            <div className="space-y-6">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1.4 }}
-                className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-gray-200/50"
-              >
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {dict.comoJugar.faq.whatIsPica.question}
-                </h3>
-                <p className="text-gray-600">
-                  {dict.comoJugar.faq.whatIsPica.answer}
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1.5 }}
-                className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-gray-200/50"
-              >
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {dict.comoJugar.faq.vsMastermind.question}
-                </h3>
-                <p className="text-gray-600">
-                  {dict.comoJugar.faq.vsMastermind.answer}
-                </p>
-              </motion.div>
-            </div>
-          </div>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -365,13 +322,21 @@ export default function ComoJugarContent({
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 {dict.comoJugar.challenge.description}
               </p>
-              <Link
-                href={`/${lang}/jugar`}
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-              >
-                <LuPlay className="w-6 h-6 mr-2" />
-                {dict.comoJugar.challenge.playButton}
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href={`/${lang}/jugar`}
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                >
+                  <LuPlay className="w-6 h-6 mr-2" />
+                  {dict.comoJugar.challenge.playButton}
+                </Link>
+                <Link
+                  href={`/${lang}/faq`}
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-rose-600 bg-white hover:bg-rose-50 border-2 border-rose-200 hover:border-rose-300 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                >
+                  Preguntas Frecuentes
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>

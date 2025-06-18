@@ -2,7 +2,8 @@
   "navigation": {
     "home": "Inicio",
     "howToPlay": "Cómo jugar",
-    "play": "Jugar"
+    "play": "Jugar",
+    "faq": "FAQ"
   },
   "languages": {
     "es": "Español",
@@ -112,7 +113,7 @@
     }
   },
   "comoJugar": {
-    "title": "Cómo jugar a fijas y picas – Guía completa de deducción",
+    "title": "Cómo jugar a fijas y picas - Guía completa de deducción",
     "subtitle": "Guía de Juego",
     "description": "En fijas y picas, uno de los juegos de lógica más antiguos y universales, tu misión es adivinar un número secreto de cuatro dígitos únicos. Con cada intento recibirás pistas que te acercan a la solución.",
     "basicRules": {
@@ -161,17 +162,6 @@
       "timed": {
         "title": "Contrarreloj",
         "description": "Adivina el código antes de que se agote el tiempo para llevar tu lógica al límite."
-      }
-    },
-    "faq": {
-      "title": "Preguntas frecuentes",
-      "whatIsPica": {
-        "question": "¿Qué es una pica?",
-        "answer": "Es un dígito correcto que existe en el código secreto, pero en posición diferente a la propuesta."
-      },
-      "vsMastermind": {
-        "question": "¿En qué difiere \"fijas y picas\" de Mastermind?",
-        "answer": "Mastermind usa clavijas de colores para marcar los aciertos, pero la mecánica de \"fijas\" y \"picas\" es idéntica a la lógica numérica de nuestro juego."
       }
     },
     "challenge": {
@@ -398,7 +388,57 @@
           "jugar contra computadora fijas y picas",
           "desafío ia fijas y picas"
         ]
+      },
+      "faq": {
+        "title": "Preguntas Frecuentes - Fijas y Picas",
+        "description": "Respuestas a las preguntas más frecuentes sobre el juego Fijas y Picas. Aprende todo sobre fijas, picas, estrategias y reglas del juego.",
+        "keywords": [
+          "faq fijas y picas",
+          "preguntas frecuentes fijas y picas",
+          "ayuda fijas y picas",
+          "dudas fijas y picas",
+          "reglas fijas y picas",
+          "estrategias fijas y picas",
+          "soporte fijas y picas"
+        ]
       }
+    }
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "subtitle": "Respuestas a tus dudas sobre Fijas y Picas",
+    "description": "Encuentra respuestas a las preguntas más comunes sobre el juego Fijas y Picas. Todo lo que necesitas saber para dominar este fascinante juego de lógica.",
+    "whatIsPica": {
+      "question": "¿Qué es una pica?",
+      "answer": "Es un dígito correcto que existe en el código secreto, pero en posición diferente a la propuesta."
+    },
+    "whatIsFija": {
+      "question": "¿Qué es una fija?",
+      "answer": "Es un dígito correcto que está en la posición exacta del código secreto. Es la mejor pista que puedes obtener."
+    },
+    "vsMastermind": {
+      "question": "¿En qué difiere \"fijas y picas\" de Mastermind?",
+      "answer": "Mastermind usa clavijas de colores para marcar los aciertos, pero la mecánica de \"fijas\" y \"picas\" es idéntica a la lógica numérica de nuestro juego."
+    },
+    "howManyDigits": {
+      "question": "¿Cuántos dígitos tiene el código secreto?",
+      "answer": "Por defecto son 4 dígitos únicos, pero puedes elegir entre 3 a 6 dígitos según tu nivel de experiencia y preferencia."
+    },
+    "canRepeatDigits": {
+      "question": "¿Se pueden repetir los dígitos en el código secreto?",
+      "answer": "En el modo clásico no se repiten dígitos. Sin embargo, ofrecemos un modo avanzado donde sí se permiten repeticiones para mayor dificultad."
+    },
+    "bestStrategy": {
+      "question": "¿Cuál es la mejor estrategia para ganar?",
+      "answer": "Comienza con números que tengan dígitos variados (como 0, 3, 6, 9) para obtener máxima información. Anota cada intento y usa la lógica deductiva para eliminar posibilidades."
+    },
+    "minimumAttempts": {
+      "question": "¿Cuál es el mínimo número de intentos para resolver el juego?",
+      "answer": "Teóricamente es posible resolverlo en 1 intento con mucha suerte, pero usando estrategia lógica, un jugador experto puede resolverlo consistentemente en 4-6 intentos."
+    },
+    "isThereTimeLimit": {
+      "question": "¿Hay límite de tiempo para jugar?",
+      "answer": "No hay límite de tiempo en el modo clásico. Sin embargo, ofrecemos un modo contrarreloj para quienes buscan un desafío adicional."
     }
   },
   "game": {
