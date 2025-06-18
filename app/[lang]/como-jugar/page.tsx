@@ -1,29 +1,22 @@
-import React from "react";
 import type { Metadata } from "next";
 import { getDictionary } from "@/lib/getDictionary";
 import type { Locale } from "@/lib/i18n";
 import ComoJugarContent from "@/components/ComoJugarContent";
-import { generateArticleMetadataFromDict } from "@/lib/metadata-dict-utils";
+import { generateArticleMetadata } from "@/lib/metadata-dict-utils";
 import { generateArticleSchema } from "@/lib/structured-data";
 
 interface PageProps {
   params: Promise<{ lang: Locale }>;
 }
 
-// Generar metadata para la página Como Jugar
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ lang: Locale }>;
-}): Promise<Metadata> {
+}: PageProps): Promise<Metadata> {
   const { lang } = await params;
+
   const dict = await getDictionary(lang);
-  return generateArticleMetadataFromDict(
-    dict,
-    lang,
-    "/como-jugar",
-    "comoJugar"
-  );
+
+  return generateArticleMetadata(dict, lang, "/como-jugar", "comoJugar");
 }
 
 export default async function ComoJugar({ params }: PageProps) {

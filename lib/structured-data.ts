@@ -45,7 +45,9 @@ export function generateGameSchema(
   gameName: string,
   gameDescription: string,
   gameUrl: string,
-  lang: Locale
+  lang: Locale,
+  gameMode: string,
+  screenshots?: string[]
 ) {
   return {
     "@context": "https://schema.org",
@@ -59,12 +61,24 @@ export function generateGameSchema(
     applicationCategory: "Game",
     operatingSystem: "Any",
     isAccessibleForFree: true,
-    // Removed fake aggregateRating - only add if you have real data
+    numberOfPlayers: gameMode.includes("human") ? "1-2" : "1",
+    ...(screenshots && {
+      screenshot: screenshots.map(url => ({
+        "@type": "ImageObject",
+        url,
+        encodingFormat: "image/png",
+      })),
+    }),
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
       availability: "https://schema.org/InStock",
+    },
+    audience: {
+      "@type": "Audience",
+      audienceType: "General Public",
+      suggestedMinAge: 8,
     },
   };
 }

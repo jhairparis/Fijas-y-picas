@@ -2,18 +2,21 @@ import type { Metadata } from "next";
 import { getDictionary } from "@/lib/getDictionary";
 import GameMode from "@/components/game/GameMode";
 import type { Locale } from "@/lib/i18n";
-import { generateGamePageMetadataFromDict } from "@/lib/metadata-dict-utils";
+import { generateGamePageMetadata } from "@/lib/metadata-dict-utils";
 import { generateGameSchema } from "@/lib/structured-data";
 
-// Generar metadata para la página Humano vs Humano
+interface PageProps {
+  params: Promise<{ lang: Locale }>;
+}
+
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ lang: Locale }>;
-}): Promise<Metadata> {
+}: PageProps): Promise<Metadata> {
   const { lang } = await params;
+
   const dict = await getDictionary(lang);
-  return generateGamePageMetadataFromDict(
+
+  return generateGamePageMetadata(
     dict,
     lang,
     "/jugar/humano-humano",
@@ -41,7 +44,8 @@ export default async function HumanoHumanoPage({
     currentMeta.title,
     currentMeta.description,
     gameUrl,
-    lang
+    lang,
+    "humanoHumano"
   );
 
   return (

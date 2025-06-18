@@ -2,18 +2,21 @@ import type { Metadata } from "next";
 import { getDictionary } from "@/lib/getDictionary";
 import GameMode from "@/components/game/GameMode";
 import type { Locale } from "@/lib/i18n";
-import { generateGamePageMetadataFromDict } from "@/lib/metadata-dict-utils";
+import { generateGamePageMetadata } from "@/lib/metadata-dict-utils";
 import { generateGameSchema } from "@/lib/structured-data";
 
-// Generar metadata para la página Máquina da Pistas
+interface PageProps {
+  params: Promise<{ lang: Locale }>;
+}
+
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ lang: Locale }>;
-}): Promise<Metadata> {
+}: PageProps): Promise<Metadata> {
   const { lang } = await params;
+
   const dict = await getDictionary(lang);
-  return generateGamePageMetadataFromDict(
+
+  return generateGamePageMetadata(
     dict,
     lang,
     "/jugar/maquina-pistas",
@@ -21,12 +24,7 @@ export async function generateMetadata({
   );
 }
 
-// Server component that fetches data and passes to client component
-export default async function MaquinaPistasPage({
-  params,
-}: {
-  params: Promise<{ lang: Locale }>;
-}) {
+export default async function MaquinaPistasPage({ params }: PageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
   const baseUrl = "https://fijasypicas.jhairparis.com";
@@ -41,7 +39,8 @@ export default async function MaquinaPistasPage({
     currentMeta.title,
     currentMeta.description,
     gameUrl,
-    lang
+    lang,
+    "maquinaPistas"
   );
 
   return (

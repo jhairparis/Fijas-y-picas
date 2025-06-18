@@ -6,11 +6,11 @@ import Banner from "@/components/Banner";
 import { getDictionary } from "@/lib/getDictionary";
 import type { Locale } from "@/lib/i18n";
 
-export default async function Page({
-  params,
-}: {
+interface PageProps {
   params: Promise<{ lang: Locale }>;
-}) {
+}
+
+export default async function Page({ params }: PageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
 

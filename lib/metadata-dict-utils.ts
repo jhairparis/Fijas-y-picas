@@ -2,44 +2,33 @@ import type { Metadata } from "next";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/types";
 
-// New function that uses dictionary metadata
-export function generateMetadataFromDict(
+function generateMetadata(
   dict: Dictionary,
   lang: Locale,
   path: string,
   pageKey?: keyof Dictionary["metadata"]["pages"]
 ): Metadata {
-  const baseUrl = "https://fijasypicas.jhairparis.com";
+  if (pageKey === undefined || !dict.metadata.pages[pageKey])
+    throw new Error(
+      `Metadata for page key "${pageKey}" not found in dictionary.`
+    );
 
-  // Use page-specific metadata if available, otherwise use general metadata
-  const pageMetadata =
-    pageKey && dict.metadata.pages[pageKey]
-      ? dict.metadata.pages[pageKey]
-      : {
-          title: dict.metadata.title,
-          description: dict.metadata.description,
-          keywords: dict.metadata.keywords,
-        };
+  const pageMetadata = dict.metadata.pages[pageKey];
 
-  const canonicalUrl =
-    lang === "es"
-      ? path === ""
-        ? baseUrl
-        : `${baseUrl}${path}`
-      : path === ""
-        ? `${baseUrl}/${lang}`
-        : `${baseUrl}/${lang}${path}`;
+  const canonicalUrl = path === "" ? `/${lang}` : `/${lang}${path}`;
 
   return {
     title: pageMetadata.title,
     description: pageMetadata.description,
+    metadataBase: new URL("https://fijasypicas.jhairparis.com"),
+
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        es: path === "" ? baseUrl : `${baseUrl}${path}`,
-        en: path === "" ? `${baseUrl}/en` : `${baseUrl}/en${path}`,
-        fr: path === "" ? `${baseUrl}/fr` : `${baseUrl}/fr${path}`,
-        "x-default": path === "" ? baseUrl : `${baseUrl}${path}`,
+        es: path === "" ? `/es` : `/es${path}`,
+        en: path === "" ? `/en` : `/en${path}`,
+        fr: path === "" ? `/fr` : `/fr${path}`,
+        "x-default": path === "" ? "/" : `/${path}`,
       },
     },
     openGraph: {
@@ -49,20 +38,20 @@ export function generateMetadataFromDict(
       siteName: dict.metadata.openGraph.siteName,
       locale: lang === "es" ? "es_ES" : lang === "en" ? "en_US" : "fr_FR",
       type: "website",
-      images: [
-        {
-          url: `${baseUrl}/images/hero-image.png`,
-          width: 1200,
-          height: 630,
-          alt: pageMetadata.title,
-        },
-      ],
+      // images: [
+      //   {
+      //     url: `${baseUrl}/images/hero-image.png`,
+      //     width: 1200,
+      //     height: 630,
+      //     alt: pageMetadata.title,
+      //   },
+      // ],
     },
     twitter: {
       card: "summary_large_image",
       title: pageMetadata.title,
       description: pageMetadata.description,
-      images: [`${baseUrl}/images/hero-image.png`],
+      // images: [`${baseUrl}/images/hero-image.png`],
     },
     robots: {
       index: true,
@@ -83,14 +72,13 @@ export function generateMetadataFromDict(
   };
 }
 
-// Article metadata using dictionary
-export function generateArticleMetadataFromDict(
+export function generateArticleMetadata(
   dict: Dictionary,
   lang: Locale,
   path: string,
   pageKey: keyof Dictionary["metadata"]["pages"]
 ): Metadata {
-  const baseMetadata = generateMetadataFromDict(dict, lang, path, pageKey);
+  const baseMetadata = generateMetadata(dict, lang, path, pageKey);
 
   return {
     ...baseMetadata,
@@ -101,22 +89,18 @@ export function generateArticleMetadataFromDict(
   };
 }
 
-// Game page metadata using dictionary
-export function generateGamePageMetadataFromDict(
+export function generateGamePageMetadata(
   dict: Dictionary,
   lang: Locale,
   path: string,
   pageKey: keyof Dictionary["metadata"]["pages"],
   gameMode?: string
 ): Metadata {
-  const baseMetadata = generateMetadataFromDict(dict, lang, path, pageKey);
+  const baseMetadata = generateMetadata(dict, lang, path, pageKey);
 
   return {
     ...baseMetadata,
     other: {
-      "theme-color": "#1a1a1a",
-      "color-scheme": "light dark",
-      "format-detection": "telephone=no",
       "game-mode": gameMode || "general",
       "application-name": "Fijas y Picas",
     } as Record<string, string>,
