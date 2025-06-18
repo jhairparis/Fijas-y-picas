@@ -2,18 +2,30 @@ import type { Metadata } from "next";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/types";
 
-function generateMetadata(
+export default function generateMetadata(
   dict: Dictionary,
   lang: Locale,
   path: string,
   pageKey?: keyof Dictionary["metadata"]["pages"]
 ): Metadata {
-  if (pageKey === undefined || !dict.metadata.pages[pageKey])
-    throw new Error(
-      `Metadata for page key "${pageKey}" not found in dictionary.`
-    );
+  let pageMetadata;
 
-  const pageMetadata = dict.metadata.pages[pageKey];
+  if (pageKey && dict.metadata.pages[pageKey]) {
+    pageMetadata = dict.metadata.pages[pageKey];
+  } else {
+    pageMetadata = {
+      title: dict.metadata.title,
+      description: dict.metadata.description,
+      keywords: dict.metadata.keywords,
+    };
+    console.warn(`Metadata for page key "${pageKey}" not found in dictionary.`);
+  }
+
+  const localeMap = {
+    es: "es_ES",
+    en: "en_US",
+    fr: "fr_FR",
+  };
 
   const canonicalUrl = path === "" ? `/${lang}` : `/${lang}${path}`;
 
@@ -36,7 +48,7 @@ function generateMetadata(
       description: pageMetadata.description,
       url: canonicalUrl,
       siteName: dict.metadata.openGraph.siteName,
-      locale: lang === "es" ? "es_ES" : lang === "en" ? "en_US" : "fr_FR",
+      locale: localeMap[lang] || "es_ES",
       type: "website",
       // images: [
       //   {

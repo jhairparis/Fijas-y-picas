@@ -8,74 +8,22 @@ import {
   generateWebsiteSchema,
   generateOrganizationSchema,
 } from "@/lib/structured-data";
+import GenMetadata from "@/lib/generate-metadata";
+
+interface Props_ {
+  params: Promise<{ lang: Locale }>;
+}
 
 // Generar parámetros estáticos para todos los locales
 export async function generateStaticParams() {
   return locales.map(lang => ({ lang }));
 }
 
-// Generar metadata dinámica basada en el locale
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ lang: Locale }>;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: Props_): Promise<Metadata> {
   const { lang } = await params;
   const dict = await getDictionary(lang);
-  const baseUrl = "https://fijasypicas.jhairparis.com";
 
-  const localeMap = {
-    es: "es_ES",
-    en: "en_US",
-    fr: "fr_FR",
-  };
-
-  return {
-    title: dict.metadata.title,
-    description: dict.metadata.description,
-    alternates: {
-      canonical: lang === "es" ? baseUrl : `${baseUrl}/${lang}`,
-      languages: {
-        es: baseUrl,
-        en: `${baseUrl}/en`,
-        fr: `${baseUrl}/fr`,
-        "x-default": baseUrl, // Español como idioma por defecto
-      },
-    },
-    openGraph: {
-      title: dict.metadata.title,
-      description: dict.metadata.description,
-      url: lang === "es" ? baseUrl : `${baseUrl}/${lang}`,
-      siteName: dict.metadata.openGraph.siteName,
-      locale: localeMap[lang],
-      type: "website",
-      images: [
-        {
-          url: `${baseUrl}/images/hero-image.png`,
-          width: 1200,
-          height: 630,
-          alt: dict.metadata.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: dict.metadata.title,
-      description: dict.metadata.description,
-      images: [`${baseUrl}/images/hero-image.png`],
-    },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
-  };
+  return GenMetadata(dict, lang, "/");
 }
 
 type LanguageLayoutProps = Readonly<{
