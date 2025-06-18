@@ -3,7 +3,7 @@ import GameInfo from "@/components/GameInfo";
 import Features from "@/components/Features";
 import History from "@/components/History";
 import Banner from "@/components/Banner";
-import { getDictionary } from "@/lib/getDictionary";
+import { getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
 
 interface PageProps {

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { getDictionary } from "@/lib/getDictionary";
+import { getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
 import GameContent from "@/components/GameContent";
-import { generateGamePageMetadata } from "@/lib/metadata-dict-utils";
+import { generateGamePageMetadata } from "@/lib/generate-metadata";
 import { generateGameSchema } from "@/lib/structured-data";
 
 interface PageProps {

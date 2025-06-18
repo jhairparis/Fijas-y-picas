@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { getDictionary } from "@/lib/getDictionary";
+import { getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
 import ComoJugarContent from "@/components/ComoJugarContent";
-import { generateArticleMetadata } from "@/lib/metadata-dict-utils";
+import { generateArticleMetadata } from "@/lib/generate-metadata";
 import { generateArticleSchema } from "@/lib/structured-data";
 
 interface PageProps {

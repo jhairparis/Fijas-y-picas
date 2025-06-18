@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LanguageProvider from "@/components/LanguageProvider";
-import { getDictionary } from "@/lib/getDictionary";
+import { getDictionary } from "@/lib/dictionary";
 import { locales, type Locale } from "@/lib/i18n";
 import {
   generateWebsiteSchema,
