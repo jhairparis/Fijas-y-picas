@@ -22,15 +22,13 @@ export async function generateMetadata({
 export default async function ComoJugar({ params }: PageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
-  const baseUrl = "https://fijasypicas.jhairparis.com";
   const currentMeta = dict.metadata.pages.comoJugar;
-  const articleUrl = `${baseUrl}/${lang}/como-jugar`;
 
   // Generate article schema
   const articleSchema = generateArticleSchema(
     currentMeta.title,
     currentMeta.description,
-    articleUrl,
+    "/como-jugar",
     lang
   );
 

@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./global.css";
+import { PUBLIC_URL_ } from "@/lib/config";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// Metadata básico y neutro para el layout raíz
 export const metadata: Metadata = {
-  title: "Fijas y Picas",
-  description: "Classic logic and deduction game online",
+  metadataBase: new URL(PUBLIC_URL_),
+  title: "Fijas y Picas - Juego de Lógica y Deducción",
+  description:
+    "Juego clásico de lógica y deducción disponible online. Juega Fijas y Picas en tu navegador y desafía a tus amigos.",
   robots: {
     index: true,
     follow: true,
   },
-  metadataBase: new URL("https://fijasypicas.jhairparis.com"),
 };
 
-// Root layout - required by Next.js
 export default function RootLayout({
   children,
 }: {

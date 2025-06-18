@@ -27,15 +27,12 @@ export async function generateMetadata({
 export default async function MaquinaAdivinaPage({ params }: PageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
-  const baseUrl = "https://fijasypicas.jhairparis.com";
   const currentMeta = dict.metadata.pages.maquinaAdivina;
-  const gameUrl = `${baseUrl}/${lang}/jugar/maquina-adivina`;
 
-  // Generate game schema
   const gameSchema = generateGameSchema(
     currentMeta.title,
     currentMeta.description,
-    gameUrl,
+    "/jugar/maquina-adivina",
     lang,
     "maquinaAdivina"
   );

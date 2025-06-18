@@ -44,11 +44,10 @@ export default async function LanguageLayout({
 
   // Obtener el diccionario
   const dict = await getDictionary(lang);
-  const baseUrl = "https://fijasypicas.jhairparis.com";
 
   // Generar structured data
-  const websiteSchema = generateWebsiteSchema(lang, dict, baseUrl);
-  const organizationSchema = generateOrganizationSchema(baseUrl);
+  const websiteSchema = generateWebsiteSchema(lang, dict);
+  const organizationSchema = generateOrganizationSchema();
 
   return (
     <LanguageProvider lang={lang}>

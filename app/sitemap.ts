@@ -1,8 +1,9 @@
 import { MetadataRoute } from "next";
 import { locales } from "@/lib/i18n";
+import { PUBLIC_URL_ } from "@/lib/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://fijasypicas.jhairparis.com";
+  const baseUrl = PUBLIC_URL_;
 
   // Define las rutas principales de tu aplicación
   const routes = [

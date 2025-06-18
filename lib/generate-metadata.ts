@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/types";
+import { PUBLIC_URL_ } from "./config";
 
 export default function generateMetadata(
   dict: Dictionary,
@@ -32,7 +33,7 @@ export default function generateMetadata(
   return {
     title: pageMetadata.title,
     description: pageMetadata.description,
-    metadataBase: new URL("https://fijasypicas.jhairparis.com"),
+    metadataBase: new URL(PUBLIC_URL_),
 
     alternates: {
       canonical: canonicalUrl,

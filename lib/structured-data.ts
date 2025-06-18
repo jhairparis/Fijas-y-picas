@@ -1,17 +1,16 @@
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/types";
+import { PUBLIC_URL_ } from "./config";
 
-export function generateWebsiteSchema(
-  lang: Locale,
-  dict: Dictionary,
-  baseUrl: string
-) {
+const baseUrl = PUBLIC_URL_;
+
+export function generateWebsiteSchema(lang: Locale, dict: Dictionary) {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: dict.metadata.openGraph.siteName,
     description: dict.metadata.description,
-    url: lang === "es" ? baseUrl : `${baseUrl}/${lang}`,
+    url: `${baseUrl}/${lang}`,
     inLanguage: lang,
     potentialAction: {
       "@type": "SearchAction",
@@ -25,7 +24,7 @@ export function generateWebsiteSchema(
       "@type": "Game",
       name: dict.metadata.openGraph.siteName,
       description: dict.metadata.description,
-      url: lang === "es" ? baseUrl : `${baseUrl}/${lang}`,
+      url: `${baseUrl}/${lang}`,
       genre: ["Logic", "Puzzle", "Strategy"],
       gamePlatform: ["Web Browser"],
       applicationCategory: "Game",
@@ -44,7 +43,7 @@ export function generateWebsiteSchema(
 export function generateGameSchema(
   gameName: string,
   gameDescription: string,
-  gameUrl: string,
+  path: string,
   lang: Locale,
   gameMode: string,
   screenshots?: string[]
@@ -54,7 +53,7 @@ export function generateGameSchema(
     "@type": "Game",
     name: gameName,
     description: gameDescription,
-    url: gameUrl,
+    url: `${baseUrl}/${lang}${path}`,
     inLanguage: lang,
     genre: ["Logic", "Puzzle", "Strategy", "Deduction"],
     gamePlatform: ["Web Browser"],
@@ -86,7 +85,7 @@ export function generateGameSchema(
 export function generateArticleSchema(
   title: string,
   description: string,
-  url: string,
+  path: string,
   lang: Locale,
   publishedDate?: string,
   modifiedDate?: string
@@ -100,27 +99,27 @@ export function generateArticleSchema(
     "@type": "Article",
     headline: title,
     description: description,
-    url: url,
+    url: `${baseUrl}/${lang}${path}`,
     inLanguage: lang,
     datePublished: pubDate,
     dateModified: modDate,
     author: {
       "@type": "Organization",
       name: "Fijas y Picas",
-      url: "https://fijasypicas.jhairparis.com",
+      url: baseUrl,
     },
     publisher: {
       "@type": "Organization",
       name: "Fijas y Picas",
-      url: "https://fijasypicas.jhairparis.com",
+      url: baseUrl,
       logo: {
         "@type": "ImageObject",
-        url: "https://fijasypicas.jhairparis.com/logo.svg",
+        url: `${baseUrl}/logo.svg`,
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": url,
+      "@id": path,
     },
   };
 }
@@ -140,7 +139,7 @@ export function generateBreadcrumbSchema(
   };
 }
 
-export function generateOrganizationSchema(baseUrl: string) {
+export function generateOrganizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",

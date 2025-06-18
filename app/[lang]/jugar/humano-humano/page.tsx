@@ -24,23 +24,15 @@ export async function generateMetadata({
   );
 }
 
-// Server component that fetches data and passes to client component
-export default async function HumanoHumanoPage({
-  params,
-}: {
-  params: Promise<{ lang: Locale }>;
-}) {
+export default async function HumanoHumanoPage({ params }: PageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
-  const baseUrl = "https://fijasypicas.jhairparis.com";
   const currentMeta = dict.metadata.pages.humanoHumano;
-  const gameUrl = `${baseUrl}/${lang}/jugar/humano-humano`;
 
-  // Generate game schema
   const gameSchema = generateGameSchema(
     currentMeta.title,
     currentMeta.description,
-    gameUrl,
+    "/jugar/humano-humano",
     lang,
     "humanoHumano"
   );
