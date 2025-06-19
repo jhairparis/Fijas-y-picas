@@ -10,7 +10,7 @@ interface BannerProps {
   lang: Locale;
 }
 
-function Banner({ dict, lang }: BannerProps) {
+function Banner({ dict }: BannerProps) {
   const [bannerOpen, setBannerOpen] = useState(true);
 
   return (
@@ -21,7 +21,7 @@ function Banner({ dict, lang }: BannerProps) {
             <div className="text-slate-500 inline-flex">
               <Link
                 className="font-medium hover:underline text-emerald-400"
-                href={`/${lang}/privacidad`}
+                href={`#`}
               >
                 <span className="font-medium hover:no-underline text-slate-50 mr-[0.5px]">
                   {dict.banner.acceptText}{" "}

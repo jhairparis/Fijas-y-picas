@@ -105,7 +105,11 @@ function Features({ dict }: FeaturesProps) {
                 </p>
               </motion.div>
 
-              <div className="space-y-4">
+              <div
+                className="space-y-4"
+                role="tablist"
+                aria-label="Feature tabs"
+              >
                 {tabsData.map((item, index) => (
                   <motion.div
                     key={item.id}
@@ -123,6 +127,7 @@ function Features({ dict }: FeaturesProps) {
                       role="tab"
                       aria-selected={tab === item.id}
                       aria-controls={`tab-panel-${item.id}`}
+                      id={`tab-${item.id}`}
                     >
                       <div className="flex items-start justify-between">
                         <div className="flex-1 pr-4">
@@ -168,7 +173,7 @@ function Features({ dict }: FeaturesProps) {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="relative"
               >
-                <div className="relative" ref={tabs} role="tablist">
+                <div className="relative" ref={tabs}>
                   <AnimatePresence mode="wait">
                     {tabsData.map(
                       item =>

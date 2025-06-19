@@ -1,9 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import { LuGithub, LuInstagram, LuTwitter } from "react-icons/lu";
+import { LuGithub } from "react-icons/lu";
 import Newsletter from "./Newsletter";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/types";
+import { FaXTwitter } from "react-icons/fa6";
 
 interface FooterProps {
   lang: Locale;
@@ -36,33 +37,26 @@ function Footer({ lang, dict }: FooterProps) {
                 {dict.footer.followUs}
               </h4>
               <div className="flex space-x-4">
-                <a
-                  href="#"
+                <Link
+                  href="https://github.com/jhairparis"
+                  aria-label="Visit our GitHub profile"
                   className="group flex items-center justify-center w-12 h-12 bg-gray-800 hover:bg-gray-700 rounded-xl transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-gray-500/25 border-2 border-transparent hover:border-rose-400"
                 >
                   <LuGithub
                     className="text-gray-400 group-hover:text-rose-400 transition-colors duration-300"
                     size={20}
                   />
-                </a>
-                <a
-                  href="#"
-                  className="group flex items-center justify-center w-12 h-12 bg-gray-800 hover:bg-gray-700 rounded-xl transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-gray-500/25 border-2 border-transparent hover:border-amber-400"
-                >
-                  <LuInstagram
-                    className="text-gray-400 group-hover:text-amber-400 transition-colors duration-300"
-                    size={20}
-                  />
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  href="https://x.com/jhairparis"
+                  aria-label="Follow us on X (Twitter)"
                   className="group flex items-center justify-center w-12 h-12 bg-gray-800 hover:bg-gray-700 rounded-xl transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-gray-500/25 border-2 border-transparent hover:border-orange-400"
                 >
-                  <LuTwitter
+                  <FaXTwitter
                     className="text-gray-400 group-hover:text-orange-400 transition-colors duration-300"
                     size={20}
                   />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -123,7 +117,8 @@ function Footer({ lang, dict }: FooterProps) {
             </p>
             <div className="flex space-x-6 text-sm">
               <Link
-                href={`#`}
+                href="#"
+                aria-label="Terms of Service"
                 className="text-gray-500 hover:text-gray-300 transition-colors duration-300"
               >
                 {dict.footer.terms}
