@@ -13,11 +13,11 @@ interface FooterProps {
 function Footer({ lang, dict }: FooterProps) {
   return (
     <footer className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900" />
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-rose-500 via-amber-500 to-rose-500" />
+      <span className="absolute inset-0 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900" />
+      <span className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-rose-500 via-amber-500 to-rose-500" />
 
-      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-rose-500/5 to-amber-500/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-amber-500/5 to-orange-500/5 rounded-full blur-2xl" />
+      <span className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-rose-500/5 to-amber-500/5 rounded-full blur-3xl" />
+      <span className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-amber-500/5 to-orange-500/5 rounded-full blur-2xl" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">

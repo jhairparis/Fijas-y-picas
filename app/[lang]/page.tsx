@@ -5,9 +5,20 @@ import History from "@/components/History";
 import Banner from "@/components/Banner";
 import { getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
+import { Metadata } from "next";
+import GenMetadata from "@/lib/generate-metadata";
 
 interface PageProps {
   params: Promise<{ lang: Locale }>;
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+
+  return GenMetadata(dict, lang, "/");
 }
 
 export default async function Page({ params }: PageProps) {
@@ -16,7 +27,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <div className="relative overflow-hidden">
-      <div className="fixed inset-0 bg-gradient-to-b from-orange-50 to-amber-50 pointer-events-none -z-10" />
+      <span className="fixed inset-0 bg-gradient-to-b from-orange-50 to-amber-50 pointer-events-none -z-10" />
 
       <HeroHome dict={dict} lang={lang} />
       <GameInfo dict={dict} lang={lang} />

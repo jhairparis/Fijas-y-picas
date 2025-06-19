@@ -13,13 +13,13 @@ interface GameInfoProps {
 export default function GameInfo({ dict, lang }: GameInfoProps) {
   return (
     <section className="relative">
-      <div
+      <span
         className="absolute inset-0 bg-gradient-to-b from-amber-50 via-orange-50 to-rose-50 pointer-events-none"
         aria-hidden="true"
       />
 
-      <div className="absolute top-0 right-1/3 w-72 h-72 bg-gradient-to-r from-orange-400/6 to-rose-400/6 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-gradient-to-r from-rose-400/8 to-amber-400/8 rounded-full blur-3xl" />
+      <span className="absolute top-0 right-1/3 w-72 h-72 bg-gradient-to-r from-orange-400/6 to-rose-400/6 rounded-full blur-3xl" />
+      <span className="absolute bottom-0 left-1/4 w-80 h-80 bg-gradient-to-r from-rose-400/8 to-amber-400/8 rounded-full blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="pt-16 md:pt-20 pb-16 md:pb-20">
@@ -61,7 +61,7 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
                   <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-3xl transform group-hover:scale-110 transition-all duration-300 shadow-lg">
                     🧠
                   </div>
-                  <div className="absolute inset-0 w-20 h-20 mx-auto bg-blue-400 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+                  <span className="absolute inset-0 w-20 h-20 mx-auto bg-blue-400 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300"></span>
                 </div>
                 <h4 className="text-xl font-bold text-gray-900 mb-3">
                   {dict.gameInfo.features.logic.title}
@@ -81,7 +81,7 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
                   <div className="w-20 h-20 mx-auto bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-3xl transform group-hover:scale-110 transition-all duration-300 shadow-lg">
                     🥵
                   </div>
-                  <div className="absolute inset-0 w-20 h-20 mx-auto bg-green-400 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+                  <span className="absolute inset-0 w-20 h-20 mx-auto bg-green-400 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300"></span>
                 </div>
                 <h4 className="text-xl font-bold text-gray-900 mb-3">
                   {dict.gameInfo.features.difficulty.title}
@@ -101,7 +101,7 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
                   <div className="w-20 h-20 mx-auto bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-3xl transform group-hover:scale-110 transition-all duration-300 shadow-lg">
                     🤕
                   </div>
-                  <div className="absolute inset-0 w-20 h-20 mx-auto bg-purple-400 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+                  <span className="absolute inset-0 w-20 h-20 mx-auto bg-purple-400 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300"></span>
                 </div>
                 <h4 className="text-xl font-bold text-gray-900 mb-3">
                   {dict.gameInfo.features.unlimited.title}
@@ -121,7 +121,7 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
                   <div className="w-20 h-20 mx-auto bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-3xl transform group-hover:scale-110 transition-all duration-300 shadow-lg">
                     🧠
                   </div>
-                  <div className="absolute inset-0 w-20 h-20 mx-auto bg-orange-400 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+                  <span className="absolute inset-0 w-20 h-20 mx-auto bg-orange-400 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300"></span>
                 </div>
                 <h4 className="text-xl font-bold text-gray-900 mb-3">
                   {dict.gameInfo.features.strategy.title}
@@ -246,7 +246,7 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
                 </motion.div>
 
                 {/* Flecha decorativa ascendente */}
-                <div className="absolute -right-8 top-1/2 transform -translate-y-1/2 hidden lg:block">
+                <span className="absolute -right-8 top-1/2 transform -translate-y-1/2 hidden lg:block">
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -255,7 +255,7 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
                   >
                     ↗️
                   </motion.div>
-                </div>
+                </span>
               </div>
             </div>
           </div>
@@ -267,7 +267,7 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
             className="text-center"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-rose-100 to-amber-100 rounded-3xl blur-3xl opacity-60"></div>
+              <span className="absolute inset-0 bg-gradient-to-r from-rose-100 to-amber-100 rounded-3xl blur-3xl opacity-60"></span>
 
               <div className="relative py-16 px-8">
                 <h3

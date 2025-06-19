@@ -55,13 +55,13 @@ function Features({ dict }: FeaturesProps) {
 
   return (
     <section className="relative">
-      <div
+      <span
         className="absolute inset-0 bg-gradient-to-b from-rose-50 via-amber-50 to-orange-50 pointer-events-none"
         aria-hidden="true"
       />
 
-      <div className="absolute top-0 left-1/3 w-72 h-72 bg-gradient-to-r from-rose-400/6 to-amber-400/6 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-amber-400/8 to-orange-400/8 rounded-full blur-3xl" />
+      <span className="absolute top-0 left-1/3 w-72 h-72 bg-gradient-to-r from-rose-400/6 to-amber-400/6 rounded-full blur-3xl" />
+      <span className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-amber-400/8 to-orange-400/8 rounded-full blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="pt-16 md:pt-20 pb-16 md:pb-24">

@@ -83,9 +83,9 @@ const Newsletter = ({ dict }: NewsletterProps) => {
 
   return (
     <div>
-      <h6 className="text-gray-800 font-medium mb-2">
+      <h5 className="text-gray-800 font-medium mb-2">
         {dict.newsletter.title}
-      </h6>
+      </h5>
       <p className="text-sm text-gray-600 mb-4">
         {dict.newsletter.description}
       </p>

@@ -47,12 +47,12 @@ const FloatingNumbers3D = () => {
 
   if (!isClient) {
     return (
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" />
+      <span className="absolute inset-0 overflow-hidden pointer-events-none" />
     );
   }
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <span className="absolute inset-0 overflow-hidden pointer-events-none">
       {numbersData.numbers.map(num => (
         <div
           key={num.id}
@@ -183,7 +183,7 @@ const FloatingNumbers3D = () => {
           </motion.div>
         </div>
       ))}
-    </div>
+    </span>
   );
 };
 

@@ -1,15 +1,9 @@
-import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LanguageProvider from "@/components/LanguageProvider";
 import { getDictionary } from "@/lib/dictionary";
 import { locales, type Locale } from "@/lib/i18n";
 import { generateOrganizationSchema } from "@/lib/structured-data";
-import GenMetadata from "@/lib/generate-metadata";
-
-interface Props_ {
-  params: Promise<{ lang: Locale }>;
-}
 
 type LanguageLayoutProps = Readonly<{
   children: React.ReactNode;
@@ -19,13 +13,6 @@ type LanguageLayoutProps = Readonly<{
 // Generar parámetros estáticos para todos los locales
 export async function generateStaticParams() {
   return locales.map(lang => ({ lang }));
-}
-
-export async function generateMetadata({ params }: Props_): Promise<Metadata> {
-  const { lang } = await params;
-  const dict = await getDictionary(lang);
-
-  return GenMetadata(dict, lang, "/");
 }
 
 export default async function LanguageLayout({

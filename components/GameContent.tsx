@@ -68,8 +68,8 @@ export default function GameContent({ lang, dict }: GameContentProps) {
         aria-hidden="true"
       />
 
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-rose-400/8 to-amber-400/8 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-amber-400/6 to-orange-400/6 rounded-full blur-3xl" />
+      <span className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-rose-400/8 to-amber-400/8 rounded-full blur-3xl" />
+      <span className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-amber-400/6 to-orange-400/6 rounded-full blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="pt-16 md:pt-20 pb-16 md:pb-20">
@@ -219,7 +219,7 @@ export default function GameContent({ lang, dict }: GameContentProps) {
               className="text-center mb-12"
             >
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-rose-500/10 to-amber-500/10 rounded-full blur-3xl" />
+                <span className="absolute inset-0 bg-gradient-to-r from-rose-500/10 to-amber-500/10 rounded-full blur-3xl" />
                 <h2 className="relative text-3xl md:text-4xl font-bold bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent mb-4">
                   {dict.gameContent.information.heroSection.title}
                 </h2>
@@ -244,7 +244,7 @@ export default function GameContent({ lang, dict }: GameContentProps) {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="group relative overflow-hidden bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-purple-200/50"
               >
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full -translate-y-10 translate-x-10 group-hover:scale-150 transition-transform duration-500" />
+                <span className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full -translate-y-10 translate-x-10 group-hover:scale-150 transition-transform duration-500" />
                 <div className="relative">
                   <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-4">
                     <span className="text-white text-xl">🧠</span>
@@ -268,7 +268,7 @@ export default function GameContent({ lang, dict }: GameContentProps) {
                 transition={{ duration: 0.5, delay: 0.5 }}
                 className="group relative overflow-hidden bg-gradient-to-br from-amber-50 to-orange-100 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-amber-200/50"
               >
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-amber-400/20 to-orange-400/20 rounded-full -translate-y-10 translate-x-10 group-hover:scale-150 transition-transform duration-500" />
+                <span className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-amber-400/20 to-orange-400/20 rounded-full -translate-y-10 translate-x-10 group-hover:scale-150 transition-transform duration-500" />
                 <div className="relative">
                   <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-500 rounded-xl flex items-center justify-center mb-4">
                     <span className="text-white text-xl">🎯</span>
@@ -292,7 +292,7 @@ export default function GameContent({ lang, dict }: GameContentProps) {
                 transition={{ duration: 0.5, delay: 0.6 }}
                 className="group relative overflow-hidden bg-gradient-to-br from-rose-50 to-pink-100 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-rose-200/50 md:col-span-2 lg:col-span-1"
               >
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-rose-400/20 to-pink-400/20 rounded-full -translate-y-10 translate-x-10 group-hover:scale-150 transition-transform duration-500" />
+                <span className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-rose-400/20 to-pink-400/20 rounded-full -translate-y-10 translate-x-10 group-hover:scale-150 transition-transform duration-500" />
                 <div className="relative">
                   <div className="w-12 h-12 bg-gradient-to-r from-rose-500 to-pink-500 rounded-xl flex items-center justify-center mb-4">
                     <span className="text-white text-xl">⚡</span>
@@ -329,7 +329,7 @@ export default function GameContent({ lang, dict }: GameContentProps) {
               <div className="space-y-6">
                 {/* Classic Mode - Expanded Layout */}
                 <div className="relative overflow-hidden bg-gradient-to-r from-purple-500/5 to-blue-500/5 rounded-2xl border border-purple-200/30">
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 to-blue-500"></div>
+                  <span className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 to-blue-500"></span>
                   <div className="p-6 md:p-8">
                     <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
                       <div className="flex-shrink-0">
@@ -386,7 +386,7 @@ export default function GameContent({ lang, dict }: GameContentProps) {
                 {/* AI Mode - Compact Layout */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="relative overflow-hidden bg-gradient-to-r from-emerald-500/5 to-teal-500/5 rounded-2xl border border-emerald-200/30">
-                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-emerald-500 to-teal-500"></div>
+                    <span className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-emerald-500 to-teal-500"></span>
                     <div className="p-6">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center">
@@ -431,7 +431,7 @@ export default function GameContent({ lang, dict }: GameContentProps) {
                   </div>
 
                   <div className="relative overflow-hidden bg-gradient-to-r from-amber-500/5 to-orange-500/5 rounded-2xl border border-amber-200/30">
-                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-amber-500 to-orange-500"></div>
+                    <span className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-amber-500 to-orange-500"></span>
                     <div className="p-6">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-14 h-14 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center">
@@ -478,17 +478,17 @@ export default function GameContent({ lang, dict }: GameContentProps) {
 
                 {/* Tournament Mode - Special Layout */}
                 <div className="relative overflow-hidden bg-gradient-to-r from-rose-500/5 to-pink-500/5 rounded-2xl border border-rose-200/30">
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-rose-500 to-pink-500"></div>
+                  <span className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-rose-500 to-pink-500"></span>
                   <div className="p-6 md:p-8">
                     <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
                       <div className="flex-shrink-0">
                         <div className="w-20 h-20 bg-gradient-to-br from-rose-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg relative">
                           <LuGlobe className="w-10 h-10 text-white" />
-                          <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
+                          <span className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
                             <span className="text-yellow-800 text-xs font-bold">
                               !
                             </span>
-                          </div>
+                          </span>
                         </div>
                       </div>
                       <div className="flex-1">

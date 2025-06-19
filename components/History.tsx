@@ -38,13 +38,13 @@ export default function History({ dict }: HistoryProps) {
 
   return (
     <section className="relative">
-      <div
+      <span
         className="absolute inset-0 bg-gradient-to-b from-orange-50 via-amber-50 to-rose-50 pointer-events-none"
         aria-hidden="true"
       />
 
-      <div className="absolute top-0 right-1/3 w-72 h-72 bg-gradient-to-r from-amber-400/6 to-rose-400/6 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-gradient-to-r from-rose-400/8 to-orange-400/8 rounded-full blur-3xl" />
+      <span className="absolute top-0 right-1/3 w-72 h-72 bg-gradient-to-r from-amber-400/6 to-rose-400/6 rounded-full blur-3xl" />
+      <span className="absolute bottom-0 left-1/4 w-80 h-80 bg-gradient-to-r from-rose-400/8 to-orange-400/8 rounded-full blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="pt-16 md:pt-20 pb-16 md:pb-20">
@@ -172,7 +172,7 @@ export default function History({ dict }: HistoryProps) {
                       <span className="text-white font-bold text-2xl">📜</span>
                     </div>
                     {/* Efecto de ondas */}
-                    <div className="absolute inset-0 w-20 h-20 bg-amber-400 rounded-full animate-ping opacity-20"></div>
+                    <span className="absolute inset-0 w-20 h-20 bg-amber-400 rounded-full animate-ping opacity-20"></span>
                   </div>
                   <div className="w-1/2 pl-8">
                     {/* Espacio vacío para balance visual */}
@@ -193,7 +193,7 @@ export default function History({ dict }: HistoryProps) {
                     <div className="w-20 h-20 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full flex items-center justify-center shadow-2xl border-4 border-white z-30 relative">
                       <span className="text-white font-bold text-2xl">🎲</span>
                     </div>
-                    <div className="absolute inset-0 w-20 h-20 bg-rose-400 rounded-full animate-ping opacity-20"></div>
+                    <span className="absolute inset-0 w-20 h-20 bg-rose-400 rounded-full animate-ping opacity-20"></span>
                   </div>
                   <div className="w-1/2 pl-8">
                     <div className="inline-block px-3 py-1 bg-rose-100 text-rose-800 text-sm font-semibold rounded-full mb-2">
@@ -230,7 +230,7 @@ export default function History({ dict }: HistoryProps) {
                     <div className="w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center shadow-2xl border-4 border-white z-30 relative">
                       <span className="text-white font-bold text-2xl">💻</span>
                     </div>
-                    <div className="absolute inset-0 w-20 h-20 bg-blue-400 rounded-full animate-ping opacity-20"></div>
+                    <span className="absolute inset-0 w-20 h-20 bg-blue-400 rounded-full animate-ping opacity-20"></span>
                   </div>
                   <div className="w-1/2 pl-8">
                     {/* Espacio vacío para balance visual */}
@@ -248,7 +248,7 @@ export default function History({ dict }: HistoryProps) {
             >
               <div className="relative">
                 {/* Texto principal con efecto de degradado de fondo */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-50/50 to-transparent blur-xl"></div>
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-50/50 to-transparent blur-xl"></span>
 
                 <div className="relative px-8 py-12">
                   <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent mb-8">

@@ -14,20 +14,20 @@ interface HeroHomeProps {
 function HeroHome({ dict, lang }: HeroHomeProps) {
   return (
     <section className="relative overflow-hidden">
-      <div
+      <span
         className="absolute inset-0 bg-gradient-to-b from-orange-50 via-rose-50 to-amber-50 pointer-events-none"
         aria-hidden="true"
       />
 
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-rose-400/8 to-amber-400/8 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-amber-400/6 to-orange-400/6 rounded-full blur-3xl" />
+      <span className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-rose-400/8 to-amber-400/8 rounded-full blur-3xl" />
+      <span className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-amber-400/6 to-orange-400/6 rounded-full blur-3xl" />
 
-      <div
+      <span
         className="absolute pointer-events-none inset-0 w-full h-full opacity-80"
         aria-hidden="true"
       >
         <FloatingNumbers3D />
-      </div>
+      </span>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="pt-32 pb-16 md:pt-40 md:pb-20">
