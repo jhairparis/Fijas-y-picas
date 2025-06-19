@@ -47,9 +47,9 @@ function Header({ lang, dict }: HeaderProps) {
                 className="group-hover:scale-105 transition-transform duration-200"
               />
               <div className="ml-3">
-                <h1 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent">
+                <div className="text-xl md:text-2xl font-bold bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent">
                   {dict.hero.title}
-                </h1>
+                </div>
               </div>
             </Link>
           </div>

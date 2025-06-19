@@ -47,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       sitemapEntries.push({
         url: mainUrl,
-        lastModified: new Date("2025-06-16"),
+        lastModified: new Date("2025-06-18"),
         changeFrequency: route === "" ? "weekly" : "monthly",
         priority: priorities[route] || 0.6,
         alternates: {

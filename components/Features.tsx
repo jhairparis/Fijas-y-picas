@@ -74,9 +74,9 @@ function Features({ dict }: FeaturesProps) {
               <span className="inline-block px-4 py-2 bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent text-sm font-semibold tracking-wider uppercase mb-4">
                 {dict.features.subtitle}
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-rose-900 to-amber-900 bg-clip-text text-transparent mb-6 leading-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-rose-900 to-amber-900 bg-clip-text text-transparent mb-6 leading-tight">
                 {dict.features.title}
-              </h1>
+              </h2>
               <div className="text-lg md:text-xl text-gray-600 leading-relaxed space-y-2">
                 <p>
                   {dict.features.description}{" "}
