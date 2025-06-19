@@ -11,7 +11,7 @@
     "fr": "French"
   },
   "hero": {
-    "title": "Bulls and Cows",
+    "title": "The game of Bulls and Cows",
     "subtitle": "The ultimate game of logic, strategy and deduction - 100 % free and online",
     "description": "Discover <strong>free online Bulls and Cows</strong>, the legendary <em>number-puzzle</em> that has tested the mental agility of millions of people worldwide since the late 19th century. Internationally known as “<em>Bulls&nbsp;and&nbsp;Cows</em>” and immortalised in 1970 with the <em>Mastermind</em> board, today we bring it to your browser so you can enjoy endless rounds with no downloads, no invasive ads and all the advantages of a modern platform: statistics, global leaderboards and real-time multiplayer modes. Be part of history and challenge your mind now with <strong>Bulls and Cows</strong>!",
     "playNow": "Play now",
@@ -321,8 +321,8 @@
     "backHome": "Back to Home"
   },
   "metadata": {
-    "title": "Bulls and Cows - Play the best online logic and deduction game for free",
-    "description": "Enjoy Bulls and Cows (also known as Picas y Fijas or Mastermind) in Spanish. Play free from any device, improve your logic and compete on global leaderboards.",
+    "description": "Enjoy Fijas y Picas (also known as Picas y Fijas or Bulls and Cows). Play for free from any device and improve your logic",
+    "title": "Fijas y Picas - Play free online",
     "keywords": [
       "bulls and cows",
       "picas y fijas",

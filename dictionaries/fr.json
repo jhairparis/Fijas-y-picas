@@ -11,7 +11,7 @@
     "fr": "Français"
   },
   "hero": {
-    "title": "Fixes et Piques",
+    "title": "Le jeu des Fixes et Piques",
     "subtitle": "Le jeu ultime de logique, stratégie et déduction - 100 % gratuit et en ligne",
     "description": "Découvrez <strong>Fixes et Piques en ligne gratuit</strong>, le légendaire <em>casse-tête numérique</em> qui, depuis la fin du XIX<sup>e</sup> siècle, met à l'épreuve l'agilité mentale de millions de personnes dans le monde entier. Connu internationalement sous le nom “<em>Bulls&nbsp;and&nbsp;Cows</em>” et immortalisé en 1970 avec le plateau <em>Mastermind</em>, nous l'apportons aujourd'hui dans votre navigateur pour que vous profitiez de parties infinies sans téléchargement, sans publicités intrusives et avec tous les avantages d'une plateforme moderne : statistiques, classements mondiaux et modes multijoueurs en temps réel. Faites partie de l'histoire et défiez votre esprit dès maintenant avec <strong>Piques et Fixes</strong> !",
     "playNow": "Jouer maintenant",
@@ -196,7 +196,7 @@
     }
   },
   "gameContent": {
-    "title": "Jouer à Piques et Fixes en ligne - défiez votre esprit avec une logique pure",
+    "title": "Jouer à Piques et Fixes en ligne - défiez votre logique",
     "subtitle": "Commencez maintenant",
     "description": "Des jeux papier-crayon du XIX<sup>e</sup> siècle à sa version numérique sophistiquée, <strong>Piques et Fixes</strong> reste un défi universel d'ingéniosité. Jouez contre l'ordinateur ou invitez vos amis en temps réel, directement depuis votre navigateur, sans téléchargement ni inscription compliquée.",
     "callToAction": {
@@ -321,8 +321,8 @@
     "backHome": "Retour à l'accueil"
   },
   "metadata": {
-    "title": "Fixes et Piques - Jouez gratuitement au meilleur jeu de logique et de déduction en ligne",
-    "description": "Profitez de Fixes et Piques (également connu sous le nom Piques et Fixes ou Bulls and Cows) en français. Jouez gratuitement depuis n'importe quel appareil, améliorez votre logique et concourez dans des classements mondiaux.",
+    "title": "Fijas y Picas - Jouez gratuitement en ligne",
+    "description": "Profitez de Fijas y Picas (également connu sous le nom de Picas y Fijas ou Bulls and Cows). Jouez gratuitement depuis n'importe quel appareil et améliorez votre logique.",
     "keywords": [
       "fixes et piques",
       "piques et fixes",
@@ -408,7 +408,7 @@
     }
   },
   "faq": {
-    "title": "Foire aux questions",
+    "title": "Foire aux questions!",
     "subtitle": "Réponses à vos questions sur Fixes et Piques",
     "description": "Trouvez des réponses rapides sur les règles, les stratégies et les modes de jeu de Fixes et Piques.",
     "whatIsPica": {
