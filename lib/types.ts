@@ -474,6 +474,12 @@ export interface DictionaryStructuredData {
   };
 }
 
+export interface DictionaryNotFound {
+  title: string;
+  description: string;
+  backHome: string;
+}
+
 // Main Dictionary interface
 export interface Dictionary {
   navigation: DictionaryNavigation;
@@ -490,6 +496,7 @@ export interface Dictionary {
   footer: DictionaryFooter;
   newsletter: DictionaryNewsletter;
   banner: DictionaryBanner;
+  notFound: DictionaryNotFound;
   faq: DictionaryFAQ;
   metadata: DictionaryMetadata;
   game: DictionaryGame;

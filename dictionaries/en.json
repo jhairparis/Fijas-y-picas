@@ -314,6 +314,11 @@
     "cookies": "cookies",
     "close": "Close"
   },
+  "notFound": {
+    "title": "Oops! Page not found",
+    "description": "It seems the page you're looking for doesn't exist or has been moved.",
+    "backHome": "Back to Home"
+  },
   "metadata": {
     "title": "Bulls and Cows - Play the best online logic and deduction game for free",
     "description": "Enjoy Bulls and Cows (also known as Picas y Fijas or Mastermind) in Spanish. Play free from any device, improve your logic and compete on global leaderboards.",

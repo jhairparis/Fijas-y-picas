@@ -314,6 +314,11 @@
     "cookies": "cookies",
     "close": "Cerrar"
   },
+  "notFound": {
+    "title": "¡Ups! Página no encontrada",
+    "description": "Parece que la página que estás buscando no existe o ha sido movida.",
+    "backHome": "Volver al Inicio"
+  },
   "metadata": {
     "title": "Fijas y Picas - Juega gratis el mejor juego de lógica y deducción online",
     "description": "Disfruta de fijas y picas (también conocido como picas y fijas o Bulls and Cows) en español. Juega gratis desde cualquier dispositivo, mejora tu lógica y compite en rankings globales.",

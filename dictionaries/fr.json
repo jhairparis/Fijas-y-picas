@@ -314,6 +314,11 @@
     "cookies": "cookies",
     "close": "Fermer"
   },
+  "notFound": {
+    "title": "Oups ! Page non trouvée",
+    "description": "Il semble que la page que vous cherchez n'existe pas ou a été déplacée.",
+    "backHome": "Retour à l'accueil"
+  },
   "metadata": {
     "title": "Fixes et Piques - Jouez gratuitement au meilleur jeu de logique et de déduction en ligne",
     "description": "Profitez de Fixes et Piques (également connu sous le nom Piques et Fixes ou Bulls and Cows) en français. Jouez gratuitement depuis n'importe quel appareil, améliorez votre logique et concourez dans des classements mondiaux.",
