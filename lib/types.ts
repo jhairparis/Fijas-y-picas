@@ -317,6 +317,7 @@ export interface DictionaryFooter {
   aboutUs: string;
   contact: string;
   legal: string;
+  faq: string;
   terms: string;
   privacy: string;
   followUs: string;

@@ -100,11 +100,11 @@ function Footer({ lang, dict }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href="/privacidad"
+                  href={`/${lang}/faq`}
                   className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group"
                 >
                   <span className="w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-rose-500 to-amber-500 transition-all duration-300 mr-0 group-hover:mr-3"></span>
-                  Política de Privacidad
+                  {dict.footer.faq}
                 </Link>
               </li>
             </ul>
@@ -123,13 +123,15 @@ function Footer({ lang, dict }: FooterProps) {
             </p>
             <div className="flex space-x-6 text-sm">
               <Link
-                href={`/${lang}/terminos`}
+                href={`#`}
                 className="text-gray-500 hover:text-gray-300 transition-colors duration-300"
               >
                 {dict.footer.terms}
               </Link>
               <Link
-                href={`/${lang}/privacidad`}
+                href="https://jhairparis.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-500 hover:text-gray-300 transition-colors duration-300"
               >
                 {dict.footer.privacy}
