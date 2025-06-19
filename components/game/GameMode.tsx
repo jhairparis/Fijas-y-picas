@@ -17,6 +17,7 @@ import MotionSimple from "@/components/transitions/MotionSimple";
 import { fnHistorial, pistas } from "@/helpers/type";
 import { schemaMain } from "@/helpers/validador";
 import type { Dictionary } from "@/lib/types";
+import type { Locale } from "@/lib/i18n";
 
 type historialTP = [
   number,
@@ -38,9 +39,10 @@ type ModoType = keyof typeof MODOS_VALIDOS;
 interface GameModeProps {
   modo: string;
   dict: Dictionary;
+  lang: Locale;
 }
 
-export default function GameMode({ modo, dict }: GameModeProps) {
+export default function GameMode({ modo, dict, lang }: GameModeProps) {
   const router = useRouter();
 
   const [numeroPrincipal, setNumeroPrincipal] = useState<number>(0);
@@ -156,7 +158,7 @@ export default function GameMode({ modo, dict }: GameModeProps) {
 
               <Link
                 className="inline-block bg-white text-rose-600 hover:text-rose-700 px-6 py-3 rounded-xl font-bold text-base transition-all duration-300 hover:shadow-xl hover:scale-105 mt-6"
-                href="/como-jugar"
+                href={`/${lang}/como-jugar`}
               >
                 {dict.gamePage?.detailedInstructions ||
                   "Ver Instrucciones Detalladas"}
@@ -346,7 +348,7 @@ export default function GameMode({ modo, dict }: GameModeProps) {
                     </p>
                     <a
                       className="inline-block bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 text-white px-6 py-3 rounded-lg font-bold transition-all duration-300"
-                      href="https://github.com/IllustriousLoop/Fijas-y-picas"
+                      href="https://github.com/jhairparis/Fijas-y-picas"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

@@ -123,7 +123,7 @@ export default function GameContent({ lang, dict }: GameContentProps) {
               </div>
               <Link
                 className="inline-block bg-white text-rose-600 hover:text-rose-700 px-6 py-3 rounded-xl font-bold text-base transition-all duration-300 hover:shadow-xl hover:scale-105"
-                href="/como-jugar"
+                href={`/${lang}/como-jugar`}
               >
                 {dict.gameContent.callToAction.detailedInstructions}
               </Link>

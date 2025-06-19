@@ -27,5 +27,5 @@ export default async function MaquinaPistasPage({ params }: PageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
 
-  return <GameMode modo="hvm" dict={dict} />;
+  return <GameMode modo="hvm" dict={dict} lang={lang} />;
 }

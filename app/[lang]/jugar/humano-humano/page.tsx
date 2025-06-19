@@ -27,5 +27,5 @@ export default async function HumanoHumanoPage({ params }: PageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
 
-  return <GameMode modo="hvh" dict={dict} />;
+  return <GameMode modo="hvh" dict={dict} lang={lang} />;
 }

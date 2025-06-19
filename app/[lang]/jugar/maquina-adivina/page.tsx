@@ -27,5 +27,5 @@ export default async function MaquinaAdivinaPage({ params }: PageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
 
-  return <GameMode modo="mvh" dict={dict} />;
+  return <GameMode modo="mvh" dict={dict} lang={lang} />;
 }
