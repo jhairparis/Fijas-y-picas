@@ -1,7 +1,7 @@
 {
   "navigation": {
     "home": "Accueil",
-    "howToPlay": "Comment Jouer",
+    "howToPlay": "Comment jouer",
     "play": "Jouer",
     "faq": "FAQ"
   },
@@ -11,124 +11,124 @@
     "fr": "Français"
   },
   "hero": {
-    "title": "Taureaux et Vaches",
-    "subtitle": "Le jeu ultime de logique et de déduction",
-    "description": "Découvrez Taureaux et Vaches, le jeu de devinettes classique qui défie les esprits depuis plus d'un siècle. Jouez en ligne gratuitement depuis n'importe quel appareil.",
-    "playNow": "Jouer Maintenant",
-    "learnMore": "En Savoir Plus"
+    "title": "Fixes et Piques",
+    "subtitle": "Le jeu ultime de logique, stratégie et déduction - 100 % gratuit et en ligne",
+    "description": "Découvrez <strong>Fixes et Piques en ligne gratuit</strong>, le légendaire <em>casse-tête numérique</em> qui, depuis la fin du XIX<sup>e</sup> siècle, met à l'épreuve l'agilité mentale de millions de personnes dans le monde entier. Connu internationalement sous le nom “<em>Bulls&nbsp;and&nbsp;Cows</em>” et immortalisé en 1970 avec le plateau <em>Mastermind</em>, nous l'apportons aujourd'hui dans votre navigateur pour que vous profitiez de parties infinies sans téléchargement, sans publicités intrusives et avec tous les avantages d'une plateforme moderne : statistiques, classements mondiaux et modes multijoueurs en temps réel. Faites partie de l'histoire et défiez votre esprit dès maintenant avec <strong>Piques et Fixes</strong> !",
+    "playNow": "Jouer maintenant",
+    "learnMore": "En savoir plus"
   },
   "gameInfo": {
-    "title": "Qu'est-ce que Taureaux et Vaches?",
-    "subtitle": "Découvrez le Jeu",
-    "description": "Un jeu de logique où vous devez deviner un nombre secret. À chaque tentative, vous recevez des indices : 'Taureaux' sont des chiffres corrects à la bonne position, 'Vaches' sont des chiffres corrects à la mauvaise position.",
+    "title": "Qu'est-ce que Fixes et Piques ?",
+    "subtitle": "Découvrez en profondeur le jeu de déduction numérique",
+    "description": "Fixes et Piques est un jeu de <strong>pure logique</strong> dans lequel votre objectif est de déchiffrer un <em>nombre secret</em>. À chaque tentative, vous recevez deux indices essentiels : « <strong>fixes</strong> » (chiffre correct à la bonne position) et « <strong>piques</strong> » (chiffre correct mais à la mauvaise position). Sans hasard, tout dépend de votre raisonnement déductif et de votre capacité à écarter les possibilités.",
     "uniqueFeatures": "Caractéristiques uniques",
     "features": {
       "logic": {
-        "title": "Logique Pure",
-        "description": "Pas de chance, seulement du raisonnement déductif"
+        "title": "Logique pure",
+        "description": "Pas de chance, seulement raisonnement déductif et analyse stratégique"
       },
       "difficulty": {
-        "title": "Niveaux de Difficulté",
-        "description": "Du débutant à l'expert"
+        "title": "Niveaux de difficulté",
+        "description": "Choisissez entre débutant, intermédiaire, avancé ou expert"
       },
       "unlimited": {
-        "title": "Parties Illimitées",
-        "description": "Jouez autant de fois que vous voulez"
+        "title": "Parties illimitées",
+        "description": "Jouez autant de fois que vous le souhaitez, sans limites quotidiennes"
       },
       "strategy": {
         "title": "Stratégie",
-        "description": "Développez votre pensée logique"
+        "description": "Développez votre pensée logique et améliorez votre schéma de déduction à chaque partie"
       }
     }
   },
   "features": {
-    "title": "Caractéristiques du Jeu",
+    "title": "Toutes les fonctionnalités du jeu",
     "subtitle": "Caractéristiques mises en avant",
-    "description": "Découvrez toutes les fonctionnalités modernes qui font de notre plateforme la meilleure expérience pour jouer aux Taureaux et Vaches en ligne.",
-    "modern": "Fonctionnalités Modernes",
-    "modernDescription": "Explorez le code et la logique interne des Taureaux et Vaches, avec des tutoriels étape par étape. Notre plateforme numérique ajoute des fonctionnalités modernes, des communautés et une mise à jour constante des modes de jeu.",
+    "description": "Découvrez pourquoi notre plateforme est la meilleure façon de <strong>jouer à Fixes et Piques en ligne</strong> : IA puissante, classements mondiaux, statistiques avancées et communauté active.",
+    "modern": "Fonctionnalités modernes",
+    "modernDescription": "Explorez le code source ouvert, des tutoriels pas à pas et participez à une communauté qui fait évoluer le jeu grâce à des mises à jour constantes, de nouveaux défis hebdomadaires et des tournois mondiaux.",
     "tabs": {
       "ai": {
-        "title": "IA Adaptative",
-        "description": "Affrontez l'ordinateur réglable selon votre niveau de compétence. Notre intelligence artificielle s'adapte à votre style de jeu pour vous offrir toujours le défi parfait, du débutant à l'expert."
+        "title": "IA adaptative",
+        "description": "Défiez notre IA dynamique, qui s'adapte automatiquement à votre style et à votre niveau de jeu pour offrir des parties toujours stimulantes."
       },
       "timers": {
-        "title": "Chronométreurs Globaux",
-        "description": "Défiez l'horloge et battez vos propres records. Rivalisez contre le temps dans des défis chronométrés et démontrez votre vitesse de déduction sur les classements mondiaux."
+        "title": "Chronomètres globaux",
+        "description": "Affrontez le temps et les autres joueurs. Enregistrez vos meilleurs temps et grimpez dans nos classements internationaux."
       },
       "statistics": {
-        "title": "Statistiques et Classements",
-        "description": "Consultez votre position dans les tableaux locaux et mondiaux. Analysez votre progrès avec des statistiques détaillées de parties, des temps moyens et l'efficacité de résolution pour vous améliorer continuellement."
+        "title": "Statistiques et classements",
+        "description": "Analysez vos progrès à l'aide de graphiques de performance, de taux de réussite et de moyenne de tentatives. Partagez vos succès et montrez votre logique !"
       }
     },
     "items": {
       "logic": {
-        "title": "Logique Pure",
-        "description": "Pas de chance, seulement du raisonnement déductif"
+        "title": "Logique pure",
+        "description": "Raisonnement sans hasard ni suppositions aléatoires"
       },
       "difficulty": {
-        "title": "Niveaux de Difficulté",
-        "description": "Du débutant à l'expert"
+        "title": "Niveaux de difficulté",
+        "description": "Maîtrisez le jeu étape par étape, du débutant à l'expert"
       },
       "unlimited": {
-        "title": "Parties Illimitées",
-        "description": "Jouez autant de fois que vous voulez"
+        "title": "Parties illimitées",
+        "description": "Entraînement continu pour devenir un maître du jeu"
       }
     }
   },
   "history": {
-    "title": "Histoire du Jeu",
-    "description": "Le jeu Taureaux et Vaches trouve ses origines au 19ème siècle. Également connu sous le nom de 'Fijas y Picas' en espagnol, il a fasciné des générations par sa simplicité et sa profondeur stratégique.",
-    "subtitle": "Tradition et Évolution",
-    "evolutionTitle": "Histoire et évolution",
+    "title": "Histoire du jeu",
+    "description": "Fixes et Piques remonte au XIX<sup>e</sup> siècle, lorsqu'il est apparu comme un passe-temps papier-crayon dans les salons victoriens d'Angleterre sous le nom « Bulls and Cows ». Avec son mélange unique de stratégie et de simplicité, il captive depuis des générations entières.",
+    "subtitle": "Tradition et évolution",
+    "evolutionTitle": "Chronologie",
     "timeline": {
       "19th": {
-        "era": "19ème Siècle",
-        "title": "Les Débuts Victoriens",
-        "description": "En Angleterre, \"Bulls and Cows\" émerge comme divertissement de journaux. Un simple jeu de papier qui défie l'esprit avec une logique pure."
+        "era": "XIXe siècle",
+        "title": "Les débuts victoriens",
+        "description": "Le jeu paraît dans les journaux et clubs d'intellectuels britanniques comme défi de déduction mathématique."
       },
       "1970": {
         "era": "1970",
-        "title": "La Révolution Mastermind",
-        "description": "Mordechai Meirowitz transforme le concept en jeu de société iconique qui conquerrait le monde avec couleurs et stratégie."
+        "title": "La révolution Mastermind",
+        "description": "L'inventeur Mordechai Meirowitz adapte le concept avec des chevilles colorées et le lance sur le marché mondial, devenant un best-seller."
       },
       "digital": {
-        "era": "Ère Numérique",
-        "title": "Taureaux et Vaches en Ligne",
-        "description": "L'évolution numérique maintient l'essence tout en ajoutant des communautés globales, des statistiques et des modes de jeu innovants."
+        "era": "Ère numérique",
+        "title": "Fixes et Piques en ligne",
+        "description": "La version web conserve l'essence logique, ajoutant classements, statistiques et défis en temps réel pour les joueurs du monde entier."
       }
     },
     "legacy": {
-      "title": "Un héritage durable",
-      "description1": "Des pages jaunies des journaux victoriens aux écrans modernes, <strong>Taureaux et Vaches</strong> a maintenu son essence : <em>pure déduction logique sans dépendre du hasard.</em>",
-      "description2": "Chaque époque a ajouté sa touche spéciale : les Anglais ont donné la base, Mastermind a ajouté le composant visuel, et nous apportons <strong>l'expérience numérique globale</strong> qui connecte les esprits brillants du monde entier.",
+      "title": "Un héritage qui perdure",
+      "description1": "Des journaux victoriens à votre smartphone, <strong>Fixes et Piques</strong> a conservé sa promesse : pure déduction sans dépendre du hasard.",
+      "description2": "Chaque époque a ajouté une couche : les Anglais ont donné la base numérique, Mastermind l'esthétique visuelle et cette plateforme apporte l'<strong>expérience numérique mondiale</strong> 24 h/24 - 7 j/7.",
       "stats": {
         "years": "150+",
-        "yearsLabel": "Années d'évolution",
+        "yearsLabel": "Années d'histoire",
         "possibilities": "∞",
-        "possibilitiesLabel": "Possibilités",
+        "possibilitiesLabel": "Possibilités uniques",
         "passion": "1",
-        "passionLabel": "Passion globale"
+        "passionLabel": "Passion mondiale"
       }
     }
   },
   "comoJugar": {
-    "title": "Comment jouer aux Taureaux et Vaches – Guide complet de déduction",
-    "subtitle": "Guide de Jeu",
-    "description": "Dans Taureaux et Vaches, l'un des jeux de logique les plus anciens et universels, votre mission est de deviner un nombre secret de quatre chiffres uniques. À chaque tentative, vous recevrez des indices qui vous rapprochent de la solution.",
+    "title": "Comment jouer à Fixes et Piques - guide complet de déduction",
+    "subtitle": "Règles et stratégie pas à pas",
+    "description": "Dans <strong>Fixes et Piques</strong>, l'un des jeux de logique les plus universels et addictifs, votre mission est de déchiffrer un nombre secret de quatre chiffres uniques en utilisant uniquement votre raisonnement. Chaque tentative fournit des indices précieux qui vous rapprochent de la solution définitive.",
     "basicRules": {
       "title": "Règles de base",
       "rule1": {
-        "title": "Code secret à 4 chiffres :",
-        "description": "Chaque chiffre est différent (par exemple, 2037)."
+        "title": "Code secret de 4 chiffres :",
+        "description": "Chaque chiffre est différent (par exemple : 2037)."
       },
       "rule2": {
         "title": "Tentative :",
-        "description": "Vous proposez un autre nombre à 4 chiffres sans répétitions."
+        "description": "Proposez un autre nombre de 4 chiffres distincts."
       },
       "rule3": {
         "title": "Réponse :",
-        "description": "Nous vous indiquons combien de taureaux (chiffres corrects à la position exacte) et combien de vaches (chiffres corrects à une position différente) vous avez obtenus."
+        "description": "Le système indique combien de <strong>fixes</strong> et de <strong>piques</strong> vous avez obtenus lors de cette tentative."
       }
     },
     "detailedExample": {
@@ -137,137 +137,137 @@
       "attempt": "Tentative",
       "result": "Résultat",
       "analysis": "Analyse",
-      "analysisText": "5 en première position correct, 7 et 2 existent mais changent de place",
+      "analysisText": "5 est à la bonne position ; 7 et 2 existent mais doivent être déplacés",
       "info": "Information :",
-      "infoText": "Grâce à cette information, vous pouvez éliminer des chiffres et localiser les corrects avec une logique déductive.",
-      "fijas": "Taureau",
-      "picas": "Vache"
+      "infoText": "Avec ces données, écartez des chiffres et placez les bons logiquement.",
+      "fijas": "Fixe",
+      "picas": "Pique"
     },
     "expertTips": {
       "title": "Conseils d'experts",
-      "tip1": "Commencez avec des nombres qui incluent des chiffres éloignés (0–9) pour maximiser l'information du premier indice.",
-      "tip2": "Notez chaque tentative et indice ; construisez une petite carte des possibilités.",
-      "tip3": "Priorisez d'abord l'élimination des chiffres pour réduire la plage de recherche."
+      "tip1": "Commencez avec des chiffres très variés (0-9) pour obtenir un maximum d'informations.",
+      "tip2": "Notez chaque tentative et indice sur papier ou dans une application pour visualiser les schémas.",
+      "tip3": "Éliminez les chiffres dès que possible pour réduire le nombre de combinaisons."
     },
     "advancedModes": {
       "title": "Modes avancés",
       "repeats": {
         "title": "Répétitions autorisées",
-        "description": "Augmentez la difficulté en permettant des chiffres égaux dans le code secret."
+        "description": "Ajoutez de la difficulté en permettant des chiffres dupliqués dans le code."
       },
       "variableLength": {
         "title": "Longueur variable",
-        "description": "Jouez avec des codes de 3 à 6 chiffres selon votre niveau d'expérience."
+        "description": "Configurez des codes de 3 à 6 chiffres selon votre expérience."
       },
       "timed": {
-        "title": "Contre la montre",
-        "description": "Devinez le code avant que le temps ne s'épuise pour pousser votre logique à la limite."
+        "title": "Contre-la-montre",
+        "description": "Devinez le code avant que le chronomètre n'atteigne zéro."
       }
     },
     "challenge": {
-      "title": "Prêt pour le Défi ?",
-      "description": "Testez votre logique et vos compétences de déduction. Chaque partie est une nouvelle opportunité de vous surpasser !",
-      "playButton": "Commencer à jouer maintenant"
+      "title": "Prêt pour le défi ?",
+      "description": "Montrez votre maîtrise logique. Chaque partie est une nouvelle occasion de battre votre propre record !",
+      "playButton": "Commencez à jouer maintenant"
     }
   },
   "gamePage": {
-    "modePrefix": "Mode:",
-    "title": "Taureaux et Vaches en Ligne",
-    "description": "Défiez votre esprit avec le jeu Taureaux et Vaches. Utilisez votre logique et déduction pour deviner le nombre secret en utilisant les indices qui vous seront donnés par un joueur humain ou une machine. Vous choisissez!",
-    "detailedInstructions": "Voir les Instructions Détaillées",
+    "modePrefix": "Mode :",
+    "title": "Fixes et Piques en ligne - jouez gratuitement dans votre navigateur",
+    "description": "Mettez votre esprit au défi avec le classique <strong>Fixes et Piques</strong>. Utilisez la logique pour découvrir le nombre secret grâce aux indices d'un adversaire humain ou de notre IA. À vous de choisir !",
+    "detailedInstructions": "Voir les instructions détaillées",
     "player1": "Joueur 1",
     "player2": "Joueur 2",
     "yourHistory": "Votre historique",
-    "gameClosedMessage": "Jeu fermé",
-    "digitQuestion": "Bonjour humain, avec combien de chiffres voulez-vous jouer?",
-    "submitButton": "Ok",
+    "gameClosedMessage": "La partie est terminée",
+    "digitQuestion": "Avec combien de chiffres voulez-vous jouer ?",
+    "submitButton": "Valider",
     "tournamentNotAvailable": {
-      "title": "Nous sommes désolés",
-      "description": "Nous n'avons pas encore pu développer le mode de jeu tournoi de Taureaux et Vaches. Nous travaillons dur pour vous offrir cette option de jeu passionnante dès que possible.",
-      "githubMessage": "Si vous souhaitez nous aider à développer ce mode de jeu, n'hésitez pas et allez sur notre GITHUB!",
-      "collaborationMessage": "Nous cherchons toujours la collaboration de joueurs passionnés comme vous. Ensemble, nous pouvons faire de Taureaux et Vaches un jeu encore meilleur!",
-      "helpButton": "Aider!!"
+      "title": "Désolé",
+      "description": "Le mode tournoi est encore en développement. Vous pourrez bientôt concourir dans des ligues mondiales !",
+      "githubMessage": "Si vous souhaitez contribuer, visitez notre GITHUB",
+      "collaborationMessage": "Nous recherchons des contributeurs passionnés. Construisons ensemble le meilleur Fixes et Piques !",
+      "helpButton": "Je veux aider !"
     },
     "modes": {
       "hvh": "Humain vs Humain",
       "hvm": "Humain vs Machine",
       "mvh": "Machine vs Humain",
-      "torneo": "Tournoi en Ligne"
+      "torneo": "Tournoi en ligne"
     }
   },
   "gameContent": {
-    "title": "Taureaux et Vaches en Ligne",
-    "subtitle": "Jouer Maintenant",
-    "description": "Depuis ses origines dans les jeux traditionnels de papier et crayon du XIXe siècle jusqu'à son adaptation numérique actuelle, <strong>Taureaux et Vaches</strong> (aussi appelé <em>Vaches et Taureaux</em>) reste un défi universel d'astuce, de déduction et de stratégie. Dans cette version en ligne, vous pouvez affronter un nombre secret généré aléatoirement par notre serveur ou défier des amis en temps réel, tout cela depuis votre navigateur, sans téléchargement ni installation.",
+    "title": "Jouer à Piques et Fixes en ligne - défiez votre esprit avec une logique pure",
+    "subtitle": "Commencez maintenant",
+    "description": "Des jeux papier-crayon du XIX<sup>e</sup> siècle à sa version numérique sophistiquée, <strong>Piques et Fixes</strong> reste un défi universel d'ingéniosité. Jouez contre l'ordinateur ou invitez vos amis en temps réel, directement depuis votre navigateur, sans téléchargement ni inscription compliquée.",
     "callToAction": {
-      "title": "Prêt pour le Défi ?",
-      "description": "Chaque partie est unique. Le nombre secret change, et avec lui votre besoin de concevoir de nouvelles stratégies.",
-      "fixedHint": "🎯 Taureaux : Position correcte",
-      "picasHint": "🤡 Vaches : Numéro correct",
-      "detailedInstructions": "Voir les Instructions Détaillées"
+      "title": "Prêt pour l'action ?",
+      "description": "Chaque partie vous obligera à créer de nouvelles stratégies. Aucun code n'est identique !",
+      "fixedHint": "🎯 Fixes : chiffre et position corrects",
+      "picasHint": "🤡 Piques : chiffre correct à la mauvaise position",
+      "detailedInstructions": "Voir les instructions détaillées"
     },
     "information": {
       "heroSection": {
-        "title": "Pourquoi jouer aux Taureaux et Vaches en ligne ?",
-        "description": "En plus d'être un passe-temps addictif, <strong>Taureaux et Vaches en ligne</strong> renforce votre pensée logique, vos compétences de résolution de problèmes et votre capacité à traiter des informations partielles. Chaque tentative fournit des indices —taureaux (chiffres corrects à la position exacte) et vaches (chiffres corrects à une position différente)— et votre objectif est de déduire le code en un minimum de tours."
+        "title": "Avantages de jouer à Piques et Fixes en ligne",
+        "description": "En plus d'être un <em>passe-temps addictif</em>, <strong>Piques et Fixes en ligne</strong> renforce votre pensée logique, votre résolution de problèmes et votre capacité à traiter rapidement des informations partielles."
       },
       "benefits": {
         "mentalPower": {
-          "title": "Puissance Mentale",
-          "description": "Chaque partie renforce votre pensée logique et vos capacités de déduction stratégique."
+          "title": "Puissance mentale",
+          "description": "Chaque partie exerce votre logique et votre déduction stratégique."
         },
         "precision": {
           "title": "Précision",
-          "description": "Développez votre capacité à traiter les indices et à prendre des décisions précises sous pression."
+          "description": "Améliorez votre capacité à analyser les indices et à prendre des décisions précises sous pression."
         },
         "mentalAgility": {
-          "title": "Agilité Mentale",
-          "description": "Améliorez votre vitesse de traitement et votre capacité d'adaptation aux nouveaux défis."
+          "title": "Agilité mentale",
+          "description": "Augmentez votre vitesse de traitement et votre adaptabilité face aux nouveaux défis."
         }
       },
       "gameModes": {
-        "title": "Modes de Jeu Disponibles",
-        "subtitle": "Choisissez votre mode de jeu préféré dans notre jeu de Taureaux et Vaches ! Chaque mode offre une expérience unique de logique et de déduction.",
+        "title": "Modes de jeu disponibles",
+        "subtitle": "Choisissez votre mode préféré",
         "classic": {
           "title": "Classique Humain vs Humain",
-          "popularBadge": "Le Plus Populaire",
-          "description": "Dans ce jeu passionnant, deux joueurs s'affrontent pour deviner le nombre secret de l'autre. Osez-vous défier vos amis et votre famille à une partie passionnante de Taureaux et Vaches ? Montrez vos compétences de logique et de déduction et devenez le meilleur joueur de Taureaux et Vaches de tous !",
+          "popularBadge": "Le plus populaire",
+          "description": "Défiez amis et famille en face à face. Montrez qui a la meilleure stratégie et devenez une légende !",
           "features": {
-            "players": "👥 2 Joueurs",
+            "players": "👥 2 joueurs",
             "strategy": "🧠 Stratégie",
-            "realTime": "⚡ Temps Réel"
+            "realTime": "⚡ Temps réel"
           }
         },
         "humanVsMachine": {
           "title": "Humain vs Machine",
           "subtitle": "Entraînez vos compétences",
-          "description": "Profitez d'un défi passionnant contre l'ordinateur ! Devinez le nombre secret généré aléatoirement et démontrez vos compétences de logique.",
+          "description": "Affrontez notre IA avancée et prouvez votre logique en déchiffrant le nombre secret généré aléatoirement.",
           "features": {
-            "ai": "🤖 IA Avancée",
-            "practice": "📊 Pratique"
+            "ai": "🤖 IA avancée",
+            "practice": "📊 Entraînement illimité"
           }
         },
         "machineVsHuman": {
           "title": "Machine vs Humain",
           "subtitle": "Défi inversé",
-          "description": "L'IA essaie de deviner votre nombre secret. Regardez comment nos algorithmes avancés traitent les indices que vous leur donnez.",
+          "description": "Laissez l'IA tenter de deviner votre code et observez-la appliquer des algorithmes de déduction.",
           "features": {
-            "reverse": "🔄 Rôle Inversé",
-            "algorithms": "🧮 Algorithmes"
+            "reverse": "🔄 Rôle inversé",
+            "algorithms": "🧮 Algorithmes intelligents"
           }
         },
         "tournament": {
-          "title": "Tournoi en Ligne",
-          "comingSoonBadge": "Bientôt Disponible",
-          "description": "Rejoignez le mode tournoi passionnant de Taureaux et Vaches ! Rivalisez contre d'autres joueurs dans un format d'élimination et menez votre équipe à la victoire. Montrez vos compétences de logique et de déduction et devenez le meilleur joueur de Taureaux et Vaches de tous !",
+          "title": "Tournoi en ligne",
+          "comingSoonBadge": "Bientôt",
+          "description": "Participez à des brackets à élimination et grimpez au classement mondial. Montrez votre talent au monde !",
           "features": {
-            "global": "🌍 Multijoueur Global",
-            "elimination": "🏆 Élimination",
+            "global": "🌍 Multijoueur mondial",
+            "elimination": "🏆 Éliminatoires",
             "rankings": "📈 Classements"
           },
           "collaboration": {
-            "title": "Aidez-nous à développer ce mode !",
-            "description": "Nous recherchons des collaborateurs passionnés pour concrétiser cette fonctionnalité.",
+            "title": "Participez au développement !",
+            "description": "Vous êtes développeur ou designer ? Rejoignez notre projet open-source et construisons ensemble le meilleur mode tournoi.",
             "buttonText": "Contribuer sur GitHub"
           }
         }
@@ -277,294 +277,285 @@
   "gameMode": {
     "humanVsHuman": "Humain vs Humain",
     "humanVsMachine": "Humain vs Machine",
-    "machineGuesses": "Machine Devine",
+    "machineGuesses": "La machine devine",
     "humanVsHumanDesc": "Jouez contre un autre joueur localement",
-    "humanVsMachineDesc": "Affrontez l'intelligence artificielle",
-    "machineGuessesDesc": "La machine essaie de deviner votre numéro",
-    "onlineTournament": "Tournoi en Ligne",
-    "onlineTournamentDesc": "Rivalisez contre des joueurs du monde entier",
+    "humanVsMachineDesc": "Défiez l'intelligence artificielle",
+    "machineGuessesDesc": "La machine tente de déchiffrer votre nombre",
+    "onlineTournament": "Tournoi en ligne",
+    "onlineTournamentDesc": "Affrontez des joueurs du monde entier",
     "selectGameMode": "Sélectionnez un mode de jeu",
     "playNow": "Jouer maintenant",
-    "comingSoon": "Bientôt disponible"
+    "comingSoon": "Bientôt"
   },
   "footer": {
-    "title": "Taureaux et Vaches",
-    "description": "Le jeu de logique et de déduction qui défie votre esprit. Profitez d'heures de divertissement intelligent.",
-    "quickLinks": "Liens Rapides",
+    "title": "Fixes et Piques",
+    "description": "Le jeu de logique et de déduction qui défie votre esprit — jouez gratuitement, apprenez des stratégies et rejoignez une communauté mondiale.",
+    "quickLinks": "Liens rapides",
     "game": "Jouer",
-    "howToPlay": "Comment Jouer",
-    "aboutUs": "À Propos",
+    "howToPlay": "Comment jouer",
+    "aboutUs": "À propos",
     "contact": "Contact",
-    "legal": "Légal",
+    "legal": "Mentions légales",
     "terms": "Conditions",
     "privacy": "Confidentialité",
     "followUs": "Suivez-nous",
     "allRightsReserved": "Tous droits réservés"
   },
   "newsletter": {
-    "title": "S'abonner",
-    "description": "Recevez les dernières nouvelles et articles dans votre boîte de réception chaque mois.",
-    "placeholder": "nom@exemple.com",
-    "button": "Envoyer",
-    "success": "Merci de vous être abonné !",
-    "error": "Impossible de compléter l'abonnement"
+    "title": "Abonnez-vous à notre newsletter",
+    "description": "Recevez actualités, stratégies et défis hebdomadaires directement dans votre boîte de réception.",
+    "placeholder": "nom@example.com",
+    "button": "M'abonner",
+    "success": "Merci pour votre inscription !",
+    "error": "Échec de l'abonnement. Veuillez réessayer."
   },
   "banner": {
     "acceptText": "Vous acceptez tous les",
-    "cookies": "Cookies",
+    "cookies": "cookies",
     "close": "Fermer"
   },
   "metadata": {
-    "title": "Taureaux et Vaches – Le jeu ultime de logique et de déduction",
-    "description": "Découvrez Taureaux et Vaches, le jeu de devinettes classique qui défie les esprits depuis plus d'un siècle. Jouez en ligne gratuitement depuis n'importe quel appareil.",
+    "title": "Fixes et Piques - Jouez gratuitement au meilleur jeu de logique et de déduction en ligne",
+    "description": "Profitez de Fixes et Piques (également connu sous le nom Piques et Fixes ou Bulls and Cows) en français. Jouez gratuitement depuis n'importe quel appareil, améliorez votre logique et concourez dans des classements mondiaux.",
     "keywords": [
-      "taureaux et vaches",
-      "jeu logique",
-      "déduction",
-      "nombres",
-      "mastermind",
-      "jeu en ligne",
-      "devine nombre",
-      "jeu puzzle",
-      "casse-tête",
-      "jeu mental"
+      "fixes et piques",
+      "piques et fixes",
+      "bulls and cows",
+      "mastermind en ligne",
+      "jeu de logique",
+      "casse-tête numérique",
+      "jeux cérébraux gratuits",
+      "stratégie et déduction",
+      "jouer en ligne",
+      "jeux de nombres",
+      "entraînement cérébral",
+      "jeu de devinette",
+      "règles fixes et piques",
+      "stratégie fixes et piques"
     ],
     "openGraph": {
-      "siteName": "Taureaux et Vaches"
+      "siteName": "Fixes et Piques"
     },
     "pages": {
       "comoJugar": {
-        "title": "Comment Jouer Taureaux et Vaches - Guide Complet et Stratégies",
-        "description": "Apprenez à jouer Taureaux et Vaches avec notre guide complet. Règles, stratégies et astuces pour maîtriser ce jeu classique de logique et déduction.",
+        "title": "Comment jouer à Fixes et Piques - règles, exemples et stratégies avancées",
+        "description": "Apprenez pas à pas à maîtriser Fixes et Piques avec des exemples pratiques, des conseils d'experts et des tactiques pour réduire vos tentatives.",
         "keywords": [
-          "comment jouer taureaux et vaches",
-          "règles taureaux et vaches",
-          "tutoriel taureaux et vaches",
-          "stratégies taureaux et vaches",
-          "guide mastermind",
-          "apprendre taureaux et vaches"
+          "comment jouer fixes et piques",
+          "règles fixes et piques",
+          "tutoriel piques et fixes",
+          "stratégie fixes et piques",
+          "guide mastermind"
         ]
       },
       "jugar": {
-        "title": "Jouer Taureaux et Vaches en Ligne - Modes de Jeu Multiples",
-        "description": "Choisissez votre mode de jeu préféré dans Taureaux et Vaches. Humain vs Humain, contre l'IA ou laissez la machine deviner votre nombre. Commencez à jouer maintenant!",
+        "title": "Jouer à Fixes et Piques en ligne gratuitement - multiples modes de jeu",
+        "description": "Choisissez Humain vs Humain, affrontez l'IA ou laissez la machine deviner votre nombre. Sans inscription ni téléchargement.",
         "keywords": [
-          "jouer taureaux et vaches",
-          "modes de jeu taureaux et vaches",
-          "taureaux et vaches en ligne",
-          "choisir mode taureaux et vaches",
-          "jeux de logique en ligne"
+          "jouer fixes et piques",
+          "jeu de logique gratuit",
+          "piques et fixes en ligne",
+          "modes de jeu",
+          "jeux de déduction"
         ]
       },
       "humanoHumano": {
-        "title": "Humain vs Humain - Taureaux et Vaches en Ligne",
-        "description": "Jouez Taureaux et Vaches en mode Humain vs Humain. Un joueur pense à un nombre et l'autre le devine. Parfait pour jouer avec des amis et tester votre logique.",
+        "title": "Humain vs Humain - Fixes et Piques multijoueur en ligne",
+        "description": "Défiez un ami en parties locales ou à distance. Mettez votre logique à l'épreuve en temps réel.",
         "keywords": [
-          "taureaux et vaches humain vs humain",
-          "deux joueurs taureaux et vaches",
-          "taureaux et vaches multijoueur",
-          "jouer avec amis taureaux et vaches",
-          "mode humain taureaux et vaches"
+          "fixes et piques multijoueur",
+          "jeu deux joueurs",
+          "piques et fixes entre amis",
+          "duels de logique"
         ]
       },
       "maquinaAdivina": {
-        "title": "Ordinateur Devine - Taureaux et Vaches en Ligne",
-        "description": "Défiez l'intelligence artificielle dans Taureaux et Vaches. Vous pensez à un nombre et la machine essaie de le deviner. L'IA peut-elle découvrir votre nombre secret?",
+        "title": "La machine devine - défiez l'IA dans Fixes et Piques",
+        "description": "Pensez à un nombre et observez comment notre IA tente de le déchiffrer à l'aide d'algorithmes avancés.",
         "keywords": [
-          "taureaux et vaches vs ia",
-          "ordinateur devine taureaux et vaches",
-          "intelligence artificielle taureaux et vaches",
-          "défier ia taureaux et vaches",
-          "ordinateur devine nombre"
+          "fixes et piques vs ia",
+          "intelligence artificielle",
+          "jeu de déduction ia",
+          "algorithmes de recherche"
         ]
       },
       "maquinaPistas": {
-        "title": "Ordinateur Donne Indices - Taureaux et Vaches en Ligne",
-        "description": "Jouez contre la machine dans Taureaux et Vaches. L'IA génère un nombre secret et vous essayez de le deviner. Testez votre logique contre l'intelligence artificielle.",
+        "title": "La machine donne des indices - devinez le nombre secret généré par l'IA",
+        "description": "Relevez le défi classique contre l'ordinateur. Serez-vous capable de battre l'algorithme ?",
         "keywords": [
-          "taureaux et vaches contre ordinateur",
-          "ordinateur donne indices taureaux et vaches",
-          "deviner nombre ia",
-          "jouer contre ordinateur taureaux et vaches",
-          "défi ia taureaux et vaches"
+          "piques et fixes contre machine",
+          "nombre secret ia",
+          "défi de logique"
         ]
       },
       "faq": {
-        "title": "Questions Fréquentes - Taureaux et Vaches",
-        "description": "Réponses aux questions les plus fréquentes sur le jeu Taureaux et Vaches. Apprenez tout sur les taureaux, les vaches, les stratégies et les règles du jeu.",
+        "title": "Foire aux questions - tout sur Fixes et Piques",
+        "description": "Nous répondons aux questions les plus courantes : règles, stratégies, différences avec Mastermind et plus encore.",
         "keywords": [
-          "faq taureaux et vaches",
-          "questions fréquentes taureaux et vaches",
-          "aide taureaux et vaches",
-          "doutes taureaux et vaches",
-          "règles taureaux et vaches",
-          "stratégies taureaux et vaches",
-          "support taureaux et vaches"
+          "foire aux questions",
+          "fixes et piques faq",
+          "aide",
+          "support",
+          "stratégies"
         ]
       }
     }
   },
   "faq": {
-    "title": "Questions Fréquentes",
-    "subtitle": "Réponses à vos questions sur Taureaux et Vaches",
-    "description": "Trouvez des réponses aux questions les plus courantes sur le jeu Taureaux et Vaches. Tout ce que vous devez savoir pour maîtriser ce fascinant jeu de logique.",
+    "title": "Foire aux questions",
+    "subtitle": "Réponses à vos questions sur Fixes et Piques",
+    "description": "Trouvez des réponses rapides sur les règles, les stratégies et les modes de jeu de Fixes et Piques.",
     "whatIsPica": {
-      "question": "Qu'est-ce qu'une vache ?",
-      "answer": "C'est un chiffre correct qui existe dans le code secret, mais à une position différente de celle proposée."
+      "question": "Qu'est-ce qu'une pique ?",
+      "answer": "Un chiffre correct qui apparaît dans le code secret mais à une position différente de celle proposée."
     },
     "whatIsFija": {
-      "question": "Qu'est-ce qu'un taureau ?",
-      "answer": "C'est un chiffre correct qui est à la position exacte du code secret. C'est la meilleure indication que vous puissiez obtenir."
+      "question": "Qu'est-ce qu'une fixe ?",
+      "answer": "Un chiffre correct et à la bonne position dans le code secret."
     },
     "vsMastermind": {
-      "question": "En quoi \"taureaux et vaches\" diffère-t-il de Mastermind ?",
-      "answer": "Mastermind utilise des chevilles colorées pour marquer les succès, mais la mécanique des \"taureaux\" et \"vaches\" est identique à la logique numérique de notre jeu."
+      "question": "En quoi Fixes et Piques diffère-t-il de Mastermind ?",
+      "answer": "Mastermind utilise des chevilles colorées ; Fixes et Piques emploie des nombres, mais la logique de déduction est identique."
     },
     "howManyDigits": {
-      "question": "Combien de chiffres a le code secret ?",
-      "answer": "Par défaut, ce sont 4 chiffres uniques, mais vous pouvez choisir entre 3 à 6 chiffres selon votre niveau d'expérience et vos préférences."
+      "question": "Combien de chiffres le code secret contient-il ?",
+      "answer": "Par défaut, il comporte 4 chiffres uniques, mais vous pouvez choisir entre 3 et 6 selon votre niveau."
     },
     "canRepeatDigits": {
-      "question": "Les chiffres peuvent-ils se répéter dans le code secret ?",
-      "answer": "En mode classique, les chiffres ne se répètent pas. Cependant, nous proposons un mode avancé où les répétitions sont autorisées pour plus de difficulté."
+      "question": "Les chiffres peuvent-ils se répéter ?",
+      "answer": "Pas en mode classique. En mode avancé, oui, pour augmenter la difficulté."
     },
     "bestStrategy": {
       "question": "Quelle est la meilleure stratégie pour gagner ?",
-      "answer": "Commencez avec des nombres ayant des chiffres variés (comme 0, 3, 6, 9) pour obtenir un maximum d'informations. Notez chaque tentative et utilisez la logique déductive pour éliminer les possibilités."
+      "answer": "Commencez avec des chiffres variés, notez chaque indice et utilisez la logique déductive pour écarter les combinaisons impossibles."
     },
     "minimumAttempts": {
-      "question": "Quel est le nombre minimum de tentatives pour résoudre le jeu ?",
-      "answer": "Théoriquement, il est possible de le résoudre en 1 tentative avec beaucoup de chance, mais en utilisant la stratégie logique, un joueur expert peut le résoudre de manière consistante en 4-6 tentatives."
+      "question": "Quel est le nombre minimum de tentatives nécessaire ?",
+      "answer": "Avec beaucoup de chance, cela pourrait être résolu en 1 tentative, mais un joueur expert moyen y parvient en 4-6."
     },
     "isThereTimeLimit": {
-      "question": "Y a-t-il une limite de temps pour jouer ?",
-      "answer": "Il n'y a pas de limite de temps en mode classique. Cependant, nous proposons un mode contre-la-montre pour ceux qui cherchent un défi supplémentaire."
+      "question": "Y a-t-il une limite de temps ?",
+      "answer": "Pas en mode classique. Le mode contre-la-montre introduit un chronomètre pour ajouter de la pression."
     }
   },
   "game": {
     "errors": {
-      "invalidNumber": "Entrez un chiffre dans la case numéro: {{position}}",
-      "duplicateNumber": "Il y a une valeur répétée",
+      "invalidNumber": "Saisissez un chiffre dans la case numéro : {{position}}",
+      "duplicateNumber": "Il y a une valeur dupliquée",
       "sumExceeded": "La somme des indices ne peut pas dépasser le nombre de chiffres choisis",
       "tryAgain": "Une erreur inattendue est survenue. Veuillez réessayer.",
-      "impossible": "Quoi!! ce n'est pas possible",
+      "impossible": "Quoi !! Ceci est impossible",
       "checkAnswers": "Vérifiez vos réponses",
-      "impossibleValues": "Ces valeurs ne sont pas possibles",
-      "couldNotFind": "Je n'ai pas pu trouver le numéro",
-      "rangeError": "Les taureaux et vaches doivent être entre 0 et 2",
-      "debugNotFound": "Je n'ai pas pu trouver le numéro"
+      "impossibleValues": "Ces valeurs sont impossibles",
+      "couldNotFind": "Impossible de trouver le nombre",
+      "rangeError": "Les piques et fixes doivent être comprises entre 0 et 2",
+      "debugNotFound": "Je n'ai pas pu trouver le nombre"
     },
     "info": {
       "duplicateReminder": "Rappelez-vous qu'aucun chiffre ne se répète",
-      "player2GivePicas": "Joueur 2 donnez les picas et fijas au joueur 1",
-      "player1GivePicas": "Joueur 1 donnez les picas et fijas au joueur 2",
-      "guessPlayer1": "Essayez de deviner le numéro du joueur 1",
-      "guessPlayer2": "Essayez de deviner le numéro du joueur 2",
+      "player2GivePicas": "Joueur 2, donnez les piques et fixes au Joueur 1",
+      "player1GivePicas": "Joueur 1, donnez les piques et fixes au Joueur 2",
+      "guessPlayer1": "Essayez de deviner le nombre du Joueur 1",
+      "guessPlayer2": "Essayez de deviner le nombre du Joueur 2",
       "thinking": "Réflexion...",
-      "picasAndFijas": "il y a {{fijas}} taureaux et {{picas}} vaches",
+      "picasAndFijas": "il y a {{fijas}} fixes et {{picas}} piques",
       "checkAnswer": "Vérifiez ma réponse et je suis le gagnant"
     },
     "success": {
-      "gameStarted": "Jeu Commencé",
-      "player1Won": "Le joueur 1 a gagné",
-      "player2Won": "Le joueur 2 a gagné",
-      "congratulations": "Félicitations! Vous avez deviné le numéro",
-      "machineGuessed": "J'ai deviné le numéro! C'est {{number}}",
-      "machineWon": "La machine est la gagnante",
+      "gameStarted": "Partie lancée",
+      "player1Won": "Joueur 1, vous avez gagné",
+      "player2Won": "Joueur 2, vous avez gagné",
+      "congratulations": "Félicitations ! Vous avez deviné le nombre",
+      "machineGuessed": "J'ai deviné le nombre ! C'est {{number}}",
+      "machineWon": "La machine est gagnante",
       "youWon": "Vous êtes le gagnant",
       "playerWon": "Vous avez perdu",
       "iWon": "J'ai gagné"
     },
     "ui": {
-      "attempt": "Intentar",
-      "give": "Dar",
-      "digit": "Dígito {{number}}",
-      "fijas": "fijas",
-      "picas": "picas"
+      "attempt": "Tenter",
+      "give": "Donner",
+      "digit": "Chiffre {{number}}",
+      "fijas": "fixes",
+      "picas": "piques"
     }
   },
   "structuredData": {
     "general": {
-      "disambiguatingDescription": "Juego clásico de deducción y lógica donde los jugadores adivinan un número secreto usando pistas lógicas llamadas 'fijas' (posición exacta) y 'picas' (posición incorrecta).",
-      "alternateName": ["Bulls and Cows", "Mastermind", "Picas y Fijas"],
-      "applicationCategory": "Juego",
-      "applicationSubCategory": "Juego de Rompecabezas de Lógica",
-      "applicationSuite": "Fijas y Picas",
-      "browserRequirements": "Requiere soporte HTML5 y JavaScript habilitado.",
-      "availableOnDevice": "Cualquier dispositivo con navegador web moderno",
-      "operatingSystem": "Multiplataforma (Windows, macOS, Linux, iOS, Android)",
+      "disambiguatingDescription": "Jeu classique de logique et de déduction numérique : devinez un code secret à l'aide d'indices appelés fixes et piques.",
+      "alternateName": ["Bulls and Cows", "Mastermind", "Piques et Fixes"],
+      "applicationCategory": "Jeu",
+      "applicationSubCategory": "Puzzle logique",
+      "applicationSuite": "Fixes et Piques",
+      "browserRequirements": "Navigateur moderne compatible HTML5 et JavaScript",
+      "availableOnDevice": "Tout appareil connecté à Internet",
+      "operatingSystem": "Windows, macOS, Linux, iOS, Android",
       "softwareVersion": "2.0.0",
       "featureList": [
-        "Modo multijugador Humano vs Humano",
-        "Juego Humano vs IA",
-        "Modo IA vs Humano",
-        "Longitud de código variable (2-6 dígitos)",
-        "Soporte multiidioma (Español, Inglés, Francés)",
-        "Sistema de retroalimentación en tiempo real",
-        "Seguimiento del historial de juego",
-        "Diseño responsivo para todos los dispositivos"
+        "Mode multijoueur Humain vs Humain",
+        "Jeu Humain vs IA",
+        "Mode IA vs Humain",
+        "Longueur de code variable (2-6 chiffres)",
+        "Support multilingue (Espagnol, Anglais, Français)",
+        "Système de rétroaction en temps réel",
+        "Suivi de l'historique de jeu",
+        "Design responsive"
       ],
-      "memoryRequirements": "Mínimo (menos de 1MB RAM)",
-      "storageRequirements": "Ninguno (basado en navegador)",
-      "permissions": "No se requieren permisos especiales",
-      "releaseNotes": "Algoritmos de IA mejorados, interfaz de usuario actualizada y soporte multiidioma.",
+      "memoryRequirements": "Moins de 1 Mo de RAM",
+      "storageRequirements": "0 Mo - jeu basé sur navigateur",
+      "permissions": "Aucune autorisation spéciale",
+      "releaseNotes": "Nouvelle interface, moteur IA optimisé et tournois (en bêta).",
       "isAccessibleForFree": true,
       "isFamilyFriendly": true,
-      "keywords": "juegos de lógica, juegos de deducción, adivinanza de números, fijas y picas, mastermind, juegos de rompecabezas, entrenamiento cerebral",
-      "genre": ["Lógica", "Rompecabezas", "Estrategia", "Deducción"],
-      "gamePlatform": ["Navegador Web"],
-      "playMode": ["Un jugador", "Multijugador", "Cooperativo"],
-      "gameEdition": "Edición Web",
+      "keywords": "fixes et piques, piques et fixes, bulls and cows, mastermind, jeu logique, casse-tête numérique, entraînement mental",
+      "genre": ["Logique", "Puzzle", "Stratégie"],
+      "gamePlatform": ["Navigateur web"],
+      "playMode": ["Solo", "Multijoueur"],
+      "gameEdition": "Édition web 2025",
       "numberOfPlayersValue": "1-2",
-      "gameLocation": "En línea",
-      "characterAttribute": [
-        "Pensamiento lógico",
-        "Razonamiento deductivo",
-        "Reconocimiento de patrones",
-        "Planificación estratégica"
-      ],
+      "gameLocation": "En ligne",
+      "characterAttribute": ["Pensée logique", "Raisonnement déductif"],
       "gameItem": [
-        "Códigos de números secretos",
-        "Pistas de retroalimentación (fijas y picas)",
-        "Registro del historial de juego",
-        "Interfaz de selección de dígitos"
+        "Codes numériques",
+        "Indices de réponse",
+        "Historique de jeu"
       ],
       "quest": [
-        "Adivinar el número secreto en el mínimo de intentos",
-        "Usar deducción lógica para eliminar posibilidades",
-        "Decodificar el número del oponente usando pistas"
+        "Deviner le nombre secret en un minimum de tentatives",
+        "Optimiser la déduction logique",
+        "Décoder le nombre de l'adversaire à l'aide d'indices"
       ],
-      "dateCreated": "2023-01-01",
-      "datePublished": "2023-01-01",
+      "dateCreated": "2025-06-18",
+      "datePublished": "2025-06-18",
       "license": "https://opensource.org/licenses/MIT",
-      "aboutName": "Juego de lógica de descifrado de códigos",
-      "aboutDescription": "Juego de deducción matemática donde los jugadores usan razonamiento lógico para adivinar combinaciones de números secretos",
+      "aboutName": "Jeu de déduction numérique",
+      "aboutDescription": "Jeu de déduction mathématique où les joueurs utilisent le raisonnement logique pour deviner des combinaisons de nombres secrets",
       "contentRating": "E",
       "typicalAgeRange": "8+",
-      "audienceType": "Público General",
+      "audienceType": "Tout public",
       "suggestedMinAge": 8,
       "suggestedMaxAge": 99,
-      "educationalUse": "Entrenamiento de lógica, razonamiento matemático, resolución de problemas",
+      "educationalUse": "Entraînement logique, raisonnement mathématique, résolution de problèmes",
       "teaches": [
-        "Deducción lógica",
-        "Reconocimiento de patrones",
-        "Pensamiento estratégico",
-        "Razonamiento matemático"
+        "Déduction logique",
+        "Reconnaissance de motifs",
+        "Pensée stratégique",
+        "Raisonnement mathématique"
       ],
       "screenshot": [
         "/images/features-bg-1.png",
         "/images/features-bg-2.png",
         "/images/features-bg-3.png"
       ],
-      "fileSize": "Menos de 1MB",
-      "softwareRequirements": "Navegador web moderno con JavaScript habilitado",
-      "processorRequirements": "Cualquier procesador moderno",
-      "countriesSupported": "En todo el mundo",
-      "interactivityType": "activo",
+      "fileSize": "Moins de 1 Mo",
+      "softwareRequirements": "Navigateur avec JavaScript activé",
+      "processorRequirements": "CPU d'entrée de gamme ou supérieur",
+      "countriesSupported": "Global",
+      "interactivityType": "Active",
       "accessibilityFeature": [
-        "Navegación por teclado",
-        "Compatible con lector de pantalla",
-        "Modo de alto contraste disponible"
+        "Navigation clavier",
+        "Compatibilité lecteur d'écran",
+        "Mode contraste élevé"
       ],
       "actor": [],
       "director": [],
@@ -572,36 +563,53 @@
       "cheatCode": [],
       "gameServer": [],
       "gameTip": [
-        "Comienza con números que contengan dígitos diversos para obtener la máxima información",
-        "Lleva registro de todos los intentos y pistas sistemáticamente",
-        "Elimina combinaciones de dígitos imposibles temprano",
-        "Usa deducción lógica en lugar de adivinanzas aleatorias"
+        "Commencez par des nombres contenant des chiffres variés pour obtenir un maximum d'informations",
+        "Tenez un registre systématique de toutes les tentatives et indices",
+        "Éliminez tôt les combinaisons de chiffres impossibles",
+        "Utilisez la déduction logique plutôt que des suppositions aléatoires"
       ],
       "trailer": [],
       "softwareAddOn": [],
-      "softwareHelpName": "Guía de Cómo Jugar",
-      "softwareHelpPath": "/como-jugar",
+      "softwareHelpName": "Guide de jeu",
+      "softwareHelpPath": "/comment-jouer",
       "supportingData": [],
       "countriesNotSupported": "",
       "aggregateRating": null,
       "award": null
     },
     "article": {
-      "articleSection": "Guía de Juego",
-      "wordCount": 1500,
-      "aboutName": "Tutorial del Juego Fijas y Picas",
-      "aboutDescription": "Aprende a jugar el clásico juego de deducción lógica Fijas y Picas"
+      "articleSection": "Guide de jeu",
+      "wordCount": 1600,
+      "aboutName": "Tutoriel du jeu Fixes et Piques",
+      "aboutDescription": "Apprenez à jouer au classique jeu de déduction logique Fixes et Piques"
     },
     "organization": {
-      "name": "Fijas y Picas",
-      "description": "Juego clásico de lógica y deducción en línea",
-      "contactType": "servicio al cliente",
-      "availableLanguage": ["Español", "Inglés", "Francés"]
+      "name": "Fixes et Piques",
+      "description": "Jeu classique de logique et de déduction en ligne",
+      "contactType": "service client",
+      "availableLanguage": ["Espagnol", "Anglais", "Français"]
     },
     "faq": {
-      "aboutName": "Juego Fijas y Picas",
-      "aboutDescription": "Preguntas frecuentes sobre el juego de deducción lógica Fijas y Picas",
-      "websiteName": "Fijas y Picas"
+      "aboutName": "Jeu Fixes et Piques",
+      "aboutDescription": "Foire aux questions sur le jeu de déduction logique Fixes et Piques",
+      "websiteName": "Fixes et Piques"
+    }
+  },
+  "howToStart": {
+    "title": "Comment commencer",
+    "steps": {
+      "playNow": {
+        "title": "Jouer maintenant",
+        "description": "Cliquez sur \"{playNowButton}\" pour lancer une partie instantanée. C'est la façon la plus rapide de plonger dans le défi !"
+      },
+      "learnRules": {
+        "title": "Apprenez les règles",
+        "description": "Si vous débutez, visitez \"{howToPlayLink}\" pour maîtriser les règles et découvrir des stratégies gagnantes."
+      },
+      "compete": {
+        "title": "Compétition",
+        "description": "Rejoignez la communauté pour sauvegarder votre progression, participer à des tournois et débloquer des succès exclusifs."
+      }
     }
   }
 }

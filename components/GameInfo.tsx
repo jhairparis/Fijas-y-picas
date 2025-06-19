@@ -270,12 +270,18 @@ export default function GameInfo({ dict, lang }: GameInfoProps) {
               <div className="absolute inset-0 bg-gradient-to-r from-rose-100 to-amber-100 rounded-3xl blur-3xl opacity-60"></div>
 
               <div className="relative py-16 px-8">
-                <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent mb-6">
-                  {dict.gameInfo.description.split(".")[0]}
-                </h3>
-                <p className="text-xl text-gray-700 mb-12 max-w-2xl mx-auto leading-relaxed">
-                  {dict.gameInfo.description}
-                </p>
+                <h3
+                  className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent mb-6"
+                  dangerouslySetInnerHTML={{
+                    __html: dict.gameInfo.description.split(".")[0],
+                  }}
+                ></h3>
+                <p
+                  className="text-xl text-gray-700 mb-12 max-w-2xl mx-auto leading-relaxed"
+                  dangerouslySetInnerHTML={{
+                    __html: dict.gameInfo.description,
+                  }}
+                ></p>
 
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
                   <motion.div
