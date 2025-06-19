@@ -13,21 +13,20 @@ Crawl-delay: 1
 User-agent: facebookexternalhit
 Allow: /
 
-# Block AI training crawlers (2025 best practice)
 User-agent: GPTBot
-Disallow: /
+Allow: /
 
 User-agent: Claude-Web
-Disallow: /
+Allow: /
 
 User-agent: CCBot
-Disallow: /
+Allow: /
 
 User-agent: anthropic-ai
-Disallow: /
+Allow: /
 
 User-agent: ChatGPT-User
-Disallow: /
+Allow: /
 
 # Sitemaps
 Sitemap: https://fijasypicas.jhairparis.com/sitemap.xml
