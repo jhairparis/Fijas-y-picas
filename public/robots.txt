@@ -1,35 +1,6 @@
 User-agent: *
 Allow: /
 
-# Specific rules for major bots
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: GPTBot
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-# Sitemaps
 Sitemap: https://fijasypicas.jhairparis.com/sitemap.xml
 
-# Crawl-delay for general bots
 Crawl-delay: 2
