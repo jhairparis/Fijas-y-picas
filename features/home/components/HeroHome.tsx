@@ -2,7 +2,7 @@ import React from "react";
 import { LuPlay } from "react-icons/lu";
 import Link from "next/link";
 import Image from "next/image";
-import FloatingNumbers3D from "./FloatingNumbers3D";
+import FloatingNumbers3D from "@/components/shared/FloatingNumbers3D";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/types";
 

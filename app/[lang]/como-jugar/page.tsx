@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
-import ComoJugarContent from "@/components/ComoJugarContent";
+import ComoJugarContent from "@/features/content/components/ComoJugarContent";
 import { generateArticleMetadata } from "@/lib/generate-metadata";
 import { generateArticleSchema } from "@/lib/structured-data";
 

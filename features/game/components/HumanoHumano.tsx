@@ -2,9 +2,12 @@ import React, { useEffect, useState, createRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { motion, AnimatePresence } from "framer-motion";
-import { Props, inputs as InputFormType, arrayC } from "../../helpers/type";
-import { schemaEntradas, schemaFijasPicas } from "../../helpers/validador";
-import MotionSimple from "../transitions/MotionSimple";
+import { Props, inputs as InputFormType, arrayC } from "@/types/game";
+import {
+  schemaEntradas,
+  schemaFijasPicas,
+} from "@/features/game/utils/validador";
+import MotionSimple from "@/components/transitions/MotionSimple";
 import { yupResolver } from "@hookform/resolvers/yup";
 import type { Dictionary } from "@/lib/types";
 

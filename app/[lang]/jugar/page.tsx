@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
-import GameContent from "@/components/GameContent";
+import GameContent from "@/components/shared/GameContent";
 import { generateGamePageMetadata } from "@/lib/generate-metadata";
 import { GameSchemaGeneral } from "@/lib/structured-data";
 

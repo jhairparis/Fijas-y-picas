@@ -1,6 +1,6 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import LanguageProvider from "@/components/LanguageProvider";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import LanguageProvider from "@/components/layout/LanguageProvider";
 import { getDictionary } from "@/lib/dictionary";
 import { locales, type Locale } from "@/lib/i18n";
 import { generateOrganizationSchema } from "@/lib/structured-data";

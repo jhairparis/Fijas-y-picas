@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { LuGithub } from "react-icons/lu";
-import Newsletter from "./Newsletter";
+import Newsletter from "@/components/shared/Newsletter";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/types";
 import { FaXTwitter } from "react-icons/fa6";

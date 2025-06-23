@@ -2,8 +2,8 @@ import React, { useEffect, useState, createRef, RefObject } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { motion, AnimatePresence } from "framer-motion";
-import { arrayC, Props, inputs as InputFormValues } from "../../helpers/type";
-import { schemaEntradas } from "../../helpers/validador";
+import { arrayC, Props, inputs as InputFormValues } from "@/types/game";
+import { schemaEntradas } from "@/features/game/utils/validador";
 import type { Dictionary } from "@/lib/types";
 
 // Define a type for the input items with their refs

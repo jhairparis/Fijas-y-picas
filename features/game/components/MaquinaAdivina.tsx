@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { Props } from "../../helpers/type";
+import { Props } from "@/types/game";
 import { motion } from "framer-motion";
 import type { Dictionary } from "@/lib/types";
 

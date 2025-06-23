@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
-import FAQContent from "@/components/FAQContent";
+import FAQContent from "@/features/content/components/FAQContent";
 import { generateArticleMetadata } from "@/lib/generate-metadata";
 import { generateFAQSchema } from "@/lib/structured-data";
 

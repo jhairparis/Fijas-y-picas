@@ -1,8 +1,8 @@
-import HeroHome from "@/components/HeroHome";
-import GameInfo from "@/components/GameInfo";
-import Features from "@/components/Features";
-import History from "@/components/History";
-import Banner from "@/components/Banner";
+import HeroHome from "@/features/home/components/HeroHome";
+import GameInfo from "@/features/home/components/GameInfo";
+import Features from "@/features/home/components/Features";
+import History from "@/features/home/components/History";
+import Banner from "@/features/home/components/Banner";
 import { getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
 import { Metadata } from "next";

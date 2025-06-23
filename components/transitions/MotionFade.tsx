@@ -1,7 +1,7 @@
 "use client";
 import React, { FC } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FadeProps } from "../../helpers/type";
+import { FadeProps } from "@/types/game";
 
 const MotionFade: FC<FadeProps> = ({ in: isVisible, children, time = 500 }) => {
   const fadeVariants = {

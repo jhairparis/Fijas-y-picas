@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/types";
-import LanguageSwitcher from "./LanguageSwitcher";
+import LanguageSwitcher from "../shared/LanguageSwitcher";
 
 interface HeaderProps {
   lang: Locale;

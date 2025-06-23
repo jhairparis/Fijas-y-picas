@@ -9,13 +9,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { LuBrain, LuGlobe, LuBot, LuX } from "react-icons/lu";
 
-import MaquinaPistas from "@/components/game/MaquinaPistas";
-import HumanoHumano from "@/components/game/HumanoHumano";
-import MaquinaAdivina from "@/components/game/MaquinaAdivina";
+import MaquinaPistas from "@/features/game/components/MaquinaPistas";
+import HumanoHumano from "@/features/game/components/HumanoHumano";
+import MaquinaAdivina from "@/features/game/components/MaquinaAdivina";
 import MotionFade from "@/components/transitions/MotionFade";
 import MotionSimple from "@/components/transitions/MotionSimple";
-import { fnHistorial, pistas } from "@/helpers/type";
-import { schemaMain } from "@/helpers/validador";
+import { fnHistorial, pistas } from "@/types/game";
+import { schemaMain } from "@/features/game/utils/validador";
 import type { Dictionary } from "@/lib/types";
 import type { Locale } from "@/lib/i18n";
 
