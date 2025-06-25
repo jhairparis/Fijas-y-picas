@@ -28,6 +28,7 @@ export default function generateMetadata(
     fr: "fr_FR",
   };
 
+  // Nextjs add complete base URL to the metadata
   const canonicalUrl = path === "" ? `/${lang}` : `/${lang}${path}`;
 
   return {
@@ -41,7 +42,7 @@ export default function generateMetadata(
         es: path === "" ? `/es` : `/es${path}`,
         en: path === "" ? `/en` : `/en${path}`,
         fr: path === "" ? `/fr` : `/fr${path}`,
-        "x-default": path === "" ? "/" : `/${path}`,
+        "x-default": path === "" ? `/es` : `/es${path}`, // Always point to Spanish as default
       },
     },
     openGraph: {

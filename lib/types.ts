@@ -391,6 +391,11 @@ export interface DictionaryMetadata {
       description: string;
       keywords: string[];
     };
+    privacidad: {
+      title: string;
+      description: string;
+      keywords: string[];
+    };
   };
 }
 

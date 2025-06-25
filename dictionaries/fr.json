@@ -404,6 +404,15 @@
           "support",
           "stratégies"
         ]
+      },
+      "privacidad": {
+        "title": "Politique de confidentialité - Fixes et Piques",
+        "description": "Consultez notre politique de confidentialité et de protection des données.",
+        "keywords": [
+          "politique de confidentialité",
+          "protection des données",
+          "confidentialité"
+        ]
       }
     }
   },

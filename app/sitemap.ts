@@ -39,15 +39,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
         alternates[altLocale] = `${baseUrl}/${altLocale}${route}`;
       });
 
-      // Agrega x-default para español como idioma por defecto
-      alternates["x-default"] = `${baseUrl}${route}`;
+      // Agrega x-default apuntando a español (página real de fallback)
+      alternates["x-default"] = `${baseUrl}/es${route}`;
 
       // URL principal para este locale y ruta
       const mainUrl = `${baseUrl}/${locale}${route}`;
 
       sitemapEntries.push({
         url: mainUrl,
-        lastModified: new Date("2025-06-18"),
+        lastModified: new Date("2025-06-25"),
         changeFrequency: route === "" ? "weekly" : "monthly",
         priority: priorities[route] || 0.6,
         alternates: {

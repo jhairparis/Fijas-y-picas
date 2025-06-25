@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { locales, getLocale } from "./lib/i18n";
+import { locales } from "./lib/i18n";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -28,16 +28,15 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Skip root path - let it be handled by the root route
+  // Skip root path - always redirect to Spanish (stable redirect for SEO)
   if (pathname === "/") {
-    const locale = getLocale(request);
-    return NextResponse.redirect(new URL(`/${locale}`, request.url), 301);
+    return NextResponse.redirect(new URL("/es", request.url), 301);
   }
 
   // For other paths, add locale prefix with permanent redirect (301)
-  // This is for old URLs without locale prefix that should be permanently redirected
-  const locale = getLocale(request);
-  const newUrl = new URL(`/${locale}${pathname}`, request.url);
+  // This handles old URLs without locale prefix that should be permanently redirected
+  // Always redirect to Spanish as the default locale for SEO consistency
+  const newUrl = new URL(`/es${pathname}`, request.url);
   newUrl.search = request.nextUrl.search;
 
   return NextResponse.redirect(newUrl, 301);

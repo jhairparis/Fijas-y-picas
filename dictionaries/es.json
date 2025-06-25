@@ -404,6 +404,15 @@
           "soporte",
           "estrategias"
         ]
+      },
+      "privacidad": {
+        "title": "Política de Privacidad - Fijas y Picas",
+        "description": "Consulta nuestra política de privacidad y protección de datos.",
+        "keywords": [
+          "política de privacidad",
+          "protección de datos",
+          "privacidad"
+        ]
       }
     }
   },

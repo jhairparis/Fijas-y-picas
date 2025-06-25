@@ -403,6 +403,11 @@
           "support",
           "strategies"
         ]
+      },
+      "privacidad": {
+        "title": "Privacy Policy - Bulls and Cows",
+        "description": "Check our privacy policy and data protection information.",
+        "keywords": ["privacy policy", "data protection", "privacy"]
       }
     }
   },
