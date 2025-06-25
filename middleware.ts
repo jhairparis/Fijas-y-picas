@@ -31,15 +31,16 @@ export function middleware(request: NextRequest) {
   // Skip root path - let it be handled by the root route
   if (pathname === "/") {
     const locale = getLocale(request);
-    return NextResponse.redirect(new URL(`/${locale}`, request.url));
+    return NextResponse.redirect(new URL(`/${locale}`, request.url), 301);
   }
 
-  // For other paths, add locale prefix
+  // For other paths, add locale prefix with permanent redirect (301)
+  // This is for old URLs without locale prefix that should be permanently redirected
   const locale = getLocale(request);
   const newUrl = new URL(`/${locale}${pathname}`, request.url);
   newUrl.search = request.nextUrl.search;
 
-  return NextResponse.redirect(newUrl);
+  return NextResponse.redirect(newUrl, 301);
 }
 
 export const config = {
