@@ -4,6 +4,7 @@ import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { getDictionary } from "@/lib/dictionary";
+import { HiArrowLeft } from "react-icons/hi";
 
 export default async function NotFound() {
   const dict = await getDictionary("en");
@@ -45,19 +46,7 @@ export default async function NotFound() {
                   href={`/en`}
                   className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-rose-500 to-amber-500 text-white rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover:from-rose-600 hover:to-amber-600"
                 >
-                  <svg
-                    className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                    />
-                  </svg>
+                  <HiArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
                   {dict.notFound.backHome}
                 </Link>
               </div>
