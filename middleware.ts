@@ -4,6 +4,14 @@ import { locales } from "./lib/i18n";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Redirige URLs con múltiples slashes consecutivos a una versión limpia
+  if (pathname.includes("//")) {
+    const clean = pathname.replace(/\/{2,}/g, "/");
+    const url = request.nextUrl.clone();
+    url.pathname = clean;
+    return NextResponse.redirect(url, 301);
+  }
+
   // Skip static files and special Next.js paths
   if (
     pathname.startsWith("/_next/") ||
